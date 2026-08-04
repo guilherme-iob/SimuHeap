@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimuHeap.Models
 {
-    internal class BlocoPadding
+    public class BlocoPadding
     {
+        private uint TamanhoPadding;
+
+        public BlocoPadding(uint tamanhoPadding)
+        {
+            TamanhoPadding = tamanhoPadding;
+        }
     }
 }

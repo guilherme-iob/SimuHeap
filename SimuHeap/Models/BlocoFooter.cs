@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuHeap.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace SimuHeap.Models
 {
-    internal class BlocoFooter
+    public class BlocoFooter
     {
+        private uint TamanhoBloco;
+        private EstadoBlocoMemoria EstadoBlocoMemoria;
+
+        public BlocoFooter(uint tamanhoBloco, EstadoBlocoMemoria estadoBlocoMemoria)
+        {
+            TamanhoBloco = tamanhoBloco;
+            EstadoBlocoMemoria = estadoBlocoMemoria;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuHeap.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace SimuHeap.Windows
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            SelectHeapSize.DataSource = Enum.GetValues(typeof(TamanhosHeap));
         }
     }
 }

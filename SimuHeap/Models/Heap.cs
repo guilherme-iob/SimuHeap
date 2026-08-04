@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimuHeap.Models
 {
-    internal class Heap
+    public class Heap
     {
+        private uint Tamanho;
+        private List<BlocoDeMemoria> ListaBlocosLivres;
+        private List<BlocoDeMemoria> Segmentos;
     }
 }
