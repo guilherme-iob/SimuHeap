@@ -57,6 +57,7 @@
             HabilitarCoalesing = new CheckBox();
             HabilitarSplit = new CheckBox();
             Panel_Simulacao = new Panel();
+            PanelGridHeap = new Panel();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -70,6 +71,7 @@
             tableLayoutPanel2.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            Panel_Simulacao.SuspendLayout();
             SuspendLayout();
             // 
             // PanelPrincipal
@@ -396,6 +398,7 @@
             SelectHeapSize.Name = "SelectHeapSize";
             SelectHeapSize.Size = new Size(181, 29);
             SelectHeapSize.TabIndex = 5;
+            SelectHeapSize.SelectedIndexChanged += SelectHeapSize_SelectedIndexChanged;
             // 
             // Label_TamanhoHeap
             // 
@@ -440,11 +443,20 @@
             // 
             // Panel_Simulacao
             // 
+            Panel_Simulacao.Controls.Add(PanelGridHeap);
             Panel_Simulacao.Dock = DockStyle.Fill;
             Panel_Simulacao.Location = new Point(3, 207);
             Panel_Simulacao.Name = "Panel_Simulacao";
             Panel_Simulacao.Size = new Size(1258, 471);
             Panel_Simulacao.TabIndex = 1;
+            // 
+            // PanelGridHeap
+            // 
+            PanelGridHeap.AutoScroll = true;
+            PanelGridHeap.Location = new Point(284, 85);
+            PanelGridHeap.Name = "PanelGridHeap";
+            PanelGridHeap.Size = new Size(568, 290);
+            PanelGridHeap.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -470,6 +482,7 @@
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            Panel_Simulacao.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -504,5 +517,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel2;
         private Panel panel1;
+        private Panel PanelGridHeap;
     }
 }

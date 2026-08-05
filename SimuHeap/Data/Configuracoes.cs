@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace SimuHeap.Data
 {
-    internal class Configuracoes
+    public static class Configuracoes
     {
+        public static int TAM_HEADER = 4;
+        public static int TAM_FOOTER = 4;
+        public static int TAM_ALINHAMENTO = 8;
+        public static int TAM_MIN_PAYLOAD = 4;
+
+        public static int TAM_MIN_BLOCO => CalcularTamanhoTotalBloco(TAM_MIN_PAYLOAD);
+
+        public static int CalcularPadding(int tamanhoPayload)
+        {
+            int tamanhoSemPadding = TAM_HEADER + tamanhoPayload + TAM_FOOTER;
+
+            return (TAM_ALINHAMENTO - tamanhoSemPadding % TAM_ALINHAMENTO) % TAM_ALINHAMENTO;
+        }
+
+        public static int CalcularTamanhoTotalBloco(int tamanhoPayload)
+        {
+            return TAM_HEADER + tamanhoPayload + TAM_FOOTER + CalcularPadding(tamanhoPayload);
+        }
     }
 }
