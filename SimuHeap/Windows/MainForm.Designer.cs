@@ -62,6 +62,10 @@
             Panel_Segmentos = new Panel();
             PanelGridHeap = new Panel();
             Panel_Simulacao_Nav = new Panel();
+            BtnPrimeiro = new Button();
+            BtnUltimo = new Button();
+            BtnAnterior = new Button();
+            BtnProximo = new Button();
             Label_Segmentos = new Label();
             Panel_ListaBlocosLivres = new Panel();
             ListBoxBlocosLivres = new ListBox();
@@ -69,10 +73,7 @@
             Label_Heap = new Label();
             Panel_Eventos = new Panel();
             ListBoxEventos = new ListBox();
-            BtnProximo = new Button();
-            BtnAnterior = new Button();
-            BtnUltimo = new Button();
-            BtnPrimeiro = new Button();
+            tableLayoutPanel4 = new TableLayoutPanel();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -93,6 +94,7 @@
             Panel_Simulacao_Nav.SuspendLayout();
             Panel_ListaBlocosLivres.SuspendLayout();
             Panel_Eventos.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // PanelPrincipal
@@ -532,15 +534,68 @@
             // Panel_Simulacao_Nav
             // 
             Panel_Simulacao_Nav.BackColor = SystemColors.ActiveBorder;
-            Panel_Simulacao_Nav.Controls.Add(BtnPrimeiro);
-            Panel_Simulacao_Nav.Controls.Add(BtnUltimo);
-            Panel_Simulacao_Nav.Controls.Add(BtnAnterior);
-            Panel_Simulacao_Nav.Controls.Add(BtnProximo);
+            Panel_Simulacao_Nav.Controls.Add(tableLayoutPanel4);
             Panel_Simulacao_Nav.Dock = DockStyle.Bottom;
             Panel_Simulacao_Nav.Location = new Point(0, 383);
             Panel_Simulacao_Nav.Name = "Panel_Simulacao_Nav";
             Panel_Simulacao_Nav.Size = new Size(562, 41);
             Panel_Simulacao_Nav.TabIndex = 2;
+            // 
+            // BtnPrimeiro
+            // 
+            BtnPrimeiro.BackgroundImage = Properties.Resources.primeiro;
+            BtnPrimeiro.BackgroundImageLayout = ImageLayout.Center;
+            BtnPrimeiro.Dock = DockStyle.Fill;
+            BtnPrimeiro.FlatAppearance.BorderSize = 0;
+            BtnPrimeiro.FlatStyle = FlatStyle.Flat;
+            BtnPrimeiro.Location = new Point(3, 3);
+            BtnPrimeiro.Name = "BtnPrimeiro";
+            BtnPrimeiro.Size = new Size(46, 35);
+            BtnPrimeiro.TabIndex = 3;
+            BtnPrimeiro.UseVisualStyleBackColor = true;
+            BtnPrimeiro.Click += BtnPrimeiro_Click;
+            // 
+            // BtnUltimo
+            // 
+            BtnUltimo.BackgroundImage = Properties.Resources.ultimo;
+            BtnUltimo.BackgroundImageLayout = ImageLayout.Center;
+            BtnUltimo.Dock = DockStyle.Fill;
+            BtnUltimo.FlatAppearance.BorderSize = 0;
+            BtnUltimo.FlatStyle = FlatStyle.Flat;
+            BtnUltimo.Location = new Point(159, 3);
+            BtnUltimo.Name = "BtnUltimo";
+            BtnUltimo.Size = new Size(46, 35);
+            BtnUltimo.TabIndex = 2;
+            BtnUltimo.UseVisualStyleBackColor = true;
+            BtnUltimo.Click += BtnUltimo_Click;
+            // 
+            // BtnAnterior
+            // 
+            BtnAnterior.BackgroundImage = Properties.Resources.anterior;
+            BtnAnterior.BackgroundImageLayout = ImageLayout.Center;
+            BtnAnterior.Dock = DockStyle.Fill;
+            BtnAnterior.FlatAppearance.BorderSize = 0;
+            BtnAnterior.FlatStyle = FlatStyle.Flat;
+            BtnAnterior.Location = new Point(55, 3);
+            BtnAnterior.Name = "BtnAnterior";
+            BtnAnterior.Size = new Size(46, 35);
+            BtnAnterior.TabIndex = 1;
+            BtnAnterior.UseVisualStyleBackColor = true;
+            BtnAnterior.Click += BtnAnterior_Click;
+            // 
+            // BtnProximo
+            // 
+            BtnProximo.BackgroundImage = Properties.Resources.proximo;
+            BtnProximo.BackgroundImageLayout = ImageLayout.Center;
+            BtnProximo.Dock = DockStyle.Fill;
+            BtnProximo.FlatAppearance.BorderSize = 0;
+            BtnProximo.FlatStyle = FlatStyle.Flat;
+            BtnProximo.Location = new Point(107, 3);
+            BtnProximo.Name = "BtnProximo";
+            BtnProximo.Size = new Size(46, 35);
+            BtnProximo.TabIndex = 0;
+            BtnProximo.UseVisualStyleBackColor = true;
+            BtnProximo.Click += BtnProximo_Click;
             // 
             // Label_Segmentos
             // 
@@ -611,45 +666,24 @@
             ListBoxEventos.Size = new Size(192, 424);
             ListBoxEventos.TabIndex = 0;
             // 
-            // BtnProximo
+            // tableLayoutPanel4
             // 
-            BtnProximo.Location = new Point(165, 6);
-            BtnProximo.Name = "BtnProximo";
-            BtnProximo.Size = new Size(75, 23);
-            BtnProximo.TabIndex = 0;
-            BtnProximo.Text = "Proximo";
-            BtnProximo.UseVisualStyleBackColor = true;
-            BtnProximo.Click += BtnProximo_Click;
-            // 
-            // BtnAnterior
-            // 
-            BtnAnterior.Location = new Point(84, 6);
-            BtnAnterior.Name = "BtnAnterior";
-            BtnAnterior.Size = new Size(75, 23);
-            BtnAnterior.TabIndex = 1;
-            BtnAnterior.Text = "Anterior";
-            BtnAnterior.UseVisualStyleBackColor = true;
-            BtnAnterior.Click += BtnAnterior_Click;
-            // 
-            // BtnUltimo
-            // 
-            BtnUltimo.Location = new Point(246, 6);
-            BtnUltimo.Name = "BtnUltimo";
-            BtnUltimo.Size = new Size(75, 23);
-            BtnUltimo.TabIndex = 2;
-            BtnUltimo.Text = "Último";
-            BtnUltimo.UseVisualStyleBackColor = true;
-            BtnUltimo.Click += BtnUltimo_Click;
-            // 
-            // BtnPrimeiro
-            // 
-            BtnPrimeiro.Location = new Point(3, 6);
-            BtnPrimeiro.Name = "BtnPrimeiro";
-            BtnPrimeiro.Size = new Size(75, 23);
-            BtnPrimeiro.TabIndex = 3;
-            BtnPrimeiro.Text = "Primeiro";
-            BtnPrimeiro.UseVisualStyleBackColor = true;
-            BtnPrimeiro.Click += BtnPrimeiro_Click;
+            tableLayoutPanel4.ColumnCount = 4;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.Controls.Add(BtnPrimeiro, 0, 0);
+            tableLayoutPanel4.Controls.Add(BtnUltimo, 3, 0);
+            tableLayoutPanel4.Controls.Add(BtnAnterior, 1, 0);
+            tableLayoutPanel4.Controls.Add(BtnProximo, 2, 0);
+            tableLayoutPanel4.Dock = DockStyle.Left;
+            tableLayoutPanel4.Location = new Point(0, 0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(208, 41);
+            tableLayoutPanel4.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -682,6 +716,7 @@
             Panel_Simulacao_Nav.ResumeLayout(false);
             Panel_ListaBlocosLivres.ResumeLayout(false);
             Panel_Eventos.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -732,5 +767,6 @@
         private Button BtnUltimo;
         private Button BtnAnterior;
         private Button BtnProximo;
+        private TableLayoutPanel tableLayoutPanel4;
     }
 }
