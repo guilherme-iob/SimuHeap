@@ -31,7 +31,7 @@ namespace SimuHeap.Models
 
         public static BlocoDeMemoria CriarOcupado(int id, int enderecoInicio, int tamanhoSolicitado, TiposDeVariaveis tipoDado, Color cor)
         {
-            if(id <= 0)
+            if (id <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(id), "O ID deve ser maior que zero.");
             }
@@ -41,7 +41,7 @@ namespace SimuHeap.Models
                 throw new ArgumentOutOfRangeException(nameof(enderecoInicio), "O endereço de início não pode ser negativo.");
             }
 
-            if(tamanhoSolicitado <=0)
+            if (tamanhoSolicitado <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(tamanhoSolicitado), "O tamanho solicitado deve ser maior que zero.");
             }
@@ -93,6 +93,43 @@ namespace SimuHeap.Models
             };
         }
 
+        public static BlocoDeMemoria CriarOcupadoComBlocoInteiro(int id, int enderecoInicio, int tamanhoSolicitado, int tamanhoTotalDisponivel, TiposDeVariaveis tipoDado, Color cor)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "O ID deve ser maior que zero.");
+            }
+
+            if (enderecoInicio < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(enderecoInicio), "O endereço de início não pode ser negativo.");
+            }
+
+            if (tamanhoSolicitado <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(tamanhoSolicitado), "O tamanho solicitado deve ser maior que zero.");
+            }
+
+            int tamanhoFixo = Configuracoes.TAM_HEADER + tamanhoSolicitado + Configuracoes.TAM_FOOTER;
+            int padding = tamanhoTotalDisponivel - tamanhoFixo;
+
+            if(padding < 0)
+            {
+                throw new ArgumentException("O bloco disponível não comporta a alocação.");
+            }
+
+            return new BlocoDeMemoria
+            {
+                Id = id,
+                EstadoBlocoMemoria = EstadoBlocoMemoria.Ocupado,
+                EnderecoInicio = enderecoInicio,
+                TamanhoPayload = tamanhoSolicitado,
+                TamanhoPadding = padding,
+                TipoDado = tipoDado,
+                Cor = cor
+            };
+        }
+
         public RegiaoBlocoMemoria ObterRegiao(int endereco)
         {
             if (endereco < EnderecoInicio || endereco > EnderecoFim)
@@ -138,6 +175,20 @@ namespace SimuHeap.Models
                   $"({TamanhoTotal} bytes)"
                 : $"Bloco #{Id}: {EnderecoInicio}-{EnderecoFim} " +
                   $"({TamanhoTotal} bytes)";
+        }
+
+        public BlocoDeMemoria Clonar()
+        {
+            return new BlocoDeMemoria
+            {
+                Id = this.Id,
+                EstadoBlocoMemoria = this.EstadoBlocoMemoria,
+                EnderecoInicio = this.EnderecoInicio,
+                TamanhoPayload = this.TamanhoPayload,
+                TamanhoPadding = this.TamanhoPadding,
+                TipoDado = this.TipoDado,
+                Cor = this.Cor
+            };
         }
     }
 }

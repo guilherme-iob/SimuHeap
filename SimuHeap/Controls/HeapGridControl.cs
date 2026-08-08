@@ -16,6 +16,23 @@ namespace SimuHeap.Controls
         private int rows;
 
         private HeapSimulator? simulator;
+        private HeapSnapshot? snapshot = null;
+
+        private IEnumerable<BlocoDeMemoria> BlocosAtuais =>
+                   snapshot?.Blocos ??
+                   simulator?.Blocos ??
+                   Enumerable.Empty<BlocoDeMemoria>();
+
+        private byte[] MemoriaAtual =>
+                snapshot?.Memoria ??
+                simulator?.Memoria ??
+                Array.Empty<byte>();
+
+        private static readonly Color CorBlocoEmAnalise = Color.Gold;
+
+        private static readonly Color CorMelhorBloco = Color.DeepSkyBlue;
+
+        // Propriedades do controle
 
         [Browsable(false)]
         [DesignerSerializationVisibility(
@@ -99,7 +116,7 @@ namespace SimuHeap.Controls
                 return;
             }
 
-            int tamanhoHeap = simulator?.TamanhoHeap ?? 0;
+            int tamanhoHeap = MemoriaAtual.Length;
 
             rows = tamanhoHeap == 0
                 ? 0
@@ -115,8 +132,8 @@ namespace SimuHeap.Controls
         {
             base.OnPaint(e);
 
-            if (simulator == null ||
-                simulator.TamanhoHeap == 0 ||
+            byte[] memoria = MemoriaAtual;
+            if (memoria.Length == 0 ||
                 columns <= 0 ||
                 rows <= 0)
             {
@@ -125,23 +142,13 @@ namespace SimuHeap.Controls
 
             Graphics graphics = e.Graphics;
 
-            graphics.TextRenderingHint =
-                TextRenderingHint.ClearTypeGridFit;
+            graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
-            using Pen gridPen =
-                new Pen(Color.FromArgb(45, 45, 45), 1f);
+            using Pen gridPen = new Pen(Color.FromArgb(45, 45, 45), 1f);
 
-            using Font hexFont =
-                new Font(
-                    "Consolas",
-                    Math.Max(6f, cellSize * 0.32f),
-                    FontStyle.Regular);
+            using Font hexFont = new Font("Consolas", Math.Max(6f, cellSize * 0.32f), FontStyle.Regular);
 
-            using Font idFont =
-                new Font(
-                    "Segoe UI",
-                    Math.Max(6f, cellSize * 0.25f),
-                    FontStyle.Bold);
+            using Font idFont = new Font( "Segoe UI", Math.Max(6f, cellSize * 0.25f), FontStyle.Bold);
 
             using StringFormat centerFormat =
                 new StringFormat
@@ -150,7 +157,7 @@ namespace SimuHeap.Controls
                     LineAlignment = StringAlignment.Center
                 };
 
-            foreach (BlocoDeMemoria bloco in simulator.Blocos)
+            foreach (BlocoDeMemoria bloco in BlocosAtuais)
             {
                 DesenharBloco(
                     graphics,
@@ -170,17 +177,14 @@ namespace SimuHeap.Controls
             Font idFont,
             StringFormat centerFormat)
         {
-            if (simulator == null)
-            {
-                return;
-            }
+            byte[] memoria = MemoriaAtual;
 
             for (int endereco = bloco.EnderecoInicio;
                  endereco <= bloco.EnderecoFim;
                  endereco++)
             {
                 if (endereco < 0 ||
-                    endereco >= simulator.Memoria.Length)
+                    endereco >= memoria.Length)
                 {
                     continue;
                 }
@@ -198,26 +202,19 @@ namespace SimuHeap.Controls
                         cellSize,
                         cellSize);
 
-                RegiaoBlocoMemoria regiao =
-                    bloco.ObterRegiao(endereco);
+                RegiaoBlocoMemoria regiao = bloco.ObterRegiao(endereco);
 
-                using SolidBrush backgroundBrush =
-                    new SolidBrush(
-                        ObterCorRegiao(bloco, regiao));
+                Color corFundo = ObterCorVisual(bloco, regiao);
 
-                graphics.FillRectangle(
-                    backgroundBrush,
-                    cellRectangle);
+                using SolidBrush backgroundBrush = new SolidBrush(corFundo);
 
-                graphics.DrawRectangle(
-                    gridPen,
-                    cellRectangle);
+                graphics.FillRectangle(backgroundBrush, cellRectangle);
 
-                string texto =
-                    ObterTextoCelula(bloco, endereco);
+                graphics.DrawRectangle(gridPen, cellRectangle);
 
-                Brush textBrush =
-                    ObterCorTexto(bloco, regiao);
+                string texto = ObterTextoCelula(bloco, endereco);
+
+                Brush textBrush = ObterCorTexto(bloco, regiao);
 
                 graphics.DrawString(
                     texto,
@@ -226,8 +223,7 @@ namespace SimuHeap.Controls
                     cellRectangle,
                     centerFormat);
 
-                if (!bloco.EstaLivre &&
-                    endereco == bloco.EnderecoInicio)
+                if (!bloco.EstaLivre && endereco == bloco.EnderecoInicio)
                 {
                     graphics.DrawString(
                         $"#{bloco.Id}",
@@ -239,36 +235,45 @@ namespace SimuHeap.Controls
             }
         }
 
-        private string ObterTextoCelula(
-            BlocoDeMemoria bloco,
-            int endereco)
+        private Color ObterCorVisual(BlocoDeMemoria bloco, RegiaoBlocoMemoria regiao)
         {
-            if (simulator == null)
+            if (snapshot != null)
             {
-                return string.Empty;
+                if (snapshot.EnderecoBlocoEmAnalise == bloco.EnderecoInicio)
+                {
+                    return CorBlocoEmAnalise;
+                }
+
+                if (snapshot.EnderecoMelhorBloco == bloco.EnderecoInicio)
+                {
+                    return CorMelhorBloco;
+                }
             }
+
+            return ObterCorRegiao(bloco,  regiao);
+        }
+
+        private string ObterTextoCelula(BlocoDeMemoria bloco, int endereco)
+        {
 
             if (bloco.EstaLivre)
             {
                 return "??";
             }
 
-            return simulator.Memoria[endereco].ToString("X2");
+            return MemoriaAtual[endereco].ToString("X2");
         }
 
-        private static Brush ObterCorTexto(
-            BlocoDeMemoria bloco,
-            RegiaoBlocoMemoria regiao)
+        private static Brush ObterCorTexto(BlocoDeMemoria bloco, RegiaoBlocoMemoria regiao)
         {
             if (bloco.EstaLivre)
             {
-                return Brushes.LightGreen;
+                return Brushes.Black;
             }
 
             return regiao switch
             {
-                RegiaoBlocoMemoria.Padding =>
-                    Brushes.Black,
+                RegiaoBlocoMemoria.Padding => Brushes.Black,
 
                 _ => Brushes.White
             };
@@ -330,6 +335,20 @@ namespace SimuHeap.Controls
                 Math.Clamp(vermelho, 0, 255),
                 Math.Clamp(verde, 0, 255),
                 Math.Clamp(azul, 0, 255));
+        }
+
+        public void DefinirSnapshot(HeapSnapshot novoSnapshot)
+        {
+            snapshot = novoSnapshot ?? throw new ArgumentNullException(nameof(novoSnapshot));
+            RecalculateDimensions();
+            Invalidate();
+        }
+
+        public void LimparSnapshot()
+        {
+            snapshot = null;
+            RecalculateDimensions();
+            Invalidate();
         }
     }
 }

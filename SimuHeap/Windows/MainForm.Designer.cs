@@ -56,8 +56,23 @@
             panel1 = new Panel();
             HabilitarCoalesing = new CheckBox();
             HabilitarSplit = new CheckBox();
-            Panel_Simulacao = new Panel();
+            Panel_Simulacao = new TableLayoutPanel();
+            Panel_Simulacao_Estruturas = new Panel();
+            Panel_Simulacao_2 = new TableLayoutPanel();
+            Panel_Segmentos = new Panel();
             PanelGridHeap = new Panel();
+            Panel_Simulacao_Nav = new Panel();
+            Label_Segmentos = new Label();
+            Panel_ListaBlocosLivres = new Panel();
+            ListBoxBlocosLivres = new ListBox();
+            label1 = new Label();
+            Label_Heap = new Label();
+            Panel_Eventos = new Panel();
+            ListBoxEventos = new ListBox();
+            BtnProximo = new Button();
+            BtnAnterior = new Button();
+            BtnUltimo = new Button();
+            BtnPrimeiro = new Button();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -72,6 +87,12 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             Panel_Simulacao.SuspendLayout();
+            Panel_Simulacao_Estruturas.SuspendLayout();
+            Panel_Simulacao_2.SuspendLayout();
+            Panel_Segmentos.SuspendLayout();
+            Panel_Simulacao_Nav.SuspendLayout();
+            Panel_ListaBlocosLivres.SuspendLayout();
+            Panel_Eventos.SuspendLayout();
             SuspendLayout();
             // 
             // PanelPrincipal
@@ -158,6 +179,7 @@
             Btn_Malloc.TabIndex = 0;
             Btn_Malloc.Text = "malloc";
             Btn_Malloc.UseVisualStyleBackColor = false;
+            Btn_Malloc.Click += Btn_Malloc_Click;
             // 
             // Btn_Free
             // 
@@ -172,6 +194,7 @@
             Btn_Free.TabIndex = 3;
             Btn_Free.Text = "free";
             Btn_Free.UseVisualStyleBackColor = false;
+            Btn_Free.Click += Btn_Free_Click;
             // 
             // Btn_Calloc
             // 
@@ -186,6 +209,7 @@
             Btn_Calloc.TabIndex = 1;
             Btn_Calloc.Text = "calloc";
             Btn_Calloc.UseVisualStyleBackColor = false;
+            Btn_Calloc.Click += Btn_Calloc_Click;
             // 
             // Btn_Realloc
             // 
@@ -200,6 +224,7 @@
             Btn_Realloc.TabIndex = 2;
             Btn_Realloc.Text = "realloc";
             Btn_Realloc.UseVisualStyleBackColor = false;
+            Btn_Realloc.Click += Btn_Realloc_Click;
             // 
             // Panel_OperacoesSimulacao
             // 
@@ -232,6 +257,7 @@
             Btn_ZerarSimulacao.TabIndex = 3;
             Btn_ZerarSimulacao.Text = "Zerar Simulação";
             Btn_ZerarSimulacao.UseVisualStyleBackColor = false;
+            Btn_ZerarSimulacao.Click += Btn_ZerarSimulacao_Click;
             // 
             // Btn_PararSimulacao
             // 
@@ -246,6 +272,7 @@
             Btn_PararSimulacao.TabIndex = 2;
             Btn_PararSimulacao.Text = "Parar Simulação";
             Btn_PararSimulacao.UseVisualStyleBackColor = false;
+            Btn_PararSimulacao.Click += Btn_PararSimulacao_Click;
             // 
             // Btn_IniciarSimulacao
             // 
@@ -260,6 +287,7 @@
             Btn_IniciarSimulacao.TabIndex = 1;
             Btn_IniciarSimulacao.Text = "Iniciar Simulação";
             Btn_IniciarSimulacao.UseVisualStyleBackColor = false;
+            Btn_IniciarSimulacao.Click += Btn_IniciarSimulacao_Click;
             // 
             // MenuParametros
             // 
@@ -443,20 +471,185 @@
             // 
             // Panel_Simulacao
             // 
-            Panel_Simulacao.Controls.Add(PanelGridHeap);
+            Panel_Simulacao.ColumnCount = 2;
+            Panel_Simulacao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
+            Panel_Simulacao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            Panel_Simulacao.Controls.Add(Panel_Simulacao_Estruturas, 0, 0);
+            Panel_Simulacao.Controls.Add(Panel_Eventos, 1, 0);
             Panel_Simulacao.Dock = DockStyle.Fill;
             Panel_Simulacao.Location = new Point(3, 207);
             Panel_Simulacao.Name = "Panel_Simulacao";
+            Panel_Simulacao.RowCount = 1;
+            Panel_Simulacao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             Panel_Simulacao.Size = new Size(1258, 471);
             Panel_Simulacao.TabIndex = 1;
+            // 
+            // Panel_Simulacao_Estruturas
+            // 
+            Panel_Simulacao_Estruturas.Controls.Add(Panel_Simulacao_2);
+            Panel_Simulacao_Estruturas.Controls.Add(Label_Heap);
+            Panel_Simulacao_Estruturas.Dock = DockStyle.Fill;
+            Panel_Simulacao_Estruturas.Location = new Point(3, 3);
+            Panel_Simulacao_Estruturas.Name = "Panel_Simulacao_Estruturas";
+            Panel_Simulacao_Estruturas.Size = new Size(811, 465);
+            Panel_Simulacao_Estruturas.TabIndex = 0;
+            // 
+            // Panel_Simulacao_2
+            // 
+            Panel_Simulacao_2.ColumnCount = 2;
+            Panel_Simulacao_2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            Panel_Simulacao_2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            Panel_Simulacao_2.Controls.Add(Panel_Segmentos, 1, 0);
+            Panel_Simulacao_2.Controls.Add(Panel_ListaBlocosLivres, 0, 0);
+            Panel_Simulacao_2.Dock = DockStyle.Fill;
+            Panel_Simulacao_2.Location = new Point(0, 35);
+            Panel_Simulacao_2.Name = "Panel_Simulacao_2";
+            Panel_Simulacao_2.RowCount = 1;
+            Panel_Simulacao_2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            Panel_Simulacao_2.Size = new Size(811, 430);
+            Panel_Simulacao_2.TabIndex = 1;
+            // 
+            // Panel_Segmentos
+            // 
+            Panel_Segmentos.Controls.Add(PanelGridHeap);
+            Panel_Segmentos.Controls.Add(Panel_Simulacao_Nav);
+            Panel_Segmentos.Controls.Add(Label_Segmentos);
+            Panel_Segmentos.Dock = DockStyle.Fill;
+            Panel_Segmentos.Location = new Point(246, 3);
+            Panel_Segmentos.Name = "Panel_Segmentos";
+            Panel_Segmentos.Size = new Size(562, 424);
+            Panel_Segmentos.TabIndex = 0;
             // 
             // PanelGridHeap
             // 
             PanelGridHeap.AutoScroll = true;
-            PanelGridHeap.Location = new Point(284, 85);
+            PanelGridHeap.Dock = DockStyle.Fill;
+            PanelGridHeap.Location = new Point(0, 23);
             PanelGridHeap.Name = "PanelGridHeap";
-            PanelGridHeap.Size = new Size(568, 290);
+            PanelGridHeap.Size = new Size(562, 360);
             PanelGridHeap.TabIndex = 0;
+            // 
+            // Panel_Simulacao_Nav
+            // 
+            Panel_Simulacao_Nav.BackColor = SystemColors.ActiveBorder;
+            Panel_Simulacao_Nav.Controls.Add(BtnPrimeiro);
+            Panel_Simulacao_Nav.Controls.Add(BtnUltimo);
+            Panel_Simulacao_Nav.Controls.Add(BtnAnterior);
+            Panel_Simulacao_Nav.Controls.Add(BtnProximo);
+            Panel_Simulacao_Nav.Dock = DockStyle.Bottom;
+            Panel_Simulacao_Nav.Location = new Point(0, 383);
+            Panel_Simulacao_Nav.Name = "Panel_Simulacao_Nav";
+            Panel_Simulacao_Nav.Size = new Size(562, 41);
+            Panel_Simulacao_Nav.TabIndex = 2;
+            // 
+            // Label_Segmentos
+            // 
+            Label_Segmentos.Dock = DockStyle.Top;
+            Label_Segmentos.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Label_Segmentos.Location = new Point(0, 0);
+            Label_Segmentos.Name = "Label_Segmentos";
+            Label_Segmentos.Size = new Size(562, 23);
+            Label_Segmentos.TabIndex = 1;
+            Label_Segmentos.Text = "Segmentos (Blocos)";
+            Label_Segmentos.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Panel_ListaBlocosLivres
+            // 
+            Panel_ListaBlocosLivres.Controls.Add(ListBoxBlocosLivres);
+            Panel_ListaBlocosLivres.Controls.Add(label1);
+            Panel_ListaBlocosLivres.Dock = DockStyle.Fill;
+            Panel_ListaBlocosLivres.Location = new Point(3, 3);
+            Panel_ListaBlocosLivres.Name = "Panel_ListaBlocosLivres";
+            Panel_ListaBlocosLivres.Size = new Size(237, 424);
+            Panel_ListaBlocosLivres.TabIndex = 1;
+            // 
+            // ListBoxBlocosLivres
+            // 
+            ListBoxBlocosLivres.Dock = DockStyle.Fill;
+            ListBoxBlocosLivres.FormattingEnabled = true;
+            ListBoxBlocosLivres.Location = new Point(0, 23);
+            ListBoxBlocosLivres.Name = "ListBoxBlocosLivres";
+            ListBoxBlocosLivres.Size = new Size(237, 401);
+            ListBoxBlocosLivres.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(237, 23);
+            label1.TabIndex = 2;
+            label1.Text = "Lista de Blocos Livres";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Label_Heap
+            // 
+            Label_Heap.Dock = DockStyle.Top;
+            Label_Heap.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Label_Heap.Location = new Point(0, 0);
+            Label_Heap.Name = "Label_Heap";
+            Label_Heap.Size = new Size(811, 35);
+            Label_Heap.TabIndex = 0;
+            Label_Heap.Text = "HEAP";
+            Label_Heap.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Panel_Eventos
+            // 
+            Panel_Eventos.Controls.Add(ListBoxEventos);
+            Panel_Eventos.Dock = DockStyle.Fill;
+            Panel_Eventos.Location = new Point(820, 3);
+            Panel_Eventos.Name = "Panel_Eventos";
+            Panel_Eventos.Size = new Size(435, 465);
+            Panel_Eventos.TabIndex = 1;
+            // 
+            // ListBoxEventos
+            // 
+            ListBoxEventos.FormattingEnabled = true;
+            ListBoxEventos.Location = new Point(0, 35);
+            ListBoxEventos.Name = "ListBoxEventos";
+            ListBoxEventos.Size = new Size(192, 424);
+            ListBoxEventos.TabIndex = 0;
+            // 
+            // BtnProximo
+            // 
+            BtnProximo.Location = new Point(165, 6);
+            BtnProximo.Name = "BtnProximo";
+            BtnProximo.Size = new Size(75, 23);
+            BtnProximo.TabIndex = 0;
+            BtnProximo.Text = "Proximo";
+            BtnProximo.UseVisualStyleBackColor = true;
+            BtnProximo.Click += BtnProximo_Click;
+            // 
+            // BtnAnterior
+            // 
+            BtnAnterior.Location = new Point(84, 6);
+            BtnAnterior.Name = "BtnAnterior";
+            BtnAnterior.Size = new Size(75, 23);
+            BtnAnterior.TabIndex = 1;
+            BtnAnterior.Text = "Anterior";
+            BtnAnterior.UseVisualStyleBackColor = true;
+            BtnAnterior.Click += BtnAnterior_Click;
+            // 
+            // BtnUltimo
+            // 
+            BtnUltimo.Location = new Point(246, 6);
+            BtnUltimo.Name = "BtnUltimo";
+            BtnUltimo.Size = new Size(75, 23);
+            BtnUltimo.TabIndex = 2;
+            BtnUltimo.Text = "Último";
+            BtnUltimo.UseVisualStyleBackColor = true;
+            BtnUltimo.Click += BtnUltimo_Click;
+            // 
+            // BtnPrimeiro
+            // 
+            BtnPrimeiro.Location = new Point(3, 6);
+            BtnPrimeiro.Name = "BtnPrimeiro";
+            BtnPrimeiro.Size = new Size(75, 23);
+            BtnPrimeiro.TabIndex = 3;
+            BtnPrimeiro.Text = "Primeiro";
+            BtnPrimeiro.UseVisualStyleBackColor = true;
+            BtnPrimeiro.Click += BtnPrimeiro_Click;
             // 
             // MainForm
             // 
@@ -483,6 +676,12 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             Panel_Simulacao.ResumeLayout(false);
+            Panel_Simulacao_Estruturas.ResumeLayout(false);
+            Panel_Simulacao_2.ResumeLayout(false);
+            Panel_Segmentos.ResumeLayout(false);
+            Panel_Simulacao_Nav.ResumeLayout(false);
+            Panel_ListaBlocosLivres.ResumeLayout(false);
+            Panel_Eventos.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -510,7 +709,6 @@
         private Button Btn_ZerarSimulacao;
         private Button Btn_PararSimulacao;
         private Button Btn_IniciarSimulacao;
-        private Panel Panel_Simulacao;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel3;
@@ -518,5 +716,21 @@
         private Panel panel2;
         private Panel panel1;
         private Panel PanelGridHeap;
+        private TableLayoutPanel Panel_Simulacao;
+        private Panel Panel_Simulacao_Estruturas;
+        private Label Label_Heap;
+        private TableLayoutPanel Panel_Simulacao_2;
+        private Panel Panel_Segmentos;
+        private Panel Panel_Simulacao_Nav;
+        private Label Label_Segmentos;
+        private Panel Panel_Eventos;
+        private ListBox ListBoxEventos;
+        private Panel Panel_ListaBlocosLivres;
+        private Label label1;
+        private ListBox ListBoxBlocosLivres;
+        private Button BtnPrimeiro;
+        private Button BtnUltimo;
+        private Button BtnAnterior;
+        private Button BtnProximo;
     }
 }
