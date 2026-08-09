@@ -9,14 +9,14 @@ namespace SimuHeap.Models
 {
     public class EventoFree :EventoHeap
     {
-        public int BlocoId { get; set; }
+        public int ReferenciaBloco { get; set; }
         public EventoFree()
         {
             Tipo = TipoEventoHeap.Free;
         }
         public void AtualizarDescricao()
         {
-            Descricao = $"free(bloco_{BlocoId});";
+            Descricao = $"free(bloco{ReferenciaBloco});";
         }
     }
 }

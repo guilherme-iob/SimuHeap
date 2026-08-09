@@ -22,6 +22,7 @@ namespace SimuHeap.Windows
         private ExecutorSimulacao executor;
         private int snapshotAtual = 0;
 
+        private int proximaReferenciaBloco = 1;
 
         public MainForm()
         {
@@ -49,17 +50,17 @@ namespace SimuHeap.Windows
 
         private void Btn_Malloc_Click(object sender, EventArgs e)
         {
-            TiposDeVariaveis tipo = TiposDeVariaveis.Int;
-            int quantidade = 5;
-            EventoMalloc evento = new EventoMalloc
-            {
-                Id = executor.Eventos.Count + 1,
-                TipoVariavel = tipo,
-                Quantidade = quantidade
-            };
-            evento.AtualizarDescricao();
-            executor.Eventos.Add(evento);
+            MallocForm mf = new MallocForm();
 
+            if (mf.ShowDialog() != DialogResult.OK || mf.EventoCriado == null) return;
+
+            mf.EventoCriado.Id = executor.Eventos.Count + 1;
+            mf.EventoCriado.ReferenciaBloco = proximaReferenciaBloco;
+            proximaReferenciaBloco++;
+
+            mf.EventoCriado.AtualizarDescricao();
+
+            executor.Eventos.Add(mf.EventoCriado);
             AtualizarListaEventos();
         }
 
@@ -75,7 +76,20 @@ namespace SimuHeap.Windows
 
         private void Btn_Free_Click(object sender, EventArgs e)
         {
+            List<ReferenciaAlocacao> alocacoesAtivas = ObterAlocacoesAtivas();
+            if(alocacoesAtivas.Count == 0)
+            {
+                MessageBox.Show("Não há blocos alocados", "Free", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            FreeForm ff = new FreeForm(alocacoesAtivas);
+
+            if (ff.ShowDialog() != DialogResult.OK || ff.EventoCriado == null) return;
+
+            ff.EventoCriado.Id = executor.Eventos.Count + 1;
+            executor.Eventos.Add(ff.EventoCriado);
+            AtualizarListaEventos();
         }
 
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
@@ -195,6 +209,46 @@ namespace SimuHeap.Windows
             {
                 ListBoxBlocosLivres.Items.Add($"ref bloco {bloco.Id} - {bloco.TamanhoTotal} bytes");
             }
+        }
+
+        private List<ReferenciaAlocacao> ObterAlocacoesAtivas()
+        {
+            Dictionary<int, ReferenciaAlocacao> ativas = new();
+
+            foreach(EventoHeap evento in executor.Eventos)
+            {
+                switch (evento)
+                {
+                    case EventoMalloc malloc:
+                        ativas[malloc.ReferenciaBloco] = new ReferenciaAlocacao
+                        {
+                            Id = malloc.ReferenciaBloco,
+                            TipoVariavel = malloc.TipoVariavel,
+                        };
+                        break;
+                    case EventoCalloc calloc:
+                        ativas[calloc.ReferenciaBloco] = new ReferenciaAlocacao
+                        {
+                            Id = calloc.ReferenciaBloco,
+                            TipoVariavel = calloc.TipoVariavel
+                        };
+                        break;
+                    case EventoFree free:
+                        ativas.Remove(free.ReferenciaBloco);
+                        break;
+                    case EventoRealloc realloc:
+                        /*
+                         * Realloc não cria nem remove a
+                         * referência lógica.
+                         *
+                         * bloco1 continua sendo bloco1.
+                         */
+                        throw new NotImplementedException();
+                        break;
+                }
+            }
+
+            return ativas.Values.OrderBy(x=>x.Id).ToList();
         }
     }
 }

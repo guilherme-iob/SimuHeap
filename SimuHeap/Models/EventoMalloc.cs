@@ -11,6 +11,7 @@ namespace SimuHeap.Models
     {
         public TiposDeVariaveis TipoVariavel { get; set; }
         public int Quantidade { get; set; }
+        public int ReferenciaBloco { get; set; }
         public EventoMalloc()
         {
             Tipo = TipoEventoHeap.Malloc;
@@ -19,7 +20,7 @@ namespace SimuHeap.Models
         public void AtualizarDescricao()
         {
             string tamanho = Quantidade == 1 ? $"sizeof({TipoVariavel.ToString().ToLower()})" : $"sizeof({TipoVariavel.ToString().ToLower()}) * {Quantidade}";
-            Descricao = $"malloc({tamanho});";
+            Descricao = $"bloco{ReferenciaBloco} = malloc({tamanho});";
         }
     }
 }

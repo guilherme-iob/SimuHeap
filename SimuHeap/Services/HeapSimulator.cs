@@ -36,7 +36,7 @@ namespace SimuHeap.Services
             proximoId = 1;
         }
 
-        public BlocoDeMemoria? Malloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo)
+        public BlocoDeMemoria? Malloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
             if(tamanhoSolicitado <= 0)
             {
@@ -45,7 +45,7 @@ namespace SimuHeap.Services
 
             int tamanhoTotalNecessario = Configuracoes.CalcularTamanhoTotalBloco(tamanhoSolicitado);
 
-            LinkedListNode<BlocoDeMemoria>? blocoLivre = BuscarBlocoLivre(tamanhoTotalNecessario, algoritmo);
+            LinkedListNode<BlocoDeMemoria>? blocoLivre = BuscarBlocoLivre(tamanhoTotalNecessario, algoritmo, aoGerarPasso);
 
             if (blocoLivre == null) return null; // ocorreu uma falha de alocação (bloco livre nao encontrado)
 
@@ -71,9 +71,29 @@ namespace SimuHeap.Services
             throw new NotImplementedException();
         }
 
-        public bool Free(int id)
+        public bool Free(int idBloco)
         {
-            throw new NotImplementedException();
+            LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
+
+            while(atual is not null)
+            {
+                BlocoDeMemoria bloco = atual.Value;
+
+                if(!bloco.EstaLivre && bloco.Id == idBloco)
+                {
+                    int enderecoInicio = bloco.EnderecoInicio;
+                    int tamanhoTotal = bloco.TamanhoTotal;
+                    atual.Value = BlocoDeMemoria.CriarLivre(enderecoInicio, tamanhoTotal, Color.FromArgb(40, 140, 70));
+                }
+
+                if (UsarCoalescing)
+                {
+                    UnirBlocosLivres();
+                }
+
+                atual = atual.Next;
+            }
+            return false;
         }
 
         private BlocoDeMemoria DividirBloco(LinkedListNode<BlocoDeMemoria> noLivre, int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor) 
@@ -104,12 +124,12 @@ namespace SimuHeap.Services
             return proximoId++; 
         }
 
-        private LinkedListNode<BlocoDeMemoria>? BuscarBlocoLivre(int tamanhoNecessario, AlgoritmosDeAlocacao algoritmo)
+        private LinkedListNode<BlocoDeMemoria>? BuscarBlocoLivre(int tamanhoNecessario, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso)
         {
             switch (algoritmo)
             {
                 case AlgoritmosDeAlocacao.FirstFit:
-                    return BuscarFirstFit(tamanhoNecessario);
+                    return BuscarFirstFit(tamanhoNecessario, aoGerarPasso);
                 case AlgoritmosDeAlocacao.BestFit:
                     return BuscarBestFit(tamanhoNecessario);
                 case AlgoritmosDeAlocacao.WorstFit:
@@ -119,16 +139,34 @@ namespace SimuHeap.Services
             }
         }
 
-        private LinkedListNode<BlocoDeMemoria>? BuscarFirstFit(int tamanhoNecessario)
+        private LinkedListNode<BlocoDeMemoria>? BuscarFirstFit(int tamanhoNecessario, Action<EstadoPassoSimulacao>? aoGerarPasso)
         {
             LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
 
             while (atual != null)
             {
-                if (atual.Value.EstaLivre &&
-                    atual.Value.TamanhoTotal >= tamanhoNecessario)
+                BlocoDeMemoria bloco = atual.Value;
+
+                if (bloco.EstaLivre)
                 {
-                    return atual;
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao = $"Analisando bloco livre de {bloco.TamanhoTotal} bytes.",
+                        EnderecoBlocoEmAnalise = bloco.EnderecoInicio,
+                        EnderecoMelhorBloco = null
+                    });
+
+                    if(bloco.TamanhoTotal >= tamanhoNecessario)
+                    {
+                        aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                        {
+                            Descricao = $"Bloco de {bloco.TamanhoTotal} bytes selecionado pelo First-Fit.",
+                            EnderecoBlocoEmAnalise = null,
+                            EnderecoMelhorBloco = bloco.EnderecoInicio
+                        });
+
+                        return atual;
+                    }
                 }
 
                 atual = atual.Next;

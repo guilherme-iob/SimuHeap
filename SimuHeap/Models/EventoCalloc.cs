@@ -11,6 +11,7 @@ namespace SimuHeap.Models
     {
         public TiposDeVariaveis TipoVariavel { get; set; }
         public int Quantidade { get; set; }
+        public int ReferenciaBloco { get; set; }
 
         public EventoCalloc()
         {
@@ -19,7 +20,7 @@ namespace SimuHeap.Models
 
         public void AtualizarDescricao()
         {
-            Descricao = $"calloc({Quantidade}, sizeof({TipoVariavel.ToString().ToLower()}));";
+            Descricao = $"bloco{ReferenciaBloco} = calloc({Quantidade}, sizeof({TipoVariavel.ToString().ToLower()}));";
         }
     }
 }

@@ -13,50 +13,20 @@ namespace SimuHeap.Services
         public List<EventoHeap> Eventos { get; } = new List<EventoHeap>();
         public List<HeapSnapshot> Snapshots { get; } = new List<HeapSnapshot>();
 
+        private readonly Dictionary<int, int> referenciasBlocos = new();
+
         public void Executar(HeapSimulator simulator, bool gerarPassosIntermediatios = true)
         {
             Snapshots.Clear();
+            referenciasBlocos.Clear();
+
             int passo = 0;
             Snapshots.Add(CriarSnapshot(simulator, 0, "Estado Inicial"));
             passo++;
 
-            // teste temporario
-            //BlocoDeMemoria? primeiroLivre = simulator.Blocos.FirstOrDefault(x => x.EstaLivre);
-            //if(primeiroLivre is not null)
-            //{
-            //    Snapshots.Add(CriarSnapshot(simulator, passo, "Teste Analise", new EstadoPassoSimulacao
-            //    {
-            //        Descricao = "bloco livre sendo analisado",
-            //        EnderecoBlocoEmAnalise = primeiroLivre.EnderecoInicio
-            //    }));
-
-            //    passo++;
-
-            //    Snapshots.Add(
-            //        CriarSnapshot(
-            //            simulator,
-            //            passo,
-            //            "Teste de melhor bloco",
-            //            new EstadoPassoSimulacao
-            //            {
-            //                Descricao =
-            //                    "Bloco definido como melhor candidato.",
-
-            //                EnderecoMelhorBloco =
-            //                    primeiroLivre.EnderecoInicio
-            //            }
-            //        )
-            //    );
-            //    passo++;
-            //}
-
-
-
-            // ==============
-
             foreach (EventoHeap evento in Eventos)
             {
-                ExecutarEvento(simulator, evento);
+                ExecutarEvento(simulator, evento, ref passo, gerarPassosIntermediatios);
 
                 Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao));
                 passo++;
@@ -64,29 +34,44 @@ namespace SimuHeap.Services
 
         }
 
-        private void ExecutarEvento(HeapSimulator simulador, EventoHeap evento)
+        private void ExecutarEvento(HeapSimulator simulador, EventoHeap evento, ref int passo, bool gerarPassosIntermediarios)
         {
             switch (evento)
             {
                 case EventoMalloc malloc:
-                    MessageBox.Show("Evento Malloc executado");
                     int tamanhoTipo = ObterTamanhoTipo(malloc.TipoVariavel);
                     int tamanhoSolicitado = malloc.Quantidade * tamanhoTipo;
 
-                    BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit);
+                    int passoLocal = passo;
+                    Action<EstadoPassoSimulacao>? registrarPasso = null;
+                    if (gerarPassosIntermediarios)
+                    {
+                        registrarPasso = estado =>
+                        {
+                            Snapshots.Add(CriarSnapshot(simulador, passoLocal, malloc.Descricao, estado));
+                            passoLocal++;
+                        };
+                    }
+
+                    BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                    passo = passoLocal;
+
+                    if (bloco is not null) referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
 
                     break;
                 case EventoCalloc:
-                    MessageBox.Show("Evento Calloc executado");
                     // simulator calloc
                     break;
                 case EventoRealloc:
-                    MessageBox.Show("Evento Realloc executado");
                     // simulator realloc
                     break;
-                case EventoFree:
-                    MessageBox.Show("Evento Free executado");
+                case EventoFree free:
                     // simulator free
+                    int idBloco;
+                    bool encontrou = referenciasBlocos.TryGetValue(free.ReferenciaBloco, out idBloco);
+                    if (!encontrou) break;
+
+                    simulador.Free(idBloco);
                     break;
                 default:
                     MessageBox.Show("Evento desconhecido");

@@ -12,6 +12,7 @@ namespace SimuHeap.Models
         public int BlocoId { get; set; }
         public TiposDeVariaveis TipoVariavel { get; set; }
         public int NovaQuantidade { get; set; }
+        public int ReferenciaBloco { get; set; }
         public EventoRealloc()
         {
             Tipo = TipoEventoHeap.Realloc;
@@ -19,7 +20,7 @@ namespace SimuHeap.Models
 
         public void AtualizarDescricao()
         {
-            Descricao = $"realloc(bloco_{BlocoId}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
+            Descricao = $"bloco{ReferenciaBloco} = realloc(bloco{ReferenciaBloco}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
         }
     }
 }
