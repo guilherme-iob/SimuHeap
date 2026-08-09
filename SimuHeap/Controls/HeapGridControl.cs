@@ -223,12 +223,16 @@ namespace SimuHeap.Controls
                     cellRectangle,
                     centerFormat);
 
-                if (!bloco.EstaLivre && endereco == bloco.EnderecoInicio)
+                if (endereco == bloco.EnderecoInicio)
                 {
+                    string identificador = bloco.EstaLivre ? $"L#{bloco.Id}" : $"#{bloco.Id}";
+
+                    Brush corId = bloco.EstaLivre ? Brushes.White : Brushes.Yellow;
+
                     graphics.DrawString(
-                        $"#{bloco.Id}",
+                        identificador,
                         idFont,
-                        Brushes.Yellow,
+                        corId,
                         x + 2,
                         y + 1);
                 }
@@ -255,8 +259,9 @@ namespace SimuHeap.Controls
 
         private string ObterTextoCelula(BlocoDeMemoria bloco, int endereco)
         {
+            RegiaoBlocoMemoria regiao = bloco.ObterRegiao(endereco);
 
-            if (bloco.EstaLivre)
+            if (bloco.EstaLivre && regiao == RegiaoBlocoMemoria.Livre)
             {
                 return "??";
             }
@@ -268,7 +273,15 @@ namespace SimuHeap.Controls
         {
             if (bloco.EstaLivre)
             {
-                return Brushes.Black;
+                switch (regiao)
+                {
+                    case RegiaoBlocoMemoria.Header:
+                        return Brushes.White;
+                    case RegiaoBlocoMemoria.Footer:
+                        return Brushes.White;
+                    default:
+                        return Brushes.Black;
+                }
             }
 
             return regiao switch
@@ -285,7 +298,20 @@ namespace SimuHeap.Controls
         {
             if (bloco.EstaLivre)
             {
-                return bloco.Cor;
+                return regiao switch
+                {
+                    RegiaoBlocoMemoria.Header =>
+                        EscurecerCor(bloco.Cor, 0.55f),
+
+                    RegiaoBlocoMemoria.Footer =>
+                        EscurecerCor(bloco.Cor, 0.55f),
+
+                    RegiaoBlocoMemoria.Livre =>
+                        bloco.Cor,
+
+                    _ =>
+                        bloco.Cor
+                };
             }
 
             return regiao switch

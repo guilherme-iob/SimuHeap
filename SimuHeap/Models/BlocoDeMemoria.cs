@@ -58,8 +58,13 @@ namespace SimuHeap.Models
             };
         }
 
-        public static BlocoDeMemoria CriarLivre(int enderecoInicio, int tamanhoTotal, Color cor)
+        public static BlocoDeMemoria CriarLivre(int id, int enderecoInicio, int tamanhoTotal, Color cor)
         {
+            if (id <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id), "O ID deve ser maior que zero.");
+            }
+
             if (enderecoInicio < 0)
             {
                 throw new ArgumentOutOfRangeException(
@@ -79,7 +84,7 @@ namespace SimuHeap.Models
 
             return new BlocoDeMemoria
             {
-                Id = -1,
+                Id = id,
                 EstadoBlocoMemoria = EstadoBlocoMemoria.Livre,
                 EnderecoInicio = enderecoInicio,
 
@@ -139,15 +144,24 @@ namespace SimuHeap.Models
                     "O endereço não pertence ao bloco.");
             }
 
-            if (EstaLivre)
-            {
-                return RegiaoBlocoMemoria.Livre;
-            }
+            
 
             if (endereco < EnderecoPayload)
             {
                 return RegiaoBlocoMemoria.Header;
             }
+
+            if (EstaLivre)
+            {
+                if(endereco < EnderecoFooter)
+                {
+                    return RegiaoBlocoMemoria.Livre;
+                }
+                return RegiaoBlocoMemoria.Footer;
+            }
+
+
+            // Bloco ocupado
 
             if (endereco < EnderecoPadding)
             {

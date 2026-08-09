@@ -13,6 +13,8 @@ namespace SimuHeap.Data
         public static int TAM_ALINHAMENTO = 8;
         public static int TAM_MIN_PAYLOAD = 4;
 
+        public const uint FLAG_OCUPADO = 0x1;
+
         public static int TAM_MIN_BLOCO => CalcularTamanhoTotalBloco(TAM_MIN_PAYLOAD);
 
         public static int CalcularPadding(int tamanhoPayload)

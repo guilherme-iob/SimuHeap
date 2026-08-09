@@ -2,6 +2,7 @@
 using SimuHeap.Enums;
 using SimuHeap.Models;
 using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,11 +30,16 @@ namespace SimuHeap.Services
 
         public void Resetar()
         {
-            Array.Clear(Memoria);
+            //Array.Clear(Memoria); // inicializa com 00
+            Random.Shared.NextBytes(Memoria); // inicializa com conteudo indeterminado
             Blocos.Clear();
 
-            Blocos.AddLast(BlocoDeMemoria.CriarLivre(0, TamanhoHeap, Color.FromArgb(40, 140, 70)));
             proximoId = 1;
+
+            BlocoDeMemoria blocoInicial = BlocoDeMemoria.CriarLivre(GerarNovoId(), 0, TamanhoHeap, Color.FromArgb(40, 140, 70));
+            Blocos.AddLast(blocoInicial);
+
+            EscreverMetadadosBloco(blocoInicial);
         }
 
         public BlocoDeMemoria? Malloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
@@ -83,12 +89,17 @@ namespace SimuHeap.Services
                 {
                     int enderecoInicio = bloco.EnderecoInicio;
                     int tamanhoTotal = bloco.TamanhoTotal;
-                    atual.Value = BlocoDeMemoria.CriarLivre(enderecoInicio, tamanhoTotal, Color.FromArgb(40, 140, 70));
-                }
+                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(bloco.Id, enderecoInicio, tamanhoTotal, Color.FromArgb(40, 140, 70));
+                    atual.Value = blocoLivre;
 
-                if (UsarCoalescing)
-                {
-                    UnirBlocosLivres();
+                    EscreverMetadadosBloco(blocoLivre);
+
+                    if (UsarCoalescing)
+                    {
+                        UnirBlocosLivres();
+                    }
+
+                    return true;
                 }
 
                 atual = atual.Next;
@@ -100,16 +111,19 @@ namespace SimuHeap.Services
         {
             BlocoDeMemoria blocoOriginal = noLivre.Value;
 
-            BlocoDeMemoria blocoOcupado = BlocoDeMemoria.CriarOcupado(GerarNovoId(), blocoOriginal.EnderecoInicio, tamanhoSolicitado, tipo, cor);
+            BlocoDeMemoria blocoOcupado = BlocoDeMemoria.CriarOcupado(blocoOriginal.Id, blocoOriginal.EnderecoInicio, tamanhoSolicitado, tipo, cor);
 
             int tamanhoRestante = blocoOriginal.TamanhoTotal - blocoOcupado.TamanhoTotal;
 
             int enderecoNovoBlocoLivre = blocoOcupado.EnderecoFim + 1;
 
-            BlocoDeMemoria novoBlocoLivre = BlocoDeMemoria.CriarLivre(enderecoNovoBlocoLivre, tamanhoRestante, Color.FromArgb(40, 140, 70));
+            BlocoDeMemoria novoBlocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), enderecoNovoBlocoLivre, tamanhoRestante, Color.FromArgb(40, 140, 70));
 
             noLivre.Value = blocoOcupado;
             Blocos.AddAfter(noLivre, novoBlocoLivre);
+
+            EscreverMetadadosBloco(blocoOcupado);
+            EscreverMetadadosBloco(novoBlocoLivre);
 
             return blocoOcupado;
         }
@@ -189,11 +203,26 @@ namespace SimuHeap.Services
         {
             BlocoDeMemoria blocoLivre = noLivre.Value;
 
-            BlocoDeMemoria blocoOcupado = BlocoDeMemoria.CriarOcupadoComBlocoInteiro(GerarNovoId(), blocoLivre.EnderecoInicio, tamanhoSolicitado, blocoLivre.TamanhoTotal, tipo, cor);
+            BlocoDeMemoria blocoOcupado = BlocoDeMemoria.CriarOcupadoComBlocoInteiro(blocoLivre.Id, blocoLivre.EnderecoInicio, tamanhoSolicitado, blocoLivre.TamanhoTotal, tipo, cor);
 
             noLivre.Value = blocoOcupado;
 
+            EscreverMetadadosBloco(blocoOcupado);
+
             return blocoOcupado;
+        }
+
+        private void EscreverMetadadosBloco(BlocoDeMemoria bloco)
+        {
+            uint tamanho = (uint)bloco.TamanhoTotal;
+
+            uint valorHeader = bloco.EstaLivre ? tamanho : tamanho | Configuracoes.FLAG_OCUPADO;
+
+            uint valorFooter = tamanho;
+
+            BinaryPrimitives.WriteUInt32LittleEndian(Memoria.AsSpan(bloco.EnderecoHeader, Configuracoes.TAM_HEADER), valorHeader);
+
+            BinaryPrimitives.WriteUInt32LittleEndian(Memoria.AsSpan(bloco.EnderecoFooter, Configuracoes.TAM_FOOTER), valorFooter);
         }
     }
 }
