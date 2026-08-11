@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimuHeap.Data;
 
 namespace SimuHeap.Services
 {
@@ -28,7 +29,7 @@ namespace SimuHeap.Services
             {
                 ExecutarEvento(simulator, evento, ref passo, gerarPassosIntermediatios);
 
-                Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao));
+                Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao, null, evento.Id));
                 passo++;
             }
 
@@ -39,7 +40,7 @@ namespace SimuHeap.Services
             switch (evento)
             {
                 case EventoMalloc malloc:
-                    int tamanhoTipo = ObterTamanhoTipo(malloc.TipoVariavel);
+                    int tamanhoTipo = Configuracoes.ObterTamanhoTipo(malloc.TipoVariavel);
                     int tamanhoSolicitado = malloc.Quantidade * tamanhoTipo;
 
                     int passoLocal = passo;
@@ -48,7 +49,7 @@ namespace SimuHeap.Services
                     {
                         registrarPasso = estado =>
                         {
-                            Snapshots.Add(CriarSnapshot(simulador, passoLocal, malloc.Descricao, estado));
+                            Snapshots.Add(CriarSnapshot(simulador, passoLocal, malloc.Descricao, estado, evento.Id));
                             passoLocal++;
                         };
                     }
@@ -79,11 +80,12 @@ namespace SimuHeap.Services
             }
         }
 
-        private HeapSnapshot CriarSnapshot(HeapSimulator simulator, int passo, string descricaoEvento, EstadoPassoSimulacao? estado = null)
+        private HeapSnapshot CriarSnapshot(HeapSimulator simulator, int passo, string descricaoEvento, EstadoPassoSimulacao? estado = null, int? idEvento = null)
         {
             return new HeapSnapshot
             {
                 Passo = passo,
+                IdEvento = idEvento,
                 DescricaoEvento = descricaoEvento,
                 DescricaoPasso = estado?.Descricao ?? descricaoEvento,
                 EnderecoBlocoEmAnalise = estado?.EnderecoBlocoEmAnalise,
@@ -91,22 +93,6 @@ namespace SimuHeap.Services
                 Memoria = (byte[])simulator.Memoria.Clone(),
                 Blocos = simulator.Blocos.Select(x => x.Clonar()).ToList(),
                 BlocosLivres = simulator.Blocos.Where(x => x.EstaLivre).Select(x => x.Clonar()).ToList(),
-            };
-        }
-
-        private int ObterTamanhoTipo(TiposDeVariaveis tipo)
-        {
-            return tipo switch
-            {
-                TiposDeVariaveis.Char => 1,
-                TiposDeVariaveis.Short => 2,
-                TiposDeVariaveis.Int => 4,
-                TiposDeVariaveis.Long => 8,
-                TiposDeVariaveis.Float => 4,
-                TiposDeVariaveis.Double => 8,
-
-                _ => throw new ArgumentOutOfRangeException(
-                    nameof(tipo))
             };
         }
     }

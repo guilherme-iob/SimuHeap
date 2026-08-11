@@ -35,8 +35,8 @@
             BtnCancelar = new Button();
             tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
-            Lbl_Blocos = new Label();
             ComboBox_Blocos = new ComboBox();
+            Lbl_Blocos = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -140,6 +140,17 @@
             tableLayoutPanel4.Size = new Size(268, 109);
             tableLayoutPanel4.TabIndex = 1;
             // 
+            // ComboBox_Blocos
+            // 
+            ComboBox_Blocos.Anchor = AnchorStyles.None;
+            ComboBox_Blocos.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox_Blocos.Font = new Font("Segoe UI", 14.25F);
+            ComboBox_Blocos.FormattingEnabled = true;
+            ComboBox_Blocos.Location = new Point(35, 51);
+            ComboBox_Blocos.Name = "ComboBox_Blocos";
+            ComboBox_Blocos.Size = new Size(197, 33);
+            ComboBox_Blocos.TabIndex = 1;
+            // 
             // Lbl_Blocos
             // 
             Lbl_Blocos.AutoSize = true;
@@ -152,24 +163,15 @@
             Lbl_Blocos.Text = "Referência do Bloco";
             Lbl_Blocos.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // ComboBox_Blocos
-            // 
-            ComboBox_Blocos.Anchor = AnchorStyles.None;
-            ComboBox_Blocos.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox_Blocos.Font = new Font("Segoe UI", 14.25F);
-            ComboBox_Blocos.FormattingEnabled = true;
-            ComboBox_Blocos.Location = new Point(35, 51);
-            ComboBox_Blocos.Name = "ComboBox_Blocos";
-            ComboBox_Blocos.Size = new Size(197, 33);
-            ComboBox_Blocos.TabIndex = 1;
-            // 
             // FreeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 331);
             Controls.Add(tableLayoutPanel1);
+            MaximizeBox = false;
             Name = "FreeForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FreeForm";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

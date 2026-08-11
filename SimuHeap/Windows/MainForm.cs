@@ -37,6 +37,7 @@ namespace SimuHeap.Windows
         private void MainForm_Load(object sender, EventArgs e)
         {
             InicializarHeap();
+            ConfigurarDataGrids();
             SelectHeapSize.DataSource = Enum.GetValues(typeof(TamanhosHeap));
 
         }
@@ -46,6 +47,34 @@ namespace SimuHeap.Windows
             {
                 AlterarTamanhoHeap((TamanhosHeap)SelectHeapSize.SelectedItem);
             }
+        }
+
+        private void ConfigurarDataGrids()
+        {
+            ConfigurarDataGridSimples(DataGridViewEventos);
+            ConfigurarDataGridSimples(DataGridViewBlocosLivres);
+        }
+
+        private void ConfigurarDataGridSimples(DataGridView grid)
+        {
+            grid.Columns.Clear();
+
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToResizeRows = false;
+
+            grid.ReadOnly = true;
+            grid.MultiSelect = false;
+            grid.Enabled = false;
+
+            grid.RowHeadersVisible = false;
+            grid.ColumnHeadersVisible = false;
+
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            grid.Columns.Add("Descricao", string.Empty);
         }
 
         private void Btn_Malloc_Click(object sender, EventArgs e)
@@ -177,10 +206,11 @@ namespace SimuHeap.Windows
         }
         private void AtualizarListaEventos()
         {
-            ListBoxEventos.Items.Clear();
-            foreach (var evento in executor.Eventos)
+            DataGridViewEventos.Rows.Clear();
+
+            foreach (EventoHeap evento in executor.Eventos)
             {
-                ListBoxEventos.Items.Add(evento.Descricao);
+                DataGridViewEventos.Rows.Add(evento.Descricao);
             }
         }
 
@@ -194,7 +224,10 @@ namespace SimuHeap.Windows
 
             AtualizarListaBlocosLivres(snapshot);
 
-            MessageBox.Show($"{snapshot.ToString()}");
+            DestacarEventoAtual(snapshot);
+            DestacarBlocoLivreAtual(snapshot);
+
+            Lbl_SnapshotAtual.Text = snapshot.ToString();
 
             // atualizar labels e métricas
             //lblOperacaoAtual.Text = snapshot.DescricaoEvento;
@@ -204,10 +237,56 @@ namespace SimuHeap.Windows
         }
         private void AtualizarListaBlocosLivres(HeapSnapshot snapshot)
         {
-            ListBoxBlocosLivres.Items.Clear();
+            DataGridViewBlocosLivres.Rows.Clear();
+
             foreach (BlocoDeMemoria bloco in snapshot.BlocosLivres)
             {
-                ListBoxBlocosLivres.Items.Add($"ref bloco {bloco.Id} - {bloco.TamanhoTotal} bytes");
+                int index = DataGridViewBlocosLivres.Rows.Add($"Bloco #{bloco.Id} | " + $"{bloco.TamanhoTotal} bytes | " + $"0x{bloco.EnderecoInicio:X}-0x{bloco.EnderecoFim:X}");
+                DataGridViewBlocosLivres.Rows[index].Tag = bloco;
+            }
+        }
+
+        private void DestacarEventoAtual(HeapSnapshot snapshot)
+        {
+            DataGridViewEventos.ClearSelection();
+
+            if (snapshot.IdEvento == null)
+                return;
+
+            int indice = executor.Eventos.FindIndex(x => x.Id == snapshot.IdEvento.Value);
+
+            if (indice < 0 || indice >= DataGridViewEventos.Rows.Count)
+            {
+                return;
+            }
+
+            DataGridViewRow row = DataGridViewEventos.Rows[indice];
+
+            row.Selected = true;
+
+            DataGridViewEventos.FirstDisplayedScrollingRowIndex = indice;
+        }
+
+        private void DestacarBlocoLivreAtual(HeapSnapshot snapshot)
+        {
+            DataGridViewBlocosLivres.ClearSelection();
+
+            if (snapshot.EnderecoBlocoEmAnalise == null)
+                return;
+
+            foreach (DataGridViewRow row in DataGridViewBlocosLivres.Rows)
+            {
+                if (row.Tag is not BlocoDeMemoria bloco)
+                    continue;
+
+                if (bloco.EnderecoInicio == snapshot.EnderecoBlocoEmAnalise)
+                {
+                    row.Selected = true;
+
+                    DataGridViewBlocosLivres.FirstDisplayedScrollingRowIndex = row.Index;
+
+                    break;
+                }
             }
         }
 

@@ -30,6 +30,7 @@
         {
             PanelPrincipal = new TableLayoutPanel();
             PanelMenuSuperior = new Panel();
+            Lbl_SnapshotAtual = new Label();
             MenuOperacoes = new GroupBox();
             Panel_Operacoes = new TableLayoutPanel();
             Panel_OperacoesAlocacao = new TableLayoutPanel();
@@ -62,18 +63,19 @@
             Panel_Segmentos = new Panel();
             PanelGridHeap = new Panel();
             Panel_Simulacao_Nav = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
             BtnPrimeiro = new Button();
             BtnUltimo = new Button();
             BtnAnterior = new Button();
             BtnProximo = new Button();
             Label_Segmentos = new Label();
             Panel_ListaBlocosLivres = new Panel();
-            ListBoxBlocosLivres = new ListBox();
+            panel4 = new Panel();
+            DataGridViewBlocosLivres = new DataGridView();
             label1 = new Label();
             Label_Heap = new Label();
             Panel_Eventos = new Panel();
-            ListBoxEventos = new ListBox();
-            tableLayoutPanel4 = new TableLayoutPanel();
+            DataGridViewEventos = new DataGridView();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -92,9 +94,12 @@
             Panel_Simulacao_2.SuspendLayout();
             Panel_Segmentos.SuspendLayout();
             Panel_Simulacao_Nav.SuspendLayout();
-            Panel_ListaBlocosLivres.SuspendLayout();
-            Panel_Eventos.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            Panel_ListaBlocosLivres.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).BeginInit();
+            Panel_Eventos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).BeginInit();
             SuspendLayout();
             // 
             // PanelPrincipal
@@ -114,6 +119,7 @@
             // 
             // PanelMenuSuperior
             // 
+            PanelMenuSuperior.Controls.Add(Lbl_SnapshotAtual);
             PanelMenuSuperior.Controls.Add(MenuOperacoes);
             PanelMenuSuperior.Controls.Add(MenuParametros);
             PanelMenuSuperior.Dock = DockStyle.Fill;
@@ -121,6 +127,15 @@
             PanelMenuSuperior.Name = "PanelMenuSuperior";
             PanelMenuSuperior.Size = new Size(1258, 198);
             PanelMenuSuperior.TabIndex = 0;
+            // 
+            // Lbl_SnapshotAtual
+            // 
+            Lbl_SnapshotAtual.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Lbl_SnapshotAtual.Location = new Point(748, 6);
+            Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
+            Lbl_SnapshotAtual.Size = new Size(501, 183);
+            Lbl_SnapshotAtual.TabIndex = 1;
+            Lbl_SnapshotAtual.Text = "Estado Atual";
             // 
             // MenuOperacoes
             // 
@@ -541,6 +556,25 @@
             Panel_Simulacao_Nav.Size = new Size(562, 41);
             Panel_Simulacao_Nav.TabIndex = 2;
             // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 4;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.Controls.Add(BtnPrimeiro, 0, 0);
+            tableLayoutPanel4.Controls.Add(BtnUltimo, 3, 0);
+            tableLayoutPanel4.Controls.Add(BtnAnterior, 1, 0);
+            tableLayoutPanel4.Controls.Add(BtnProximo, 2, 0);
+            tableLayoutPanel4.Dock = DockStyle.Left;
+            tableLayoutPanel4.Location = new Point(0, 0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(208, 41);
+            tableLayoutPanel4.TabIndex = 0;
+            // 
             // BtnPrimeiro
             // 
             BtnPrimeiro.BackgroundImage = Properties.Resources.primeiro;
@@ -610,7 +644,7 @@
             // 
             // Panel_ListaBlocosLivres
             // 
-            Panel_ListaBlocosLivres.Controls.Add(ListBoxBlocosLivres);
+            Panel_ListaBlocosLivres.Controls.Add(panel4);
             Panel_ListaBlocosLivres.Controls.Add(label1);
             Panel_ListaBlocosLivres.Dock = DockStyle.Fill;
             Panel_ListaBlocosLivres.Location = new Point(3, 3);
@@ -618,14 +652,23 @@
             Panel_ListaBlocosLivres.Size = new Size(237, 424);
             Panel_ListaBlocosLivres.TabIndex = 1;
             // 
-            // ListBoxBlocosLivres
+            // panel4
             // 
-            ListBoxBlocosLivres.Dock = DockStyle.Fill;
-            ListBoxBlocosLivres.FormattingEnabled = true;
-            ListBoxBlocosLivres.Location = new Point(0, 23);
-            ListBoxBlocosLivres.Name = "ListBoxBlocosLivres";
-            ListBoxBlocosLivres.Size = new Size(237, 401);
-            ListBoxBlocosLivres.TabIndex = 3;
+            panel4.Controls.Add(DataGridViewBlocosLivres);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(0, 23);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(237, 401);
+            panel4.TabIndex = 4;
+            // 
+            // DataGridViewBlocosLivres
+            // 
+            DataGridViewBlocosLivres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewBlocosLivres.Dock = DockStyle.Fill;
+            DataGridViewBlocosLivres.Location = new Point(0, 0);
+            DataGridViewBlocosLivres.Name = "DataGridViewBlocosLivres";
+            DataGridViewBlocosLivres.Size = new Size(237, 401);
+            DataGridViewBlocosLivres.TabIndex = 1;
             // 
             // label1
             // 
@@ -651,39 +694,20 @@
             // 
             // Panel_Eventos
             // 
-            Panel_Eventos.Controls.Add(ListBoxEventos);
+            Panel_Eventos.Controls.Add(DataGridViewEventos);
             Panel_Eventos.Dock = DockStyle.Fill;
             Panel_Eventos.Location = new Point(820, 3);
             Panel_Eventos.Name = "Panel_Eventos";
             Panel_Eventos.Size = new Size(435, 465);
             Panel_Eventos.TabIndex = 1;
             // 
-            // ListBoxEventos
+            // DataGridViewEventos
             // 
-            ListBoxEventos.FormattingEnabled = true;
-            ListBoxEventos.Location = new Point(0, 35);
-            ListBoxEventos.Name = "ListBoxEventos";
-            ListBoxEventos.Size = new Size(192, 424);
-            ListBoxEventos.TabIndex = 0;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 4;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel4.Controls.Add(BtnPrimeiro, 0, 0);
-            tableLayoutPanel4.Controls.Add(BtnUltimo, 3, 0);
-            tableLayoutPanel4.Controls.Add(BtnAnterior, 1, 0);
-            tableLayoutPanel4.Controls.Add(BtnProximo, 2, 0);
-            tableLayoutPanel4.Dock = DockStyle.Left;
-            tableLayoutPanel4.Location = new Point(0, 0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(208, 41);
-            tableLayoutPanel4.TabIndex = 0;
+            DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewEventos.Location = new Point(3, 35);
+            DataGridViewEventos.Name = "DataGridViewEventos";
+            DataGridViewEventos.Size = new Size(228, 427);
+            DataGridViewEventos.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -714,9 +738,12 @@
             Panel_Simulacao_2.ResumeLayout(false);
             Panel_Segmentos.ResumeLayout(false);
             Panel_Simulacao_Nav.ResumeLayout(false);
-            Panel_ListaBlocosLivres.ResumeLayout(false);
-            Panel_Eventos.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
+            Panel_ListaBlocosLivres.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).EndInit();
+            Panel_Eventos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).EndInit();
             ResumeLayout(false);
         }
 
@@ -759,14 +786,16 @@
         private Panel Panel_Simulacao_Nav;
         private Label Label_Segmentos;
         private Panel Panel_Eventos;
-        private ListBox ListBoxEventos;
         private Panel Panel_ListaBlocosLivres;
         private Label label1;
-        private ListBox ListBoxBlocosLivres;
         private Button BtnPrimeiro;
         private Button BtnUltimo;
         private Button BtnAnterior;
         private Button BtnProximo;
         private TableLayoutPanel tableLayoutPanel4;
+        private Label Lbl_SnapshotAtual;
+        private DataGridView DataGridViewBlocosLivres;
+        private DataGridView DataGridViewEventos;
+        private Panel panel4;
     }
 }

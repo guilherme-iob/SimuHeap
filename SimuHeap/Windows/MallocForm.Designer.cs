@@ -198,7 +198,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 331);
             Controls.Add(tableLayoutPanel1);
+            MaximizeBox = false;
             Name = "MallocForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "MallocForm";
             Load += MallocForm_Load;
             ((System.ComponentModel.ISupportInitialize)Input_Quantidade).EndInit();

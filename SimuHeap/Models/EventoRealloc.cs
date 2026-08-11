@@ -20,7 +20,7 @@ namespace SimuHeap.Models
 
         public void AtualizarDescricao()
         {
-            Descricao = $"bloco{ReferenciaBloco} = realloc(bloco{ReferenciaBloco}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
+            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *bloco{ReferenciaBloco} = realloc(bloco{ReferenciaBloco}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
         }
     }
 }

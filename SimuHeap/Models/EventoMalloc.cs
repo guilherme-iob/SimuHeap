@@ -20,7 +20,7 @@ namespace SimuHeap.Models
         public void AtualizarDescricao()
         {
             string tamanho = Quantidade == 1 ? $"sizeof({TipoVariavel.ToString().ToLower()})" : $"sizeof({TipoVariavel.ToString().ToLower()}) * {Quantidade}";
-            Descricao = $"bloco{ReferenciaBloco} = malloc({tamanho});";
+            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *bloco{ReferenciaBloco} = malloc({tamanho});";
         }
     }
 }

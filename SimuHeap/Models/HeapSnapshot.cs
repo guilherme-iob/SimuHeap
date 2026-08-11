@@ -10,6 +10,7 @@ namespace SimuHeap.Models
     {
         public int Passo { get; set; }
         public string DescricaoEvento { get; set; } = string.Empty;
+        public int? IdEvento { get; set; }
         public string DescricaoPasso { get; set; } = string.Empty;
         public byte[] Memoria { get; set; } = Array.Empty<byte>();
         public List<BlocoDeMemoria> Blocos { get; set; } = new List<BlocoDeMemoria>();

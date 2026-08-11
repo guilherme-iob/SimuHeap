@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuHeap.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,21 @@ namespace SimuHeap.Data
         public static int CalcularTamanhoTotalBloco(int tamanhoPayload)
         {
             return TAM_HEADER + tamanhoPayload + TAM_FOOTER + CalcularPadding(tamanhoPayload);
+        }
+
+        public static int ObterTamanhoTipo(TiposDeVariaveis tipo)
+        {
+            return tipo switch
+            {
+                TiposDeVariaveis.Char => 1,
+                TiposDeVariaveis.Short => 2,
+                TiposDeVariaveis.Int => 4,
+                TiposDeVariaveis.Long => 8,
+                TiposDeVariaveis.Float => 4,
+                TiposDeVariaveis.Double => 8,
+
+                _ => throw new ArgumentOutOfRangeException(nameof(tipo))
+            };
         }
     }
 }
