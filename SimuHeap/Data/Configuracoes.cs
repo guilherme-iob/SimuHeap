@@ -32,17 +32,23 @@ namespace SimuHeap.Data
 
         public static int ObterTamanhoTipo(TiposDeVariaveis tipo)
         {
-            return tipo switch
+            switch (tipo)
             {
-                TiposDeVariaveis.Char => 1,
-                TiposDeVariaveis.Short => 2,
-                TiposDeVariaveis.Int => 4,
-                TiposDeVariaveis.Long => 8,
-                TiposDeVariaveis.Float => 4,
-                TiposDeVariaveis.Double => 8,
-
-                _ => throw new ArgumentOutOfRangeException(nameof(tipo))
-            };
+                case TiposDeVariaveis.Char:
+                    return 1;
+                case TiposDeVariaveis.Short:
+                    return 2;
+                case TiposDeVariaveis.Int:
+                    return 4;
+                case TiposDeVariaveis.Long:
+                    return 8;
+                case TiposDeVariaveis.Float:
+                    return 4;
+                case TiposDeVariaveis.Double:
+                    return 8;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(tipo));
+            }
         }
     }
 }

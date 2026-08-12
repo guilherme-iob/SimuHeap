@@ -143,8 +143,12 @@ namespace SimuHeap.Windows
             this.Panel_Simulacao.Enabled = false;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
+            executor.Eventos.Clear();
             heapSimulator.Resetar();
             HeapGrid.LimparSnapshot();
+
+            DataGridViewEventos.Rows.Clear();
+            DataGridViewBlocosLivres.Rows.Clear();
         }
 
         private void BtnPrimeiro_Click(object sender, EventArgs e)
@@ -318,7 +322,7 @@ namespace SimuHeap.Windows
                     case EventoRealloc realloc:
                         /*
                          * Realloc não cria nem remove a
-                         * referência lógica.
+                         * referência.
                          *
                          * bloco1 continua sendo bloco1.
                          */

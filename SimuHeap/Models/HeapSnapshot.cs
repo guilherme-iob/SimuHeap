@@ -30,13 +30,13 @@ namespace SimuHeap.Models
 
         public override string ToString()
         {
-            return $"Passo: {Passo}\r\n" +
-                $"Descrição Evento: {DescricaoEvento}\r\n" +
-                $"Descrição Passo: {DescricaoPasso}\r\n" +
+            return $"Evento: {DescricaoEvento}\r\n" +
+                $"Passo: {Passo}\r\n" +
+                $"Passo: {DescricaoPasso}\r\n" +
                 $"Endereco Bloco em Análise: {EnderecoBlocoEmAnalise}\r\n" +
-                $"Endereço Melhor Bloco: {EnderecoMelhorBloco}\r\n" +
-                $"Operação Atual: {OperacaoAtual}\r\n" +
-                $"Informações Busca: {InformacoesBusca}";
+                $"Endereço Melhor Bloco: {EnderecoMelhorBloco}\r\n"; // +
+                //$"Operação Atual: {OperacaoAtual}\r\n" +
+                //$"Informações Busca: {InformacoesBusca}";
         }
     }
 }

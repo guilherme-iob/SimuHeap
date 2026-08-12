@@ -13,7 +13,6 @@ namespace SimuHeap.Enums
         Int = 3,
         Long = 4,
         Float = 5,
-        Double = 6,
-        String = 7
+        Double = 6
     }
 }

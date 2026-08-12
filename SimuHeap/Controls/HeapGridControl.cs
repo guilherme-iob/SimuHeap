@@ -118,14 +118,9 @@ namespace SimuHeap.Controls
 
             int tamanhoHeap = MemoriaAtual.Length;
 
-            rows = tamanhoHeap == 0
-                ? 0
-                : (int)Math.Ceiling(
-                    (double)tamanhoHeap / columns);
+            rows = tamanhoHeap == 0 ? 0 : (int)Math.Ceiling((double)tamanhoHeap / columns);
 
-            Size = new Size(
-                columns * cellSize,
-                rows * cellSize);
+            Size = new Size(columns * cellSize, rows * cellSize);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -133,9 +128,7 @@ namespace SimuHeap.Controls
             base.OnPaint(e);
 
             byte[] memoria = MemoriaAtual;
-            if (memoria.Length == 0 ||
-                columns <= 0 ||
-                rows <= 0)
+            if (memoria.Length == 0 || columns <= 0 || rows <= 0)
             {
                 return;
             }
@@ -179,9 +172,7 @@ namespace SimuHeap.Controls
         {
             byte[] memoria = MemoriaAtual;
 
-            for (int endereco = bloco.EnderecoInicio;
-                 endereco <= bloco.EnderecoFim;
-                 endereco++)
+            for (int endereco = bloco.EnderecoInicio; endereco <= bloco.EnderecoFim; endereco++)
             {
                 if (endereco < 0 ||
                     endereco >= memoria.Length)
