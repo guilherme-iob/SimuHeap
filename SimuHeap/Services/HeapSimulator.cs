@@ -77,7 +77,7 @@ namespace SimuHeap.Services
             throw new NotImplementedException();
         }
 
-        public bool Free(int idBloco)
+        public bool Free(int idBloco, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
             LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
 
@@ -96,7 +96,7 @@ namespace SimuHeap.Services
 
                     if (UsarCoalescing)
                     {
-                        UnirBlocosLivres();
+                        UnirBlocosLivres(atual);
                     }
 
                     return true;
@@ -128,9 +128,61 @@ namespace SimuHeap.Services
             return blocoOcupado;
         }
 
-        private void UnirBlocosLivres()
+        private void UnirBlocosLivres(LinkedListNode<BlocoDeMemoria> noAtual)
         {
-            throw new NotImplementedException();
+            // Primeiro tenta unir com o bloco anterior.
+            if (noAtual.Previous is not null && noAtual.Previous.Value.EstaLivre)
+            {
+                LinkedListNode<BlocoDeMemoria> noAnterior = noAtual.Previous;
+
+                BlocoDeMemoria blocoAnterior = noAnterior.Value;
+
+                BlocoDeMemoria blocoAtual = noAtual.Value;
+
+                int tamanhoTotal = blocoAnterior.TamanhoTotal +  blocoAtual.TamanhoTotal;
+
+                // Mantém o ID do bloco mais à esquerda.
+                BlocoDeMemoria blocoUnido = BlocoDeMemoria.CriarLivre(
+                                                            blocoAnterior.Id,
+                                                            blocoAnterior.EnderecoInicio,
+                                                            tamanhoTotal,
+                                                            Color.FromArgb(40, 140, 70));
+
+                noAnterior.Value = blocoUnido;
+
+                // O bloco atual deixou de existir.
+                Blocos.Remove(noAtual);
+
+                // Agora o "bloco atual" passa a ser o anterior unido.
+                noAtual = noAnterior;
+
+                EscreverMetadadosBloco(blocoUnido);
+            }
+
+            // Depois tenta unir com o próximo.
+            if (noAtual.Next is not null && noAtual.Next.Value.EstaLivre)
+            {
+                LinkedListNode<BlocoDeMemoria> noProximo = noAtual.Next;
+
+                BlocoDeMemoria blocoAtual = noAtual.Value;
+
+                BlocoDeMemoria blocoProximo = noProximo.Value;
+
+                int tamanhoTotal = blocoAtual.TamanhoTotal + blocoProximo.TamanhoTotal;
+
+                BlocoDeMemoria blocoUnido = BlocoDeMemoria.CriarLivre(
+                                                            blocoAtual.Id,
+                                                            blocoAtual.EnderecoInicio,
+                                                            tamanhoTotal,
+                                                            Color.FromArgb(40, 140, 70));
+
+                noAtual.Value = blocoUnido;
+
+                // O bloco da direita deixa de existir.
+                Blocos.Remove(noProximo);
+
+                EscreverMetadadosBloco(blocoUnido);
+            }
         }
 
         private int GerarNovoId() 
