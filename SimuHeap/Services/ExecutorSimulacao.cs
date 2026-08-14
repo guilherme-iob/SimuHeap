@@ -40,26 +40,29 @@ namespace SimuHeap.Services
             switch (evento)
             {
                 case EventoMalloc malloc:
-                    int tamanhoTipo = Configuracoes.ObterTamanhoTipo(malloc.TipoVariavel);
-                    int tamanhoSolicitado = malloc.Quantidade * tamanhoTipo;
-
-                    int passoLocal = passo;
-                    Action<EstadoPassoSimulacao>? registrarPasso = null;
-                    if (gerarPassosIntermediarios)
                     {
-                        registrarPasso = estado =>
+                        int tamanhoTipo = Configuracoes.ObterTamanhoTipo(malloc.TipoVariavel);
+                        int tamanhoSolicitado = malloc.Quantidade * tamanhoTipo;
+
+                        int passoLocal = passo;
+                        Action<EstadoPassoSimulacao>? registrarPasso = null;
+                        if (gerarPassosIntermediarios)
                         {
-                            Snapshots.Add(CriarSnapshot(simulador, passoLocal, malloc.Descricao, estado, evento.Id));
-                            passoLocal++;
-                        };
+                            registrarPasso = estado =>
+                            {
+                                Snapshots.Add(CriarSnapshot(simulador, passoLocal, malloc.Descricao, estado, evento.Id));
+                                passoLocal++;
+                            };
+                        }
+
+                        BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        passo = passoLocal;
+
+                        if (bloco is not null) referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
+
+                        break;
                     }
-
-                    BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
-                    passo = passoLocal;
-
-                    if (bloco is not null) referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
-
-                    break;
+                    
                 case EventoCalloc:
                     // simulator calloc
                     break;
@@ -67,13 +70,27 @@ namespace SimuHeap.Services
                     // simulator realloc
                     break;
                 case EventoFree free:
-                    // simulator free
-                    int idBloco;
-                    bool encontrou = referenciasBlocos.TryGetValue(free.ReferenciaBloco, out idBloco);
-                    if (!encontrou) break;
+                    {
+                        // simulator free
+                        int idBloco;
+                        bool encontrou = referenciasBlocos.TryGetValue(free.ReferenciaBloco, out idBloco);
+                        if (!encontrou) break;
 
-                    simulador.Free(idBloco);
-                    break;
+                        int passoLocal = passo;
+                        Action<EstadoPassoSimulacao>? registrarPasso = null;
+                        if (gerarPassosIntermediarios)
+                        {
+                            registrarPasso = estado =>
+                            {
+                                Snapshots.Add(CriarSnapshot(simulador, passoLocal, free.Descricao, estado, evento.Id));
+                                passoLocal++;
+                            };
+                        }
+
+                        simulador.Free(idBloco, registrarPasso);
+                        passo = passoLocal;
+                        break;
+                    }
                 default:
                     MessageBox.Show("Evento desconhecido");
                     break;

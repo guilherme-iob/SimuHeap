@@ -94,9 +94,15 @@ namespace SimuHeap.Services
 
                     EscreverMetadadosBloco(blocoLivre);
 
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao = $"Bloco #{blocoLivre.Id} sendo liberado.",
+                        EnderecoBlocoEmAnalise = blocoLivre.EnderecoInicio
+                    });
+
                     if (UsarCoalescing)
                     {
-                        UnirBlocosLivres(atual);
+                        UnirBlocosLivres(atual, aoGerarPasso);
                     }
 
                     return true;
@@ -128,7 +134,7 @@ namespace SimuHeap.Services
             return blocoOcupado;
         }
 
-        private void UnirBlocosLivres(LinkedListNode<BlocoDeMemoria> noAtual)
+        private void UnirBlocosLivres(LinkedListNode<BlocoDeMemoria> noAtual, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
             // Primeiro tenta unir com o bloco anterior.
             if (noAtual.Previous is not null && noAtual.Previous.Value.EstaLivre)
@@ -157,6 +163,12 @@ namespace SimuHeap.Services
                 noAtual = noAnterior;
 
                 EscreverMetadadosBloco(blocoUnido);
+
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Unindo blocos livres #{noAnterior.Value.Id} e {noAtual.Value.Id}.",
+                    EnderecoBlocoEmAnalise = noAtual.Value.EnderecoInicio
+                });
             }
 
             // Depois tenta unir com o próximo.
@@ -182,6 +194,12 @@ namespace SimuHeap.Services
                 Blocos.Remove(noProximo);
 
                 EscreverMetadadosBloco(blocoUnido);
+
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Blocos unidos. #{blocoUnido.Id} agora possui {blocoUnido.TamanhoTotal} bytes.",
+                    EnderecoBlocoEmAnalise = blocoUnido.EnderecoInicio
+                });
             }
         }
 

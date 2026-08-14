@@ -32,7 +32,7 @@ namespace SimuHeap.Models
         {
             return $"Evento: {DescricaoEvento}\r\n" +
                 $"Passo: {Passo}\r\n" +
-                $"Passo: {DescricaoPasso}\r\n" +
+                $"Descrição: {DescricaoPasso}\r\n" +
                 $"Endereco Bloco em Análise: {EnderecoBlocoEmAnalise}\r\n" +
                 $"Endereço Melhor Bloco: {EnderecoMelhorBloco}\r\n"; // +
                 //$"Operação Atual: {OperacaoAtual}\r\n" +
