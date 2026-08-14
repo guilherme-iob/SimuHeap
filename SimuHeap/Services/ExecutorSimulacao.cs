@@ -63,12 +63,60 @@ namespace SimuHeap.Services
                         break;
                     }
                     
-                case EventoCalloc:
-                    // simulator calloc
-                    break;
-                case EventoRealloc:
-                    // simulator realloc
-                    break;
+                case EventoCalloc calloc:
+                    {
+                        int tamanhoTipo = Configuracoes.ObterTamanhoTipo(calloc.TipoVariavel);
+                        int tamanhoSolicitado = calloc.Quantidade * tamanhoTipo;
+
+                        int passoLocal = passo;
+                        Action<EstadoPassoSimulacao>? registrarPasso = null;
+                        if (gerarPassosIntermediarios)
+                        {
+                            registrarPasso = estado =>
+                            {
+                                Snapshots.Add(CriarSnapshot(simulador, passoLocal, calloc.Descricao, estado, evento.Id));
+                                passoLocal++;
+                            };
+                        }
+
+                        BlocoDeMemoria? bloco = simulador.Calloc(tamanhoSolicitado, calloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        passo = passoLocal;
+
+                        if (bloco is not null) referenciasBlocos[calloc.ReferenciaBloco] = bloco.Id;
+
+                        break;
+                    }
+                    
+                    
+                case EventoRealloc realloc:
+                    {
+                        int tamanhoTipo = Configuracoes.ObterTamanhoTipo(realloc.TipoVariavel);
+                        int tamanhoSolicitado = realloc.NovaQuantidade * tamanhoTipo;
+                        bool encontrou = referenciasBlocos.TryGetValue(realloc.ReferenciaBloco, out int idBloco);
+
+                        if (!encontrou)
+                        {
+                            break;
+                        }
+
+                        int passoLocal = passo;
+                        Action<EstadoPassoSimulacao>? registrarPasso = null;
+                        if (gerarPassosIntermediarios)
+                        {
+                            registrarPasso = estado =>
+                            {
+                                Snapshots.Add(CriarSnapshot(simulador, passoLocal, realloc.Descricao, estado, evento.Id));
+                                passoLocal++;
+                            };
+                        }
+
+                        BlocoDeMemoria? bloco = simulador.Realloc(idBloco, tamanhoSolicitado, realloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        passo = passoLocal;
+
+                        if (bloco is not null) referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;
+
+                        break;
+                    }
                 case EventoFree free:
                     {
                         // simulator free

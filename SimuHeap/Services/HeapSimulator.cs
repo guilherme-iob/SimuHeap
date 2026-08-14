@@ -67,14 +67,168 @@ namespace SimuHeap.Services
             return OcuparBlocoInteiro(blocoLivre, tamanhoSolicitado, tipo, cor);
         }
 
-        public BlocoDeMemoria Calloc()
+        public BlocoDeMemoria Calloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
-            throw new NotImplementedException();
+            if (tamanhoSolicitado <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(tamanhoSolicitado), "O tamanho solicitado deve ser maior que zero.");
+            }
+
+            BlocoDeMemoria? bloco = Malloc(tamanhoSolicitado, tipo, cor, algoritmo, aoGerarPasso);
+
+            if (bloco is null) return null;
+
+            Memoria.AsSpan(bloco.EnderecoPayload, tamanhoSolicitado).Clear(); // zera os valores
+
+            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+            {
+                Descricao = $"Inicializando o payload do bloco #{bloco.Id} com zero.",
+                EnderecoBlocoEmAnalise = bloco.EnderecoInicio
+            });
+
+            return bloco;
+
         }
 
-        public BlocoDeMemoria Realloc()
+        public BlocoDeMemoria? Realloc(int idBloco, int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
-            throw new NotImplementedException();
+            if (tamanhoSolicitado <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(tamanhoSolicitado), "O tamanho solicitado deve ser maior que zero.");
+            }
+
+            LinkedListNode<BlocoDeMemoria>? noAtual = BuscarBlocoOcupado(idBloco);
+
+            if (noAtual is null) return null;
+
+            int novoTamanhoTotal = Configuracoes.CalcularTamanhoTotalBloco(tamanhoSolicitado);
+
+            BlocoDeMemoria blocoAtual = noAtual.Value;
+            // 1 - novo tamanho cabe dentro do próprio bloco
+            if(novoTamanhoTotal <= noAtual.Value.TamanhoTotal)
+            {
+                int tamanhoRestante = blocoAtual.TamanhoTotal - novoTamanhoTotal;
+
+                if(UsarSplit && tamanhoRestante >= Configuracoes.TAM_MIN_BLOCO)
+                {
+                    BlocoDeMemoria blocoReduzido = BlocoDeMemoria.CriarOcupado(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, tipo, cor);
+
+                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), blocoReduzido.EnderecoFim + 1, tamanhoRestante, Color.FromArgb(40, 140, 70));
+
+                    noAtual.Value = blocoReduzido;
+
+                    LinkedListNode<BlocoDeMemoria> noLivre = Blocos.AddAfter(noAtual, blocoLivre);
+
+                    EscreverMetadadosBloco(blocoReduzido);
+                    EscreverMetadadosBloco(blocoLivre);
+
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao = $"Bloco #{blocoReduzido.Id} reduzido." +
+                        $"Foi criado um novo bloco livre de {blocoLivre.TamanhoTotal} bytes.",
+                        EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio
+                    });
+
+                    if (UsarCoalescing)
+                    {
+                        UnirBlocosLivres(noLivre, aoGerarPasso);
+                    }
+
+                    return blocoReduzido;
+                }
+
+                // se não tem split ou se a sobra for muito pequena, o bloco continua usando o espaço atual
+                BlocoDeMemoria blocoRedimensionado = BlocoDeMemoria.CriarOcupadoComBlocoInteiro(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, blocoAtual.TamanhoTotal, tipo, cor);
+
+                noAtual.Value = blocoRedimensionado;
+                EscreverMetadadosBloco(blocoRedimensionado);
+
+                return blocoRedimensionado;
+            }
+
+            // 2 - tenta expandir utilizando o bloco livre seguinte
+            LinkedListNode<BlocoDeMemoria>? noProximo = noAtual.Next;
+            if(noProximo is not null && noProximo.Value.EstaLivre)
+            {
+                BlocoDeMemoria blocoProximo = noProximo.Value;
+                int tamanhoDisponivel = blocoAtual.TamanhoTotal + blocoProximo.TamanhoTotal;
+
+                if(tamanhoDisponivel >= novoTamanhoTotal)
+                {
+                    int tamanhoRestante = tamanhoDisponivel - novoTamanhoTotal;
+
+                    if(UsarSplit && tamanhoRestante >= Configuracoes.TAM_MIN_BLOCO)
+                    {
+                        BlocoDeMemoria blocoExpandido = BlocoDeMemoria.CriarOcupado(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, tipo, cor);
+                        BlocoDeMemoria blocoLivreRestante = BlocoDeMemoria.CriarLivre(blocoProximo.Id, blocoExpandido.EnderecoFim + 1, tamanhoRestante, Color.FromArgb(40, 140, 70));
+
+                        noAtual.Value = blocoExpandido;
+                        noProximo.Value = blocoLivreRestante;
+
+                        EscreverMetadadosBloco(blocoExpandido);
+                        EscreverMetadadosBloco(blocoLivreRestante);
+
+                        aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                        {
+                            Descricao = $"Bloco #{blocoExpandido.Id} expandido utilizando parte do bloco livre #{blocoProximo.Id}.",
+                            EnderecoBlocoEmAnalise = blocoExpandido.EnderecoInicio
+                        });
+
+                        return blocoExpandido;
+                    }
+
+                    // Nao tem um bloco livre valido sobrando. Portanto, ocupa toda a regiao dos dois blocos
+                    BlocoDeMemoria blocoExpandidoInteiro = BlocoDeMemoria.CriarOcupadoComBlocoInteiro(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, tamanhoDisponivel, tipo, cor);
+
+                    noAtual.Value = blocoExpandidoInteiro;
+
+                    Blocos.Remove(noProximo);
+
+                    EscreverMetadadosBloco(blocoExpandidoInteiro);
+
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao =  $"Bloco #{blocoExpandidoInteiro.Id} expandido utilizando todo o bloco livre #{blocoProximo.Id}.",
+
+                        EnderecoBlocoEmAnalise = blocoExpandidoInteiro.EnderecoInicio
+                    });
+
+                    return blocoExpandidoInteiro;
+                }
+            }
+
+            // 3 - precisa trocar o bloco de lugar
+
+            BlocoDeMemoria? novoBloco = Malloc(tamanhoSolicitado, tipo, cor, algoritmo, aoGerarPasso);
+
+            if (novoBloco is null)
+            {
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Não foi possível realocar o bloco #{blocoAtual.Id}.",
+                    EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio
+                });
+
+                return null;
+            }
+
+            int quantidadeCopiar = Math.Min(blocoAtual.TamanhoPayload, tamanhoSolicitado);
+
+            int enderecoPayloadAntigo = blocoAtual.EnderecoInicio + Configuracoes.TAM_HEADER;
+
+            int enderecoPayloadNovo =  novoBloco.EnderecoInicio + Configuracoes.TAM_HEADER;
+
+            Memoria.AsSpan(enderecoPayloadAntigo, quantidadeCopiar).CopyTo(Memoria.AsSpan(enderecoPayloadNovo, quantidadeCopiar));
+
+            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+            {
+                Descricao = $"Copiando {quantidadeCopiar} bytes do bloco #{blocoAtual.Id} " + $"para o novo bloco #{novoBloco.Id}.",
+                EnderecoBlocoEmAnalise = novoBloco.EnderecoInicio
+            });
+
+            Free(blocoAtual.Id, aoGerarPasso);
+
+            return novoBloco;
         }
 
         public bool Free(int idBloco, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
@@ -166,7 +320,7 @@ namespace SimuHeap.Services
 
                 aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                 {
-                    Descricao = $"Unindo blocos livres #{noAnterior.Value.Id} e {noAtual.Value.Id}.",
+                    Descricao = $"Unindo blocos livres #{blocoAnterior.Id} e {blocoAtual.Id}.",
                     EnderecoBlocoEmAnalise = noAtual.Value.EnderecoInicio
                 });
             }
@@ -197,7 +351,7 @@ namespace SimuHeap.Services
 
                 aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                 {
-                    Descricao = $"Blocos unidos. #{blocoUnido.Id} agora possui {blocoUnido.TamanhoTotal} bytes.",
+                    Descricao = $"Unindo blocos livres #{blocoAtual.Id} e #{blocoProximo.Id}. O bloco resultante possui {blocoUnido.TamanhoTotal} bytes.",
                     EnderecoBlocoEmAnalise = blocoUnido.EnderecoInicio
                 });
             }
@@ -293,6 +447,23 @@ namespace SimuHeap.Services
             BinaryPrimitives.WriteUInt32LittleEndian(Memoria.AsSpan(bloco.EnderecoHeader, Configuracoes.TAM_HEADER), valorHeader);
 
             BinaryPrimitives.WriteUInt32LittleEndian(Memoria.AsSpan(bloco.EnderecoFooter, Configuracoes.TAM_FOOTER), valorFooter);
+        }
+
+        private LinkedListNode<BlocoDeMemoria>? BuscarBlocoOcupado(int idBloco)
+        {
+            LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
+
+            while(atual is not null)
+            {
+                if(!atual.Value.EstaLivre && atual.Value.Id == idBloco)
+                {
+                    return atual;
+                }
+
+                atual = atual.Next;
+            }
+
+            return null;
         }
     }
 }

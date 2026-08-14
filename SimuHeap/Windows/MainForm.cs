@@ -95,12 +95,36 @@ namespace SimuHeap.Windows
 
         private void Btn_Calloc_Click(object sender, EventArgs e)
         {
+            CallocForm cf = new CallocForm();
 
+            if (cf.ShowDialog() != DialogResult.OK || cf.EventoCriado == null) return;
+
+            cf.EventoCriado.Id = executor.Eventos.Count + 1;
+            cf.EventoCriado.ReferenciaBloco = proximaReferenciaBloco;
+            proximaReferenciaBloco++;
+
+            cf.EventoCriado.AtualizarDescricao();
+
+            executor.Eventos.Add(cf.EventoCriado);
+            AtualizarListaEventos();
         }
 
         private void Btn_Realloc_Click(object sender, EventArgs e)
         {
+            List<ReferenciaAlocacao> alocacoesAtivas = ObterAlocacoesAtivas();
+            if (alocacoesAtivas.Count == 0)
+            {
+                MessageBox.Show("Não há blocos alocados", "Free", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            ReallocForm rf = new ReallocForm(alocacoesAtivas);
+
+            if (rf.ShowDialog() != DialogResult.OK || rf.EventoCriado == null) return;
+
+            rf.EventoCriado.Id = executor.Eventos.Count + 1;
+            executor.Eventos.Add(rf.EventoCriado);
+            AtualizarListaEventos();
         }
 
         private void Btn_Free_Click(object sender, EventArgs e)
@@ -326,7 +350,6 @@ namespace SimuHeap.Windows
                          *
                          * bloco1 continua sendo bloco1.
                          */
-                        throw new NotImplementedException();
                         break;
                 }
             }
