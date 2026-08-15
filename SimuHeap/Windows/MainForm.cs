@@ -147,16 +147,232 @@ namespace SimuHeap.Windows
 
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
         {
+            InicializarEventosTeste();
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
 
-            executor.Executar(heapSimulator);
+            AlgoritmosDeAlocacao algoritmo = AlgoritmosDeAlocacao.FirstFit;
+
+            if (UseFirstFit.Checked) algoritmo = AlgoritmosDeAlocacao.FirstFit;
+            else if (UseBestFit.Checked) algoritmo = AlgoritmosDeAlocacao.BestFit;
+            else if (UseWorstFit.Checked) algoritmo = AlgoritmosDeAlocacao.WorstFit;
+
+            executor.Executar(heapSimulator, algoritmo);
             snapshotAtual = 0;
             MostrarSnapshotAtual();
 
             this.Panel_Simulacao.Enabled = true;
 
         }
+
+        private void InicializarEventosTeste()
+        {
+            executor.Eventos.Clear();
+
+            proximaReferenciaBloco = 1;
+
+            /*
+             * Recomendo executar este cenário com uma heap
+             * de pelo menos 256 bytes.
+             */
+
+            // --------------------------------------------------
+            // 1 - malloc: int[4]
+            // --------------------------------------------------
+            EventoMalloc malloc1 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Int,
+                Quantidade = 4
+            };
+
+            malloc1.AtualizarDescricao();
+            executor.Eventos.Add(malloc1);
+
+
+            // --------------------------------------------------
+            // 2 - malloc: int[8]
+            // Bloco maior, que depois será liberado.
+            // --------------------------------------------------
+            EventoMalloc malloc2 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Int,
+                Quantidade = 8
+            };
+
+            malloc2.AtualizarDescricao();
+            executor.Eventos.Add(malloc2);
+
+
+            // --------------------------------------------------
+            // 3 - calloc: short[8]
+            // Permite verificar se o payload ficou zerado.
+            // --------------------------------------------------
+            EventoCalloc calloc1 = new EventoCalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Short,
+                Quantidade = 8
+            };
+
+            calloc1.AtualizarDescricao();
+            executor.Eventos.Add(calloc1);
+
+
+            // --------------------------------------------------
+            // 4 - malloc: char[8]
+            // Bloco pequeno que também será liberado depois.
+            // --------------------------------------------------
+            EventoMalloc malloc3 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 8
+            };
+
+            malloc3.AtualizarDescricao();
+            executor.Eventos.Add(malloc3);
+
+
+            // --------------------------------------------------
+            // 5 - malloc: int[8]
+            // Útil para testar realloc diminuindo o bloco.
+            // --------------------------------------------------
+            EventoMalloc malloc4 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Int,
+                Quantidade = 8
+            };
+
+            malloc4.AtualizarDescricao();
+            executor.Eventos.Add(malloc4);
+
+
+            // --------------------------------------------------
+            // 6 - free(bloco2)
+            // Cria um bloco livre relativamente grande.
+            // --------------------------------------------------
+            EventoFree free1 = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc2.ReferenciaBloco
+            };
+
+            free1.AtualizarDescricao();
+            executor.Eventos.Add(free1);
+
+
+            // --------------------------------------------------
+            // 7 - free(bloco4)
+            // Cria outro bloco livre, menor que o anterior.
+            //
+            // Agora teremos blocos livres de tamanhos diferentes,
+            // o que é útil para comparar os algoritmos.
+            // --------------------------------------------------
+            EventoFree free2 = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc3.ReferenciaBloco
+            };
+
+            free2.AtualizarDescricao();
+            executor.Eventos.Add(free2);
+
+
+            // --------------------------------------------------
+            // 8 - malloc: int[2]
+            //
+            // Aqui First-Fit, Best-Fit e Worst-Fit podem
+            // selecionar blocos diferentes.
+            // --------------------------------------------------
+            EventoMalloc malloc5 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Int,
+                Quantidade = 2
+            };
+
+            malloc5.AtualizarDescricao();
+            executor.Eventos.Add(malloc5);
+
+
+            // --------------------------------------------------
+            // 9 - realloc do bloco5 para int[2]
+            //
+            // O bloco foi criado como int[8], então aqui temos
+            // uma redução considerável e possibilidade de split.
+            // --------------------------------------------------
+            EventoRealloc realloc1 = new EventoRealloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc4.ReferenciaBloco,
+                TipoVariavel = malloc4.TipoVariavel,
+                NovaQuantidade = 2
+            };
+
+            realloc1.AtualizarDescricao();
+            executor.Eventos.Add(realloc1);
+
+
+            // --------------------------------------------------
+            // 10 - realloc do bloco1 aumentando.
+            //
+            // Dependendo da disposição atual dos blocos,
+            // poderá expandir para a direita ou precisar mover.
+            // --------------------------------------------------
+            EventoRealloc realloc2 = new EventoRealloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc1.ReferenciaBloco,
+                TipoVariavel = malloc1.TipoVariavel,
+                NovaQuantidade = 12
+            };
+
+            realloc2.AtualizarDescricao();
+            executor.Eventos.Add(realloc2);
+
+
+            // --------------------------------------------------
+            // 11 - free do calloc
+            // Ajuda a testar liberação e coalescing.
+            // --------------------------------------------------
+            EventoFree free3 = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = calloc1.ReferenciaBloco
+            };
+
+            free3.AtualizarDescricao();
+            executor.Eventos.Add(free3);
+
+
+            // --------------------------------------------------
+            // 12 - calloc: char[12]
+            // Nova alocação após vários frees/reallocs.
+            // --------------------------------------------------
+            EventoCalloc calloc2 = new EventoCalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 12
+            };
+
+            calloc2.AtualizarDescricao();
+            executor.Eventos.Add(calloc2);
+
+
+            AtualizarListaEventos();
+        }
+
         private void Btn_PararSimulacao_Click(object sender, EventArgs e)
         {
 

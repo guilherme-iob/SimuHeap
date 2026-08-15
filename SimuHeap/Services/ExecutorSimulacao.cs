@@ -16,7 +16,7 @@ namespace SimuHeap.Services
 
         private readonly Dictionary<int, int> referenciasBlocos = new();
 
-        public void Executar(HeapSimulator simulator, bool gerarPassosIntermediatios = true)
+        public void Executar(HeapSimulator simulator, AlgoritmosDeAlocacao algoritmo, bool gerarPassosIntermediatios = true)
         {
             Snapshots.Clear();
             referenciasBlocos.Clear();
@@ -27,7 +27,7 @@ namespace SimuHeap.Services
 
             foreach (EventoHeap evento in Eventos)
             {
-                ExecutarEvento(simulator, evento, ref passo, gerarPassosIntermediatios);
+                ExecutarEvento(simulator, evento, algoritmo, ref passo, gerarPassosIntermediatios);
 
                 Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao, null, evento.Id));
                 passo++;
@@ -35,7 +35,7 @@ namespace SimuHeap.Services
 
         }
 
-        private void ExecutarEvento(HeapSimulator simulador, EventoHeap evento, ref int passo, bool gerarPassosIntermediarios)
+        private void ExecutarEvento(HeapSimulator simulador, EventoHeap evento, AlgoritmosDeAlocacao algoritmo, ref int passo, bool gerarPassosIntermediarios)
         {
             switch (evento)
             {
@@ -55,7 +55,7 @@ namespace SimuHeap.Services
                             };
                         }
 
-                        BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
                         if (bloco is not null) referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
@@ -79,7 +79,7 @@ namespace SimuHeap.Services
                             };
                         }
 
-                        BlocoDeMemoria? bloco = simulador.Calloc(tamanhoSolicitado, calloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        BlocoDeMemoria? bloco = simulador.Calloc(tamanhoSolicitado, calloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
                         if (bloco is not null) referenciasBlocos[calloc.ReferenciaBloco] = bloco.Id;
@@ -110,7 +110,7 @@ namespace SimuHeap.Services
                             };
                         }
 
-                        BlocoDeMemoria? bloco = simulador.Realloc(idBloco, tamanhoSolicitado, realloc.TipoVariavel, Color.FromArgb(190, 50, 50), AlgoritmosDeAlocacao.FirstFit, registrarPasso);
+                        BlocoDeMemoria? bloco = simulador.Realloc(idBloco, tamanhoSolicitado, realloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
                         if (bloco is not null) referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;

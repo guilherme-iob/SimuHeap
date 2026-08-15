@@ -369,9 +369,9 @@ namespace SimuHeap.Services
                 case AlgoritmosDeAlocacao.FirstFit:
                     return BuscarFirstFit(tamanhoNecessario, aoGerarPasso);
                 case AlgoritmosDeAlocacao.BestFit:
-                    return BuscarBestFit(tamanhoNecessario);
+                    return BuscarBestFit(tamanhoNecessario, aoGerarPasso);
                 case AlgoritmosDeAlocacao.WorstFit:
-                    return BuscarWorstFit(tamanhoNecessario);
+                    return BuscarWorstFit(tamanhoNecessario, aoGerarPasso);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(algoritmo), "Algoritmo de alocação inválido");
             }
@@ -413,14 +413,102 @@ namespace SimuHeap.Services
             return null;
         }
 
-        private LinkedListNode<BlocoDeMemoria>? BuscarBestFit(int tamanhoNecessario)
+        private LinkedListNode<BlocoDeMemoria>? BuscarBestFit(int tamanhoNecessario, Action<EstadoPassoSimulacao>? aoGerarPasso)
         {
-            throw new NotImplementedException();
+            LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
+            LinkedListNode<BlocoDeMemoria>? melhorBloco = null;
+
+            while(atual is not null)
+            {
+                BlocoDeMemoria blocoAtual = atual.Value;
+                if (blocoAtual.EstaLivre)
+                {
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao = $"Analisando bloco livre de {blocoAtual.TamanhoTotal} bytes.",
+                        EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
+                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio
+                    });
+
+                    if(blocoAtual.TamanhoTotal >= tamanhoNecessario)
+                    {
+                        if(melhorBloco is null || blocoAtual.TamanhoTotal < melhorBloco.Value.TamanhoTotal)
+                        {
+                            melhorBloco = atual;
+                            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                            {
+                                Descricao = $"Bloco #{blocoAtual.Id}, de {blocoAtual.TamanhoTotal} bytes, é o melhor até o momento.",
+                                EnderecoBlocoEmAnalise = null,
+                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio
+                            });
+                        }
+                    }
+                }
+
+                atual = atual.Next;
+            }
+
+            if(melhorBloco is not null)
+            {
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Bloco #{melhorBloco.Value.Id}, de {melhorBloco.Value.TamanhoTotal} bytes, selecionado pelo Best-Fit.",
+                    EnderecoBlocoEmAnalise = null,
+                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio
+                });
+            }
+
+            return melhorBloco;
         }
 
-        private LinkedListNode<BlocoDeMemoria>? BuscarWorstFit(int tamanhoNecessario)
+        private LinkedListNode<BlocoDeMemoria>? BuscarWorstFit(int tamanhoNecessario, Action<EstadoPassoSimulacao>? aoGerarPasso)
         {
-            throw new NotImplementedException();
+            LinkedListNode<BlocoDeMemoria>? atual = Blocos.First;
+            LinkedListNode<BlocoDeMemoria>? melhorBloco = null;
+
+            while(atual is not null)
+            {
+                BlocoDeMemoria blocoAtual = atual.Value;
+
+                if (blocoAtual.EstaLivre)
+                {
+                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    {
+                        Descricao = $"Analisando bloco livre de {blocoAtual.TamanhoTotal} bytes.",
+                        EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
+                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio
+                    });
+
+                    if(blocoAtual.TamanhoTotal >= tamanhoNecessario)
+                    {
+                        if(melhorBloco is null || blocoAtual.TamanhoTotal > melhorBloco.Value.TamanhoTotal)
+                        {
+                            melhorBloco = atual;
+
+                            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                            {
+                                Descricao = $"Bloco #{blocoAtual.Id}, de {blocoAtual.TamanhoTotal} bytes, é o melhor até o momento.",
+                                EnderecoBlocoEmAnalise = null,
+                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio
+                            });
+                        }
+                    }
+                }
+
+                atual = atual.Next;
+            }
+
+            if (melhorBloco is not null)
+            {
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Bloco #{melhorBloco.Value.Id}, de {melhorBloco.Value.TamanhoTotal} bytes, selecionado pelo Worst-Fit.",
+                    EnderecoBlocoEmAnalise = null,
+                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio
+                });
+            }
+
+            return melhorBloco;
         }
 
         private BlocoDeMemoria OcuparBlocoInteiro(LinkedListNode<BlocoDeMemoria> noLivre, int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor)
