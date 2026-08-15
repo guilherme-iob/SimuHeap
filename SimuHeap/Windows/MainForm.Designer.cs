@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             PanelPrincipal = new TableLayoutPanel();
             PanelMenuSuperior = new Panel();
             Lbl_SnapshotAtual = new Label();
@@ -78,7 +79,13 @@
             label1 = new Label();
             Label_Heap = new Label();
             Panel_Eventos = new Panel();
+            panel6 = new Panel();
             DataGridViewEventos = new DataGridView();
+            Panel_OpcoesEventos = new Panel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            Btn_ExcluirEvento = new Button();
+            Btn_DescerEvento = new Button();
+            Btn_SubirEvento = new Button();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -102,7 +109,10 @@
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).BeginInit();
             Panel_Eventos.SuspendLayout();
+            panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).BeginInit();
+            Panel_OpcoesEventos.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // PanelPrincipal
@@ -714,31 +724,116 @@
             // 
             // Panel_Eventos
             // 
-            Panel_Eventos.Controls.Add(DataGridViewEventos);
+            Panel_Eventos.Controls.Add(panel6);
+            Panel_Eventos.Controls.Add(Panel_OpcoesEventos);
             Panel_Eventos.Dock = DockStyle.Fill;
             Panel_Eventos.Location = new Point(820, 3);
             Panel_Eventos.Name = "Panel_Eventos";
             Panel_Eventos.Size = new Size(435, 465);
             Panel_Eventos.TabIndex = 1;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(DataGridViewEventos);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(0, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(435, 421);
+            panel6.TabIndex = 5;
+            // 
             // DataGridViewEventos
             // 
-            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle4;
             DataGridViewEventos.Dock = DockStyle.Fill;
             DataGridViewEventos.Location = new Point(0, 0);
             DataGridViewEventos.Name = "DataGridViewEventos";
             DataGridViewEventos.RowHeadersWidth = 51;
-            DataGridViewEventos.Size = new Size(435, 465);
+            DataGridViewEventos.Size = new Size(435, 421);
             DataGridViewEventos.TabIndex = 2;
+            // 
+            // Panel_OpcoesEventos
+            // 
+            Panel_OpcoesEventos.Controls.Add(tableLayoutPanel5);
+            Panel_OpcoesEventos.Dock = DockStyle.Bottom;
+            Panel_OpcoesEventos.Location = new Point(0, 421);
+            Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
+            Panel_OpcoesEventos.Size = new Size(435, 44);
+            Panel_OpcoesEventos.TabIndex = 4;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel5.Controls.Add(Btn_ExcluirEvento, 2, 0);
+            tableLayoutPanel5.Controls.Add(Btn_DescerEvento, 1, 0);
+            tableLayoutPanel5.Controls.Add(Btn_SubirEvento, 0, 0);
+            tableLayoutPanel5.Dock = DockStyle.Left;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(200, 44);
+            tableLayoutPanel5.TabIndex = 3;
+            // 
+            // Btn_ExcluirEvento
+            // 
+            Btn_ExcluirEvento.BackgroundImage = Properties.Resources.trash;
+            Btn_ExcluirEvento.BackgroundImageLayout = ImageLayout.Center;
+            Btn_ExcluirEvento.Dock = DockStyle.Fill;
+            Btn_ExcluirEvento.FlatAppearance.BorderSize = 0;
+            Btn_ExcluirEvento.FlatStyle = FlatStyle.Flat;
+            Btn_ExcluirEvento.Location = new Point(135, 3);
+            Btn_ExcluirEvento.Name = "Btn_ExcluirEvento";
+            Btn_ExcluirEvento.Size = new Size(62, 38);
+            Btn_ExcluirEvento.TabIndex = 5;
+            Btn_ExcluirEvento.UseVisualStyleBackColor = true;
+            Btn_ExcluirEvento.Click += Btn_ExcluirEvento_Click;
+            // 
+            // Btn_DescerEvento
+            // 
+            Btn_DescerEvento.BackgroundImage = Properties.Resources.arrow_down;
+            Btn_DescerEvento.BackgroundImageLayout = ImageLayout.Center;
+            Btn_DescerEvento.Dock = DockStyle.Fill;
+            Btn_DescerEvento.FlatAppearance.BorderSize = 0;
+            Btn_DescerEvento.FlatStyle = FlatStyle.Flat;
+            Btn_DescerEvento.Location = new Point(69, 3);
+            Btn_DescerEvento.Name = "Btn_DescerEvento";
+            Btn_DescerEvento.Size = new Size(60, 38);
+            Btn_DescerEvento.TabIndex = 4;
+            Btn_DescerEvento.UseVisualStyleBackColor = true;
+            Btn_DescerEvento.Click += Btn_DescerEvento_Click;
+            // 
+            // Btn_SubirEvento
+            // 
+            Btn_SubirEvento.BackgroundImage = Properties.Resources.arrow_up;
+            Btn_SubirEvento.BackgroundImageLayout = ImageLayout.Center;
+            Btn_SubirEvento.Dock = DockStyle.Fill;
+            Btn_SubirEvento.FlatAppearance.BorderSize = 0;
+            Btn_SubirEvento.FlatStyle = FlatStyle.Flat;
+            Btn_SubirEvento.Location = new Point(3, 3);
+            Btn_SubirEvento.Name = "Btn_SubirEvento";
+            Btn_SubirEvento.Size = new Size(60, 38);
+            Btn_SubirEvento.TabIndex = 3;
+            Btn_SubirEvento.UseVisualStyleBackColor = true;
+            Btn_SubirEvento.Click += Btn_SubirEvento_Click;
             // 
             // MainForm
             // 
@@ -775,7 +870,10 @@
             panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).EndInit();
             Panel_Eventos.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).EndInit();
+            Panel_OpcoesEventos.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -829,5 +927,11 @@
         private DataGridView DataGridViewBlocosLivres;
         private DataGridView DataGridViewEventos;
         private Panel panel4;
+        private Panel Panel_OpcoesEventos;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Button Btn_ExcluirEvento;
+        private Button Btn_DescerEvento;
+        private Button Btn_SubirEvento;
+        private Panel panel6;
     }
 }

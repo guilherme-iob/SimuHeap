@@ -1,6 +1,7 @@
 ﻿using SimuHeap.Data;
 using SimuHeap.Enums;
 using SimuHeap.Models;
+using SimuHeap.Utils;
 using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace SimuHeap.Services
 
             proximoId = 1;
 
-            BlocoDeMemoria blocoInicial = BlocoDeMemoria.CriarLivre(GerarNovoId(), 0, TamanhoHeap, Color.FromArgb(40, 140, 70));
+            BlocoDeMemoria blocoInicial = BlocoDeMemoria.CriarLivre(GerarNovoId(), 0, TamanhoHeap, CoresSimulacao.BlocoLivre);
             Blocos.AddLast(blocoInicial);
 
             EscreverMetadadosBloco(blocoInicial);
@@ -113,7 +114,7 @@ namespace SimuHeap.Services
                 {
                     BlocoDeMemoria blocoReduzido = BlocoDeMemoria.CriarOcupado(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, tipo, cor);
 
-                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), blocoReduzido.EnderecoFim + 1, tamanhoRestante, Color.FromArgb(40, 140, 70));
+                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), blocoReduzido.EnderecoFim + 1, tamanhoRestante, CoresSimulacao.BlocoLivre);
 
                     noAtual.Value = blocoReduzido;
 
@@ -126,7 +127,8 @@ namespace SimuHeap.Services
                     {
                         Descricao = $"Bloco #{blocoReduzido.Id} reduzido." +
                         $"Foi criado um novo bloco livre de {blocoLivre.TamanhoTotal} bytes.",
-                        EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio
+                        EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ReduzindoBloco
                     });
 
                     if (UsarCoalescing)
@@ -160,7 +162,7 @@ namespace SimuHeap.Services
                     if(UsarSplit && tamanhoRestante >= Configuracoes.TAM_MIN_BLOCO)
                     {
                         BlocoDeMemoria blocoExpandido = BlocoDeMemoria.CriarOcupado(blocoAtual.Id, blocoAtual.EnderecoInicio, tamanhoSolicitado, tipo, cor);
-                        BlocoDeMemoria blocoLivreRestante = BlocoDeMemoria.CriarLivre(blocoProximo.Id, blocoExpandido.EnderecoFim + 1, tamanhoRestante, Color.FromArgb(40, 140, 70));
+                        BlocoDeMemoria blocoLivreRestante = BlocoDeMemoria.CriarLivre(blocoProximo.Id, blocoExpandido.EnderecoFim + 1, tamanhoRestante, CoresSimulacao.BlocoLivre);
 
                         noAtual.Value = blocoExpandido;
                         noProximo.Value = blocoLivreRestante;
@@ -171,7 +173,8 @@ namespace SimuHeap.Services
                         aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                         {
                             Descricao = $"Bloco #{blocoExpandido.Id} expandido utilizando parte do bloco livre #{blocoProximo.Id}.",
-                            EnderecoBlocoEmAnalise = blocoExpandido.EnderecoInicio
+                            EnderecoBlocoEmAnalise = blocoExpandido.EnderecoInicio,
+                            DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ExpandindoBloco
                         });
 
                         return blocoExpandido;
@@ -189,8 +192,9 @@ namespace SimuHeap.Services
                     aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                     {
                         Descricao =  $"Bloco #{blocoExpandidoInteiro.Id} expandido utilizando todo o bloco livre #{blocoProximo.Id}.",
+                        EnderecoBlocoEmAnalise = blocoExpandidoInteiro.EnderecoInicio,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ExpandindoBloco
 
-                        EnderecoBlocoEmAnalise = blocoExpandidoInteiro.EnderecoInicio
                     });
 
                     return blocoExpandidoInteiro;
@@ -243,7 +247,7 @@ namespace SimuHeap.Services
                 {
                     int enderecoInicio = bloco.EnderecoInicio;
                     int tamanhoTotal = bloco.TamanhoTotal;
-                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(bloco.Id, enderecoInicio, tamanhoTotal, Color.FromArgb(40, 140, 70));
+                    BlocoDeMemoria blocoLivre = BlocoDeMemoria.CriarLivre(bloco.Id, enderecoInicio, tamanhoTotal, CoresSimulacao.BlocoLivre);
                     atual.Value = blocoLivre;
 
                     EscreverMetadadosBloco(blocoLivre);
@@ -251,7 +255,8 @@ namespace SimuHeap.Services
                     aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                     {
                         Descricao = $"Bloco #{blocoLivre.Id} sendo liberado.",
-                        EnderecoBlocoEmAnalise = blocoLivre.EnderecoInicio
+                        EnderecoBlocoEmAnalise = blocoLivre.EnderecoInicio,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.LiberandoBloco
                     });
 
                     if (UsarCoalescing)
@@ -277,7 +282,7 @@ namespace SimuHeap.Services
 
             int enderecoNovoBlocoLivre = blocoOcupado.EnderecoFim + 1;
 
-            BlocoDeMemoria novoBlocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), enderecoNovoBlocoLivre, tamanhoRestante, Color.FromArgb(40, 140, 70));
+            BlocoDeMemoria novoBlocoLivre = BlocoDeMemoria.CriarLivre(GerarNovoId(), enderecoNovoBlocoLivre, tamanhoRestante, CoresSimulacao.BlocoLivre);
 
             noLivre.Value = blocoOcupado;
             Blocos.AddAfter(noLivre, novoBlocoLivre);
@@ -299,6 +304,16 @@ namespace SimuHeap.Services
 
                 BlocoDeMemoria blocoAtual = noAtual.Value;
 
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Os blocos livres #{blocoAnterior.Id} e #{blocoAtual.Id} são adjacentes e serão unidos.",
+                    EnderecoBlocoEmAnalise = blocoAnterior.EnderecoInicio,
+                    EnderecoBlocoSecundario = blocoAtual.EnderecoInicio,
+                    DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.Coalescing,
+                    DestaqueBlocoSecundario = TipoDestaqueSimulacao.Coalescing
+
+                });
+
                 int tamanhoTotal = blocoAnterior.TamanhoTotal +  blocoAtual.TamanhoTotal;
 
                 // Mantém o ID do bloco mais à esquerda.
@@ -306,7 +321,7 @@ namespace SimuHeap.Services
                                                             blocoAnterior.Id,
                                                             blocoAnterior.EnderecoInicio,
                                                             tamanhoTotal,
-                                                            Color.FromArgb(40, 140, 70));
+                                                            CoresSimulacao.BlocoLivre);
 
                 noAnterior.Value = blocoUnido;
 
@@ -320,8 +335,9 @@ namespace SimuHeap.Services
 
                 aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                 {
-                    Descricao = $"Unindo blocos livres #{blocoAnterior.Id} e {blocoAtual.Id}.",
-                    EnderecoBlocoEmAnalise = noAtual.Value.EnderecoInicio
+                    Descricao = $"Blocos #{blocoAnterior.Id} e #{blocoAtual.Id} unidos. O bloco resultante possui {blocoUnido.TamanhoTotal} bytes.",
+                    EnderecoBlocoEmAnalise = noAtual.Value.EnderecoInicio,
+                    DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.Coalescing
                 });
             }
 
@@ -334,13 +350,23 @@ namespace SimuHeap.Services
 
                 BlocoDeMemoria blocoProximo = noProximo.Value;
 
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Os blocos livres #{blocoAtual.Id} e #{blocoProximo.Id} são adjacentes e serão unidos.",
+
+                    EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
+                    EnderecoBlocoSecundario = blocoProximo.EnderecoInicio,
+                    DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.Coalescing,
+                    DestaqueBlocoSecundario = TipoDestaqueSimulacao.Coalescing
+                });
+
                 int tamanhoTotal = blocoAtual.TamanhoTotal + blocoProximo.TamanhoTotal;
 
                 BlocoDeMemoria blocoUnido = BlocoDeMemoria.CriarLivre(
                                                             blocoAtual.Id,
                                                             blocoAtual.EnderecoInicio,
                                                             tamanhoTotal,
-                                                            Color.FromArgb(40, 140, 70));
+                                                            CoresSimulacao.BlocoLivre);
 
                 noAtual.Value = blocoUnido;
 
@@ -351,8 +377,9 @@ namespace SimuHeap.Services
 
                 aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                 {
-                    Descricao = $"Unindo blocos livres #{blocoAtual.Id} e #{blocoProximo.Id}. O bloco resultante possui {blocoUnido.TamanhoTotal} bytes.",
-                    EnderecoBlocoEmAnalise = blocoUnido.EnderecoInicio
+                    Descricao = $"Blocos #{blocoAtual.Id} e #{blocoProximo.Id} unidos. O bloco resultante possui {blocoUnido.TamanhoTotal} bytes.",
+                    EnderecoBlocoEmAnalise = blocoUnido.EnderecoInicio,
+                    DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.Coalescing
                 });
             }
         }
@@ -391,7 +418,8 @@ namespace SimuHeap.Services
                     {
                         Descricao = $"Analisando bloco livre de {bloco.TamanhoTotal} bytes.",
                         EnderecoBlocoEmAnalise = bloco.EnderecoInicio,
-                        EnderecoMelhorBloco = null
+                        EnderecoMelhorBloco = null,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.BlocoEmAnalise
                     });
 
                     if(bloco.TamanhoTotal >= tamanhoNecessario)
@@ -400,7 +428,8 @@ namespace SimuHeap.Services
                         {
                             Descricao = $"Bloco de {bloco.TamanhoTotal} bytes selecionado pelo First-Fit.",
                             EnderecoBlocoEmAnalise = null,
-                            EnderecoMelhorBloco = bloco.EnderecoInicio
+                            EnderecoMelhorBloco = bloco.EnderecoInicio,
+                            DestaqueMelhorBloco = TipoDestaqueSimulacao.MelhorBlocoSelecionado
                         });
 
                         return atual;
@@ -427,7 +456,9 @@ namespace SimuHeap.Services
                     {
                         Descricao = $"Analisando bloco livre de {blocoAtual.TamanhoTotal} bytes.",
                         EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
-                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio
+                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.BlocoEmAnalise,
+                        DestaqueMelhorBloco = melhorBloco is not null ? TipoDestaqueSimulacao.MelhorBlocoEncontrado : TipoDestaqueSimulacao.Nenhum
                     });
 
                     if(blocoAtual.TamanhoTotal >= tamanhoNecessario)
@@ -438,8 +469,10 @@ namespace SimuHeap.Services
                             aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                             {
                                 Descricao = $"Bloco #{blocoAtual.Id}, de {blocoAtual.TamanhoTotal} bytes, é o melhor até o momento.",
-                                EnderecoBlocoEmAnalise = null,
-                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio
+                                EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
+                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio,
+                                DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.BlocoEmAnalise,
+                                DestaqueMelhorBloco = TipoDestaqueSimulacao.MelhorBlocoEncontrado
                             });
                         }
                     }
@@ -454,7 +487,8 @@ namespace SimuHeap.Services
                 {
                     Descricao = $"Bloco #{melhorBloco.Value.Id}, de {melhorBloco.Value.TamanhoTotal} bytes, selecionado pelo Best-Fit.",
                     EnderecoBlocoEmAnalise = null,
-                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio
+                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio,
+                    DestaqueMelhorBloco = TipoDestaqueSimulacao.MelhorBlocoSelecionado
                 });
             }
 
@@ -476,7 +510,9 @@ namespace SimuHeap.Services
                     {
                         Descricao = $"Analisando bloco livre de {blocoAtual.TamanhoTotal} bytes.",
                         EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
-                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio
+                        EnderecoMelhorBloco = melhorBloco?.Value.EnderecoInicio,
+                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.BlocoEmAnalise,
+                        DestaqueMelhorBloco = melhorBloco is not null ? TipoDestaqueSimulacao.MelhorBlocoEncontrado : TipoDestaqueSimulacao.Nenhum
                     });
 
                     if(blocoAtual.TamanhoTotal >= tamanhoNecessario)
@@ -488,8 +524,10 @@ namespace SimuHeap.Services
                             aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                             {
                                 Descricao = $"Bloco #{blocoAtual.Id}, de {blocoAtual.TamanhoTotal} bytes, é o melhor até o momento.",
-                                EnderecoBlocoEmAnalise = null,
-                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio
+                                EnderecoBlocoEmAnalise = blocoAtual.EnderecoInicio,
+                                EnderecoMelhorBloco = blocoAtual.EnderecoInicio,
+                                DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.BlocoEmAnalise,
+                                DestaqueMelhorBloco = TipoDestaqueSimulacao.MelhorBlocoEncontrado
                             });
                         }
                     }
@@ -504,7 +542,8 @@ namespace SimuHeap.Services
                 {
                     Descricao = $"Bloco #{melhorBloco.Value.Id}, de {melhorBloco.Value.TamanhoTotal} bytes, selecionado pelo Worst-Fit.",
                     EnderecoBlocoEmAnalise = null,
-                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio
+                    EnderecoMelhorBloco = melhorBloco.Value.EnderecoInicio,
+                    DestaqueMelhorBloco = TipoDestaqueSimulacao.MelhorBlocoSelecionado
                 });
             }
 

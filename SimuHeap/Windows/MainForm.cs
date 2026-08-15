@@ -27,7 +27,7 @@ namespace SimuHeap.Windows
         public MainForm()
         {
             InitializeComponent();
-            this.Panel_Simulacao.Enabled = false;
+            this.Panel_Simulacao_2.Enabled = false;
         }
 
         /*  ====================================
@@ -43,7 +43,7 @@ namespace SimuHeap.Windows
         }
         private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(SelectHeapSize.SelectedItem is not null)
+            if (SelectHeapSize.SelectedItem is not null)
             {
                 AlterarTamanhoHeap((TamanhosHeap)SelectHeapSize.SelectedItem);
             }
@@ -65,7 +65,6 @@ namespace SimuHeap.Windows
 
             grid.ReadOnly = true;
             grid.MultiSelect = false;
-            grid.Enabled = false;
 
             grid.RowHeadersVisible = false;
             grid.ColumnHeadersVisible = false;
@@ -130,7 +129,7 @@ namespace SimuHeap.Windows
         private void Btn_Free_Click(object sender, EventArgs e)
         {
             List<ReferenciaAlocacao> alocacoesAtivas = ObterAlocacoesAtivas();
-            if(alocacoesAtivas.Count == 0)
+            if (alocacoesAtivas.Count == 0)
             {
                 MessageBox.Show("Não há blocos alocados", "Free", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -147,7 +146,18 @@ namespace SimuHeap.Windows
 
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
         {
-            InicializarEventosTeste();
+            if (!ValidarSequenciaEventos(out string mensagemErro))
+            {
+                MessageBox.Show(
+                    mensagemErro,
+                    "Sequência de eventos inválida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            //InicializarEventosTeste();
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
 
@@ -161,7 +171,8 @@ namespace SimuHeap.Windows
             snapshotAtual = 0;
             MostrarSnapshotAtual();
 
-            this.Panel_Simulacao.Enabled = true;
+            this.Panel_Simulacao_2.Enabled = true;
+            this.Panel_OpcoesEventos.Enabled = false;
 
         }
 
@@ -380,7 +391,8 @@ namespace SimuHeap.Windows
 
         private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
         {
-            this.Panel_Simulacao.Enabled = false;
+            this.Panel_Simulacao_2.Enabled = false;
+            this.Panel_OpcoesEventos.Enabled = true;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
             executor.Eventos.Clear();
@@ -421,6 +433,71 @@ namespace SimuHeap.Windows
             MostrarSnapshotAtual();
         }
 
+        private void Btn_SubirEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null) return;
+                
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            // Já está no topo.
+            if (indice <= 0) return;
+
+            EventoHeap eventoSelecionado = executor.Eventos[indice];
+
+            executor.Eventos[indice] = executor.Eventos[indice - 1];
+
+            executor.Eventos[indice - 1] = eventoSelecionado;
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+
+            // Mantém selecionado o evento que acabou de subir.
+            DataGridViewEventos.Rows[indice - 1].Selected = true;
+            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice - 1].Cells[0];
+        }
+
+        private void Btn_DescerEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null) return;
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            // Já está no último evento.
+            if (indice < 0 || indice >= executor.Eventos.Count - 1) return;
+
+            EventoHeap eventoSelecionado = executor.Eventos[indice];
+
+            executor.Eventos[indice] = executor.Eventos[indice + 1];
+
+            executor.Eventos[indice + 1] = eventoSelecionado;
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+
+            // Mantém selecionado o evento depois da movimentação.
+            DataGridViewEventos.Rows[indice + 1].Selected = true;
+            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice + 1].Cells[0];
+        }
+
+        private void Btn_ExcluirEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null)
+                return;
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            if (indice < 0 || indice >= executor.Eventos.Count)
+                return;
+
+            executor.Eventos.RemoveAt(indice);
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+        }
 
         /*  ====================================
          *  FUNÇÕES AUXILIARES
@@ -538,7 +615,7 @@ namespace SimuHeap.Windows
         {
             Dictionary<int, ReferenciaAlocacao> ativas = new();
 
-            foreach(EventoHeap evento in executor.Eventos)
+            foreach (EventoHeap evento in executor.Eventos)
             {
                 switch (evento)
                 {
@@ -570,7 +647,80 @@ namespace SimuHeap.Windows
                 }
             }
 
-            return ativas.Values.OrderBy(x=>x.Id).ToList();
+            return ativas.Values.OrderBy(x => x.Id).ToList();
         }
+
+        private void ReorganizarIdsEventos()
+        {
+            for (int i = 0; i < executor.Eventos.Count; i++)
+            {
+                executor.Eventos[i].Id = i + 1;
+            }
+        }
+
+        private bool ValidarSequenciaEventos(out string mensagemErro)
+        {
+            HashSet<int> referenciasAtivas = new();
+
+            for (int i = 0; i < executor.Eventos.Count; i++)
+            {
+                EventoHeap evento = executor.Eventos[i];
+
+                switch (evento)
+                {
+                    case EventoMalloc malloc:
+                        {
+                            referenciasAtivas.Add(malloc.ReferenciaBloco);
+                            break;
+                        }
+
+                    case EventoCalloc calloc:
+                        {
+                            referenciasAtivas.Add(calloc.ReferenciaBloco);
+                            break;
+                        }
+
+                    case EventoFree free:
+                        {
+                            if (!referenciasAtivas.Contains(free.ReferenciaBloco))
+                            {
+                                mensagemErro =
+                                    $"Evento {i + 1} inválido:\r\n\r\n" +
+                                    $"{free.Descricao}\r\n\r\n" +
+                                    $"O bloco{free.ReferenciaBloco} ainda não foi alocado " +
+                                    $"ou já foi liberado.";
+
+                                return false;
+                            }
+
+                            referenciasAtivas.Remove(free.ReferenciaBloco);
+
+                            break;
+                        }
+
+                    case EventoRealloc realloc:
+                        {
+                            if (!referenciasAtivas.Contains(realloc.ReferenciaBloco))
+                            {
+                                mensagemErro =
+                                    $"Evento {i + 1} inválido:\r\n\r\n" +
+                                    $"{realloc.Descricao}\r\n\r\n" +
+                                    $"O bloco{realloc.ReferenciaBloco} ainda não foi alocado " +
+                                    $"ou já foi liberado.";
+
+                                return false;
+                            }
+
+                            // Realloc mantém a referência ativa.
+                            break;
+                        }
+                }
+            }
+
+            mensagemErro = string.Empty;
+
+            return true;
+        }
+
     }
 }

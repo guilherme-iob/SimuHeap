@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuHeap.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,18 @@ namespace SimuHeap.Models
         public int? EnderecoBlocoEmAnalise { get; set; }
         public int? EnderecoMelhorBloco { get; set; }
 
+        public TipoDestaqueSimulacao DestaqueBlocoEmAnalise { get; set; } = TipoDestaqueSimulacao.Nenhum;
+        public TipoDestaqueSimulacao DestaqueMelhorBloco { get; set; }= TipoDestaqueSimulacao.Nenhum;
+
+        // para visualização melhor do coalescing
+        public int? EnderecoBlocoSecundario { get; set; }
+        public TipoDestaqueSimulacao DestaqueBlocoSecundario { get; set; } = TipoDestaqueSimulacao.Nenhum;
+
+
         public string OperacaoAtual { get; set; } = string.Empty;
         public string InformacoesBusca { get; set; } = string.Empty;
+
+        
 
         //public int BytesLivres { get; set; }
         //public int BytesOcupados { get; set; }
@@ -31,12 +42,12 @@ namespace SimuHeap.Models
         public override string ToString()
         {
             return $"Evento: {DescricaoEvento}\r\n" +
-                $"Passo: {Passo}\r\n" +
-                $"Descrição: {DescricaoPasso}\r\n" +
-                $"Endereco Bloco em Análise: {EnderecoBlocoEmAnalise}\r\n" +
-                $"Endereço Melhor Bloco: {EnderecoMelhorBloco}\r\n"; // +
-                //$"Operação Atual: {OperacaoAtual}\r\n" +
-                //$"Informações Busca: {InformacoesBusca}";
+                   $"Passo: {Passo}\r\n" +
+                   $"Descrição: {DescricaoPasso}\r\n" +
+                   $"Endereco Bloco em Análise: {EnderecoBlocoEmAnalise}\r\n" +
+                   $"Endereço Melhor Bloco: {EnderecoMelhorBloco}\r\n" +
+                   $"Destaque Bloco em Análise: {DestaqueBlocoEmAnalise}\r\n" +
+                   $"Destaque Melhor Bloco: {DestaqueMelhorBloco}\r\n";
         }
     }
 }

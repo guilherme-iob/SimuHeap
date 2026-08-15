@@ -150,11 +150,20 @@ namespace SimuHeap.Services
             return new HeapSnapshot
             {
                 Passo = passo,
+                DescricaoPasso = estado?.Descricao ?? descricaoEvento,
+
                 IdEvento = idEvento,
                 DescricaoEvento = descricaoEvento,
-                DescricaoPasso = estado?.Descricao ?? descricaoEvento,
+                
                 EnderecoBlocoEmAnalise = estado?.EnderecoBlocoEmAnalise,
+                DestaqueBlocoEmAnalise = estado?.DestaqueBlocoEmAnalise ?? TipoDestaqueSimulacao.Nenhum,
+
                 EnderecoMelhorBloco = estado?.EnderecoMelhorBloco,
+                DestaqueMelhorBloco = estado?.DestaqueMelhorBloco ?? TipoDestaqueSimulacao.Nenhum,
+
+                EnderecoBlocoSecundario = estado?.EnderecoBlocoSecundario,
+                DestaqueBlocoSecundario = estado?.DestaqueBlocoSecundario ?? TipoDestaqueSimulacao.Nenhum,
+
                 Memoria = (byte[])simulator.Memoria.Clone(),
                 Blocos = simulator.Blocos.Select(x => x.Clonar()).ToList(),
                 BlocosLivres = simulator.Blocos.Where(x => x.EstaLivre).Select(x => x.Clonar()).ToList(),

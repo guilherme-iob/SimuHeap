@@ -1,6 +1,7 @@
 ﻿using SimuHeap.Enums;
 using SimuHeap.Models;
 using SimuHeap.Services;
+using SimuHeap.Utils;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -234,14 +235,19 @@ namespace SimuHeap.Controls
         {
             if (snapshot != null)
             {
-                if (snapshot.EnderecoBlocoEmAnalise == bloco.EnderecoInicio)
+                if (snapshot.EnderecoMelhorBloco == bloco.EnderecoInicio && snapshot.DestaqueMelhorBloco != TipoDestaqueSimulacao.Nenhum)
                 {
-                    return CorBlocoEmAnalise;
+                    return CoresSimulacao.ObterCorDestaque(snapshot.DestaqueMelhorBloco);
                 }
 
-                if (snapshot.EnderecoMelhorBloco == bloco.EnderecoInicio)
+                if(snapshot.EnderecoBlocoSecundario == bloco.EnderecoInicio && snapshot.DestaqueBlocoSecundario != TipoDestaqueSimulacao.Nenhum)
                 {
-                    return CorMelhorBloco;
+                    return CoresSimulacao.ObterCorDestaque(snapshot.DestaqueBlocoSecundario);
+                }
+
+                if (snapshot.EnderecoBlocoEmAnalise == bloco.EnderecoInicio && snapshot.DestaqueBlocoEmAnalise != TipoDestaqueSimulacao.Nenhum)
+                {
+                    return CoresSimulacao.ObterCorDestaque(snapshot.DestaqueBlocoEmAnalise);
                 }
             }
 
