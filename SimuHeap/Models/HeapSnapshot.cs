@@ -31,7 +31,7 @@ namespace SimuHeap.Models
         public string OperacaoAtual { get; set; } = string.Empty;
         public string InformacoesBusca { get; set; } = string.Empty;
 
-        
+        public Dictionary<int, InformacaoAlocacaoBloco> InformacoesAlocacao { get; set; } = new();
 
         //public int BytesLivres { get; set; }
         //public int BytesOcupados { get; set; }

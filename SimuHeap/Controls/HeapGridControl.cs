@@ -2,6 +2,7 @@
 using SimuHeap.Models;
 using SimuHeap.Services;
 using SimuHeap.Utils;
+using SimuHeap.Windows;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -36,8 +37,7 @@ namespace SimuHeap.Controls
         // Propriedades do controle
 
         [Browsable(false)]
-        [DesignerSerializationVisibility(
-            DesignerSerializationVisibility.Hidden)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public HeapSimulator? Simulator
         {
             get => simulator;
@@ -102,6 +102,7 @@ namespace SimuHeap.Controls
             DoubleBuffered = true;
             ResizeRedraw = true;
             BackColor = Color.FromArgb(30, 30, 30);
+            Cursor = Cursors.Hand;
         }
 
         public void AtualizarVisualizacao()
@@ -251,7 +252,7 @@ namespace SimuHeap.Controls
                 }
             }
 
-            return ObterCorRegiao(bloco,  regiao);
+            return CoresSimulacao.ObterCorRegiao(bloco,  regiao);
         }
 
         private string ObterTextoCelula(BlocoDeMemoria bloco, int endereco)
@@ -289,77 +290,6 @@ namespace SimuHeap.Controls
             };
         }
 
-        private static Color ObterCorRegiao(
-            BlocoDeMemoria bloco,
-            RegiaoBlocoMemoria regiao)
-        {
-            if (bloco.EstaLivre)
-            {
-                return regiao switch
-                {
-                    RegiaoBlocoMemoria.Header =>
-                        EscurecerCor(bloco.Cor, 0.55f),
-
-                    RegiaoBlocoMemoria.Footer =>
-                        EscurecerCor(bloco.Cor, 0.55f),
-
-                    RegiaoBlocoMemoria.Livre =>
-                        bloco.Cor,
-
-                    _ =>
-                        bloco.Cor
-                };
-            }
-
-            return regiao switch
-            {
-                RegiaoBlocoMemoria.Header =>
-                    EscurecerCor(bloco.Cor, 0.55f),
-
-                RegiaoBlocoMemoria.Payload =>
-                    bloco.Cor,
-
-                RegiaoBlocoMemoria.Padding =>
-                    ClarearCor(bloco.Cor, 0.55f),
-
-                RegiaoBlocoMemoria.Footer =>
-                    EscurecerCor(bloco.Cor, 0.55f),
-
-                _ => bloco.Cor
-            };
-        }
-
-        private static Color EscurecerCor(
-            Color cor,
-            float fator)
-        {
-            return Color.FromArgb(
-                cor.A,
-                Math.Clamp((int)(cor.R * fator), 0, 255),
-                Math.Clamp((int)(cor.G * fator), 0, 255),
-                Math.Clamp((int)(cor.B * fator), 0, 255));
-        }
-
-        private static Color ClarearCor(
-            Color cor,
-            float fator)
-        {
-            int vermelho =
-                cor.R + (int)((255 - cor.R) * fator);
-
-            int verde =
-                cor.G + (int)((255 - cor.G) * fator);
-
-            int azul =
-                cor.B + (int)((255 - cor.B) * fator);
-
-            return Color.FromArgb(
-                cor.A,
-                Math.Clamp(vermelho, 0, 255),
-                Math.Clamp(verde, 0, 255),
-                Math.Clamp(azul, 0, 255));
-        }
-
         public void DefinirSnapshot(HeapSnapshot novoSnapshot)
         {
             snapshot = novoSnapshot ?? throw new ArgumentNullException(nameof(novoSnapshot));
@@ -372,6 +302,38 @@ namespace SimuHeap.Controls
             snapshot = null;
             RecalculateDimensions();
             Invalidate();
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            if (e.Button != MouseButtons.Left) return;
+
+            if (cellSize <= 0 || columns <= 0) return;
+
+            // linha e coluna clicada
+            int coluna = e.X / cellSize;
+            int linha = e.Y / cellSize;
+
+            int endereco = linha * columns + coluna;
+
+            if (endereco < 0 || endereco >= MemoriaAtual.Length) return;
+
+            BlocoDeMemoria? blocoClicado = BlocosAtuais.FirstOrDefault(x => x.ContemEndereco(endereco));
+
+            if (blocoClicado is null) return;
+
+            InformacaoAlocacaoBloco? informacao = null;
+
+            if (snapshot is not null)
+            {
+                snapshot.InformacoesAlocacao.TryGetValue(blocoClicado.Id, out informacao);
+            }
+
+            using DetalhesBlocoForm form = new DetalhesBlocoForm(blocoClicado, informacao);
+
+            form.ShowDialog(this);
         }
     }
 }

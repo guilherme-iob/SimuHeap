@@ -1,0 +1,175 @@
+﻿namespace SimuHeap.Windows
+{
+    partial class DetalhesBlocoForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            Controle_BlocoDetalhes = new SimuHeap.Controls.BlocoDetalhesControl();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            lblTitulo = new Label();
+            groupBoxDetalhes = new GroupBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            lblInformacoes2 = new Label();
+            lblInformacoes = new Label();
+            btnFechar = new Button();
+            tableLayoutPanel1.SuspendLayout();
+            groupBoxDetalhes.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            SuspendLayout();
+            // 
+            // Controle_BlocoDetalhes
+            // 
+            Controle_BlocoDetalhes.BackColor = Color.FromArgb(30, 30, 30);
+            Controle_BlocoDetalhes.Dock = DockStyle.Fill;
+            Controle_BlocoDetalhes.Location = new Point(4, 90);
+            Controle_BlocoDetalhes.Margin = new Padding(4);
+            Controle_BlocoDetalhes.Name = "Controle_BlocoDetalhes";
+            Controle_BlocoDetalhes.Size = new Size(743, 107);
+            Controle_BlocoDetalhes.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(Controle_BlocoDetalhes, 0, 1);
+            tableLayoutPanel1.Controls.Add(lblTitulo, 0, 0);
+            tableLayoutPanel1.Controls.Add(groupBoxDetalhes, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnFechar, 0, 3);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(4);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.Size = new Size(751, 576);
+            tableLayoutPanel1.TabIndex = 1;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Location = new Point(4, 0);
+            lblTitulo.Margin = new Padding(4, 0, 4, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(743, 86);
+            lblTitulo.TabIndex = 1;
+            lblTitulo.Text = "Bloco";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBoxDetalhes
+            // 
+            groupBoxDetalhes.Controls.Add(tableLayoutPanel2);
+            groupBoxDetalhes.Dock = DockStyle.Fill;
+            groupBoxDetalhes.Location = new Point(3, 204);
+            groupBoxDetalhes.Name = "groupBoxDetalhes";
+            groupBoxDetalhes.Size = new Size(745, 310);
+            groupBoxDetalhes.TabIndex = 2;
+            groupBoxDetalhes.TabStop = false;
+            groupBoxDetalhes.Text = "Informações";
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(lblInformacoes2, 1, 0);
+            tableLayoutPanel2.Controls.Add(lblInformacoes, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 25);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(739, 282);
+            tableLayoutPanel2.TabIndex = 1;
+            // 
+            // lblInformacoes2
+            // 
+            lblInformacoes2.AutoSize = true;
+            lblInformacoes2.Dock = DockStyle.Fill;
+            lblInformacoes2.Location = new Point(372, 0);
+            lblInformacoes2.Name = "lblInformacoes2";
+            lblInformacoes2.Size = new Size(364, 282);
+            lblInformacoes2.TabIndex = 1;
+            lblInformacoes2.Text = "i2";
+            // 
+            // lblInformacoes
+            // 
+            lblInformacoes.AutoSize = true;
+            lblInformacoes.Dock = DockStyle.Fill;
+            lblInformacoes.Location = new Point(3, 0);
+            lblInformacoes.Name = "lblInformacoes";
+            lblInformacoes.Size = new Size(363, 282);
+            lblInformacoes.TabIndex = 0;
+            lblInformacoes.Text = "i1";
+            // 
+            // btnFechar
+            // 
+            btnFechar.Dock = DockStyle.Right;
+            btnFechar.Location = new Point(663, 520);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(85, 53);
+            btnFechar.TabIndex = 3;
+            btnFechar.Text = "Fechar";
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
+            // 
+            // DetalhesBlocoForm
+            // 
+            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(751, 576);
+            Controls.Add(tableLayoutPanel1);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4);
+            MaximizeBox = false;
+            Name = "DetalhesBlocoForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "DetalhesBlocoForm";
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            groupBoxDetalhes.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Controls.BlocoDetalhesControl Controle_BlocoDetalhes;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label lblTitulo;
+        private GroupBox groupBoxDetalhes;
+        private Label lblInformacoes;
+        private Button btnFechar;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label lblInformacoes2;
+    }
+}

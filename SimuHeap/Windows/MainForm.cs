@@ -157,7 +157,8 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            //InicializarEventosTeste();
+            InicializarEventosTeste();
+
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
 
