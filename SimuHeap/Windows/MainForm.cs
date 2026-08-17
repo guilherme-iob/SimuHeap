@@ -24,6 +24,7 @@ namespace SimuHeap.Windows
 
         private int proximaReferenciaBloco = 1;
 
+        private LegendaCoresForm? legendaCoresForm;
         public MainForm()
         {
             InitializeComponent();
@@ -157,7 +158,7 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            InicializarEventosTeste();
+            //InicializarEventosTeste();
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -387,7 +388,13 @@ namespace SimuHeap.Windows
 
         private void Btn_PararSimulacao_Click(object sender, EventArgs e)
         {
-
+            this.Panel_Simulacao_2.Enabled = false;
+            this.Panel_OpcoesEventos.Enabled = true;
+            snapshotAtual = 0;
+            executor.Snapshots.Clear();
+            executor.Eventos.Clear();
+            heapSimulator.Resetar();
+            HeapGrid.LimparSnapshot();
         }
 
         private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
@@ -437,7 +444,7 @@ namespace SimuHeap.Windows
         private void Btn_SubirEvento_Click(object sender, EventArgs e)
         {
             if (DataGridViewEventos.CurrentRow is null) return;
-                
+
 
             int indice = DataGridViewEventos.CurrentRow.Index;
 
@@ -723,5 +730,18 @@ namespace SimuHeap.Windows
             return true;
         }
 
+        private void Btn_LegendaCores_Click(object sender, EventArgs e)
+        {
+            if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
+            {
+                legendaCoresForm = new LegendaCoresForm();
+                legendaCoresForm.Show(this);
+            }
+            else
+            {
+                legendaCoresForm.BringToFront();
+                legendaCoresForm.Activate();
+            }
+        }
     }
 }

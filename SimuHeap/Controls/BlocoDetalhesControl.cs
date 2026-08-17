@@ -71,9 +71,9 @@ namespace SimuHeap.Controls
                 1f);
 
             using Font fonte = new Font(
-                "Segoe UI",
+                "Consolas",
                 9f,
-                FontStyle.Bold);
+                FontStyle.Regular);
 
             using StringFormat formatoCentralizado =
                 new StringFormat
@@ -109,14 +109,14 @@ namespace SimuHeap.Controls
         }
 
         private void DesenharBlocoOcupado(
-            Graphics graphics,
-            Pen borda,
-            Font fonte,
-            StringFormat formato,
-            int xInicial,
-            int yInicial,
-            int larguraDisponivel,
-            int altura)
+    Graphics graphics,
+    Pen borda,
+    Font fonte,
+    StringFormat formato,
+    int xInicial,
+    int yInicial,
+    int larguraDisponivel,
+    int altura)
         {
             if (Bloco is null)
                 return;
@@ -126,21 +126,59 @@ namespace SimuHeap.Controls
             int larguraHeader = 70;
             int larguraFooter = 70;
 
-            int larguraPadding = 0;
+            int larguraDisponivelDados =
+                larguraDisponivel -
+                larguraHeader -
+                larguraFooter;
+
+            if (larguraDisponivelDados <= 0)
+                return;
+
+            int larguraMinima = 70;
+
+            int tamanhoDados =
+                Bloco.TamanhoPayload +
+                Bloco.TamanhoPadding;
+
+            int larguraPayload;
+            int larguraPadding;
 
             if (Bloco.TamanhoPadding > 0)
             {
-                larguraPadding = 80;
+                larguraPayload = (int)Math.Round(
+                    larguraDisponivelDados *
+                    ((double)Bloco.TamanhoPayload / tamanhoDados));
+
+                larguraPadding =
+                    larguraDisponivelDados -
+                    larguraPayload;
+
+                if (larguraDisponivelDados >= larguraMinima * 2)
+                {
+                    larguraPayload = Math.Max(larguraPayload, larguraMinima);
+                    larguraPadding = Math.Max(larguraPadding, larguraMinima);
+
+                    // Corrige caso os mínimos tenham feito a soma ultrapassar
+                    // a largura total disponível.
+                    int excesso =
+                        larguraPayload +
+                        larguraPadding -
+                        larguraDisponivelDados;
+
+                    if (excesso > 0)
+                    {
+                        if (larguraPayload > larguraPadding)
+                            larguraPayload -= excesso;
+                        else
+                            larguraPadding -= excesso;
+                    }
+                }
             }
-
-            int larguraPayload =
-                larguraDisponivel -
-                larguraHeader -
-                larguraFooter -
-                larguraPadding;
-
-            if (larguraPayload <= 0)
-                return;
+            else
+            {
+                larguraPayload = larguraDisponivelDados;
+                larguraPadding = 0;
+            }
 
             DesenharRegiaoComLargura(
                 graphics,

@@ -45,10 +45,10 @@
             // 
             Controle_BlocoDetalhes.BackColor = Color.FromArgb(30, 30, 30);
             Controle_BlocoDetalhes.Dock = DockStyle.Fill;
-            Controle_BlocoDetalhes.Location = new Point(4, 90);
+            Controle_BlocoDetalhes.Location = new Point(4, 84);
             Controle_BlocoDetalhes.Margin = new Padding(4);
             Controle_BlocoDetalhes.Name = "Controle_BlocoDetalhes";
-            Controle_BlocoDetalhes.Size = new Size(743, 107);
+            Controle_BlocoDetalhes.Size = new Size(743, 32);
             Controle_BlocoDetalhes.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -65,8 +65,8 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 75F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.Size = new Size(751, 576);
             tableLayoutPanel1.TabIndex = 1;
@@ -78,7 +78,7 @@
             lblTitulo.Location = new Point(4, 0);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(743, 86);
+            lblTitulo.Size = new Size(743, 80);
             lblTitulo.TabIndex = 1;
             lblTitulo.Text = "Bloco";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -87,9 +87,9 @@
             // 
             groupBoxDetalhes.Controls.Add(tableLayoutPanel2);
             groupBoxDetalhes.Dock = DockStyle.Fill;
-            groupBoxDetalhes.Location = new Point(3, 204);
+            groupBoxDetalhes.Location = new Point(3, 123);
             groupBoxDetalhes.Name = "groupBoxDetalhes";
-            groupBoxDetalhes.Size = new Size(745, 310);
+            groupBoxDetalhes.Size = new Size(745, 396);
             groupBoxDetalhes.TabIndex = 2;
             groupBoxDetalhes.TabStop = false;
             groupBoxDetalhes.Text = "Informações";
@@ -106,7 +106,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(739, 282);
+            tableLayoutPanel2.Size = new Size(739, 368);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // lblInformacoes2
@@ -115,7 +115,7 @@
             lblInformacoes2.Dock = DockStyle.Fill;
             lblInformacoes2.Location = new Point(372, 0);
             lblInformacoes2.Name = "lblInformacoes2";
-            lblInformacoes2.Size = new Size(364, 282);
+            lblInformacoes2.Size = new Size(364, 368);
             lblInformacoes2.TabIndex = 1;
             lblInformacoes2.Text = "i2";
             // 
@@ -125,16 +125,16 @@
             lblInformacoes.Dock = DockStyle.Fill;
             lblInformacoes.Location = new Point(3, 0);
             lblInformacoes.Name = "lblInformacoes";
-            lblInformacoes.Size = new Size(363, 282);
+            lblInformacoes.Size = new Size(363, 368);
             lblInformacoes.TabIndex = 0;
             lblInformacoes.Text = "i1";
             // 
             // btnFechar
             // 
             btnFechar.Dock = DockStyle.Right;
-            btnFechar.Location = new Point(663, 520);
+            btnFechar.Location = new Point(663, 525);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(85, 53);
+            btnFechar.Size = new Size(85, 48);
             btnFechar.TabIndex = 3;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;

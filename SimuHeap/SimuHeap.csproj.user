@@ -19,6 +19,9 @@
     <Compile Update="Windows\FreeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Windows\LegendaCoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Windows\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

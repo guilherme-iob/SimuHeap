@@ -82,6 +82,7 @@
             panel6 = new Panel();
             DataGridViewEventos = new DataGridView();
             Panel_OpcoesEventos = new Panel();
+            Btn_LegendaCores = new Button();
             tableLayoutPanel5 = new TableLayoutPanel();
             Btn_ExcluirEvento = new Button();
             Btn_DescerEvento = new Button();
@@ -769,12 +770,28 @@
             // 
             // Panel_OpcoesEventos
             // 
+            Panel_OpcoesEventos.Controls.Add(Btn_LegendaCores);
             Panel_OpcoesEventos.Controls.Add(tableLayoutPanel5);
             Panel_OpcoesEventos.Dock = DockStyle.Bottom;
             Panel_OpcoesEventos.Location = new Point(0, 421);
             Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
             Panel_OpcoesEventos.Size = new Size(435, 44);
             Panel_OpcoesEventos.TabIndex = 4;
+            // 
+            // Btn_LegendaCores
+            // 
+            Btn_LegendaCores.BackColor = Color.DimGray;
+            Btn_LegendaCores.Dock = DockStyle.Right;
+            Btn_LegendaCores.FlatStyle = FlatStyle.Flat;
+            Btn_LegendaCores.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Btn_LegendaCores.ForeColor = SystemColors.ControlLightLight;
+            Btn_LegendaCores.Location = new Point(271, 0);
+            Btn_LegendaCores.Name = "Btn_LegendaCores";
+            Btn_LegendaCores.Size = new Size(164, 44);
+            Btn_LegendaCores.TabIndex = 4;
+            Btn_LegendaCores.Text = "Legenda de Cores";
+            Btn_LegendaCores.UseVisualStyleBackColor = false;
+            Btn_LegendaCores.Click += Btn_LegendaCores_Click;
             // 
             // tableLayoutPanel5
             // 
@@ -843,7 +860,7 @@
             Controls.Add(PanelPrincipal);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
+            Text = "SimuHeap";
             Load += MainForm_Load;
             PanelPrincipal.ResumeLayout(false);
             PanelMenuSuperior.ResumeLayout(false);
@@ -933,5 +950,6 @@
         private Button Btn_DescerEvento;
         private Button Btn_SubirEvento;
         private Panel panel6;
+        private Button Btn_LegendaCores;
     }
 }

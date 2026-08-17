@@ -84,7 +84,8 @@ namespace SimuHeap.Services
             aoGerarPasso?.Invoke(new EstadoPassoSimulacao
             {
                 Descricao = $"Inicializando o payload do bloco #{bloco.Id} com zero.",
-                EnderecoBlocoEmAnalise = bloco.EnderecoInicio
+                EnderecoBlocoEmAnalise = bloco.EnderecoInicio,
+                DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.InicializandoCalloc
             });
 
             return bloco;
