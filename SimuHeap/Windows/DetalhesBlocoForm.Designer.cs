@@ -147,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Crimson;
+            BackColor = Color.Firebrick;
             ClientSize = new Size(751, 458);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

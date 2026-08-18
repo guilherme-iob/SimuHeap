@@ -49,18 +49,25 @@
             MenuParametros = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel3 = new Panel();
+            tableLayoutPanel9 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
+            Btn_HelpAlgoritmosAlocacao = new Button();
             UseFirstFit = new RadioButton();
             UseBestFit = new RadioButton();
             UseWorstFit = new RadioButton();
+            tableLayoutPanel10 = new TableLayoutPanel();
             Label_AlgoritmosAlocacao = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            panel2 = new Panel();
+            tableLayoutPanel7 = new TableLayoutPanel();
             SelectHeapSize = new ComboBox();
+            tableLayoutPanel8 = new TableLayoutPanel();
             Label_TamanhoHeap = new Label();
-            panel1 = new Panel();
+            Btn_HelpTamHeap = new Button();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            Btn_HepCoalescing = new Button();
             HabilitarCoalesing = new CheckBox();
             HabilitarSplit = new CheckBox();
+            Btn_HelpSplit = new Button();
             Panel_Simulacao = new TableLayoutPanel();
             Panel_Simulacao_Estruturas = new Panel();
             Panel_Simulacao_2 = new TableLayoutPanel();
@@ -87,10 +94,6 @@
             Btn_ExcluirEvento = new Button();
             Btn_DescerEvento = new Button();
             Btn_SubirEvento = new Button();
-            Btn_HelpSplit = new Button();
-            Btn_HepCoalescing = new Button();
-            Btn_HelpTamHeap = new Button();
-            Btn_HelpAlgoritmosAlocacao = new Button();
             PanelPrincipal.SuspendLayout();
             PanelMenuSuperior.SuspendLayout();
             MenuOperacoes.SuspendLayout();
@@ -100,10 +103,13 @@
             MenuParametros.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
+            tableLayoutPanel9.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
             Panel_Simulacao.SuspendLayout();
             Panel_Simulacao_Estruturas.SuspendLayout();
             Panel_Simulacao_2.SuspendLayout();
@@ -148,10 +154,11 @@
             // 
             // Lbl_SnapshotAtual
             // 
+            Lbl_SnapshotAtual.Dock = DockStyle.Top;
             Lbl_SnapshotAtual.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Lbl_SnapshotAtual.Location = new Point(748, 6);
+            Lbl_SnapshotAtual.Location = new Point(858, 0);
             Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
-            Lbl_SnapshotAtual.Size = new Size(501, 183);
+            Lbl_SnapshotAtual.Size = new Size(400, 101);
             Lbl_SnapshotAtual.TabIndex = 1;
             Lbl_SnapshotAtual.Text = "Estado Atual";
             // 
@@ -160,7 +167,7 @@
             MenuOperacoes.Controls.Add(Panel_Operacoes);
             MenuOperacoes.Dock = DockStyle.Left;
             MenuOperacoes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MenuOperacoes.Location = new Point(402, 0);
+            MenuOperacoes.Location = new Point(501, 0);
             MenuOperacoes.Name = "MenuOperacoes";
             MenuOperacoes.Size = new Size(357, 198);
             MenuOperacoes.TabIndex = 1;
@@ -332,7 +339,7 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(0, 0);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(402, 198);
+            MenuParametros.Size = new Size(501, 198);
             MenuParametros.TabIndex = 0;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
@@ -349,35 +356,62 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(396, 170);
+            tableLayoutPanel1.Size = new Size(495, 170);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
             // 
-            panel3.Controls.Add(tableLayoutPanel3);
-            panel3.Controls.Add(Label_AlgoritmosAlocacao);
+            panel3.Controls.Add(tableLayoutPanel9);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 88);
             panel3.Name = "panel3";
-            panel3.Size = new Size(390, 79);
+            panel3.Size = new Size(489, 79);
             panel3.TabIndex = 1;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 1;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.Controls.Add(tableLayoutPanel3, 0, 1);
+            tableLayoutPanel9.Controls.Add(tableLayoutPanel10, 0, 0);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(0, 0);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 2;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.Size = new Size(489, 79);
+            tableLayoutPanel9.TabIndex = 2;
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.ColumnCount = 4;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.7777767F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.77778F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.7777767F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel3.Controls.Add(Btn_HelpAlgoritmosAlocacao, 3, 0);
             tableLayoutPanel3.Controls.Add(UseFirstFit, 0, 0);
             tableLayoutPanel3.Controls.Add(UseBestFit, 1, 0);
             tableLayoutPanel3.Controls.Add(UseWorstFit, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 21);
+            tableLayoutPanel3.Location = new Point(3, 42);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(390, 58);
+            tableLayoutPanel3.Size = new Size(483, 34);
             tableLayoutPanel3.TabIndex = 8;
+            // 
+            // Btn_HelpAlgoritmosAlocacao
+            // 
+            Btn_HelpAlgoritmosAlocacao.Anchor = AnchorStyles.None;
+            Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
+            Btn_HelpAlgoritmosAlocacao.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HelpAlgoritmosAlocacao.Location = new Point(430, 4);
+            Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
+            Btn_HelpAlgoritmosAlocacao.Size = new Size(25, 25);
+            Btn_HelpAlgoritmosAlocacao.TabIndex = 6;
+            Btn_HelpAlgoritmosAlocacao.UseVisualStyleBackColor = true;
             // 
             // UseFirstFit
             // 
@@ -385,7 +419,7 @@
             UseFirstFit.Dock = DockStyle.Fill;
             UseFirstFit.Location = new Point(3, 3);
             UseFirstFit.Name = "UseFirstFit";
-            UseFirstFit.Size = new Size(123, 52);
+            UseFirstFit.Size = new Size(128, 28);
             UseFirstFit.TabIndex = 2;
             UseFirstFit.TabStop = true;
             UseFirstFit.Text = "First-Fit";
@@ -396,9 +430,9 @@
             // 
             UseBestFit.AutoSize = true;
             UseBestFit.Dock = DockStyle.Fill;
-            UseBestFit.Location = new Point(132, 3);
+            UseBestFit.Location = new Point(137, 3);
             UseBestFit.Name = "UseBestFit";
-            UseBestFit.Size = new Size(123, 52);
+            UseBestFit.Size = new Size(128, 28);
             UseBestFit.TabIndex = 4;
             UseBestFit.TabStop = true;
             UseBestFit.Text = "Best-Fit";
@@ -409,86 +443,151 @@
             // 
             UseWorstFit.AutoSize = true;
             UseWorstFit.Dock = DockStyle.Fill;
-            UseWorstFit.Location = new Point(261, 3);
+            UseWorstFit.Location = new Point(271, 3);
             UseWorstFit.Name = "UseWorstFit";
-            UseWorstFit.Size = new Size(126, 52);
+            UseWorstFit.Size = new Size(128, 28);
             UseWorstFit.TabIndex = 3;
             UseWorstFit.TabStop = true;
             UseWorstFit.Text = "Worst-Fit";
             UseWorstFit.TextAlign = ContentAlignment.MiddleCenter;
             UseWorstFit.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 2;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel10.Controls.Add(Label_AlgoritmosAlocacao, 0, 0);
+            tableLayoutPanel10.Dock = DockStyle.Fill;
+            tableLayoutPanel10.Location = new Point(3, 3);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 1;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel10.Size = new Size(483, 33);
+            tableLayoutPanel10.TabIndex = 9;
+            // 
             // Label_AlgoritmosAlocacao
             // 
-            Label_AlgoritmosAlocacao.Dock = DockStyle.Top;
             Label_AlgoritmosAlocacao.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_AlgoritmosAlocacao.Location = new Point(0, 0);
+            Label_AlgoritmosAlocacao.Location = new Point(3, 0);
             Label_AlgoritmosAlocacao.Name = "Label_AlgoritmosAlocacao";
-            Label_AlgoritmosAlocacao.Size = new Size(390, 21);
+            Label_AlgoritmosAlocacao.Size = new Size(378, 33);
             Label_AlgoritmosAlocacao.TabIndex = 7;
             Label_AlgoritmosAlocacao.Text = "Algoritmo de Alocação";
-            Label_AlgoritmosAlocacao.TextAlign = ContentAlignment.TopCenter;
+            Label_AlgoritmosAlocacao.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(panel2, 1, 0);
-            tableLayoutPanel2.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel7, 1, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel6, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(390, 79);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(489, 79);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // panel2
+            // tableLayoutPanel7
             // 
-            panel2.Controls.Add(SelectHeapSize);
-            panel2.Controls.Add(Label_TamanhoHeap);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(198, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(189, 73);
-            panel2.TabIndex = 1;
+            tableLayoutPanel7.ColumnCount = 1;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Controls.Add(SelectHeapSize, 0, 1);
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 0, 0);
+            tableLayoutPanel7.Dock = DockStyle.Fill;
+            tableLayoutPanel7.Location = new Point(296, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new Size(190, 73);
+            tableLayoutPanel7.TabIndex = 2;
             // 
             // SelectHeapSize
             // 
+            SelectHeapSize.Anchor = AnchorStyles.None;
             SelectHeapSize.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectHeapSize.FormattingEnabled = true;
-            SelectHeapSize.Location = new Point(5, 24);
+            SelectHeapSize.Location = new Point(13, 43);
             SelectHeapSize.Name = "SelectHeapSize";
-            SelectHeapSize.Size = new Size(181, 29);
+            SelectHeapSize.Size = new Size(163, 29);
             SelectHeapSize.TabIndex = 5;
             SelectHeapSize.SelectedIndexChanged += SelectHeapSize_SelectedIndexChanged;
             // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 2;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel8.Controls.Add(Label_TamanhoHeap, 0, 0);
+            tableLayoutPanel8.Controls.Add(Btn_HelpTamHeap, 1, 0);
+            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.Size = new Size(183, 30);
+            tableLayoutPanel8.TabIndex = 0;
+            // 
             // Label_TamanhoHeap
             // 
-            Label_TamanhoHeap.Dock = DockStyle.Top;
-            Label_TamanhoHeap.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_TamanhoHeap.Location = new Point(0, 0);
+            Label_TamanhoHeap.Dock = DockStyle.Fill;
+            Label_TamanhoHeap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Label_TamanhoHeap.Location = new Point(3, 0);
             Label_TamanhoHeap.Name = "Label_TamanhoHeap";
-            Label_TamanhoHeap.Size = new Size(189, 21);
+            Label_TamanhoHeap.Size = new Size(140, 30);
             Label_TamanhoHeap.TabIndex = 6;
             Label_TamanhoHeap.Text = "Tamanho da Heap";
-            Label_TamanhoHeap.TextAlign = ContentAlignment.TopCenter;
+            Label_TamanhoHeap.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel1
+            // Btn_HelpTamHeap
             // 
-            panel1.Controls.Add(HabilitarCoalesing);
-            panel1.Controls.Add(HabilitarSplit);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(189, 73);
-            panel1.TabIndex = 0;
+            Btn_HelpTamHeap.Anchor = AnchorStyles.None;
+            Btn_HelpTamHeap.BackgroundImage = Properties.Resources.question;
+            Btn_HelpTamHeap.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HelpTamHeap.Location = new Point(152, 2);
+            Btn_HelpTamHeap.Margin = new Padding(0);
+            Btn_HelpTamHeap.Name = "Btn_HelpTamHeap";
+            Btn_HelpTamHeap.Size = new Size(25, 25);
+            Btn_HelpTamHeap.TabIndex = 5;
+            Btn_HelpTamHeap.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 2;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel6.Controls.Add(Btn_HepCoalescing, 1, 1);
+            tableLayoutPanel6.Controls.Add(HabilitarCoalesing, 0, 1);
+            tableLayoutPanel6.Controls.Add(HabilitarSplit, 0, 0);
+            tableLayoutPanel6.Controls.Add(Btn_HelpSplit, 1, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(3, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 2;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Size = new Size(287, 73);
+            tableLayoutPanel6.TabIndex = 2;
+            // 
+            // Btn_HepCoalescing
+            // 
+            Btn_HepCoalescing.Anchor = AnchorStyles.None;
+            Btn_HepCoalescing.BackgroundImage = Properties.Resources.question;
+            Btn_HepCoalescing.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HepCoalescing.Location = new Point(245, 42);
+            Btn_HepCoalescing.Name = "Btn_HepCoalescing";
+            Btn_HepCoalescing.Size = new Size(25, 25);
+            Btn_HepCoalescing.TabIndex = 5;
+            Btn_HepCoalescing.UseVisualStyleBackColor = true;
             // 
             // HabilitarCoalesing
             // 
+            HabilitarCoalesing.Anchor = AnchorStyles.Left;
             HabilitarCoalesing.AutoSize = true;
-            HabilitarCoalesing.Location = new Point(0, 36);
+            HabilitarCoalesing.Location = new Point(3, 42);
             HabilitarCoalesing.Name = "HabilitarCoalesing";
             HabilitarCoalesing.Size = new Size(167, 25);
             HabilitarCoalesing.TabIndex = 1;
@@ -497,13 +596,25 @@
             // 
             // HabilitarSplit
             // 
+            HabilitarSplit.Anchor = AnchorStyles.Left;
             HabilitarSplit.AutoSize = true;
-            HabilitarSplit.Location = new Point(0, 11);
+            HabilitarSplit.Location = new Point(3, 5);
             HabilitarSplit.Name = "HabilitarSplit";
             HabilitarSplit.Size = new Size(123, 25);
             HabilitarSplit.TabIndex = 0;
             HabilitarSplit.Text = "Habilitar Split";
             HabilitarSplit.UseVisualStyleBackColor = true;
+            // 
+            // Btn_HelpSplit
+            // 
+            Btn_HelpSplit.Anchor = AnchorStyles.None;
+            Btn_HelpSplit.BackgroundImage = Properties.Resources.question;
+            Btn_HelpSplit.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HelpSplit.Location = new Point(245, 5);
+            Btn_HelpSplit.Name = "Btn_HelpSplit";
+            Btn_HelpSplit.Size = new Size(25, 25);
+            Btn_HelpSplit.TabIndex = 4;
+            Btn_HelpSplit.UseVisualStyleBackColor = true;
             // 
             // Panel_Simulacao
             // 
@@ -568,10 +679,6 @@
             // Panel_Simulacao_Nav
             // 
             Panel_Simulacao_Nav.BackColor = SystemColors.ActiveBorder;
-            Panel_Simulacao_Nav.Controls.Add(Btn_HepCoalescing);
-            Panel_Simulacao_Nav.Controls.Add(Btn_HelpAlgoritmosAlocacao);
-            Panel_Simulacao_Nav.Controls.Add(Btn_HelpSplit);
-            Panel_Simulacao_Nav.Controls.Add(Btn_HelpTamHeap);
             Panel_Simulacao_Nav.Controls.Add(tableLayoutPanel4);
             Panel_Simulacao_Nav.Dock = DockStyle.Bottom;
             Panel_Simulacao_Nav.Location = new Point(0, 383);
@@ -861,46 +968,6 @@
             Btn_SubirEvento.UseVisualStyleBackColor = true;
             Btn_SubirEvento.Click += Btn_SubirEvento_Click;
             // 
-            // Btn_HelpSplit
-            // 
-            Btn_HelpSplit.BackgroundImage = Properties.Resources.question;
-            Btn_HelpSplit.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpSplit.Location = new Point(380, 12);
-            Btn_HelpSplit.Name = "Btn_HelpSplit";
-            Btn_HelpSplit.Size = new Size(25, 25);
-            Btn_HelpSplit.TabIndex = 4;
-            Btn_HelpSplit.UseVisualStyleBackColor = true;
-            // 
-            // Btn_HepCoalescing
-            // 
-            Btn_HepCoalescing.BackgroundImage = Properties.Resources.question;
-            Btn_HepCoalescing.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HepCoalescing.Location = new Point(424, 10);
-            Btn_HepCoalescing.Name = "Btn_HepCoalescing";
-            Btn_HepCoalescing.Size = new Size(25, 25);
-            Btn_HepCoalescing.TabIndex = 5;
-            Btn_HepCoalescing.UseVisualStyleBackColor = true;
-            // 
-            // Btn_HelpTamHeap
-            // 
-            Btn_HelpTamHeap.BackgroundImage = Properties.Resources.question;
-            Btn_HelpTamHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpTamHeap.Location = new Point(515, 10);
-            Btn_HelpTamHeap.Name = "Btn_HelpTamHeap";
-            Btn_HelpTamHeap.Size = new Size(25, 25);
-            Btn_HelpTamHeap.TabIndex = 5;
-            Btn_HelpTamHeap.UseVisualStyleBackColor = true;
-            // 
-            // Btn_HelpAlgoritmosAlocacao
-            // 
-            Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
-            Btn_HelpAlgoritmosAlocacao.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpAlgoritmosAlocacao.Location = new Point(476, 12);
-            Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
-            Btn_HelpAlgoritmosAlocacao.Size = new Size(25, 25);
-            Btn_HelpAlgoritmosAlocacao.TabIndex = 6;
-            Btn_HelpAlgoritmosAlocacao.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -920,12 +987,15 @@
             MenuParametros.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            tableLayoutPanel9.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
+            tableLayoutPanel10.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            tableLayoutPanel7.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel6.PerformLayout();
             Panel_Simulacao.ResumeLayout(false);
             Panel_Simulacao_Estruturas.ResumeLayout(false);
             Panel_Simulacao_2.ResumeLayout(false);
@@ -971,8 +1041,6 @@
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel2;
-        private Panel panel2;
-        private Panel panel1;
         private Panel PanelGridHeap;
         private TableLayoutPanel Panel_Simulacao;
         private Panel Panel_Simulacao_Estruturas;
@@ -1004,5 +1072,10 @@
         private Button Btn_HepCoalescing;
         private Button Btn_HelpAlgoritmosAlocacao;
         private Button Btn_HelpTamHeap;
+        private TableLayoutPanel tableLayoutPanel6;
+        private TableLayoutPanel tableLayoutPanel7;
+        private TableLayoutPanel tableLayoutPanel8;
+        private TableLayoutPanel tableLayoutPanel9;
+        private TableLayoutPanel tableLayoutPanel10;
     }
 }
