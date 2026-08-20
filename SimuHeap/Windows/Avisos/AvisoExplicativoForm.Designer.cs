@@ -86,6 +86,7 @@
             txtConteudo.Location = new Point(10, 55);
             txtConteudo.Margin = new Padding(10);
             txtConteudo.Name = "txtConteudo";
+            txtConteudo.ReadOnly = true;
             txtConteudo.ScrollBars = RichTextBoxScrollBars.Vertical;
             txtConteudo.Size = new Size(479, 340);
             txtConteudo.TabIndex = 2;

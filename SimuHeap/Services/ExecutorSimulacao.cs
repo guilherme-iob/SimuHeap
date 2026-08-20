@@ -30,15 +30,15 @@ namespace SimuHeap.Services
 
             foreach (EventoHeap evento in Eventos)
             {
-                ExecutarEvento(simulator, evento, algoritmo, ref passo, gerarPassosIntermediatios);
+                ErroSimulacao? erro = ExecutarEvento(simulator, evento, algoritmo, ref passo, gerarPassosIntermediatios);
 
-                Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao, null, evento.Id));
+                Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao, null, evento.Id, erro));
                 passo++;
             }
 
         }
 
-        private void ExecutarEvento(HeapSimulator simulador, EventoHeap evento, AlgoritmosDeAlocacao algoritmo, ref int passo, bool gerarPassosIntermediarios)
+        private ErroSimulacao? ExecutarEvento(HeapSimulator simulador, EventoHeap evento, AlgoritmosDeAlocacao algoritmo, ref int passo, bool gerarPassosIntermediarios)
         {
             switch (evento)
             {
@@ -61,20 +61,23 @@ namespace SimuHeap.Services
                         BlocoDeMemoria? bloco = simulador.Malloc(tamanhoSolicitado, malloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
-                        if (bloco is not null)
+                        if (bloco is null) // falha de alocacao
                         {
-                            referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
-
-                            informacoesAlocacao[bloco.Id] =
-                                new InformacaoAlocacaoBloco
-                                {
-                                    IdBloco = bloco.Id,
-                                    IdEvento = evento.Id,
-                                    ReferenciaBloco = malloc.ReferenciaBloco,
-                                    TipoOperacao = TipoEventoHeap.Malloc,
-                                    DescricaoOperacao = malloc.Descricao
-                                };
+                            return CriarErroFalhaAlocacao(simulador, tamanhoSolicitado);
                         }
+
+                        // bloco alocado com sucesso
+                        referenciasBlocos[malloc.ReferenciaBloco] = bloco.Id;
+
+                        informacoesAlocacao[bloco.Id] =
+                            new InformacaoAlocacaoBloco
+                            {
+                                IdBloco = bloco.Id,
+                                IdEvento = evento.Id,
+                                ReferenciaBloco = malloc.ReferenciaBloco,
+                                TipoOperacao = TipoEventoHeap.Malloc,
+                                DescricaoOperacao = malloc.Descricao
+                            };
 
                         break;
                     }
@@ -98,25 +101,26 @@ namespace SimuHeap.Services
                         BlocoDeMemoria? bloco = simulador.Calloc(tamanhoSolicitado, calloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
-                        if (bloco is not null)
+                        if (bloco is null) // falha de alocacao
                         {
-                            referenciasBlocos[calloc.ReferenciaBloco] = bloco.Id;
-
-                            informacoesAlocacao[bloco.Id] =
-                                new InformacaoAlocacaoBloco
-                                {
-                                    IdBloco = bloco.Id,
-                                    IdEvento = evento.Id,
-                                    ReferenciaBloco = calloc.ReferenciaBloco,
-                                    TipoOperacao = TipoEventoHeap.Calloc,
-                                    DescricaoOperacao = calloc.Descricao
-                                };
+                            return CriarErroFalhaAlocacao(simulador, tamanhoSolicitado);
                         }
 
+                        // alocacao com sucesso
+                        referenciasBlocos[calloc.ReferenciaBloco] = bloco.Id;
+
+                        informacoesAlocacao[bloco.Id] =
+                            new InformacaoAlocacaoBloco
+                            {
+                                IdBloco = bloco.Id,
+                                IdEvento = evento.Id,
+                                ReferenciaBloco = calloc.ReferenciaBloco,
+                                TipoOperacao = TipoEventoHeap.Calloc,
+                                DescricaoOperacao = calloc.Descricao
+                            };
+
                         break;
-                    }
-                    
-                    
+                    }                    
                 case EventoRealloc realloc:
                     {
                         int tamanhoTipo = Configuracoes.ObterTamanhoTipo(realloc.TipoVariavel);
@@ -142,24 +146,58 @@ namespace SimuHeap.Services
                         BlocoDeMemoria? bloco = simulador.Realloc(idBloco, tamanhoSolicitado, realloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
-                        if (bloco is not null)
+                        //if (bloco is not null)
+                        //{
+                        //    // Remove a informação referente ao estado antigo.
+                        //    informacoesAlocacao.Remove(idBloco);
+
+                        //    // O realloc pode ter mantido ou alterado o ID físico.
+                        //    referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;
+
+                        //    informacoesAlocacao[bloco.Id] =
+                        //        new InformacaoAlocacaoBloco
+                        //        {
+                        //            IdBloco = bloco.Id,
+                        //            IdEvento = evento.Id,
+                        //            ReferenciaBloco = realloc.ReferenciaBloco,
+                        //            TipoOperacao = TipoEventoHeap.Realloc,
+                        //            DescricaoOperacao = realloc.Descricao
+                        //        };
+                        //}
+
+                        //break;
+
+                        if (bloco is null)
                         {
-                            // Remove a informação referente ao estado antigo.
-                            informacoesAlocacao.Remove(idBloco);
+                            ErroSimulacao erro = CriarErroFalhaAlocacao(simulador, tamanhoSolicitado);
 
-                            // O realloc pode ter mantido ou alterado o ID físico.
-                            referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;
-
-                            informacoesAlocacao[bloco.Id] =
-                                new InformacaoAlocacaoBloco
-                                {
-                                    IdBloco = bloco.Id,
-                                    IdEvento = evento.Id,
-                                    ReferenciaBloco = realloc.ReferenciaBloco,
-                                    TipoOperacao = TipoEventoHeap.Realloc,
-                                    DescricaoOperacao = realloc.Descricao
-                                };
+                            return new ErroSimulacao
+                            {
+                                Tipo = TipoErroSimulacao.FalhaRealocacao,
+                                Titulo = "Falha de realocação",
+                                Mensagem = "Não foi possível redimensionar o bloco solicitado.",
+                                Detalhes = erro.Detalhes,
+                                Explicacao =
+                                    erro.Explicacao +
+                                    "\r\n\r\n" +
+                                    "Como a realocação falhou, o bloco original permanece alocado " +
+                                    "e continua contendo seus dados anteriores."
+                            };
                         }
+
+                        informacoesAlocacao.Remove(idBloco);
+
+                        referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;
+
+                        informacoesAlocacao[bloco.Id] =
+                            new InformacaoAlocacaoBloco
+                            {
+                                IdBloco = bloco.Id,
+                                IdEvento = evento.Id,
+                                ReferenciaBloco = realloc.ReferenciaBloco,
+                                TipoOperacao = TipoEventoHeap.Realloc,
+                                DescricaoOperacao = realloc.Descricao
+                            };
 
                         break;
                     }
@@ -187,17 +225,43 @@ namespace SimuHeap.Services
                         bool liberou = simulador.Free(idBloco, registrarPasso);
                         passo = passoLocal;
 
-                        if (liberou)
+                        //if (liberou)
+                        //{
+                        //    referenciasBlocos.Remove(free.ReferenciaBloco);
+                        //}
+                        //else
+                        //{
+                        //    if (informacaoAnterior is not null)
+                        //    {
+                        //        informacoesAlocacao[idBloco] = informacaoAnterior;
+                        //    }
+                        //}
+
+                        if (!liberou)
                         {
-                            referenciasBlocos.Remove(free.ReferenciaBloco);
-                        }
-                        else
-                        {
+                            // Restaura a informação porque a liberação não ocorreu.
                             if (informacaoAnterior is not null)
                             {
                                 informacoesAlocacao[idBloco] = informacaoAnterior;
                             }
+
+                            return new ErroSimulacao
+                            {
+                                Tipo = TipoErroSimulacao.FalhaLiberacao,
+                                Titulo = "Falha de liberação",
+                                Mensagem = "Não foi possível liberar o bloco solicitado.",
+                                Detalhes =
+                                    $"Referência: bloco{free.ReferenciaBloco}\r\n" +
+                                    $"ID do bloco: #{idBloco}",
+
+                                Explicacao =
+                                    "A referência da operação existe, porém o bloco ocupado " +
+                                    "correspondente não foi encontrado na heap simulada. " +
+                                    "Por segurança, nenhuma alteração foi realizada."
+                            };
                         }
+
+                        referenciasBlocos.Remove(free.ReferenciaBloco);
 
                         break;
                     }
@@ -205,9 +269,11 @@ namespace SimuHeap.Services
                     MessageBox.Show("Evento desconhecido");
                     break;
             }
+
+            return null;
         }
 
-        private HeapSnapshot CriarSnapshot(HeapSimulator simulator, int passo, string descricaoEvento, EstadoPassoSimulacao? estado = null, int? idEvento = null)
+        private HeapSnapshot CriarSnapshot(HeapSimulator simulator, int passo, string descricaoEvento, EstadoPassoSimulacao? estado = null, int? idEvento = null, ErroSimulacao? erro = null)
         {
             return new HeapSnapshot
             {
@@ -231,6 +297,60 @@ namespace SimuHeap.Services
                 BlocosLivres = simulator.Blocos.Where(x => x.EstaLivre).Select(x => x.Clonar()).ToList(),
 
                 InformacoesAlocacao = informacoesAlocacao.ToDictionary(item => item.Key, item => item.Value.Clonar()),
+
+                Erro = erro
+            };
+        }
+
+        private ErroSimulacao CriarErroFalhaAlocacao(HeapSimulator simulator, int tamanhoSolicitado)
+        {
+            int tamanhoTotalNecessario = Configuracoes.CalcularTamanhoTotalBloco(tamanhoSolicitado);
+            List<BlocoDeMemoria> blocosLivres = simulator.Blocos.Where(x => x.EstaLivre).ToList();
+
+            int totalLivre = blocosLivres.Sum(x => x.TamanhoTotal);
+
+            int maiorBlocoLivre = blocosLivres.Count > 0 ? blocosLivres.Max(x => x.TamanhoTotal) : 0;
+
+            bool falhaPorFragmentacao = totalLivre >= tamanhoTotalNecessario && maiorBlocoLivre < tamanhoTotalNecessario;
+
+            if (falhaPorFragmentacao)
+            {
+                return new ErroSimulacao
+                {
+                    Tipo = TipoErroSimulacao.FalhaAlocacaoFragmentacao,
+                    Titulo = "Falha de alocação por fragmentação externa",
+                    Mensagem ="Não foi encontrado um bloco livre contíguo grande o suficiente.",
+
+                    Detalhes =
+                        $"Payload solicitado: {tamanhoSolicitado} bytes\r\n" +
+                        $"Tamanho total necessário: {tamanhoTotalNecessario} bytes\r\n" +
+                        $"Memória livre total: {totalLivre} bytes\r\n" +
+                        $"Maior bloco livre: {maiorBlocoLivre} bytes",
+
+                    Explicacao =
+                        "Existe memória livre suficiente no total, porém ela está " +
+                        "distribuída entre diferentes blocos livres. Como nenhum desses " +
+                        "blocos possui tamanho suficiente para atender à solicitação, " +
+                        "a alocação falha por fragmentação externa."
+                };
+            }
+
+            return new ErroSimulacao
+            {
+                Tipo = TipoErroSimulacao.FalhaAlocacaoSemEspaco,
+                Titulo = "Heap sem espaço suficiente",
+                Mensagem =
+                    "Não há memória livre suficiente para realizar a alocação.",
+
+                Detalhes =
+                    $"Payload solicitado: {tamanhoSolicitado} bytes\r\n" +
+                    $"Tamanho total necessário: {tamanhoTotalNecessario} bytes\r\n" +
+                    $"Memória livre total: {totalLivre} bytes\r\n" +
+                    $"Maior bloco livre: {maiorBlocoLivre} bytes",
+
+                Explicacao =
+                    "A heap simulada não possui espaço livre suficiente para criar " +
+                    "o bloco solicitado."
             };
         }
     }

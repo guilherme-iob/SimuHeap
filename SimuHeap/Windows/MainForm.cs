@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using SimuHeap.Controls;
 using SimuHeap.Services;
 using SimuHeap.Models;
+using SimuHeap.Windows.Avisos;
 
 namespace SimuHeap.Windows
 {
@@ -159,6 +160,8 @@ namespace SimuHeap.Windows
             }
 
             //InicializarEventosTeste();
+
+            InicializarEventosTesteErros();
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -386,6 +389,260 @@ namespace SimuHeap.Windows
             AtualizarListaEventos();
         }
 
+        private void InicializarEventosTesteErros()
+        {
+            executor.Eventos.Clear();
+
+            proximaReferenciaBloco = 1;
+
+            /*
+             * Executar com heap de 64 bytes.
+             *
+             * Recomendado:
+             * Split = habilitado
+             * Coalescing = desabilitado
+             *
+             * Objetivo:
+             * testar falhas de malloc, calloc, realloc
+             * e comportamento do free após falha de alocação.
+             */
+
+            // --------------------------------------------------
+            // 1 - malloc: char[8]
+            // Total aproximado do bloco: 16 bytes.
+            // --------------------------------------------------
+            EventoMalloc malloc1 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 8
+            };
+
+            malloc1.AtualizarDescricao();
+            executor.Eventos.Add(malloc1);
+
+
+            // --------------------------------------------------
+            // 2 - malloc: char[8]
+            // Outro bloco de aproximadamente 16 bytes.
+            // --------------------------------------------------
+            EventoMalloc malloc2 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 8
+            };
+
+            malloc2.AtualizarDescricao();
+            executor.Eventos.Add(malloc2);
+
+
+            // --------------------------------------------------
+            // 3 - malloc: char[8]
+            // Outro bloco de aproximadamente 16 bytes.
+            // --------------------------------------------------
+            EventoMalloc malloc3 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 8
+            };
+
+            malloc3.AtualizarDescricao();
+            executor.Eventos.Add(malloc3);
+
+
+            // --------------------------------------------------
+            // 4 - malloc: char[8]
+            // Preenche praticamente toda a heap.
+            //
+            // Estado esperado:
+            //
+            // [bloco1][bloco2][bloco3][bloco4]
+            //
+            // --------------------------------------------------
+            EventoMalloc malloc4 = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 8
+            };
+
+            malloc4.AtualizarDescricao();
+            executor.Eventos.Add(malloc4);
+
+
+            // --------------------------------------------------
+            // 5 - malloc: char[1]
+            //
+            // ERRO ESPERADO:
+            // falha de alocação por falta de espaço.
+            //
+            // Guarda a referência para testar um free depois.
+            // --------------------------------------------------
+            EventoMalloc mallocFalhaEspaco = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 1
+            };
+
+            mallocFalhaEspaco.AtualizarDescricao();
+            executor.Eventos.Add(mallocFalhaEspaco);
+
+
+            // --------------------------------------------------
+            // 6 - free(bloco2)
+            //
+            // Libera 16 bytes no meio da heap.
+            // --------------------------------------------------
+            EventoFree free1 = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc2.ReferenciaBloco
+            };
+
+            free1.AtualizarDescricao();
+            executor.Eventos.Add(free1);
+
+
+            // --------------------------------------------------
+            // 7 - free(bloco4)
+            //
+            // Libera outros 16 bytes.
+            //
+            // Com coalescing desabilitado:
+            //
+            // [ocupado][LIVRE][ocupado][LIVRE]
+            //
+            // Total livre = 32 bytes
+            // Maior bloco livre = 16 bytes
+            // --------------------------------------------------
+            EventoFree free2 = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc4.ReferenciaBloco
+            };
+
+            free2.AtualizarDescricao();
+            executor.Eventos.Add(free2);
+
+
+            // --------------------------------------------------
+            // 8 - malloc: char[16]
+            //
+            // Payload = 16 bytes.
+            // Total necessário será maior que 16 bytes.
+            //
+            // ERRO ESPERADO:
+            // fragmentação externa.
+            //
+            // Existem 32 bytes livres no total,
+            // mas o maior bloco livre possui apenas 16 bytes.
+            // --------------------------------------------------
+            EventoMalloc mallocFalhaFragmentacao = new EventoMalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 16
+            };
+
+            mallocFalhaFragmentacao.AtualizarDescricao();
+            executor.Eventos.Add(mallocFalhaFragmentacao);
+
+
+            // --------------------------------------------------
+            // 9 - calloc: char[40]
+            //
+            // ERRO ESPERADO:
+            // falha de calloc por falta de espaço.
+            // --------------------------------------------------
+            EventoCalloc callocFalha = new EventoCalloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = proximaReferenciaBloco++,
+                TipoVariavel = TiposDeVariaveis.Char,
+                Quantidade = 40
+            };
+
+            callocFalha.AtualizarDescricao();
+            executor.Eventos.Add(callocFalha);
+
+
+            // --------------------------------------------------
+            // 10 - realloc(bloco1, char[40])
+            //
+            // bloco1 continua ocupado.
+            //
+            // Não existe espaço contíguo suficiente
+            // para expandir e também não existe outro
+            // bloco livre suficientemente grande.
+            //
+            // ERRO ESPERADO:
+            // falha de realloc.
+            //
+            // IMPORTANTE:
+            // bloco1 deve continuar alocado após a falha.
+            // --------------------------------------------------
+            EventoRealloc reallocFalha = new EventoRealloc
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc1.ReferenciaBloco,
+                TipoVariavel = malloc1.TipoVariavel,
+                NovaQuantidade = 40
+            };
+
+            reallocFalha.AtualizarDescricao();
+            executor.Eventos.Add(reallocFalha);
+
+
+            // --------------------------------------------------
+            // 11 - free da referência cuja alocação falhou
+            //
+            // mallocFalhaEspaco nunca gerou um bloco real.
+            //
+            // Atualmente seu Executor deve simplesmente
+            // ignorar esse free.
+            //
+            // Conceitualmente equivale a free(NULL).
+            // --------------------------------------------------
+            EventoFree freeAposMallocFalho = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = mallocFalhaEspaco.ReferenciaBloco
+            };
+
+            freeAposMallocFalho.AtualizarDescricao();
+            executor.Eventos.Add(freeAposMallocFalho);
+
+
+            // --------------------------------------------------
+            // 12 - free(bloco1)
+            //
+            // Caso normal após o realloc ter falhado.
+            //
+            // Este evento é importante para confirmar que
+            // bloco1 permaneceu válido após a falha do realloc.
+            // --------------------------------------------------
+            EventoFree freeBlocoOriginalRealloc = new EventoFree
+            {
+                Id = executor.Eventos.Count + 1,
+                ReferenciaBloco = malloc1.ReferenciaBloco
+            };
+
+            freeBlocoOriginalRealloc.AtualizarDescricao();
+            executor.Eventos.Add(freeBlocoOriginalRealloc);
+
+
+            AtualizarListaEventos();
+        }
+
         private void Btn_PararSimulacao_Click(object sender, EventArgs e)
         {
             this.Panel_Simulacao_2.Enabled = false;
@@ -557,6 +814,20 @@ namespace SimuHeap.Windows
             DestacarBlocoLivreAtual(snapshot);
 
             Lbl_SnapshotAtual.Text = snapshot.ToString();
+
+            if (snapshot.Erro is not null)
+            {
+                //MessageBox.Show(
+                //    $"{snapshot.Erro.Mensagem}\r\n\r\n" +
+                //    $"{snapshot.Erro.Detalhes}\r\n\r\n" +
+                //    $"{snapshot.Erro.Explicacao}",
+                //    snapshot.Erro.Titulo,
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Warning);
+
+                AvisoFalhaAlocacaoForm aviso = new AvisoFalhaAlocacaoForm(snapshot.Erro);
+                aviso.ShowDialog();
+            }
 
             // atualizar labels e métricas
             //lblOperacaoAtual.Text = snapshot.DescricaoEvento;

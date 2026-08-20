@@ -154,11 +154,11 @@
             // 
             // Lbl_SnapshotAtual
             // 
-            Lbl_SnapshotAtual.Dock = DockStyle.Top;
+            Lbl_SnapshotAtual.Dock = DockStyle.Fill;
             Lbl_SnapshotAtual.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Lbl_SnapshotAtual.Location = new Point(858, 0);
             Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
-            Lbl_SnapshotAtual.Size = new Size(400, 101);
+            Lbl_SnapshotAtual.Size = new Size(400, 198);
             Lbl_SnapshotAtual.TabIndex = 1;
             Lbl_SnapshotAtual.Text = "Estado Atual";
             // 
@@ -272,6 +272,7 @@
             // 
             Panel_OperacoesSimulacao.ColumnCount = 1;
             Panel_OperacoesSimulacao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            Panel_OperacoesSimulacao.Controls.Add(Btn_LegendaCores, 0, 3);
             Panel_OperacoesSimulacao.Controls.Add(Btn_ZerarSimulacao, 0, 2);
             Panel_OperacoesSimulacao.Controls.Add(Btn_PararSimulacao, 0, 1);
             Panel_OperacoesSimulacao.Controls.Add(Btn_IniciarSimulacao, 0, 0);
@@ -511,7 +512,7 @@
             SelectHeapSize.Anchor = AnchorStyles.None;
             SelectHeapSize.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectHeapSize.FormattingEnabled = true;
-            SelectHeapSize.Location = new Point(13, 43);
+            SelectHeapSize.Location = new Point(13, 40);
             SelectHeapSize.Name = "SelectHeapSize";
             SelectHeapSize.Size = new Size(163, 29);
             SelectHeapSize.TabIndex = 5;
@@ -886,7 +887,6 @@
             // 
             // Panel_OpcoesEventos
             // 
-            Panel_OpcoesEventos.Controls.Add(Btn_LegendaCores);
             Panel_OpcoesEventos.Controls.Add(tableLayoutPanel5);
             Panel_OpcoesEventos.Dock = DockStyle.Bottom;
             Panel_OpcoesEventos.Location = new Point(0, 421);
@@ -897,13 +897,13 @@
             // Btn_LegendaCores
             // 
             Btn_LegendaCores.BackColor = Color.DimGray;
-            Btn_LegendaCores.Dock = DockStyle.Right;
+            Btn_LegendaCores.Dock = DockStyle.Fill;
             Btn_LegendaCores.FlatStyle = FlatStyle.Flat;
             Btn_LegendaCores.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Btn_LegendaCores.ForeColor = SystemColors.ControlLightLight;
-            Btn_LegendaCores.Location = new Point(271, 0);
+            Btn_LegendaCores.Location = new Point(3, 126);
             Btn_LegendaCores.Name = "Btn_LegendaCores";
-            Btn_LegendaCores.Size = new Size(164, 44);
+            Btn_LegendaCores.Size = new Size(164, 35);
             Btn_LegendaCores.TabIndex = 4;
             Btn_LegendaCores.Text = "Legenda de Cores";
             Btn_LegendaCores.UseVisualStyleBackColor = false;

@@ -284,5 +284,22 @@ namespace SimuHeap.Utils
 
             return texto;
         }
+
+        public static readonly string ExplicacaoSplit = string.Empty;
+        public static readonly string ExplicacaoCoalescing = string.Empty;
+        public static readonly string ExplicacaoAlgoritmosAlocacao = string.Empty;
+        public static readonly string ExplicacaoTamanhoHeap = string.Empty;
+        public static readonly string ExplicacaoListaBlocosLivres = string.Empty;
+        public static readonly string ExplicacaoSegmentos = string.Empty;
+
+        // operacoes
+        public static readonly string ExplicacaoMalloc = string.Empty;
+        public static readonly string ExplicacaoCalloc = string.Empty;
+        public static readonly string ExplicacaoRealloc = string.Empty;
+        public static readonly string ExplicacaoFree = string.Empty;
+
+        // metricas
+        public static readonly string ExplicacaoFragmentacaoInterna = string.Empty;
+        public static readonly string ExplicacaoFragmentacaoExterna = string.Empty;
     }
 }

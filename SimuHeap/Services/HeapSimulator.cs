@@ -68,7 +68,7 @@ namespace SimuHeap.Services
             return OcuparBlocoInteiro(blocoLivre, tamanhoSolicitado, tipo, cor);
         }
 
-        public BlocoDeMemoria Calloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
+        public BlocoDeMemoria? Calloc(int tamanhoSolicitado, TiposDeVariaveis tipo, Color cor, AlgoritmosDeAlocacao algoritmo, Action<EstadoPassoSimulacao>? aoGerarPasso = null)
         {
             if (tamanhoSolicitado <= 0)
             {
