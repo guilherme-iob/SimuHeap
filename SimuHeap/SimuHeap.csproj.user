@@ -16,6 +16,9 @@
     <Compile Update="Windows\Avisos\AvisoFalhaAlocacaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Windows\MetricasSimulacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Windows\OperacoesAlocacao\CallocForm.cs">
       <SubType>Form</SubType>
     </Compile>

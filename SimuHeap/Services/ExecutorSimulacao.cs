@@ -282,7 +282,7 @@ namespace SimuHeap.Services
 
                 IdEvento = idEvento,
                 DescricaoEvento = descricaoEvento,
-                
+
                 EnderecoBlocoEmAnalise = estado?.EnderecoBlocoEmAnalise,
                 DestaqueBlocoEmAnalise = estado?.DestaqueBlocoEmAnalise ?? TipoDestaqueSimulacao.Nenhum,
 
@@ -298,7 +298,9 @@ namespace SimuHeap.Services
 
                 InformacoesAlocacao = informacoesAlocacao.ToDictionary(item => item.Key, item => item.Value.Clonar()),
 
-                Erro = erro
+                Erro = erro,
+
+                Metricas = CalculadoraMetricasHeap.Calcular(simulator)
             };
         }
 

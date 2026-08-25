@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             PanelPrincipal = new TableLayoutPanel();
             PanelMenuSuperior = new Panel();
-            Lbl_SnapshotAtual = new Label();
+            Btn_Metricas = new Button();
+            textBoxEstadoAtual = new RichTextBox();
             MenuOperacoes = new GroupBox();
             Panel_Operacoes = new TableLayoutPanel();
             Panel_OperacoesAlocacao = new TableLayoutPanel();
@@ -43,6 +44,7 @@
             Btn_Calloc = new Button();
             Btn_Realloc = new Button();
             Panel_OperacoesSimulacao = new TableLayoutPanel();
+            Btn_LegendaCores = new Button();
             Btn_ZerarSimulacao = new Button();
             Btn_PararSimulacao = new Button();
             Btn_IniciarSimulacao = new Button();
@@ -89,7 +91,6 @@
             panel6 = new Panel();
             DataGridViewEventos = new DataGridView();
             Panel_OpcoesEventos = new Panel();
-            Btn_LegendaCores = new Button();
             tableLayoutPanel5 = new TableLayoutPanel();
             Btn_ExcluirEvento = new Button();
             Btn_DescerEvento = new Button();
@@ -143,7 +144,8 @@
             // 
             // PanelMenuSuperior
             // 
-            PanelMenuSuperior.Controls.Add(Lbl_SnapshotAtual);
+            PanelMenuSuperior.Controls.Add(Btn_Metricas);
+            PanelMenuSuperior.Controls.Add(textBoxEstadoAtual);
             PanelMenuSuperior.Controls.Add(MenuOperacoes);
             PanelMenuSuperior.Controls.Add(MenuParametros);
             PanelMenuSuperior.Dock = DockStyle.Fill;
@@ -152,15 +154,33 @@
             PanelMenuSuperior.Size = new Size(1258, 198);
             PanelMenuSuperior.TabIndex = 0;
             // 
-            // Lbl_SnapshotAtual
+            // Btn_Metricas
             // 
-            Lbl_SnapshotAtual.Dock = DockStyle.Fill;
-            Lbl_SnapshotAtual.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Lbl_SnapshotAtual.Location = new Point(858, 0);
-            Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
-            Lbl_SnapshotAtual.Size = new Size(400, 198);
-            Lbl_SnapshotAtual.TabIndex = 1;
-            Lbl_SnapshotAtual.Text = "Estado Atual";
+            Btn_Metricas.BackColor = Color.DarkCyan;
+            Btn_Metricas.Dock = DockStyle.Bottom;
+            Btn_Metricas.FlatAppearance.BorderSize = 0;
+            Btn_Metricas.FlatStyle = FlatStyle.Flat;
+            Btn_Metricas.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Btn_Metricas.ForeColor = SystemColors.ControlLightLight;
+            Btn_Metricas.Location = new Point(858, 163);
+            Btn_Metricas.Name = "Btn_Metricas";
+            Btn_Metricas.Size = new Size(400, 35);
+            Btn_Metricas.TabIndex = 5;
+            Btn_Metricas.Text = "Métricas de Simulação";
+            Btn_Metricas.UseVisualStyleBackColor = false;
+            Btn_Metricas.Click += Btn_Metricas_Click;
+            // 
+            // textBoxEstadoAtual
+            // 
+            textBoxEstadoAtual.BorderStyle = BorderStyle.None;
+            textBoxEstadoAtual.Dock = DockStyle.Top;
+            textBoxEstadoAtual.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxEstadoAtual.Location = new Point(858, 0);
+            textBoxEstadoAtual.Name = "textBoxEstadoAtual";
+            textBoxEstadoAtual.ScrollBars = RichTextBoxScrollBars.Vertical;
+            textBoxEstadoAtual.Size = new Size(400, 104);
+            textBoxEstadoAtual.TabIndex = 2;
+            textBoxEstadoAtual.Text = "";
             // 
             // MenuOperacoes
             // 
@@ -287,6 +307,21 @@
             Panel_OperacoesSimulacao.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             Panel_OperacoesSimulacao.Size = new Size(170, 164);
             Panel_OperacoesSimulacao.TabIndex = 1;
+            // 
+            // Btn_LegendaCores
+            // 
+            Btn_LegendaCores.BackColor = Color.DimGray;
+            Btn_LegendaCores.Dock = DockStyle.Fill;
+            Btn_LegendaCores.FlatStyle = FlatStyle.Flat;
+            Btn_LegendaCores.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Btn_LegendaCores.ForeColor = SystemColors.ControlLightLight;
+            Btn_LegendaCores.Location = new Point(3, 126);
+            Btn_LegendaCores.Name = "Btn_LegendaCores";
+            Btn_LegendaCores.Size = new Size(164, 35);
+            Btn_LegendaCores.TabIndex = 4;
+            Btn_LegendaCores.Text = "Legenda de Cores";
+            Btn_LegendaCores.UseVisualStyleBackColor = false;
+            Btn_LegendaCores.Click += Btn_LegendaCores_Click;
             // 
             // Btn_ZerarSimulacao
             // 
@@ -512,7 +547,7 @@
             SelectHeapSize.Anchor = AnchorStyles.None;
             SelectHeapSize.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectHeapSize.FormattingEnabled = true;
-            SelectHeapSize.Location = new Point(13, 40);
+            SelectHeapSize.Location = new Point(13, 43);
             SelectHeapSize.Name = "SelectHeapSize";
             SelectHeapSize.Size = new Size(163, 29);
             SelectHeapSize.TabIndex = 5;
@@ -794,23 +829,23 @@
             // 
             // DataGridViewBlocosLivres
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DataGridViewBlocosLivres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle6;
             DataGridViewBlocosLivres.Dock = DockStyle.Fill;
             DataGridViewBlocosLivres.Location = new Point(0, 0);
             DataGridViewBlocosLivres.Name = "DataGridViewBlocosLivres";
@@ -861,23 +896,23 @@
             // 
             // DataGridViewEventos
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle8;
             DataGridViewEventos.Dock = DockStyle.Fill;
             DataGridViewEventos.Location = new Point(0, 0);
             DataGridViewEventos.Name = "DataGridViewEventos";
@@ -893,21 +928,6 @@
             Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
             Panel_OpcoesEventos.Size = new Size(435, 44);
             Panel_OpcoesEventos.TabIndex = 4;
-            // 
-            // Btn_LegendaCores
-            // 
-            Btn_LegendaCores.BackColor = Color.DimGray;
-            Btn_LegendaCores.Dock = DockStyle.Fill;
-            Btn_LegendaCores.FlatStyle = FlatStyle.Flat;
-            Btn_LegendaCores.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_LegendaCores.ForeColor = SystemColors.ControlLightLight;
-            Btn_LegendaCores.Location = new Point(3, 126);
-            Btn_LegendaCores.Name = "Btn_LegendaCores";
-            Btn_LegendaCores.Size = new Size(164, 35);
-            Btn_LegendaCores.TabIndex = 4;
-            Btn_LegendaCores.Text = "Legenda de Cores";
-            Btn_LegendaCores.UseVisualStyleBackColor = false;
-            Btn_LegendaCores.Click += Btn_LegendaCores_Click;
             // 
             // tableLayoutPanel5
             // 
@@ -974,6 +994,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1264, 681);
             Controls.Add(PanelPrincipal);
+            MinimumSize = new Size(1280, 720);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SimuHeap";
@@ -1057,7 +1078,6 @@
         private Button BtnAnterior;
         private Button BtnProximo;
         private TableLayoutPanel tableLayoutPanel4;
-        private Label Lbl_SnapshotAtual;
         private DataGridView DataGridViewBlocosLivres;
         private DataGridView DataGridViewEventos;
         private Panel panel4;
@@ -1077,5 +1097,7 @@
         private TableLayoutPanel tableLayoutPanel8;
         private TableLayoutPanel tableLayoutPanel9;
         private TableLayoutPanel tableLayoutPanel10;
+        private RichTextBox textBoxEstadoAtual;
+        private Button Btn_Metricas;
     }
 }

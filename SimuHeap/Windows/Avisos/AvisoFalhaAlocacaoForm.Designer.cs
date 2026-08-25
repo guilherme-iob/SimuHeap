@@ -83,12 +83,13 @@
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(293, 61);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "label1";
+            lblTitulo.Text = "Falha de Alocação";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
+            pictureBox1.BackColor = Color.LightGray;
             pictureBox1.BackgroundImage = Properties.Resources.warning;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(17, 10);
@@ -101,11 +102,11 @@
             // 
             // txtMensagem
             // 
-            txtMensagem.BackColor = Color.Gray;
+            txtMensagem.BackColor = Color.LightGray;
             txtMensagem.BorderStyle = BorderStyle.None;
             txtMensagem.Dock = DockStyle.Fill;
             txtMensagem.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtMensagem.ForeColor = SystemColors.Window;
+            txtMensagem.ForeColor = SystemColors.ControlText;
             txtMensagem.Location = new Point(10, 79);
             txtMensagem.Margin = new Padding(10);
             txtMensagem.Name = "txtMensagem";
@@ -133,18 +134,18 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gray;
+            BackColor = Color.LightGray;
             ClientSize = new Size(384, 461);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ForeColor = SystemColors.ButtonHighlight;
+            ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AvisoFalhaAlocacaoForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "AvisoFalhaAlocacaoForm";
+            Text = "Falha de Alocação";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

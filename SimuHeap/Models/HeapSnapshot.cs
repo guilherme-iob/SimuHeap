@@ -31,15 +31,7 @@ namespace SimuHeap.Models
         // erros de simulacao
         public ErroSimulacao? Erro { get; set; }
 
-
-        //public string OperacaoAtual { get; set; } = string.Empty;
-        //public string InformacoesBusca { get; set; } = string.Empty;
-
-        //public int BytesLivres { get; set; }
-        //public int BytesOcupados { get; set; }
-        //public double UsoHeapPercentual { get; set; }
-        //public double FragmentacaoExterna { get; set; }
-        //public double FragmentacaoInterna { get; set; }
+        public MetricasHeap Metricas { get; set;  } = new();
 
         public override string ToString()
         {

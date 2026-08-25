@@ -26,6 +26,8 @@ namespace SimuHeap.Windows
         private int proximaReferenciaBloco = 1;
 
         private LegendaCoresForm? legendaCoresForm;
+        private MetricasSimulacaoForm? metricasHeapForm;
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,7 +43,6 @@ namespace SimuHeap.Windows
             InicializarHeap();
             ConfigurarDataGrids();
             SelectHeapSize.DataSource = Enum.GetValues(typeof(TamanhosHeap));
-
         }
         private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,6 +50,13 @@ namespace SimuHeap.Windows
             {
                 AlterarTamanhoHeap((TamanhosHeap)SelectHeapSize.SelectedItem);
             }
+        }
+
+        private void AbrirFormularioMetricas()
+        {
+            metricasHeapForm = new MetricasSimulacaoForm();
+
+            metricasHeapForm.Show(this);
         }
 
         private void ConfigurarDataGrids()
@@ -159,9 +167,9 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            //InicializarEventosTeste();
+            InicializarEventosTeste();
 
-            InicializarEventosTesteErros();
+            //InicializarEventosTesteErros();
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -813,7 +821,14 @@ namespace SimuHeap.Windows
             DestacarEventoAtual(snapshot);
             DestacarBlocoLivreAtual(snapshot);
 
-            Lbl_SnapshotAtual.Text = snapshot.ToString();
+            string strBlocoEmAnalise = snapshot.EnderecoBlocoEmAnalise is null ? "" : $"Endereço Bloco em Análise: {snapshot.EnderecoBlocoEmAnalise}\n";
+            string strMelhorBloco = snapshot.EnderecoMelhorBloco is null ? "" : $"Endereço Melhor Bloco: {snapshot.EnderecoMelhorBloco}\n";
+            string strDescricaoPasso = snapshot.DescricaoPasso == snapshot.DescricaoEvento ? "" : $"Descrição Passo: {snapshot.DescricaoPasso}\n";
+            string text = $"Evento: {snapshot.DescricaoEvento}\n{strDescricaoPasso}{strBlocoEmAnalise}{strMelhorBloco}{snapshot.Metricas}";
+            //Lbl_SnapshotAtual.Text = text;
+            textBoxEstadoAtual.Text = text;
+
+            metricasHeapForm?.AtualizarMetricas(snapshot.Metricas);
 
             if (snapshot.Erro is not null)
             {
@@ -1013,6 +1028,11 @@ namespace SimuHeap.Windows
                 legendaCoresForm.BringToFront();
                 legendaCoresForm.Activate();
             }
+        }
+
+        private void Btn_Metricas_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioMetricas();
         }
     }
 }
