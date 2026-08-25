@@ -72,18 +72,18 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 23.5294113F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 23.5294113F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 23.5294113F));
-            tableLayoutPanel1.Size = new Size(558, 701);
+            tableLayoutPanel1.Size = new Size(384, 681);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(Lbl_Metadados);
             groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(4, 537);
+            groupBox4.Location = new Point(4, 524);
             groupBox4.Margin = new Padding(4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4);
-            groupBox4.Size = new Size(550, 160);
+            groupBox4.Size = new Size(376, 153);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "Metadados";
@@ -106,11 +106,11 @@
             groupBox3.Controls.Add(Lbl_MemInutilizavel);
             groupBox3.Controls.Add(Lbl_Padding);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(4, 373);
+            groupBox3.Location = new Point(4, 364);
             groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(4);
-            groupBox3.Size = new Size(550, 156);
+            groupBox3.Size = new Size(376, 152);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "Desperdício de memória";
@@ -166,11 +166,11 @@
             groupBox2.Controls.Add(Lbl_FragInterna);
             groupBox2.Controls.Add(Lbl_BytesFragInterna);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(4, 209);
+            groupBox2.Location = new Point(4, 204);
             groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(550, 156);
+            groupBox2.Size = new Size(376, 152);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Fragmentação";
@@ -226,7 +226,7 @@
             label1.Location = new Point(4, 0);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(550, 41);
+            label1.Size = new Size(376, 40);
             label1.TabIndex = 0;
             label1.Text = "Métricas de Simulação";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -237,11 +237,11 @@
             groupBox1.Controls.Add(Lbl_BytesLivres);
             groupBox1.Controls.Add(Lbl_BytesOcupados);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(4, 45);
+            groupBox1.Location = new Point(4, 44);
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(550, 156);
+            groupBox1.Size = new Size(376, 152);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Uso da memória heap";
@@ -283,13 +283,12 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 701);
+            ClientSize = new Size(384, 681);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4);
             MaximizeBox = false;
-            MinimumSize = new Size(574, 740);
             Name = "MetricasSimulacaoForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Métricas de Simulação";

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             PanelPrincipal = new TableLayoutPanel();
             PanelMenuSuperior = new Panel();
+            Lbl_SnapshotAtual = new Label();
             Btn_Metricas = new Button();
-            textBoxEstadoAtual = new RichTextBox();
             MenuOperacoes = new GroupBox();
             Panel_Operacoes = new TableLayoutPanel();
             Panel_OperacoesAlocacao = new TableLayoutPanel();
@@ -131,56 +131,54 @@
             // 
             PanelPrincipal.ColumnCount = 1;
             PanelPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            PanelPrincipal.Controls.Add(PanelMenuSuperior, 0, 0);
-            PanelPrincipal.Controls.Add(Panel_Simulacao, 0, 1);
+            PanelPrincipal.Controls.Add(PanelMenuSuperior, 0, 1);
+            PanelPrincipal.Controls.Add(Panel_Simulacao, 0, 2);
             PanelPrincipal.Dock = DockStyle.Fill;
             PanelPrincipal.Location = new Point(0, 0);
             PanelPrincipal.Name = "PanelPrincipal";
-            PanelPrincipal.RowCount = 2;
+            PanelPrincipal.RowCount = 3;
+            PanelPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             PanelPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            PanelPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            PanelPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
             PanelPrincipal.Size = new Size(1264, 681);
             PanelPrincipal.TabIndex = 0;
             // 
             // PanelMenuSuperior
             // 
+            PanelMenuSuperior.Controls.Add(Lbl_SnapshotAtual);
             PanelMenuSuperior.Controls.Add(Btn_Metricas);
-            PanelMenuSuperior.Controls.Add(textBoxEstadoAtual);
             PanelMenuSuperior.Controls.Add(MenuOperacoes);
             PanelMenuSuperior.Controls.Add(MenuParametros);
             PanelMenuSuperior.Dock = DockStyle.Fill;
-            PanelMenuSuperior.Location = new Point(3, 3);
+            PanelMenuSuperior.Location = new Point(3, 37);
             PanelMenuSuperior.Name = "PanelMenuSuperior";
             PanelMenuSuperior.Size = new Size(1258, 198);
             PanelMenuSuperior.TabIndex = 0;
             // 
+            // Lbl_SnapshotAtual
+            // 
+            Lbl_SnapshotAtual.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Lbl_SnapshotAtual.Location = new Point(858, 0);
+            Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
+            Lbl_SnapshotAtual.Size = new Size(400, 120);
+            Lbl_SnapshotAtual.TabIndex = 6;
+            Lbl_SnapshotAtual.Text = "Estado Atual";
+            // 
             // Btn_Metricas
             // 
             Btn_Metricas.BackColor = Color.DarkCyan;
-            Btn_Metricas.Dock = DockStyle.Bottom;
             Btn_Metricas.FlatAppearance.BorderSize = 0;
             Btn_Metricas.FlatStyle = FlatStyle.Flat;
             Btn_Metricas.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Btn_Metricas.ForeColor = SystemColors.ControlLightLight;
             Btn_Metricas.Location = new Point(858, 163);
+            Btn_Metricas.MaximumSize = new Size(200, 35);
             Btn_Metricas.Name = "Btn_Metricas";
-            Btn_Metricas.Size = new Size(400, 35);
+            Btn_Metricas.Size = new Size(200, 35);
             Btn_Metricas.TabIndex = 5;
             Btn_Metricas.Text = "Métricas de Simulação";
             Btn_Metricas.UseVisualStyleBackColor = false;
             Btn_Metricas.Click += Btn_Metricas_Click;
-            // 
-            // textBoxEstadoAtual
-            // 
-            textBoxEstadoAtual.BorderStyle = BorderStyle.None;
-            textBoxEstadoAtual.Dock = DockStyle.Top;
-            textBoxEstadoAtual.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxEstadoAtual.Location = new Point(858, 0);
-            textBoxEstadoAtual.Name = "textBoxEstadoAtual";
-            textBoxEstadoAtual.ScrollBars = RichTextBoxScrollBars.Vertical;
-            textBoxEstadoAtual.Size = new Size(400, 104);
-            textBoxEstadoAtual.TabIndex = 2;
-            textBoxEstadoAtual.Text = "";
             // 
             // MenuOperacoes
             // 
@@ -660,11 +658,11 @@
             Panel_Simulacao.Controls.Add(Panel_Simulacao_Estruturas, 0, 0);
             Panel_Simulacao.Controls.Add(Panel_Eventos, 1, 0);
             Panel_Simulacao.Dock = DockStyle.Fill;
-            Panel_Simulacao.Location = new Point(3, 207);
+            Panel_Simulacao.Location = new Point(3, 241);
             Panel_Simulacao.Name = "Panel_Simulacao";
             Panel_Simulacao.RowCount = 1;
             Panel_Simulacao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_Simulacao.Size = new Size(1258, 471);
+            Panel_Simulacao.Size = new Size(1258, 437);
             Panel_Simulacao.TabIndex = 1;
             // 
             // Panel_Simulacao_Estruturas
@@ -674,7 +672,7 @@
             Panel_Simulacao_Estruturas.Dock = DockStyle.Fill;
             Panel_Simulacao_Estruturas.Location = new Point(3, 3);
             Panel_Simulacao_Estruturas.Name = "Panel_Simulacao_Estruturas";
-            Panel_Simulacao_Estruturas.Size = new Size(811, 465);
+            Panel_Simulacao_Estruturas.Size = new Size(811, 431);
             Panel_Simulacao_Estruturas.TabIndex = 0;
             // 
             // Panel_Simulacao_2
@@ -689,7 +687,7 @@
             Panel_Simulacao_2.Name = "Panel_Simulacao_2";
             Panel_Simulacao_2.RowCount = 1;
             Panel_Simulacao_2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_Simulacao_2.Size = new Size(811, 430);
+            Panel_Simulacao_2.Size = new Size(811, 396);
             Panel_Simulacao_2.TabIndex = 1;
             // 
             // Panel_Segmentos
@@ -700,7 +698,7 @@
             Panel_Segmentos.Dock = DockStyle.Fill;
             Panel_Segmentos.Location = new Point(246, 3);
             Panel_Segmentos.Name = "Panel_Segmentos";
-            Panel_Segmentos.Size = new Size(562, 424);
+            Panel_Segmentos.Size = new Size(562, 390);
             Panel_Segmentos.TabIndex = 0;
             // 
             // PanelGridHeap
@@ -709,7 +707,7 @@
             PanelGridHeap.Dock = DockStyle.Fill;
             PanelGridHeap.Location = new Point(0, 23);
             PanelGridHeap.Name = "PanelGridHeap";
-            PanelGridHeap.Size = new Size(562, 360);
+            PanelGridHeap.Size = new Size(562, 326);
             PanelGridHeap.TabIndex = 0;
             // 
             // Panel_Simulacao_Nav
@@ -717,7 +715,7 @@
             Panel_Simulacao_Nav.BackColor = SystemColors.ActiveBorder;
             Panel_Simulacao_Nav.Controls.Add(tableLayoutPanel4);
             Panel_Simulacao_Nav.Dock = DockStyle.Bottom;
-            Panel_Simulacao_Nav.Location = new Point(0, 383);
+            Panel_Simulacao_Nav.Location = new Point(0, 349);
             Panel_Simulacao_Nav.Name = "Panel_Simulacao_Nav";
             Panel_Simulacao_Nav.Size = new Size(562, 41);
             Panel_Simulacao_Nav.TabIndex = 2;
@@ -815,7 +813,7 @@
             Panel_ListaBlocosLivres.Dock = DockStyle.Fill;
             Panel_ListaBlocosLivres.Location = new Point(3, 3);
             Panel_ListaBlocosLivres.Name = "Panel_ListaBlocosLivres";
-            Panel_ListaBlocosLivres.Size = new Size(237, 424);
+            Panel_ListaBlocosLivres.Size = new Size(237, 390);
             Panel_ListaBlocosLivres.TabIndex = 1;
             // 
             // panel4
@@ -824,33 +822,33 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(0, 23);
             panel4.Name = "panel4";
-            panel4.Size = new Size(237, 401);
+            panel4.Size = new Size(237, 367);
             panel4.TabIndex = 4;
             // 
             // DataGridViewBlocosLivres
             // 
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewBlocosLivres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewBlocosLivres.Dock = DockStyle.Fill;
             DataGridViewBlocosLivres.Location = new Point(0, 0);
             DataGridViewBlocosLivres.Name = "DataGridViewBlocosLivres";
             DataGridViewBlocosLivres.RowHeadersWidth = 51;
-            DataGridViewBlocosLivres.Size = new Size(237, 401);
+            DataGridViewBlocosLivres.Size = new Size(237, 367);
             DataGridViewBlocosLivres.TabIndex = 1;
             // 
             // label1
@@ -882,7 +880,7 @@
             Panel_Eventos.Dock = DockStyle.Fill;
             Panel_Eventos.Location = new Point(820, 3);
             Panel_Eventos.Name = "Panel_Eventos";
-            Panel_Eventos.Size = new Size(435, 465);
+            Panel_Eventos.Size = new Size(435, 431);
             Panel_Eventos.TabIndex = 1;
             // 
             // panel6
@@ -891,40 +889,40 @@
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(435, 421);
+            panel6.Size = new Size(435, 387);
             panel6.TabIndex = 5;
             // 
             // DataGridViewEventos
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle4;
             DataGridViewEventos.Dock = DockStyle.Fill;
             DataGridViewEventos.Location = new Point(0, 0);
             DataGridViewEventos.Name = "DataGridViewEventos";
             DataGridViewEventos.RowHeadersWidth = 51;
-            DataGridViewEventos.Size = new Size(435, 421);
+            DataGridViewEventos.Size = new Size(435, 387);
             DataGridViewEventos.TabIndex = 2;
             // 
             // Panel_OpcoesEventos
             // 
             Panel_OpcoesEventos.Controls.Add(tableLayoutPanel5);
             Panel_OpcoesEventos.Dock = DockStyle.Bottom;
-            Panel_OpcoesEventos.Location = new Point(0, 421);
+            Panel_OpcoesEventos.Location = new Point(0, 387);
             Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
             Panel_OpcoesEventos.Size = new Size(435, 44);
             Panel_OpcoesEventos.TabIndex = 4;
@@ -1097,7 +1095,7 @@
         private TableLayoutPanel tableLayoutPanel8;
         private TableLayoutPanel tableLayoutPanel9;
         private TableLayoutPanel tableLayoutPanel10;
-        private RichTextBox textBoxEstadoAtual;
         private Button Btn_Metricas;
+        private Label Lbl_SnapshotAtual;
     }
 }

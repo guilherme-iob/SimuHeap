@@ -285,10 +285,27 @@ namespace SimuHeap.Utils
             return texto;
         }
 
-        public static readonly string ExplicacaoSplit = string.Empty;
-        public static readonly string ExplicacaoCoalescing = string.Empty;
-        public static readonly string ExplicacaoAlgoritmosAlocacao = string.Empty;
-        public static readonly string ExplicacaoTamanhoHeap = string.Empty;
+        public static readonly string ExplicacaoSplit =
+            "O Split permite dividir um bloco livre quando ele é maior do que o espaço necessário para uma alocação.\n\n" +
+            "Uma parte é utilizada pela nova alocação e o espaço restante forma um novo bloco livre, desde que tenha tamanho suficiente para representar um bloco válido.\n\n" +
+            "Essa técnica evita desperdiçar todo o bloco em uma alocação menor.";
+
+        public static readonly string ExplicacaoCoalescing =
+            "O Coalescing permite unir blocos livres que estão adjacentes na memória.\n\n" +
+            "Quando um bloco é liberado, seus blocos vizinhos são verificados e, caso também estejam livres, podem ser unidos formando um único bloco maior.\n\n" +
+            "Essa técnica ajuda a reduzir a fragmentação externa.";
+
+        public static readonly string ExplicacaoAlgoritmosAlocacao =
+            "Define a estratégia utilizada para escolher um bloco livre durante uma alocação.\n\n" +
+            "• First-Fit: utiliza o primeiro bloco livre que possui espaço suficiente.\n" +
+            "• Best-Fit: utiliza o menor bloco livre capaz de atender à solicitação.\n" +
+            "• Worst-Fit: utiliza o maior bloco livre disponível.";
+
+        public static readonly string ExplicacaoTamanhoHeap =
+            "Define a quantidade total de memória disponível na Heap simulada.\n\n" +
+            "As alocações consomem esse espaço considerando a estrutura dos blocos, incluindo Header, Payload, Padding e Footer.\n\n" +
+            "Quando não existe um bloco livre com espaço suficiente, a alocação não pode ser realizada.";
+
         public static readonly string ExplicacaoListaBlocosLivres = string.Empty;
         public static readonly string ExplicacaoSegmentos = string.Empty;
 

@@ -824,9 +824,9 @@ namespace SimuHeap.Windows
             string strBlocoEmAnalise = snapshot.EnderecoBlocoEmAnalise is null ? "" : $"Endereço Bloco em Análise: {snapshot.EnderecoBlocoEmAnalise}\n";
             string strMelhorBloco = snapshot.EnderecoMelhorBloco is null ? "" : $"Endereço Melhor Bloco: {snapshot.EnderecoMelhorBloco}\n";
             string strDescricaoPasso = snapshot.DescricaoPasso == snapshot.DescricaoEvento ? "" : $"Descrição Passo: {snapshot.DescricaoPasso}\n";
-            string text = $"Evento: {snapshot.DescricaoEvento}\n{strDescricaoPasso}{strBlocoEmAnalise}{strMelhorBloco}{snapshot.Metricas}";
-            //Lbl_SnapshotAtual.Text = text;
-            textBoxEstadoAtual.Text = text;
+            string text = $"Evento: {snapshot.DescricaoEvento}\n{strDescricaoPasso}{strBlocoEmAnalise}{strMelhorBloco}";
+            Lbl_SnapshotAtual.Text = text;
+            //textBoxEstadoAtual.Text = text;
 
             metricasHeapForm?.AtualizarMetricas(snapshot.Metricas);
 
