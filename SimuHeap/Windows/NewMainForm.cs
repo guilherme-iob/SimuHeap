@@ -42,12 +42,15 @@ namespace SimuHeap.Windows
         {
             InicializarHeap();
             ConfigurarDataGrids();
+            AtualizarLabelPassoAtual();
             SelectHeapSize.DataSource = Enum.GetValues(typeof(TamanhosHeap));
 
-            InicializarLabelsMetricas();
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
             HabilitarSplit.Checked = true;
             HabilitarCoalesing.Checked = false;
             UseFirstFit.Checked = true;
+            SelectHeapSize.SelectedIndex = 2;
         }
         private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -123,7 +126,7 @@ namespace SimuHeap.Windows
             List<ReferenciaAlocacao> alocacoesAtivas = ObterAlocacoesAtivas();
             if (alocacoesAtivas.Count == 0)
             {
-                MessageBox.Show("Não há blocos alocados", "Free", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Não há blocos alocados", "Realloc", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -167,9 +170,8 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            InicializarEventosTeste();
-
-            //InicializarEventosTesteErros();
+            //InicializarEventosTeste();
+            InicializarEventosTesteErros();
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -657,9 +659,16 @@ namespace SimuHeap.Windows
             this.Panel_OpcoesEventos.Enabled = true;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
-            executor.Eventos.Clear();
+            
             heapSimulator.Resetar();
             HeapGrid.LimparSnapshot();
+
+            DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
         }
 
         private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
@@ -674,20 +683,34 @@ namespace SimuHeap.Windows
 
             DataGridViewEventos.Rows.Clear();
             DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
+
+            proximaReferenciaBloco = 1;
         }
 
         private void BtnPrimeiro_Click(object sender, EventArgs e)
         {
-            snapshotAtual = 0;
-            MostrarSnapshotAtual();
+            //snapshotAtual = 0;
+            //MostrarSnapshotAtual();
+
+            NavegarParaSnapshot(0);
         }
 
         private void BtnAnterior_Click(object sender, EventArgs e)
         {
+            //if (snapshotAtual > 0)
+            //{
+            //    snapshotAtual--;
+            //    MostrarSnapshotAtual();
+            //}
+
             if (snapshotAtual > 0)
             {
-                snapshotAtual--;
-                MostrarSnapshotAtual();
+                NavegarParaSnapshot(snapshotAtual - 1);
             }
         }
 
@@ -695,15 +718,18 @@ namespace SimuHeap.Windows
         {
             if (snapshotAtual < executor.Snapshots.Count - 1)
             {
-                snapshotAtual++;
-                MostrarSnapshotAtual();
+                //snapshotAtual++;
+                //MostrarSnapshotAtual();
+                NavegarParaSnapshot(snapshotAtual + 1);
             }
+
         }
 
         private void BtnUltimo_Click(object sender, EventArgs e)
         {
-            snapshotAtual = executor.Snapshots.Count - 1;
-            MostrarSnapshotAtual();
+            //snapshotAtual = executor.Snapshots.Count - 1;
+            //MostrarSnapshotAtual();
+            NavegarParaSnapshot(executor.Snapshots.Count - 1);
         }
 
         private void Btn_SubirEvento_Click(object sender, EventArgs e)
@@ -808,15 +834,37 @@ namespace SimuHeap.Windows
             }
         }
 
-        private void MostrarSnapshotAtual()
+        private void NavegarParaSnapshot(int indiceDestino)
+        {
+            if (executor.Snapshots.Count == 0) return;
+
+            indiceDestino = Math.Clamp(indiceDestino, 0, executor.Snapshots.Count - 1);
+
+            bool avancar = indiceDestino > snapshotAtual;
+
+            if (avancar)
+            {
+                for(int i = snapshotAtual + 1; i <= indiceDestino; i++)
+                {
+                    if (executor.Snapshots[i].Erro is not null)
+                    {
+                        indiceDestino = i;
+                        break;
+                    }
+                }
+            }
+
+            snapshotAtual = indiceDestino;
+            MostrarSnapshotAtual(avancar);
+        }
+
+        private void MostrarSnapshotAtual(bool exibirErro = false)
         {
             if (executor.Snapshots.Count == 0)
             {
-                Lbl_PassoAtual.Text = "Passo Atual: 0/0";
+                AtualizarLabelPassoAtual();
                 return;
             }
-
-
 
             HeapSnapshot snapshot = executor.Snapshots[snapshotAtual];
 
@@ -832,31 +880,24 @@ namespace SimuHeap.Windows
             string strDescricaoPasso = snapshot.DescricaoPasso == snapshot.DescricaoEvento ? "" : $"Descrição Passo: {snapshot.DescricaoPasso}\n";
             string text = $"Evento: {snapshot.DescricaoEvento}\n{strDescricaoPasso}{strBlocoEmAnalise}{strMelhorBloco}";
             Lbl_SnapshotAtual.Text = text;
-            //textBoxEstadoAtual.Text = text;
-            Lbl_PassoAtual.Text = $"Passo Atual: {snapshotAtual}/{executor.Snapshots.Count - 1}";
+
+            AtualizarLabelPassoAtual();
 
             AtualizarMetricas(snapshot.Metricas);
 
-            if (snapshot.Erro is not null)
+            if (exibirErro && snapshot.Erro is not null)
             {
-                //MessageBox.Show(
-                //    $"{snapshot.Erro.Mensagem}\r\n\r\n" +
-                //    $"{snapshot.Erro.Detalhes}\r\n\r\n" +
-                //    $"{snapshot.Erro.Explicacao}",
-                //    snapshot.Erro.Titulo,
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Warning);
-
                 AvisoFalhaAlocacaoForm aviso = new AvisoFalhaAlocacaoForm(snapshot.Erro);
-                aviso.ShowDialog();
+                aviso.ShowDialog(this);
             }
-
-            // atualizar labels e métricas
-            //lblOperacaoAtual.Text = snapshot.DescricaoEvento;
-            //lblUsoHeap.Text = $"{snapshot.UsoHeapPercentual:F1}%";
-            //lblFragExterna.Text = $"{snapshot.FragmentacaoExterna:F1}%";
-            //lblFragInterna.Text = $"{snapshot.FragmentacaoInterna:F1}%";
         }
+
+        private void AtualizarLabelPassoAtual()
+        {
+            int totalSnapshots = executor.Snapshots.Count == 0 ? 0 : executor.Snapshots.Count - 1;
+            Lbl_PassoAtual.Text = $"Passo Atual: {snapshotAtual}/{totalSnapshots}";
+        }
+
         private void AtualizarListaBlocosLivres(HeapSnapshot snapshot)
         {
             DataGridViewBlocosLivres.Rows.Clear();
@@ -1037,30 +1078,7 @@ namespace SimuHeap.Windows
             }
         }
 
-        private void InicializarLabelsMetricas()
-        {
-            // Uso da memória
-            Lbl_BytesOcupados.Text = "Bytes ocupados: 0 bytes";
-            Lbl_BytesLivres.Text = "Bytes livres: 0 bytes";
-            Lbl_UsoHeap.Text = "Uso da heap: 0,00%";
 
-            // Fragmentação interna
-            Lbl_BytesFragInterna.Text = "Bytes de fragmentação interna: 0 bytes";
-            Lbl_FragInterna.Text = "Fragmentação interna: 0,00%";
-            Lbl_Padding.Text = "Bytes de padding: 0 bytes";
-
-            // Fragmentação externa
-            Lbl_FragExterna.Text = "Fragmentação externa: 0,00%";
-            Lbl_MaiorBlocoLivre.Text = "Maior bloco livre: 0 bytes";
-
-            // Memória inutilizável
-            Lbl_MemInutilizavel.Text = "Bytes inutilizáveis: 0 bytes";
-            Lbl_PercentualInutilizavel.Text = "Memória inutilizável: 0,00%";
-            LblBlocosInutilizaveis.Text = "Blocos inutilizáveis: 0";
-
-            // Metadados
-            Lbl_Metadados.Text = "Bytes de metadados: 0 bytes";
-        }
         public void AtualizarMetricas(MetricasHeap metricas)
         {
             if (metricas is null)

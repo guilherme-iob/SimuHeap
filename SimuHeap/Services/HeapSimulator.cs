@@ -126,7 +126,7 @@ namespace SimuHeap.Services
 
                     aoGerarPasso?.Invoke(new EstadoPassoSimulacao
                     {
-                        Descricao = $"Bloco #{blocoReduzido.Id} reduzido." +
+                        Descricao = $"Bloco #{blocoReduzido.Id} reduzido. " +
                         $"Foi criado um novo bloco livre de {blocoLivre.TamanhoTotal} bytes.",
                         EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio,
                         DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ReduzindoBloco

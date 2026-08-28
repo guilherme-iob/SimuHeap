@@ -146,27 +146,6 @@ namespace SimuHeap.Services
                         BlocoDeMemoria? bloco = simulador.Realloc(idBloco, tamanhoSolicitado, realloc.TipoVariavel, Color.FromArgb(190, 50, 50), algoritmo, registrarPasso);
                         passo = passoLocal;
 
-                        //if (bloco is not null)
-                        //{
-                        //    // Remove a informação referente ao estado antigo.
-                        //    informacoesAlocacao.Remove(idBloco);
-
-                        //    // O realloc pode ter mantido ou alterado o ID físico.
-                        //    referenciasBlocos[realloc.ReferenciaBloco] = bloco.Id;
-
-                        //    informacoesAlocacao[bloco.Id] =
-                        //        new InformacaoAlocacaoBloco
-                        //        {
-                        //            IdBloco = bloco.Id,
-                        //            IdEvento = evento.Id,
-                        //            ReferenciaBloco = realloc.ReferenciaBloco,
-                        //            TipoOperacao = TipoEventoHeap.Realloc,
-                        //            DescricaoOperacao = realloc.Descricao
-                        //        };
-                        //}
-
-                        //break;
-
                         if (bloco is null)
                         {
                             ErroSimulacao erro = CriarErroFalhaAlocacao(simulador, tamanhoSolicitado);
@@ -225,17 +204,6 @@ namespace SimuHeap.Services
                         bool liberou = simulador.Free(idBloco, registrarPasso);
                         passo = passoLocal;
 
-                        //if (liberou)
-                        //{
-                        //    referenciasBlocos.Remove(free.ReferenciaBloco);
-                        //}
-                        //else
-                        //{
-                        //    if (informacaoAnterior is not null)
-                        //    {
-                        //        informacoesAlocacao[idBloco] = informacaoAnterior;
-                        //    }
-                        //}
 
                         if (!liberou)
                         {
@@ -266,8 +234,8 @@ namespace SimuHeap.Services
                         break;
                     }
                 default:
-                    MessageBox.Show("Evento desconhecido");
-                    break;
+                    throw new InvalidOperationException($"Tipo de evento desconhecido: {evento.GetType().Name}");
+                    
             }
 
             return null;
@@ -340,9 +308,9 @@ namespace SimuHeap.Services
             return new ErroSimulacao
             {
                 Tipo = TipoErroSimulacao.FalhaAlocacaoSemEspaco,
-                Titulo = "Heap sem espaço suficiente",
+                Titulo = "Limite da heap simulada atingido",
                 Mensagem =
-                    "Não há memória livre suficiente para realizar a alocação.",
+                    "Não há memória livre suficiente na heap simulada para realizar esta alocação.",
 
                 Detalhes =
                     $"Payload solicitado: {tamanhoSolicitado} bytes\r\n" +
@@ -351,8 +319,18 @@ namespace SimuHeap.Services
                     $"Maior bloco livre: {maiorBlocoLivre} bytes",
 
                 Explicacao =
-                    "A heap simulada não possui espaço livre suficiente para criar " +
-                    "o bloco solicitado."
+                    "A heap simulada atingiu o limite de memória definido para esta simulação. " +
+                    "A memória livre disponível não é suficiente para criar o bloco solicitado.\r\n\r\n" +
+
+                    "Neste simulador, o tamanho da heap é fixo para facilitar a visualização " +
+                    "de situações como esgotamento de espaço e fragmentação.\r\n\r\n" +
+
+                    "Em um sistema real, a região administrada pelo alocador pode crescer. " +
+                    "Quando não existe espaço suficiente nas regiões já disponíveis, o alocador " +
+                    "pode solicitar mais memória ao sistema operacional.\r\n\r\n" +
+
+                    "O crescimento não é ilimitado. Se o sistema operacional não puder fornecer " +
+                    "mais memória, ou algum limite do processo for atingido, a alocação falha. "
             };
         }
     }
