@@ -13,8 +13,8 @@ namespace SimuHeap.Controls
 {
     public partial class HeapGridControl : UserControl
     {
-        private int cellSize = 28;
-        private int columns = 32;
+        private int cellSize = StyleHeap.TamanhoCelula;
+        private int columns = 1;
         private int rows;
 
         private HeapSimulator? simulator;
@@ -70,27 +70,27 @@ namespace SimuHeap.Controls
             }
         }
 
-        [Category("Configurações Visuais")]
-        [DefaultValue(32)]
-        public int Columns
-        {
-            get => columns;
+        //[Category("Configurações Visuais")]
+        //[DefaultValue(32)]
+        //public int Columns
+        //{
+        //    get => columns;
 
-            set
-            {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        nameof(value),
-                        "A quantidade de colunas deve ser maior que zero.");
-                }
+        //    set
+        //    {
+        //        if (value <= 0)
+        //        {
+        //            throw new ArgumentOutOfRangeException(
+        //                nameof(value),
+        //                "A quantidade de colunas deve ser maior que zero.");
+        //        }
 
-                columns = value;
+        //        columns = value;
 
-                RecalculateDimensions();
-                Invalidate();
-            }
-        }
+        //        RecalculateDimensions();
+        //        Invalidate();
+        //    }
+        //}
 
         private bool visualizacaoAvancada = false;
 
@@ -136,15 +136,31 @@ namespace SimuHeap.Controls
             Size = new Size(columns * cellSize, rows * cellSize);
         }
 
+        public void AjustarTamanho(int larguraDisponivel)
+        {
+            if (larguraDisponivel <= 0 || cellSize <= 0) return;
+
+
+            columns = Math.Max(1, larguraDisponivel / cellSize);
+
+            int tamanhoHeap = MemoriaAtual.Length;
+
+            rows = tamanhoHeap == 0 ? 0 : (int)Math.Ceiling((double)tamanhoHeap / columns);
+
+            Width = columns * cellSize;
+            Height = rows * cellSize;
+
+            Invalidate();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
             byte[] memoria = MemoriaAtual;
-            if (memoria.Length == 0 || columns <= 0 || rows <= 0)
-            {
-                return;
-            }
+
+            if (memoria.Length == 0 || columns <= 0 || rows <= 0) return;
+            
 
             Graphics graphics = e.Graphics;
 
@@ -167,21 +183,13 @@ namespace SimuHeap.Controls
             {
                 DesenharBloco(
                     graphics,
-                    bloco,
-                    gridPen,
-                    hexFont,
-                    idFont,
-                    centerFormat);
+                    bloco);
             }
         }
 
         private void DesenharBloco(
             Graphics graphics,
-            BlocoDeMemoria bloco,
-            Pen gridPen,
-            Font hexFont,
-            Font idFont,
-            StringFormat centerFormat)
+            BlocoDeMemoria bloco)
         {
             byte[] memoria = MemoriaAtual;
 
@@ -204,36 +212,51 @@ namespace SimuHeap.Controls
 
                 Color corFundo = ObterCorVisual(bloco, regiao);
 
-                using SolidBrush backgroundBrush = new SolidBrush(corFundo);
+                //using SolidBrush backgroundBrush = new SolidBrush(corFundo);
 
-                graphics.FillRectangle(backgroundBrush, cellRectangle);
+                //graphics.FillRectangle(backgroundBrush, cellRectangle);
 
-                graphics.DrawRectangle(gridPen, cellRectangle);
+                //graphics.DrawRectangle(gridPen, cellRectangle);
 
                 string texto = ObterTextoCelula(bloco, endereco);
 
-                Brush textBrush = RenderizadorControlesHeap.ObterCorTexto(bloco, regiao);
+                Brush corTexto = RenderizadorControlesHeap.ObterCorTexto(bloco, regiao);
 
-                graphics.DrawString(
-                    texto,
-                    hexFont,
-                    textBrush,
-                    cellRectangle,
-                    centerFormat);
+                //Brush textBrush = RenderizadorControlesHeap.ObterCorTexto(bloco, regiao);
+
+                //graphics.DrawString(
+                //    texto,
+                //    hexFont,
+                //    textBrush,
+                //    cellRectangle,
+                //    centerFormat);
+
+                string? id = null;
+                Brush? corId = null;
 
                 if (endereco == bloco.EnderecoInicio)
                 {
-                    string identificador = bloco.EstaLivre ? $"L#{bloco.Id}" : $"#{bloco.Id}";
+                    id = bloco.EstaLivre ? $"L#{bloco.Id}" : $"#{bloco.Id}";
 
-                    Brush corId = bloco.EstaLivre ? Brushes.White : Brushes.Yellow;
+                    corId = bloco.EstaLivre ? Brushes.White : Brushes.Yellow;
 
-                    graphics.DrawString(
-                        identificador,
-                        idFont,
-                        corId,
-                        x + 2,
-                        y + 1);
+                    //graphics.DrawString(
+                    //    identificador,
+                    //    idFont,
+                    //    corId,
+                    //    x + 2,
+                    //    y + 1);
                 }
+
+                RenderizadorControlesHeap.DesenharCelula(
+                    graphics,
+                    cellRectangle,
+                    corFundo,
+                    corTexto,
+                    texto,
+                    id,
+                    corId,
+                    cellSize);
             }
         }
 
@@ -273,29 +296,6 @@ namespace SimuHeap.Controls
 
             return MemoriaAtual[endereco].ToString("X2");
         }
-
-        //private static Brush ObterCorTexto(BlocoDeMemoria bloco, RegiaoBlocoMemoria regiao)
-        //{
-        //    if (bloco.EstaLivre)
-        //    {
-        //        switch (regiao)
-        //        {
-        //            case RegiaoBlocoMemoria.Header:
-        //                return Brushes.White;
-        //            case RegiaoBlocoMemoria.Footer:
-        //                return Brushes.White;
-        //            default:
-        //                return Brushes.Black;
-        //        }
-        //    }
-
-        //    return regiao switch
-        //    {
-        //        RegiaoBlocoMemoria.Padding => Brushes.Black,
-
-        //        _ => Brushes.White
-        //    };
-        //}
 
         public void DefinirSnapshot(HeapSnapshot novoSnapshot)
         {

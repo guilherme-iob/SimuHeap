@@ -811,12 +811,19 @@ namespace SimuHeap.Windows
             {
                 Location = new Point(0, 0),
                 CellSize = 28,
-                Columns = 32,
+                //Columns = 32,
                 Simulator = heapSimulator
             };
 
+            this.PanelGridHeap.BackColor = Color.FromArgb(30, 30, 30);
+            this.PanelGridHeap.Resize += PanelGridHeap_Resize;
             this.PanelGridHeap.AutoScroll = true;
             this.PanelGridHeap.Controls.Add(this.HeapGrid);
+        }
+
+        private void PanelGridHeap_Resize(object? sender, EventArgs e)
+        {
+            this.HeapGrid.AjustarTamanho(this.PanelGridHeap.ClientSize.Width);
         }
 
         private void AlterarTamanhoHeap(TamanhosHeap novoTamanho)

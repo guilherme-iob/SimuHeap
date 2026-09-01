@@ -785,7 +785,7 @@ namespace SimuHeap.Windows
             {
                 Location = new Point(0, 0),
                 CellSize = 28,
-                Columns = 32,
+                //Columns = 32,
                 Simulator = heapSimulator
             };
 
