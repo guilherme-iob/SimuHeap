@@ -16,9 +16,14 @@ namespace SimuHeap.Controls
     public partial class BlocoDetalhesControl : UserControl
     {
         private BlocoDeMemoria? bloco;
+        private byte[] memoria = Array.Empty<byte>();
+
+        private const int CellSize = StyleHeap.TamanhoCelula;
+
+        private int columns = 1;
+        private int rows = 1;
 
         public event EventHandler<RegiaoBlocoMemoria>? RegiaoClicada;
-        private readonly Dictionary<RegiaoBlocoMemoria, Rectangle> areasRegioes = new();
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -32,15 +37,26 @@ namespace SimuHeap.Controls
             }
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public byte[] Memoria
+        {
+            get => memoria;
+            set
+            {
+                memoria = value ?? Array.Empty<byte>();
+                Invalidate();
+            }
+        }
+
         public BlocoDetalhesControl()
         {
+            InitializeComponent();
+
             DoubleBuffered = true;
             ResizeRedraw = true;
 
             BackColor = Color.FromArgb(30, 30, 30);
-
-            Height = 100;
-
             Cursor = Cursors.Hand;
         }
 
@@ -48,337 +64,86 @@ namespace SimuHeap.Controls
         {
             base.OnPaint(e);
 
-            areasRegioes.Clear();
-
-            if (Bloco is null)
+            if (Bloco is null || Memoria.Length == 0)
                 return;
 
-            Graphics graphics = e.Graphics;
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-            int margem = 0;
+            for (int endereco = Bloco.EnderecoInicio; endereco <= Bloco.EnderecoFim; endereco++)
+            {
+                if (endereco < 0 || endereco >= Memoria.Length)
+                    continue;
 
-            int xInicial = margem;
-            int yInicial = margem;
+                int indiceLocal = endereco - Bloco.EnderecoInicio;
+                int coluna = indiceLocal % columns;
+                int linha = indiceLocal / columns;
 
-            int larguraDisponivel = Width - (margem * 2);
-            int alturaBloco = Height - (margem * 2);
+                int x = coluna * CellSize;
+                int y = linha * CellSize;
 
-            if (larguraDisponivel <= 0 || alturaBloco <= 0)
-                return;
+                Rectangle r = new Rectangle(x, y, CellSize, CellSize);
 
-            using Pen borda = new Pen(
-                Color.FromArgb(45, 45, 45),
-                1f);
+                RegiaoBlocoMemoria regiao = Bloco.ObterRegiao(endereco);
 
-            using Font fonte = new Font(
-                "Consolas",
-                9f,
-                FontStyle.Regular);
+                Color corFundo = CoresSimulacao.ObterCorRegiao(Bloco, regiao);
 
-            using StringFormat formatoCentralizado =
-                new StringFormat
+                Brush corTexto = RenderizadorControlesHeap.ObterCorTexto(Bloco, regiao);
+
+                string texto;
+
+                if(Bloco.EstaLivre && regiao == RegiaoBlocoMemoria.Livre)
                 {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center
-                };
-
-            if (Bloco.EstaLivre)
-            {
-                DesenharBlocoLivre(
-                    graphics,
-                    borda,
-                    fonte,
-                    formatoCentralizado,
-                    xInicial,
-                    yInicial,
-                    larguraDisponivel,
-                    alturaBloco);
-            }
-            else
-            {
-                DesenharBlocoOcupado(
-                    graphics,
-                    borda,
-                    fonte,
-                    formatoCentralizado,
-                    xInicial,
-                    yInicial,
-                    larguraDisponivel,
-                    alturaBloco);
-            }
-        }
-
-        private void DesenharBlocoOcupado(
-    Graphics graphics,
-    Pen borda,
-    Font fonte,
-    StringFormat formato,
-    int xInicial,
-    int yInicial,
-    int larguraDisponivel,
-    int altura)
-        {
-            if (Bloco is null)
-                return;
-
-            int x = xInicial;
-
-            int larguraHeader = 70;
-            int larguraFooter = 70;
-
-            int larguraDisponivelDados =
-                larguraDisponivel -
-                larguraHeader -
-                larguraFooter;
-
-            if (larguraDisponivelDados <= 0)
-                return;
-
-            int larguraMinima = 70;
-
-            int tamanhoDados =
-                Bloco.TamanhoPayload +
-                Bloco.TamanhoPadding;
-
-            int larguraPayload;
-            int larguraPadding;
-
-            if (Bloco.TamanhoPadding > 0)
-            {
-                larguraPayload = (int)Math.Round(
-                    larguraDisponivelDados *
-                    ((double)Bloco.TamanhoPayload / tamanhoDados));
-
-                larguraPadding =
-                    larguraDisponivelDados -
-                    larguraPayload;
-
-                if (larguraDisponivelDados >= larguraMinima * 2)
-                {
-                    larguraPayload = Math.Max(larguraPayload, larguraMinima);
-                    larguraPadding = Math.Max(larguraPadding, larguraMinima);
-
-                    // Corrige caso os mínimos tenham feito a soma ultrapassar
-                    // a largura total disponível.
-                    int excesso =
-                        larguraPayload +
-                        larguraPadding -
-                        larguraDisponivelDados;
-
-                    if (excesso > 0)
-                    {
-                        if (larguraPayload > larguraPadding)
-                            larguraPayload -= excesso;
-                        else
-                            larguraPadding -= excesso;
-                    }
+                    texto = "??";
                 }
+                else
+                {
+                    texto = Memoria[endereco].ToString("X2");
+                }
+
+                string? id = null;
+                Brush? corId = null;
+
+                if(endereco == Bloco.EnderecoInicio)
+                {
+                    id = Bloco.EstaLivre ? $"L#{Bloco.Id}" : $"#{Bloco.Id}";
+                    corId = Bloco.EstaLivre ? Brushes.White : Brushes.Yellow;
+                }
+
+                RenderizadorControlesHeap.DesenharCelula(e.Graphics, r, corFundo, corTexto, texto, id, corId, CellSize);
             }
-            else
-            {
-                larguraPayload = larguraDisponivelDados;
-                larguraPadding = 0;
-            }
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraHeader,
-                altura,
-                "Header",
-                Bloco.TamanhoHeader,
-                CoresSimulacao.Escurecer(Bloco.Cor, 0.55f),
-                Brushes.White,
-                RegiaoBlocoMemoria.Header);
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraPayload,
-                altura,
-                "Payload",
-                Bloco.TamanhoPayload,
-                Bloco.Cor,
-                Brushes.White,
-                RegiaoBlocoMemoria.Payload);
-
-            if (Bloco.TamanhoPadding > 0)
-            {
-                DesenharRegiaoComLargura(
-                    graphics,
-                    borda,
-                    fonte,
-                    formato,
-                    ref x,
-                    yInicial,
-                    larguraPadding,
-                    altura,
-                    "Padding",
-                    Bloco.TamanhoPadding,
-                    CoresSimulacao.Clarear(Bloco.Cor, 0.55f),
-                    Brushes.Black,
-                    RegiaoBlocoMemoria.Padding);
-            }
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraFooter,
-                altura,
-                "Footer",
-                Bloco.TamanhoFooter,
-                CoresSimulacao.Escurecer(Bloco.Cor, 0.55f),
-                Brushes.White,
-                RegiaoBlocoMemoria.Footer);
         }
 
-        private void DesenharBlocoLivre(
-            Graphics graphics,
-            Pen borda,
-            Font fonte,
-            StringFormat formato,
-            int xInicial,
-            int yInicial,
-            int larguraDisponivel,
-            int altura)
+        public void AjustarTamanho(int larguraDisponivel)
         {
-            if (Bloco is null)
-                return;
+            if (Bloco is null || larguraDisponivel <= 0) return;
 
-            int x = xInicial;
-
-            int larguraHeader = 70;
-            int larguraFooter = 70;
-
-            int larguraLivre =
-                larguraDisponivel -
-                larguraHeader -
-                larguraFooter;
-
-            if (larguraLivre <= 0)
-                return;
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraHeader,
-                altura,
-                "Header",
-                Bloco.TamanhoHeader,
-                CoresSimulacao.Escurecer(Bloco.Cor, 0.55f),
-                Brushes.White,
-                RegiaoBlocoMemoria.Header);
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraLivre,
-                altura,
-                "Livre",
-                Bloco.TamanhoPayload,
-                Bloco.Cor,
-                Brushes.Black,
-                RegiaoBlocoMemoria.Livre);
-
-            DesenharRegiaoComLargura(
-                graphics,
-                borda,
-                fonte,
-                formato,
-                ref x,
-                yInicial,
-                larguraFooter,
-                altura,
-                "Footer",
-                Bloco.TamanhoFooter,
-                CoresSimulacao.Escurecer(Bloco.Cor, 0.55f),
-                Brushes.White,
-                RegiaoBlocoMemoria.Footer);
-        }
-
-        private void DesenharRegiaoComLargura(
-            Graphics graphics,
-            Pen borda,
-            Font fonte,
-            StringFormat formato,
-            ref int x,
-            int y,
-            int largura,
-            int altura,
-            string descricao,
-            int tamanhoRegiao,
-            Color corFundo,
-            Brush corTexto,
-            RegiaoBlocoMemoria regiao)
-        {
-            Rectangle retangulo =
-                new Rectangle(
-                    x,
-                    y,
-                    largura,
-                    altura);
-
-            areasRegioes[regiao] = retangulo;
-
-            using SolidBrush fundo =
-                new SolidBrush(corFundo);
-
-            graphics.FillRectangle(
-                fundo,
-                retangulo);
-
-            graphics.DrawRectangle(
-                borda,
-                retangulo);
-
-            string texto =
-                $"{descricao}\n{tamanhoRegiao} B";
-
-            graphics.DrawString(
-                texto,
-                fonte,
-                corTexto,
-                retangulo,
-                formato);
-
-            x += largura;
+            
+            columns = Math.Max(1, larguraDisponivel / CellSize);
+            rows = (int)Math.Ceiling((double)Bloco.TamanhoTotal / columns);
+            Width = columns * CellSize;
+            Height = rows * CellSize;
+            Invalidate();
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
 
-            if (e.Button != MouseButtons.Left)
+            if (e.Button != MouseButtons.Left || Bloco is null)
                 return;
 
-            foreach (KeyValuePair<RegiaoBlocoMemoria, Rectangle> item in areasRegioes)
-            {
-                if (item.Value.Contains(e.Location))
-                {
-                    RegiaoClicada?.Invoke(this, item.Key);
-                    return;
-                }
-            }
+            int coluna = e.X / CellSize;
+            int linha = e.Y / CellSize;
+
+            int indiceLocal = linha * columns + coluna;
+
+            if (indiceLocal < 0 || indiceLocal >= Bloco.TamanhoTotal) return;
+
+            int endereco = Bloco.EnderecoInicio + indiceLocal;
+
+            RegiaoBlocoMemoria regiao = Bloco.ObterRegiao(endereco);
+
+            RegiaoClicada?.Invoke(this, regiao);
         }
     }
 }

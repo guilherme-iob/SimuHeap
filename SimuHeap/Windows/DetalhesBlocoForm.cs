@@ -1,4 +1,5 @@
-﻿using SimuHeap.Data;
+﻿using SimuHeap.Controls;
+using SimuHeap.Data;
 using SimuHeap.Enums;
 using SimuHeap.Models;
 using SimuHeap.Utils;
@@ -18,7 +19,8 @@ namespace SimuHeap.Windows
     {
         private readonly BlocoDeMemoria bloco;
         private readonly InformacaoAlocacaoBloco? informacaoAlocacao;
-        public DetalhesBlocoForm(BlocoDeMemoria bloco, InformacaoAlocacaoBloco? informacaoAlocacao)
+        private BlocoDetalhesControl blocoDetalhesControl;
+        public DetalhesBlocoForm(BlocoDeMemoria bloco, InformacaoAlocacaoBloco? informacaoAlocacao, byte[] memoria)
         {
             InitializeComponent();
             this.Text = bloco.EstaLivre ? $"Detalhes do Bloco Livre #{bloco.Id}" : $"Detalhes do Bloco Alocado #{bloco.Id}";
@@ -26,15 +28,26 @@ namespace SimuHeap.Windows
             this.bloco = bloco;
             this.informacaoAlocacao = informacaoAlocacao;
 
-            Controle_BlocoDetalhes.RegiaoClicada += Controle_BlocoDetalhes_RegiaoClicada;
+            this.blocoDetalhesControl = new BlocoDetalhesControl
+            {
+                Location = new Point(0, 0),
+            };
+
+            this.blocoDetalhesControl.RegiaoClicada += Controle_BlocoDetalhes_RegiaoClicada;
+            this.blocoDetalhesControl.Bloco = bloco;
+            this.blocoDetalhesControl.Memoria = memoria;
+
+            this.PanelBlocosDetalhes.Resize += PanelBlocosDetalhes_Resize;
+            this.PanelBlocosDetalhes.AutoScroll = true;
+            this.PanelBlocosDetalhes.Controls.Add(this.blocoDetalhesControl);
+
+            this.blocoDetalhesControl.AjustarTamanho(this.PanelBlocosDetalhes.ClientSize.Width);
 
             CarregarInformacoes();
         }
 
         private void CarregarInformacoes()
         {
-            Controle_BlocoDetalhes.Bloco = bloco;
-
             lblTitulo.Text = bloco.EstaLivre ? $"Bloco Livre #{bloco.Id}" : $"Bloco Alocado #{bloco.Id}";
 
             string info = "";
@@ -146,6 +159,11 @@ namespace SimuHeap.Windows
         {
             string texto = ExplicacoesConceitos.ObterExplicacaoBlocoLivre(bloco);
             MostrarAvisoExplicativo("Região livre", texto);
+        }
+
+        private void PanelBlocosDetalhes_Resize(object? sender, EventArgs e)
+        {
+            blocoDetalhesControl.AjustarTamanho(PanelBlocosDetalhes.ClientSize.Width);
         }
     }
 }

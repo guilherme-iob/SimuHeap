@@ -30,9 +30,6 @@ namespace SimuHeap.Controls
                 simulator?.Memoria ??
                 Array.Empty<byte>();
 
-        private static readonly Color CorBlocoEmAnalise = Color.Gold;
-
-        private static readonly Color CorMelhorBloco = Color.DeepSkyBlue;
 
         // Propriedades do controle
 
@@ -91,6 +88,20 @@ namespace SimuHeap.Controls
                 columns = value;
 
                 RecalculateDimensions();
+                Invalidate();
+            }
+        }
+
+        private bool visualizacaoAvancada = false;
+
+        [Category("Configurações Visuais")]
+        [DefaultValue(false)]
+        public bool UsarVisualizacaoAvancada
+        {
+            get => visualizacaoAvancada;
+            set
+            {
+                visualizacaoAvancada = value;
                 Invalidate();
             }
         }
@@ -176,8 +187,7 @@ namespace SimuHeap.Controls
 
             for (int endereco = bloco.EnderecoInicio; endereco <= bloco.EnderecoFim; endereco++)
             {
-                if (endereco < 0 ||
-                    endereco >= memoria.Length)
+                if (endereco < 0 || endereco >= memoria.Length)
                 {
                     continue;
                 }
@@ -188,12 +198,7 @@ namespace SimuHeap.Controls
                 int x = coluna * cellSize;
                 int y = linha * cellSize;
 
-                Rectangle cellRectangle =
-                    new Rectangle(
-                        x,
-                        y,
-                        cellSize,
-                        cellSize);
+                Rectangle cellRectangle = new Rectangle(x, y, cellSize, cellSize);
 
                 RegiaoBlocoMemoria regiao = bloco.ObterRegiao(endereco);
 
@@ -207,7 +212,7 @@ namespace SimuHeap.Controls
 
                 string texto = ObterTextoCelula(bloco, endereco);
 
-                Brush textBrush = ObterCorTexto(bloco, regiao);
+                Brush textBrush = RenderizadorControlesHeap.ObterCorTexto(bloco, regiao);
 
                 graphics.DrawString(
                     texto,
@@ -257,6 +262,8 @@ namespace SimuHeap.Controls
 
         private string ObterTextoCelula(BlocoDeMemoria bloco, int endereco)
         {
+            if (!visualizacaoAvancada) return string.Empty;
+
             RegiaoBlocoMemoria regiao = bloco.ObterRegiao(endereco);
 
             if (bloco.EstaLivre && regiao == RegiaoBlocoMemoria.Livre)
@@ -267,28 +274,28 @@ namespace SimuHeap.Controls
             return MemoriaAtual[endereco].ToString("X2");
         }
 
-        private static Brush ObterCorTexto(BlocoDeMemoria bloco, RegiaoBlocoMemoria regiao)
-        {
-            if (bloco.EstaLivre)
-            {
-                switch (regiao)
-                {
-                    case RegiaoBlocoMemoria.Header:
-                        return Brushes.White;
-                    case RegiaoBlocoMemoria.Footer:
-                        return Brushes.White;
-                    default:
-                        return Brushes.Black;
-                }
-            }
+        //private static Brush ObterCorTexto(BlocoDeMemoria bloco, RegiaoBlocoMemoria regiao)
+        //{
+        //    if (bloco.EstaLivre)
+        //    {
+        //        switch (regiao)
+        //        {
+        //            case RegiaoBlocoMemoria.Header:
+        //                return Brushes.White;
+        //            case RegiaoBlocoMemoria.Footer:
+        //                return Brushes.White;
+        //            default:
+        //                return Brushes.Black;
+        //        }
+        //    }
 
-            return regiao switch
-            {
-                RegiaoBlocoMemoria.Padding => Brushes.Black,
+        //    return regiao switch
+        //    {
+        //        RegiaoBlocoMemoria.Padding => Brushes.Black,
 
-                _ => Brushes.White
-            };
-        }
+        //        _ => Brushes.White
+        //    };
+        //}
 
         public void DefinirSnapshot(HeapSnapshot novoSnapshot)
         {
@@ -331,7 +338,8 @@ namespace SimuHeap.Controls
                 snapshot.InformacoesAlocacao.TryGetValue(blocoClicado.Id, out informacao);
             }
 
-            using DetalhesBlocoForm form = new DetalhesBlocoForm(blocoClicado, informacao);
+            byte[] copiaMemoria = (byte[])MemoriaAtual.Clone();
+            using DetalhesBlocoForm form = new DetalhesBlocoForm(blocoClicado, informacao, copiaMemoria);
 
             form.ShowDialog(this);
         }

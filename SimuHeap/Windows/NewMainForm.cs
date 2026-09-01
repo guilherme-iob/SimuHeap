@@ -659,7 +659,7 @@ namespace SimuHeap.Windows
             this.Panel_OpcoesEventos.Enabled = true;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
-            
+
             heapSimulator.Resetar();
             HeapGrid.LimparSnapshot();
 
@@ -844,7 +844,7 @@ namespace SimuHeap.Windows
 
             if (avancar)
             {
-                for(int i = snapshotAtual + 1; i <= indiceDestino; i++)
+                for (int i = snapshotAtual + 1; i <= indiceDestino; i++)
                 {
                     if (executor.Snapshots[i].Erro is not null)
                     {
@@ -1172,6 +1172,11 @@ namespace SimuHeap.Windows
             //MessageBox.Show(ExplicacoesConceitos.ExplicacaoAlgoritmosAlocacao, "Algoritmos de Alocação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Algoritmos de Alocação", ExplicacoesConceitos.ExplicacaoAlgoritmosAlocacao);
             avisoExplicativoForm.ShowDialog();
+        }
+
+        private void HabilitarVisualizacaoAvancada_CheckedChanged(object sender, EventArgs e)
+        {
+            HeapGrid.UsarVisualizacaoAvancada = HabilitarVisualizacaoAvancada.Checked;
         }
     }
 }

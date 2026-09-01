@@ -89,6 +89,7 @@
             Lbl_BytesOcupados = new Label();
             tab_config = new TabPage();
             MenuParametros = new GroupBox();
+            HabilitarVisualizacaoAvancada = new CheckBox();
             Label_AlgoritmosAlocacao = new Label();
             Btn_HelpAlgoritmosAlocacao = new Button();
             Btn_HelpSplit = new Button();
@@ -897,6 +898,7 @@
             // 
             // MenuParametros
             // 
+            MenuParametros.Controls.Add(HabilitarVisualizacaoAvancada);
             MenuParametros.Controls.Add(Label_AlgoritmosAlocacao);
             MenuParametros.Controls.Add(Btn_HelpAlgoritmosAlocacao);
             MenuParametros.Controls.Add(Btn_HelpSplit);
@@ -917,6 +919,17 @@
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
+            // 
+            // HabilitarVisualizacaoAvancada
+            // 
+            HabilitarVisualizacaoAvancada.AutoSize = true;
+            HabilitarVisualizacaoAvancada.Location = new Point(9, 344);
+            HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
+            HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
+            HabilitarVisualizacaoAvancada.TabIndex = 8;
+            HabilitarVisualizacaoAvancada.Text = "Visualização Avançada";
+            HabilitarVisualizacaoAvancada.UseVisualStyleBackColor = true;
+            HabilitarVisualizacaoAvancada.CheckedChanged += HabilitarVisualizacaoAvancada_CheckedChanged;
             // 
             // Label_AlgoritmosAlocacao
             // 
@@ -1174,5 +1187,6 @@
         private Label Lbl_UsoHeap;
         private Label Lbl_BytesLivres;
         private Label Lbl_BytesOcupados;
+        private CheckBox HabilitarVisualizacaoAvancada;
     }
 }
