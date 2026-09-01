@@ -4,6 +4,9 @@
     <Compile Update="Controls\BlocoDetalhesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\HeapBytesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\HeapGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

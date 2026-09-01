@@ -13,17 +13,14 @@ using System.Windows.Forms;
 
 namespace SimuHeap.Controls
 {
-    public partial class BlocoDetalhesControl : UserControl
+    public partial class BlocoDetalhesControl : HeapBytesControl
     {
         private BlocoDeMemoria? bloco;
         private byte[] memoria = Array.Empty<byte>();
 
-        private const int CellSize = StyleHeap.TamanhoCelula;
-
-        private int columns = 1;
-        private int rows = 1;
-
         public event EventHandler<RegiaoBlocoMemoria>? RegiaoClicada;
+
+        protected override int QuantidadeBytes => Bloco?.TamanhoTotal ?? 0;
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -52,12 +49,6 @@ namespace SimuHeap.Controls
         public BlocoDetalhesControl()
         {
             InitializeComponent();
-
-            DoubleBuffered = true;
-            ResizeRedraw = true;
-
-            BackColor = Color.FromArgb(30, 30, 30);
-            Cursor = Cursors.Hand;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -75,54 +66,27 @@ namespace SimuHeap.Controls
                     continue;
 
                 int indiceLocal = endereco - Bloco.EnderecoInicio;
-                int coluna = indiceLocal % columns;
-                int linha = indiceLocal / columns;
 
-                int x = coluna * CellSize;
-                int y = linha * CellSize;
-
-                Rectangle r = new Rectangle(x, y, CellSize, CellSize);
-
+                Rectangle rectangle = ObterRetanguloCelula(indiceLocal);
                 RegiaoBlocoMemoria regiao = Bloco.ObterRegiao(endereco);
-
                 Color corFundo = CoresSimulacao.ObterCorRegiao(Bloco, regiao);
-
                 Brush corTexto = RenderizadorControlesHeap.ObterCorTexto(Bloco, regiao);
-
-                string texto;
-
-                if(Bloco.EstaLivre && regiao == RegiaoBlocoMemoria.Livre)
-                {
-                    texto = "??";
-                }
-                else
-                {
-                    texto = Memoria[endereco].ToString("X2");
-                }
-
-                string? id = null;
-                Brush? corId = null;
-
-                if(endereco == Bloco.EnderecoInicio)
-                {
-                    id = Bloco.EstaLivre ? $"L#{Bloco.Id}" : $"#{Bloco.Id}";
-                    corId = Bloco.EstaLivre ? Brushes.White : Brushes.Yellow;
-                }
-
-                RenderizadorControlesHeap.DesenharCelula(e.Graphics, r, corFundo, corTexto, texto, id, corId, CellSize);
+                string texto = ObterTextoCelula(endereco, regiao);
+                ObterId(Bloco, endereco, out string? id, out Brush? corId);
+                RenderizadorControlesHeap.DesenharCelula(e.Graphics, rectangle, corFundo, corTexto, texto, id, corId, CellSize);
             }
         }
 
-        public void AjustarTamanho(int larguraDisponivel)
+        private string ObterTextoCelula(int endereco,RegiaoBlocoMemoria regiao)
         {
-            if (Bloco is null || larguraDisponivel <= 0) return;
+            if (Bloco is null) return string.Empty;
 
-            
-            columns = Math.Max(1, larguraDisponivel / CellSize);
-            rows = (int)Math.Ceiling((double)Bloco.TamanhoTotal / columns);
-            Width = columns * CellSize;
-            Height = rows * CellSize;
-            Invalidate();
+            if (Bloco.EstaLivre && regiao == RegiaoBlocoMemoria.Livre)
+            {
+                return "??";
+            }
+
+            return Memoria[endereco].ToString("X2");
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -132,17 +96,10 @@ namespace SimuHeap.Controls
             if (e.Button != MouseButtons.Left || Bloco is null)
                 return;
 
-            int coluna = e.X / CellSize;
-            int linha = e.Y / CellSize;
-
-            int indiceLocal = linha * columns + coluna;
-
+            int indiceLocal = ObterIndicePorCoordenada(e.Location);
             if (indiceLocal < 0 || indiceLocal >= Bloco.TamanhoTotal) return;
-
             int endereco = Bloco.EnderecoInicio + indiceLocal;
-
             RegiaoBlocoMemoria regiao = Bloco.ObterRegiao(endereco);
-
             RegiaoClicada?.Invoke(this, regiao);
         }
     }
