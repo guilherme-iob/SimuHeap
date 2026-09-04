@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FreeForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             label2 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -169,6 +170,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 331);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FreeForm";
             StartPosition = FormStartPosition.CenterParent;

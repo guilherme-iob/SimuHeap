@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvisoExplicativoForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             Btn_Fechar = new Button();
             lblTitulo = new Label();
@@ -100,6 +101,7 @@
             ClientSize = new Size(499, 450);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AvisoExplicativoForm";
             Text = "AvisoExplicativoForm";

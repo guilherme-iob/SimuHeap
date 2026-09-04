@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendaCoresForm));
             FlowLayoutPanel_Legenda = new FlowLayoutPanel();
             SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             ClientSize = new Size(254, 461);
             Controls.Add(FlowLayoutPanel_Legenda);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "LegendaCoresForm";
             StartPosition = FormStartPosition.CenterParent;

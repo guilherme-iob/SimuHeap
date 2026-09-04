@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MallocForm));
             ComboBox_TipoVariavel = new ComboBox();
             Input_Quantidade = new NumericUpDown();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -198,6 +199,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 331);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MallocForm";
             StartPosition = FormStartPosition.CenterParent;

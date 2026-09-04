@@ -89,8 +89,8 @@
             Lbl_BytesLivres = new Label();
             Lbl_BytesOcupados = new Label();
             tab_config = new TabPage();
-            Text_CodigoCaso = new RichTextBox();
             MenuParametros = new GroupBox();
+            UsarLegendaDetalhada = new CheckBox();
             GroupBoxCasosDeUsoSimulacao = new GroupBox();
             UsarCaso3 = new RadioButton();
             UsarCaso2 = new RadioButton();
@@ -109,7 +109,6 @@
             Label_TamanhoHeap = new Label();
             UseWorstFit = new RadioButton();
             Btn_HelpTamHeap = new Button();
-            UsarLegendaDetalhada = new CheckBox();
             Tabs_Principal.SuspendLayout();
             tab_simulacao.SuspendLayout();
             Panel_Simulacao.SuspendLayout();
@@ -895,7 +894,6 @@
             // 
             // tab_config
             // 
-            tab_config.Controls.Add(Text_CodigoCaso);
             tab_config.Controls.Add(MenuParametros);
             tab_config.Location = new Point(4, 30);
             tab_config.Margin = new Padding(4);
@@ -905,17 +903,6 @@
             tab_config.TabIndex = 2;
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
-            // 
-            // Text_CodigoCaso
-            // 
-            Text_CodigoCaso.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Text_CodigoCaso.Location = new Point(305, 7);
-            Text_CodigoCaso.Name = "Text_CodigoCaso";
-            Text_CodigoCaso.ReadOnly = true;
-            Text_CodigoCaso.Size = new Size(442, 470);
-            Text_CodigoCaso.TabIndex = 2;
-            Text_CodigoCaso.Text = "";
-            Text_CodigoCaso.WordWrap = false;
             // 
             // MenuParametros
             // 
@@ -943,15 +930,25 @@
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
             // 
+            // UsarLegendaDetalhada
+            // 
+            UsarLegendaDetalhada.AutoSize = true;
+            UsarLegendaDetalhada.Location = new Point(9, 336);
+            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
+            UsarLegendaDetalhada.Size = new Size(162, 25);
+            UsarLegendaDetalhada.TabIndex = 9;
+            UsarLegendaDetalhada.Text = "Legenda Detalhada";
+            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
+            // 
             // GroupBoxCasosDeUsoSimulacao
             // 
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
-            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 375);
+            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 466);
             GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
-            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 258);
+            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 167);
             GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
             GroupBoxCasosDeUsoSimulacao.TabStop = false;
             GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
@@ -1007,7 +1004,7 @@
             // HabilitarVisualizacaoAvancada
             // 
             HabilitarVisualizacaoAvancada.AutoSize = true;
-            HabilitarVisualizacaoAvancada.Location = new Point(6, 344);
+            HabilitarVisualizacaoAvancada.Location = new Point(9, 367);
             HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
             HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
             HabilitarVisualizacaoAvancada.TabIndex = 8;
@@ -1148,16 +1145,6 @@
             Btn_HelpTamHeap.UseVisualStyleBackColor = true;
             Btn_HelpTamHeap.Click += Btn_HelpTamHeap_Click;
             // 
-            // UsarLegendaDetalhada
-            // 
-            UsarLegendaDetalhada.AutoSize = true;
-            UsarLegendaDetalhada.Location = new Point(6, 313);
-            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
-            UsarLegendaDetalhada.Size = new Size(162, 25);
-            UsarLegendaDetalhada.TabIndex = 9;
-            UsarLegendaDetalhada.Text = "Legenda Detalhada";
-            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
-            // 
             // NewMainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -1291,7 +1278,6 @@
         private RadioButton UsarNenhumCaso;
         private RadioButton UsarCaso3;
         private RadioButton UsarCaso2;
-        private RichTextBox Text_CodigoCaso;
         private CheckBox UsarLegendaDetalhada;
     }
 }

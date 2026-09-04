@@ -27,6 +27,7 @@ namespace SimuHeap.Windows
         private int proximaReferenciaBloco = 1;
 
         private LegendaCoresForm? legendaCoresForm;
+        private CodigoCasoUsoForm? codigoCasoUsoForm;
 
         private CasoUsoSimulacao casoSelecionado = CasoUsoSimulacao.Nenhum;
         public NewMainForm()
@@ -199,6 +200,12 @@ namespace SimuHeap.Windows
                     MessageBoxIcon.Warning);
 
                 return;
+            }
+
+            if(casoSelecionado != CasoUsoSimulacao.Nenhum)
+            {
+                codigoCasoUsoForm = new CodigoCasoUsoForm(casoSelecionado);
+                codigoCasoUsoForm.Show();
             }
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
@@ -688,6 +695,8 @@ namespace SimuHeap.Windows
             this.Panel_Simulacao_2.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
             this.MenuParametros.Enabled = true;
+            codigoCasoUsoForm?.Close();
+
             snapshotAtual = 0;
             executor.Snapshots.Clear();
 
@@ -866,7 +875,6 @@ namespace SimuHeap.Windows
             if(UsarNenhumCaso.Checked)
             {
                 casoSelecionado = CasoUsoSimulacao.Nenhum;
-                Text_CodigoCaso.Text = string.Empty;
                 BloquearOperacoesParaCasosDeUso();
             }
         }
@@ -875,7 +883,6 @@ namespace SimuHeap.Windows
         {
             if (UsarCaso1.Checked) {
                 casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
-                Text_CodigoCaso.Text = CasosDeUso.CodigoCaso1;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -886,7 +893,6 @@ namespace SimuHeap.Windows
             if (UsarCaso2.Checked) 
             {
                 casoSelecionado = CasoUsoSimulacao.DuasProvas;
-                Text_CodigoCaso.Text = CasosDeUso.CodigoCaso2;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -897,7 +903,6 @@ namespace SimuHeap.Windows
             if (UsarCaso3.Checked)
             {
                 casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
-                Text_CodigoCaso.Text = CasosDeUso.CodigoCaso3;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }

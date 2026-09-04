@@ -17,6 +17,14 @@ namespace SimuHeap.Windows
         {
             InitializeComponent();
 
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            FlowLayoutPanel_Legenda.AutoSize = true;
+            FlowLayoutPanel_Legenda.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            FlowLayoutPanel_Legenda.FlowDirection = FlowDirection.TopDown;
+            FlowLayoutPanel_Legenda.WrapContents = false;
+
             AdicionarItemLegenda(CoresSimulacao.BlocoLivre, "Bloco livre");
             AdicionarItemLegenda(CoresSimulacao.BlocoOcupado, "Bloco ocupado");
 
