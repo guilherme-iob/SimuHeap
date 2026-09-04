@@ -55,11 +55,11 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(751, 458);
+            tableLayoutPanel1.Size = new Size(754, 561);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // lblTitulo
@@ -70,7 +70,7 @@
             lblTitulo.Location = new Point(4, 0);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(743, 43);
+            lblTitulo.Size = new Size(746, 54);
             lblTitulo.TabIndex = 1;
             lblTitulo.Text = "Bloco";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -80,9 +80,9 @@
             groupBoxDetalhes.Controls.Add(tableLayoutPanel2);
             groupBoxDetalhes.Dock = DockStyle.Fill;
             groupBoxDetalhes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBoxDetalhes.Location = new Point(3, 177);
+            groupBoxDetalhes.Location = new Point(3, 192);
             groupBoxDetalhes.Name = "groupBoxDetalhes";
-            groupBoxDetalhes.Size = new Size(745, 191);
+            groupBoxDetalhes.Size = new Size(748, 264);
             groupBoxDetalhes.TabIndex = 2;
             groupBoxDetalhes.TabStop = false;
             groupBoxDetalhes.Text = "Informações";
@@ -99,16 +99,16 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(739, 163);
+            tableLayoutPanel2.Size = new Size(742, 236);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // lblInformacoes2
             // 
             lblInformacoes2.AutoSize = true;
             lblInformacoes2.Dock = DockStyle.Fill;
-            lblInformacoes2.Location = new Point(372, 0);
+            lblInformacoes2.Location = new Point(374, 0);
             lblInformacoes2.Name = "lblInformacoes2";
-            lblInformacoes2.Size = new Size(364, 163);
+            lblInformacoes2.Size = new Size(365, 236);
             lblInformacoes2.TabIndex = 1;
             lblInformacoes2.Text = "i2";
             // 
@@ -118,7 +118,7 @@
             lblInformacoes.Dock = DockStyle.Fill;
             lblInformacoes.Location = new Point(3, 0);
             lblInformacoes.Name = "lblInformacoes";
-            lblInformacoes.Size = new Size(363, 163);
+            lblInformacoes.Size = new Size(365, 236);
             lblInformacoes.TabIndex = 0;
             lblInformacoes.Text = "i1";
             // 
@@ -126,9 +126,10 @@
             // 
             btnFechar.Dock = DockStyle.Right;
             btnFechar.ForeColor = SystemColors.ControlText;
-            btnFechar.Location = new Point(642, 374);
+            btnFechar.Location = new Point(645, 462);
+            btnFechar.MaximumSize = new Size(106, 40);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(106, 59);
+            btnFechar.Size = new Size(106, 40);
             btnFechar.TabIndex = 3;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;
@@ -138,9 +139,9 @@
             // 
             PanelBlocosDetalhes.AutoScroll = true;
             PanelBlocosDetalhes.Dock = DockStyle.Fill;
-            PanelBlocosDetalhes.Location = new Point(3, 46);
+            PanelBlocosDetalhes.Location = new Point(3, 57);
             PanelBlocosDetalhes.Name = "PanelBlocosDetalhes";
-            PanelBlocosDetalhes.Size = new Size(745, 125);
+            PanelBlocosDetalhes.Size = new Size(748, 129);
             PanelBlocosDetalhes.TabIndex = 4;
             // 
             // DetalhesBlocoForm
@@ -148,7 +149,7 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Firebrick;
-            ClientSize = new Size(751, 458);
+            ClientSize = new Size(754, 561);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.ControlLightLight;

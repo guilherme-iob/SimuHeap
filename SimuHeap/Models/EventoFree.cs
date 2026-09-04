@@ -14,9 +14,11 @@ namespace SimuHeap.Models
         {
             Tipo = TipoEventoHeap.Free;
         }
-        public void AtualizarDescricao()
+
+        public override void AtualizarDescricao()
         {
-            Descricao = $"free(bloco{ReferenciaBloco});";
+            string nome = ObterNomeVariavel(ReferenciaBloco);
+            Descricao = $"free({nome});";
         }
     }
 }

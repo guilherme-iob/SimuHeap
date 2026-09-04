@@ -13,7 +13,7 @@ namespace SimuHeap.Windows
 {
     public partial class LegendaCoresForm : Form
     {
-        public LegendaCoresForm()
+        public LegendaCoresForm(bool usarLegendasDetalhadas)
         {
             InitializeComponent();
 
@@ -24,11 +24,16 @@ namespace SimuHeap.Windows
             AdicionarItemLegenda(CoresSimulacao.MelhorBlocoEncontrado, "Melhor bloco encontrado");
             AdicionarItemLegenda(CoresSimulacao.MelhorBlocoSelecionado, "Melhor bloco selecionado");
 
-            AdicionarItemLegenda(CoresSimulacao.BlocoSendoLiberado, "Bloco sendo liberado");
-            AdicionarItemLegenda(CoresSimulacao.BlocoSendoReduzido, "Bloco sendo reduzido");
-            AdicionarItemLegenda(CoresSimulacao.BlocoSendoExpandido, "Bloco sendo expandido");
-            AdicionarItemLegenda(CoresSimulacao.BlocoSendoMovido, "Bloco sendo movido");
-            AdicionarItemLegenda(CoresSimulacao.BlocoInicializadoCalloc, "Bloco inicializado pelo calloc");
+            if (usarLegendasDetalhadas)
+            {
+                AdicionarItemLegenda(CoresSimulacao.BlocoSendoLiberado, "Bloco sendo liberado");
+                AdicionarItemLegenda(CoresSimulacao.BlocoSendoReduzido, "Bloco sendo reduzido");
+                AdicionarItemLegenda(CoresSimulacao.BlocoSendoExpandido, "Bloco sendo expandido");
+                AdicionarItemLegenda(CoresSimulacao.BlocoSendoMovido, "Bloco sendo movido");
+                AdicionarItemLegenda(CoresSimulacao.BlocoInicializadoCalloc, "Bloco inicializado pelo calloc");
+            }
+
+            
             AdicionarItemLegenda(CoresSimulacao.BlocoCoalescing, "Bloco envolvido no coalescing");
         }
 

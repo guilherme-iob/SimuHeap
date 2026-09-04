@@ -1020,7 +1020,7 @@ namespace SimuHeap.Windows
         {
             if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
             {
-                legendaCoresForm = new LegendaCoresForm();
+                legendaCoresForm = new LegendaCoresForm(false);
                 legendaCoresForm.Show(this);
             }
             else

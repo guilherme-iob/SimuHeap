@@ -18,9 +18,10 @@ namespace SimuHeap.Models
             Tipo = TipoEventoHeap.Calloc;
         }
 
-        public void AtualizarDescricao()
+        public override void AtualizarDescricao()
         {
-            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *bloco{ReferenciaBloco} = calloc({Quantidade}, sizeof({TipoVariavel.ToString().ToLower()}));";
+            string nome = ObterNomeVariavel(ReferenciaBloco);
+            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *{nome} = calloc({Quantidade}, sizeof({TipoVariavel.ToString().ToLower()}));";
         }
     }
 }

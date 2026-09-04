@@ -93,6 +93,36 @@ namespace SimuHeap.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap memory_icon_16 {
+            get {
+                object obj = ResourceManager.GetObject("memory-icon-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap memory_icon_48 {
+            get {
+                object obj = ResourceManager.GetObject("memory-icon-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap memory_icon_96 {
+            get {
+                object obj = ResourceManager.GetObject("memory-icon-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap primeiro {
             get {
                 object obj = ResourceManager.GetObject("primeiro", resourceCulture);

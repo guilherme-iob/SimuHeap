@@ -17,10 +17,13 @@ namespace SimuHeap.Models
             Tipo = TipoEventoHeap.Malloc;
         }
 
-        public void AtualizarDescricao()
+        public override void AtualizarDescricao()
         {
-            string tamanho = Quantidade == 1 ? $"sizeof({TipoVariavel.ToString().ToLower()})" : $"sizeof({TipoVariavel.ToString().ToLower()}) * {Quantidade}";
-            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *bloco{ReferenciaBloco} = malloc({tamanho});";
+            string nome = ObterNomeVariavel(ReferenciaBloco);
+
+            Descricao =
+                $"{TipoVariavel.ToString().ToLower()} *{nome} = " +
+                $"malloc({Quantidade} * sizeof({TipoVariavel.ToString().ToLower()}));";
         }
     }
 }

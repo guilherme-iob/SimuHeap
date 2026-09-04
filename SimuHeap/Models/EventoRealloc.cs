@@ -18,9 +18,10 @@ namespace SimuHeap.Models
             Tipo = TipoEventoHeap.Realloc;
         }
 
-        public void AtualizarDescricao()
+        public override void AtualizarDescricao()
         {
-            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *bloco{ReferenciaBloco} = realloc(bloco{ReferenciaBloco}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
+            string nome = ObterNomeVariavel(ReferenciaBloco);
+            Descricao = $"{ObterArtibuicaoVariavel(TipoVariavel)} *{nome} = realloc({nome}, sizeof({TipoVariavel.ToString().ToLower()}) * {NovaQuantidade});";
         }
     }
 }

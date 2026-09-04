@@ -13,6 +13,9 @@ namespace SimuHeap.Models
         public TipoEventoHeap Tipo { get; protected set; }
         public string Descricao { get; protected set; } = string.Empty;
 
+        public string? NomeVariavel { get; set; } = string.Empty;
+        public abstract void AtualizarDescricao();
+
         protected string ObterArtibuicaoVariavel(TiposDeVariaveis tipo)
         {
             return tipo switch
@@ -26,6 +29,12 @@ namespace SimuHeap.Models
 
                 _ => throw new ArgumentOutOfRangeException(nameof(tipo))
             };
+        }
+        protected string ObterNomeVariavel(int referenciaBloco)
+        {
+            return string.IsNullOrWhiteSpace(NomeVariavel)
+                ? $"bloco{referenciaBloco}"
+                : NomeVariavel;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace SimuHeap.Services
 
         public bool UsarSplit { get; set; }
         public bool UsarCoalescing { get; set; }
+        public bool UsarLegendasDetalhadas { get; set; }
 
         public HeapSimulator(int tamanhoHeap)
         {
@@ -81,12 +82,16 @@ namespace SimuHeap.Services
 
             Memoria.AsSpan(bloco.EnderecoPayload, tamanhoSolicitado).Clear(); // zera os valores
 
-            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+            if (UsarLegendasDetalhadas)
             {
-                Descricao = $"Inicializando o payload do bloco #{bloco.Id} com zero.",
-                EnderecoBlocoEmAnalise = bloco.EnderecoInicio,
-                DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.InicializandoCalloc
-            });
+                aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                {
+                    Descricao = $"Inicializando o payload do bloco #{bloco.Id} com zero.",
+                    EnderecoBlocoEmAnalise = bloco.EnderecoInicio,
+                    DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.InicializandoCalloc
+                });
+            }
+            
 
             return bloco;
 
@@ -124,13 +129,17 @@ namespace SimuHeap.Services
                     EscreverMetadadosBloco(blocoReduzido);
                     EscreverMetadadosBloco(blocoLivre);
 
-                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    if (UsarLegendasDetalhadas)
                     {
-                        Descricao = $"Bloco #{blocoReduzido.Id} reduzido. " +
-                        $"Foi criado um novo bloco livre de {blocoLivre.TamanhoTotal} bytes.",
-                        EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio,
-                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ReduzindoBloco
-                    });
+                        aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                        {
+                            Descricao = $"Bloco #{blocoReduzido.Id} reduzido. " +
+                            $"Foi criado um novo bloco livre de {blocoLivre.TamanhoTotal} bytes.",
+                            EnderecoBlocoEmAnalise = blocoReduzido.EnderecoInicio,
+                            DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ReduzindoBloco
+                        });
+                    }
+                        
 
                     if (UsarCoalescing)
                     {
@@ -171,12 +180,16 @@ namespace SimuHeap.Services
                         EscreverMetadadosBloco(blocoExpandido);
                         EscreverMetadadosBloco(blocoLivreRestante);
 
-                        aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                        if (UsarLegendasDetalhadas)
                         {
-                            Descricao = $"Bloco #{blocoExpandido.Id} expandido utilizando parte do bloco livre #{blocoProximo.Id}.",
-                            EnderecoBlocoEmAnalise = blocoExpandido.EnderecoInicio,
-                            DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ExpandindoBloco
-                        });
+                            aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                            {
+                                Descricao = $"Bloco #{blocoExpandido.Id} expandido utilizando parte do bloco livre #{blocoProximo.Id}.",
+                                EnderecoBlocoEmAnalise = blocoExpandido.EnderecoInicio,
+                                DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.ExpandindoBloco
+                            });
+                        }
+                        
 
                         return blocoExpandido;
                     }
@@ -253,12 +266,15 @@ namespace SimuHeap.Services
 
                     EscreverMetadadosBloco(blocoLivre);
 
-                    aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                    if (UsarLegendasDetalhadas)
                     {
-                        Descricao = $"Bloco #{blocoLivre.Id} sendo liberado.",
-                        EnderecoBlocoEmAnalise = blocoLivre.EnderecoInicio,
-                        DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.LiberandoBloco
-                    });
+                        aoGerarPasso?.Invoke(new EstadoPassoSimulacao
+                        {
+                            Descricao = $"Bloco #{blocoLivre.Id} sendo liberado.",
+                            EnderecoBlocoEmAnalise = blocoLivre.EnderecoInicio,
+                            DestaqueBlocoEmAnalise = TipoDestaqueSimulacao.LiberandoBloco
+                        });
+                    }
 
                     if (UsarCoalescing)
                     {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewMainForm));
             Tabs_Principal = new TabControl();
             tab_simulacao = new TabPage();
             Panel_Simulacao = new TableLayoutPanel();
@@ -88,7 +89,13 @@
             Lbl_BytesLivres = new Label();
             Lbl_BytesOcupados = new Label();
             tab_config = new TabPage();
+            Text_CodigoCaso = new RichTextBox();
             MenuParametros = new GroupBox();
+            GroupBoxCasosDeUsoSimulacao = new GroupBox();
+            UsarCaso3 = new RadioButton();
+            UsarCaso2 = new RadioButton();
+            UsarCaso1 = new RadioButton();
+            UsarNenhumCaso = new RadioButton();
             HabilitarVisualizacaoAvancada = new CheckBox();
             Label_AlgoritmosAlocacao = new Label();
             Btn_HelpAlgoritmosAlocacao = new Button();
@@ -102,6 +109,7 @@
             Label_TamanhoHeap = new Label();
             UseWorstFit = new RadioButton();
             Btn_HelpTamHeap = new Button();
+            UsarLegendaDetalhada = new CheckBox();
             Tabs_Principal.SuspendLayout();
             tab_simulacao.SuspendLayout();
             Panel_Simulacao.SuspendLayout();
@@ -130,6 +138,7 @@
             groupBox1.SuspendLayout();
             tab_config.SuspendLayout();
             MenuParametros.SuspendLayout();
+            GroupBoxCasosDeUsoSimulacao.SuspendLayout();
             SuspendLayout();
             // 
             // Tabs_Principal
@@ -886,6 +895,7 @@
             // 
             // tab_config
             // 
+            tab_config.Controls.Add(Text_CodigoCaso);
             tab_config.Controls.Add(MenuParametros);
             tab_config.Location = new Point(4, 30);
             tab_config.Margin = new Padding(4);
@@ -896,8 +906,21 @@
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
             // 
+            // Text_CodigoCaso
+            // 
+            Text_CodigoCaso.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Text_CodigoCaso.Location = new Point(305, 7);
+            Text_CodigoCaso.Name = "Text_CodigoCaso";
+            Text_CodigoCaso.ReadOnly = true;
+            Text_CodigoCaso.Size = new Size(442, 470);
+            Text_CodigoCaso.TabIndex = 2;
+            Text_CodigoCaso.Text = "";
+            Text_CodigoCaso.WordWrap = false;
+            // 
             // MenuParametros
             // 
+            MenuParametros.Controls.Add(UsarLegendaDetalhada);
+            MenuParametros.Controls.Add(GroupBoxCasosDeUsoSimulacao);
             MenuParametros.Controls.Add(HabilitarVisualizacaoAvancada);
             MenuParametros.Controls.Add(Label_AlgoritmosAlocacao);
             MenuParametros.Controls.Add(Btn_HelpAlgoritmosAlocacao);
@@ -915,15 +938,76 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(4, 4);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(294, 639);
+            MenuParametros.Size = new Size(295, 639);
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
             // 
+            // GroupBoxCasosDeUsoSimulacao
+            // 
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
+            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 375);
+            GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
+            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 258);
+            GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
+            GroupBoxCasosDeUsoSimulacao.TabStop = false;
+            GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
+            // 
+            // UsarCaso3
+            // 
+            UsarCaso3.AutoSize = true;
+            UsarCaso3.Location = new Point(6, 121);
+            UsarCaso3.Name = "UsarCaso3";
+            UsarCaso3.Size = new Size(224, 25);
+            UsarCaso3.TabIndex = 3;
+            UsarCaso3.TabStop = true;
+            UsarCaso3.Text = "Caso 3 - Alteração da Turma";
+            UsarCaso3.UseVisualStyleBackColor = true;
+            UsarCaso3.CheckedChanged += UsarCaso3_CheckedChanged;
+            // 
+            // UsarCaso2
+            // 
+            UsarCaso2.AutoSize = true;
+            UsarCaso2.Location = new Point(6, 90);
+            UsarCaso2.Name = "UsarCaso2";
+            UsarCaso2.Size = new Size(234, 25);
+            UsarCaso2.TabIndex = 2;
+            UsarCaso2.TabStop = true;
+            UsarCaso2.Text = "Caso 2 - Duas provas e média";
+            UsarCaso2.UseVisualStyleBackColor = true;
+            UsarCaso2.CheckedChanged += UsarCaso2_CheckedChanged;
+            // 
+            // UsarCaso1
+            // 
+            UsarCaso1.AutoSize = true;
+            UsarCaso1.Location = new Point(6, 59);
+            UsarCaso1.Name = "UsarCaso1";
+            UsarCaso1.Size = new Size(185, 25);
+            UsarCaso1.TabIndex = 1;
+            UsarCaso1.TabStop = true;
+            UsarCaso1.Text = "Caso 1 - Notas e Faltas";
+            UsarCaso1.UseVisualStyleBackColor = true;
+            UsarCaso1.CheckedChanged += UsarCaso1_CheckedChanged;
+            // 
+            // UsarNenhumCaso
+            // 
+            UsarNenhumCaso.AutoSize = true;
+            UsarNenhumCaso.Location = new Point(6, 28);
+            UsarNenhumCaso.Name = "UsarNenhumCaso";
+            UsarNenhumCaso.Size = new Size(89, 25);
+            UsarNenhumCaso.TabIndex = 0;
+            UsarNenhumCaso.TabStop = true;
+            UsarNenhumCaso.Text = "Nenhum";
+            UsarNenhumCaso.UseVisualStyleBackColor = true;
+            UsarNenhumCaso.CheckedChanged += UsarNenhumCaso_CheckedChanged;
+            // 
             // HabilitarVisualizacaoAvancada
             // 
             HabilitarVisualizacaoAvancada.AutoSize = true;
-            HabilitarVisualizacaoAvancada.Location = new Point(9, 344);
+            HabilitarVisualizacaoAvancada.Location = new Point(6, 344);
             HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
             HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
             HabilitarVisualizacaoAvancada.TabIndex = 8;
@@ -935,7 +1019,7 @@
             // 
             Label_AlgoritmosAlocacao.AutoSize = true;
             Label_AlgoritmosAlocacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Label_AlgoritmosAlocacao.Location = new Point(9, 197);
+            Label_AlgoritmosAlocacao.Location = new Point(9, 183);
             Label_AlgoritmosAlocacao.Name = "Label_AlgoritmosAlocacao";
             Label_AlgoritmosAlocacao.Size = new Size(167, 21);
             Label_AlgoritmosAlocacao.TabIndex = 7;
@@ -946,7 +1030,7 @@
             // 
             Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
             Btn_HelpAlgoritmosAlocacao.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpAlgoritmosAlocacao.Location = new Point(204, 197);
+            Btn_HelpAlgoritmosAlocacao.Location = new Point(204, 183);
             Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
             Btn_HelpAlgoritmosAlocacao.Size = new Size(25, 25);
             Btn_HelpAlgoritmosAlocacao.TabIndex = 6;
@@ -977,7 +1061,7 @@
             // UseFirstFit
             // 
             UseFirstFit.AutoSize = true;
-            UseFirstFit.Location = new Point(9, 230);
+            UseFirstFit.Location = new Point(9, 216);
             UseFirstFit.Name = "UseFirstFit";
             UseFirstFit.Size = new Size(81, 25);
             UseFirstFit.TabIndex = 2;
@@ -1020,7 +1104,7 @@
             // UseBestFit
             // 
             UseBestFit.AutoSize = true;
-            UseBestFit.Location = new Point(9, 261);
+            UseBestFit.Location = new Point(9, 247);
             UseBestFit.Name = "UseBestFit";
             UseBestFit.Size = new Size(80, 25);
             UseBestFit.TabIndex = 4;
@@ -1043,7 +1127,7 @@
             // UseWorstFit
             // 
             UseWorstFit.AutoSize = true;
-            UseWorstFit.Location = new Point(9, 292);
+            UseWorstFit.Location = new Point(9, 278);
             UseWorstFit.Name = "UseWorstFit";
             UseWorstFit.Size = new Size(92, 25);
             UseWorstFit.TabIndex = 3;
@@ -1064,6 +1148,16 @@
             Btn_HelpTamHeap.UseVisualStyleBackColor = true;
             Btn_HelpTamHeap.Click += Btn_HelpTamHeap_Click;
             // 
+            // UsarLegendaDetalhada
+            // 
+            UsarLegendaDetalhada.AutoSize = true;
+            UsarLegendaDetalhada.Location = new Point(6, 313);
+            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
+            UsarLegendaDetalhada.Size = new Size(162, 25);
+            UsarLegendaDetalhada.TabIndex = 9;
+            UsarLegendaDetalhada.Text = "Legenda Detalhada";
+            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
+            // 
             // NewMainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -1071,9 +1165,11 @@
             ClientSize = new Size(1264, 681);
             Controls.Add(Tabs_Principal);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "NewMainForm";
-            Text = "NewMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SimuHeap";
             Load += NewMainForm_Load;
             Tabs_Principal.ResumeLayout(false);
             tab_simulacao.ResumeLayout(false);
@@ -1109,6 +1205,8 @@
             tab_config.ResumeLayout(false);
             MenuParametros.ResumeLayout(false);
             MenuParametros.PerformLayout();
+            GroupBoxCasosDeUsoSimulacao.ResumeLayout(false);
+            GroupBoxCasosDeUsoSimulacao.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1188,5 +1286,12 @@
         private Label Lbl_BytesLivres;
         private Label Lbl_BytesOcupados;
         private CheckBox HabilitarVisualizacaoAvancada;
+        private GroupBox GroupBoxCasosDeUsoSimulacao;
+        private RadioButton UsarCaso1;
+        private RadioButton UsarNenhumCaso;
+        private RadioButton UsarCaso3;
+        private RadioButton UsarCaso2;
+        private RichTextBox Text_CodigoCaso;
+        private CheckBox UsarLegendaDetalhada;
     }
 }
