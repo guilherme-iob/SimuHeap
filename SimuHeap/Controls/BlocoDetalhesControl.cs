@@ -73,6 +73,7 @@ namespace SimuHeap.Controls
                 Brush corTexto = RenderizadorControlesHeap.ObterCorTexto(Bloco, regiao);
                 string texto = ObterTextoCelula(endereco, regiao);
                 ObterId(Bloco, endereco, out string? id, out Brush? corId);
+                id = string.Empty; // Não exibir o ID no detalhe do bloco
                 RenderizadorControlesHeap.DesenharCelula(e.Graphics, rectangle, corFundo, corTexto, texto, id, corId, CellSize);
             }
         }

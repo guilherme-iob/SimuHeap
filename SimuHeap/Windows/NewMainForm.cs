@@ -815,7 +815,7 @@ namespace SimuHeap.Windows
                 Simulator = heapSimulator
             };
 
-            this.PanelGridHeap.BackColor = Color.FromArgb(30, 30, 30);
+            this.PanelGridHeap.BackColor = Color.Transparent;//Color.FromArgb(30, 30, 30);
             this.PanelGridHeap.Resize += PanelGridHeap_Resize;
             this.PanelGridHeap.AutoScroll = true;
             this.PanelGridHeap.Controls.Add(this.HeapGrid);

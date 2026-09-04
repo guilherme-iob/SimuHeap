@@ -23,7 +23,7 @@ namespace SimuHeap.Controls
             DoubleBuffered = true;
             ResizeRedraw = true;
 
-            BackColor = Color.FromArgb(30, 30, 30);
+            BackColor = Color.Transparent; //Color.FromArgb(30, 30, 30);
             Cursor = Cursors.Hand;
         }
 
