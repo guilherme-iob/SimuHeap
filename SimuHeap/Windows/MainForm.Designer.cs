@@ -89,14 +89,13 @@
             Lbl_BytesLivres = new Label();
             Lbl_BytesOcupados = new Label();
             tab_config = new TabPage();
-            MenuParametros = new GroupBox();
             UsarLegendaDetalhada = new CheckBox();
+            MenuParametros = new GroupBox();
             GroupBoxCasosDeUsoSimulacao = new GroupBox();
             UsarCaso3 = new RadioButton();
             UsarCaso2 = new RadioButton();
             UsarCaso1 = new RadioButton();
             UsarNenhumCaso = new RadioButton();
-            HabilitarVisualizacaoAvancada = new CheckBox();
             Label_AlgoritmosAlocacao = new Label();
             Btn_HelpAlgoritmosAlocacao = new Button();
             Btn_HelpSplit = new Button();
@@ -109,6 +108,7 @@
             Label_TamanhoHeap = new Label();
             UseWorstFit = new RadioButton();
             Btn_HelpTamHeap = new Button();
+            HabilitarVisualizacaoAvancada = new CheckBox();
             Tabs_Principal.SuspendLayout();
             tab_simulacao.SuspendLayout();
             Panel_Simulacao.SuspendLayout();
@@ -895,6 +895,7 @@
             // tab_config
             // 
             tab_config.Controls.Add(MenuParametros);
+            tab_config.Controls.Add(HabilitarVisualizacaoAvancada);
             tab_config.Location = new Point(4, 30);
             tab_config.Margin = new Padding(4);
             tab_config.Name = "tab_config";
@@ -904,11 +905,20 @@
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
             // 
+            // UsarLegendaDetalhada
+            // 
+            UsarLegendaDetalhada.AutoSize = true;
+            UsarLegendaDetalhada.Location = new Point(9, 321);
+            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
+            UsarLegendaDetalhada.Size = new Size(162, 25);
+            UsarLegendaDetalhada.TabIndex = 9;
+            UsarLegendaDetalhada.Text = "Legenda Detalhada";
+            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
+            // 
             // MenuParametros
             // 
             MenuParametros.Controls.Add(UsarLegendaDetalhada);
             MenuParametros.Controls.Add(GroupBoxCasosDeUsoSimulacao);
-            MenuParametros.Controls.Add(HabilitarVisualizacaoAvancada);
             MenuParametros.Controls.Add(Label_AlgoritmosAlocacao);
             MenuParametros.Controls.Add(Btn_HelpAlgoritmosAlocacao);
             MenuParametros.Controls.Add(Btn_HelpSplit);
@@ -930,25 +940,15 @@
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
             // 
-            // UsarLegendaDetalhada
-            // 
-            UsarLegendaDetalhada.AutoSize = true;
-            UsarLegendaDetalhada.Location = new Point(9, 336);
-            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
-            UsarLegendaDetalhada.Size = new Size(162, 25);
-            UsarLegendaDetalhada.TabIndex = 9;
-            UsarLegendaDetalhada.Text = "Legenda Detalhada";
-            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
-            // 
             // GroupBoxCasosDeUsoSimulacao
             // 
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
-            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 466);
+            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 364);
             GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
-            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 167);
+            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 269);
             GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
             GroupBoxCasosDeUsoSimulacao.TabStop = false;
             GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
@@ -1000,17 +1000,6 @@
             UsarNenhumCaso.Text = "Nenhum";
             UsarNenhumCaso.UseVisualStyleBackColor = true;
             UsarNenhumCaso.CheckedChanged += UsarNenhumCaso_CheckedChanged;
-            // 
-            // HabilitarVisualizacaoAvancada
-            // 
-            HabilitarVisualizacaoAvancada.AutoSize = true;
-            HabilitarVisualizacaoAvancada.Location = new Point(9, 367);
-            HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
-            HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
-            HabilitarVisualizacaoAvancada.TabIndex = 8;
-            HabilitarVisualizacaoAvancada.Text = "Visualização Avançada";
-            HabilitarVisualizacaoAvancada.UseVisualStyleBackColor = true;
-            HabilitarVisualizacaoAvancada.CheckedChanged += HabilitarVisualizacaoAvancada_CheckedChanged;
             // 
             // Label_AlgoritmosAlocacao
             // 
@@ -1145,7 +1134,18 @@
             Btn_HelpTamHeap.UseVisualStyleBackColor = true;
             Btn_HelpTamHeap.Click += Btn_HelpTamHeap_Click;
             // 
-            // NewMainForm
+            // HabilitarVisualizacaoAvancada
+            // 
+            HabilitarVisualizacaoAvancada.AutoSize = true;
+            HabilitarVisualizacaoAvancada.Location = new Point(305, 21);
+            HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
+            HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
+            HabilitarVisualizacaoAvancada.TabIndex = 8;
+            HabilitarVisualizacaoAvancada.Text = "Visualização Avançada";
+            HabilitarVisualizacaoAvancada.UseVisualStyleBackColor = true;
+            HabilitarVisualizacaoAvancada.CheckedChanged += HabilitarVisualizacaoAvancada_CheckedChanged;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1154,7 +1154,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
-            Name = "NewMainForm";
+            Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SimuHeap";
             Load += NewMainForm_Load;
@@ -1190,6 +1190,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tab_config.ResumeLayout(false);
+            tab_config.PerformLayout();
             MenuParametros.ResumeLayout(false);
             MenuParametros.PerformLayout();
             GroupBoxCasosDeUsoSimulacao.ResumeLayout(false);

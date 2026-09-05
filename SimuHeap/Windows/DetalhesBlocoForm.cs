@@ -19,7 +19,10 @@ namespace SimuHeap.Windows
     {
         private readonly BlocoDeMemoria bloco;
         private readonly InformacaoAlocacaoBloco? informacaoAlocacao;
+        private readonly byte[] memoria;
+
         private BlocoDetalhesControl blocoDetalhesControl;
+        
         public DetalhesBlocoForm(BlocoDeMemoria bloco, InformacaoAlocacaoBloco? informacaoAlocacao, byte[] memoria)
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace SimuHeap.Windows
             this.BackColor = bloco.EstaLivre ? Color.ForestGreen : Color.Firebrick;
             this.bloco = bloco;
             this.informacaoAlocacao = informacaoAlocacao;
+            this.memoria = memoria;
 
             this.blocoDetalhesControl = new BlocoDetalhesControl
             {
@@ -36,6 +40,7 @@ namespace SimuHeap.Windows
             this.blocoDetalhesControl.RegiaoClicada += Controle_BlocoDetalhes_RegiaoClicada;
             this.blocoDetalhesControl.Bloco = bloco;
             this.blocoDetalhesControl.Memoria = memoria;
+           
 
             this.PanelBlocosDetalhes.Resize += PanelBlocosDetalhes_Resize;
             this.PanelBlocosDetalhes.AutoScroll = true;
@@ -43,7 +48,9 @@ namespace SimuHeap.Windows
 
             this.blocoDetalhesControl.AjustarTamanho(this.PanelBlocosDetalhes.ClientSize.Width);
 
+            ConfigurarGridValores();
             CarregarInformacoes();
+            CarregarValoresPayload();
         }
 
         private void CarregarInformacoes()
@@ -164,6 +171,105 @@ namespace SimuHeap.Windows
         private void PanelBlocosDetalhes_Resize(object? sender, EventArgs e)
         {
             blocoDetalhesControl.AjustarTamanho(PanelBlocosDetalhes.ClientSize.Width);
+        }
+
+        private void ConfigurarGridValores()
+        {
+            if (bloco.EstaLivre)
+            {
+                DataGridViewValores.Visible = false;
+                return;
+            }
+            DataGridViewValores.Columns.Clear();
+
+            DataGridViewValores.AllowUserToAddRows = false;
+            DataGridViewValores.AllowUserToDeleteRows = false;
+            DataGridViewValores.AllowUserToResizeRows = false;
+
+            DataGridViewValores.ReadOnly = true;
+            DataGridViewValores.MultiSelect = false;
+
+            DataGridViewValores.RowHeadersVisible = false;
+
+            DataGridViewValores.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+
+            DataGridViewValores.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            // IMPORTANTE
+            DataGridViewValores.DefaultCellStyle.BackColor = Color.White;
+            DataGridViewValores.DefaultCellStyle.ForeColor = Color.Black;
+
+            DataGridViewValores.DefaultCellStyle.SelectionBackColor =
+                SystemColors.Highlight;
+
+            DataGridViewValores.DefaultCellStyle.SelectionForeColor =
+                SystemColors.HighlightText;
+
+            DataGridViewValores.ColumnHeadersDefaultCellStyle.BackColor =
+                Color.LightGray;
+
+            DataGridViewValores.ColumnHeadersDefaultCellStyle.ForeColor =
+                Color.Black;
+
+            DataGridViewValores.Columns.Add("Indice", "Índice");
+            DataGridViewValores.Columns.Add("Valor", "Valor");
+            DataGridViewValores.Columns.Add("Bytes", "Bytes");
+            DataGridViewValores.Columns.Add("Endereco", "Endereço");
+        }
+
+        private void CarregarValoresPayload()
+        {
+            DataGridViewValores.Rows.Clear();
+
+            if (bloco.EstaLivre)
+                return;
+
+            if (bloco.TipoDado is not TiposDeVariaveis tipo)
+                return;
+
+            int tamanhoTipo =
+                Configuracoes.ObterTamanhoTipo(tipo);
+
+            if (tamanhoTipo <= 0)
+                return;
+
+            int quantidade =
+                bloco.TamanhoPayload / tamanhoTipo;
+
+            for (int i = 0; i < quantidade; i++)
+            {
+                int endereco =
+                    bloco.EnderecoPayload +
+                    (i * tamanhoTipo);
+
+                ReadOnlySpan<byte> bytes =
+                    memoria.AsSpan(
+                        endereco,
+                        tamanhoTipo);
+
+                object valor =
+                    ConversorValorBytes.ConverterBytesParaValor(
+                        bytes,
+                        tipo);
+
+                string valorFormatado =
+                    ConversorValorBytes.FormatarValor(
+                        valor,
+                        tipo);
+
+                string bytesFormatados =
+                    BitConverter
+                        .ToString(bytes.ToArray())
+                        .Replace("-", " ");
+
+                DataGridViewValores.Rows.Add(
+                    $"[{i}]",
+                    valorFormatado,
+                    bytesFormatados,
+                    $"0x{endereco:X}");
+            }
         }
     }
 }

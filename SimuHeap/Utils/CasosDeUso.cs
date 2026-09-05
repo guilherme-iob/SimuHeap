@@ -309,7 +309,7 @@ namespace SimuHeap.Utils
             Realloc(
                 eventos,
                 notas,
-                5);
+                4);
 
             Realloc(
                 eventos,
