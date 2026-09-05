@@ -34,6 +34,11 @@ namespace SimuHeap.Services
 
                 Snapshots.Add(CriarSnapshot(simulator, passo, evento.Descricao, null, evento.Id, erro));
                 passo++;
+
+                if(erro is null)
+                {
+                    ExecutarEscritaAposEvento(simulator, evento, ref passo);
+                }
             }
 
         }
@@ -332,6 +337,27 @@ namespace SimuHeap.Services
                     "O crescimento não é ilimitado. Se o sistema operacional não puder fornecer " +
                     "mais memória, ou algum limite do processo for atingido, a alocação falha. "
             };
+        }
+
+        private void ExecutarEscritaAposEvento(HeapSimulator simulator, EventoHeap evento, ref int passo)
+        {
+            foreach (EscritaMemoria escrita in evento.EscritasAposEvento)
+            {
+                bool encontrou = referenciasBlocos.TryGetValue(escrita.ReferenciaBloco, out int idBloco);
+                if (!encontrou) continue;
+
+                BlocoDeMemoria? bloco = simulator.EscreverValoresNaMemoria(idBloco, escrita.TipoVariavel, escrita.Valores);
+                if (bloco is null) continue;
+
+                EstadoPassoSimulacao estado = new()
+                {
+                    Descricao = escrita.Descricao,
+                    EnderecoBlocoEmAnalise = bloco.EnderecoInicio
+                };
+
+                Snapshots.Add(CriarSnapshot(simulator, passo, escrita.Descricao, estado, evento.Id));
+                passo++;
+            }
         }
     }
 }

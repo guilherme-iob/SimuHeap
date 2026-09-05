@@ -14,6 +14,9 @@ namespace SimuHeap.Models
         public string Descricao { get; protected set; } = string.Empty;
 
         public string? NomeVariavel { get; set; } = string.Empty;
+
+        public List<EscritaMemoria> EscritasAposEvento { get; } = new();
+
         public abstract void AtualizarDescricao();
 
         protected string ObterArtibuicaoVariavel(TiposDeVariaveis tipo)

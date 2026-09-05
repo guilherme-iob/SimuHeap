@@ -609,5 +609,40 @@ namespace SimuHeap.Services
 
             return null;
         }
+
+        public BlocoDeMemoria? EscreverValoresNaMemoria(int idBloco, TiposDeVariaveis tipo, IEnumerable<ValorAtribuidoMemoria> valores)
+        {
+            LinkedListNode<BlocoDeMemoria>? nodebloco = BuscarBlocoOcupado(idBloco);
+
+            if (nodebloco is null) return null;
+
+            BlocoDeMemoria bloco = nodebloco.Value;
+
+            int tamanhoTipo = Configuracoes.ObterTamanhoTipo(tipo);
+
+            foreach(ValorAtribuidoMemoria atribuicao in valores)
+            {
+                if(atribuicao.Indice < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(atribuicao.Indice));
+
+                }
+
+                int offset = atribuicao.Indice * tamanhoTipo;
+                if(offset+tamanhoTipo > bloco.TamanhoPayload)
+                {
+                    throw new InvalidOperationException($"A escrita no índice {atribuicao.Indice} ultrapassa o payload do bloco #{bloco.Id}");
+                }
+
+                byte[] bytes = ConversorValorBytes.ConverterValorParaBytes(atribuicao.Valor, tipo);
+
+                int enderecoEscrita = bloco.EnderecoPayload + offset;
+
+                bytes.CopyTo(Memoria.AsSpan(enderecoEscrita, bytes.Length));
+
+            }
+
+            return bloco;
+        }
     }
 }

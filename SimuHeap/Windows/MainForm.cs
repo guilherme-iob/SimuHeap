@@ -1,4 +1,9 @@
-﻿using SimuHeap.Enums;
+﻿using SimuHeap.Controls;
+using SimuHeap.Enums;
+using SimuHeap.Models;
+using SimuHeap.Services;
+using SimuHeap.Utils;
+using SimuHeap.Windows.Avisos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,10 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SimuHeap.Controls;
-using SimuHeap.Services;
-using SimuHeap.Models;
-using SimuHeap.Windows.Avisos;
 
 namespace SimuHeap.Windows
 {
@@ -26,8 +27,9 @@ namespace SimuHeap.Windows
         private int proximaReferenciaBloco = 1;
 
         private LegendaCoresForm? legendaCoresForm;
-        private MetricasSimulacaoForm? metricasHeapForm;
+        private CodigoCasoUsoForm? codigoCasoUsoForm;
 
+        private CasoUsoSimulacao casoSelecionado = CasoUsoSimulacao.Nenhum;
         public MainForm()
         {
             InitializeComponent();
@@ -35,14 +37,23 @@ namespace SimuHeap.Windows
         }
 
         /*  ====================================
-         *  Eventos de Botões e Controles
+         *  INICIALIZAÇÃO
          *  ====================================
          */
-        private void MainForm_Load(object sender, EventArgs e)
+        private void NewMainForm_Load(object sender, EventArgs e)
         {
             InicializarHeap();
             ConfigurarDataGrids();
+            AtualizarLabelPassoAtual();
             SelectHeapSize.DataSource = Enum.GetValues(typeof(TamanhosHeap));
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            HabilitarSplit.Checked = true;
+            HabilitarCoalesing.Checked = false;
+            UseFirstFit.Checked = true;
+            SelectHeapSize.SelectedIndex = 2;
+            UsarNenhumCaso.Checked = true;
         }
         private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -52,11 +63,9 @@ namespace SimuHeap.Windows
             }
         }
 
-        private void AbrirFormularioMetricas()
+        private void PanelGridHeap_Resize(object? sender, EventArgs e)
         {
-            metricasHeapForm = new MetricasSimulacaoForm();
-
-            metricasHeapForm.Show(this);
+            this.HeapGrid.AjustarTamanho(this.PanelGridHeap.ClientSize.Width);
         }
 
         private void ConfigurarDataGrids()
@@ -83,8 +92,34 @@ namespace SimuHeap.Windows
 
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            grid.DefaultCellStyle.Font = new Font(grid.Font.FontFamily, 9f);
+
             grid.Columns.Add("Descricao", string.Empty);
         }
+
+        private void InicializarHeap()
+        {
+            heapSimulator = new HeapSimulator((int)TamanhosHeap.Heap64);
+            executor = new ExecutorSimulacao();
+
+            this.HeapGrid = new HeapGridControl
+            {
+                Location = new Point(0, 0),
+                CellSize = 28,
+                //Columns = 32,
+                Simulator = heapSimulator
+            };
+
+            this.PanelGridHeap.BackColor = Color.Transparent;//Color.FromArgb(30, 30, 30);
+            this.PanelGridHeap.Resize += PanelGridHeap_Resize;
+            this.PanelGridHeap.AutoScroll = true;
+            this.PanelGridHeap.Controls.Add(this.HeapGrid);
+        }
+
+        /*  ====================================
+         *  Eventos de Botões e Controles
+         *  ====================================
+         */
 
         private void Btn_Malloc_Click(object sender, EventArgs e)
         {
@@ -123,7 +158,7 @@ namespace SimuHeap.Windows
             List<ReferenciaAlocacao> alocacoesAtivas = ObterAlocacoesAtivas();
             if (alocacoesAtivas.Count == 0)
             {
-                MessageBox.Show("Não há blocos alocados", "Free", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Não há blocos alocados", "Realloc", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -167,12 +202,15 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            InicializarEventosTeste();
-
-            //InicializarEventosTesteErros();
+            if(casoSelecionado != CasoUsoSimulacao.Nenhum)
+            {
+                codigoCasoUsoForm = new CodigoCasoUsoForm(casoSelecionado);
+                codigoCasoUsoForm.Show();
+            }
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
+            heapSimulator.UsarLegendasDetalhadas = UsarLegendaDetalhada.Checked;
 
             AlgoritmosDeAlocacao algoritmo = AlgoritmosDeAlocacao.FirstFit;
 
@@ -186,6 +224,7 @@ namespace SimuHeap.Windows
 
             this.Panel_Simulacao_2.Enabled = true;
             this.Panel_OpcoesEventos.Enabled = false;
+            this.MenuParametros.Enabled = false;
 
         }
 
@@ -655,17 +694,28 @@ namespace SimuHeap.Windows
         {
             this.Panel_Simulacao_2.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
+            this.MenuParametros.Enabled = true;
+            codigoCasoUsoForm?.Close();
+
             snapshotAtual = 0;
             executor.Snapshots.Clear();
-            executor.Eventos.Clear();
+
             heapSimulator.Resetar();
             HeapGrid.LimparSnapshot();
+
+            DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
         }
 
         private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
         {
             this.Panel_Simulacao_2.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
+            this.MenuParametros.Enabled = true;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
             executor.Eventos.Clear();
@@ -674,20 +724,39 @@ namespace SimuHeap.Windows
 
             DataGridViewEventos.Rows.Clear();
             DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
+
+            proximaReferenciaBloco = 1;
+        }
+
+        private void Btn_LegendaCores_Click(object sender, EventArgs e)
+        {
+            if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
+            {
+                legendaCoresForm = new LegendaCoresForm(UsarLegendaDetalhada.Checked);
+                legendaCoresForm.Show(this);
+            }
+            else
+            {
+                legendaCoresForm.BringToFront();
+                legendaCoresForm.Activate();
+            }
         }
 
         private void BtnPrimeiro_Click(object sender, EventArgs e)
         {
-            snapshotAtual = 0;
-            MostrarSnapshotAtual();
+            NavegarParaSnapshot(0);
         }
 
         private void BtnAnterior_Click(object sender, EventArgs e)
         {
             if (snapshotAtual > 0)
             {
-                snapshotAtual--;
-                MostrarSnapshotAtual();
+                NavegarParaSnapshot(snapshotAtual - 1);
             }
         }
 
@@ -695,15 +764,14 @@ namespace SimuHeap.Windows
         {
             if (snapshotAtual < executor.Snapshots.Count - 1)
             {
-                snapshotAtual++;
-                MostrarSnapshotAtual();
+                NavegarParaSnapshot(snapshotAtual + 1);
             }
+
         }
 
         private void BtnUltimo_Click(object sender, EventArgs e)
         {
-            snapshotAtual = executor.Snapshots.Count - 1;
-            MostrarSnapshotAtual();
+            NavegarParaSnapshot(executor.Snapshots.Count - 1);
         }
 
         private void Btn_SubirEvento_Click(object sender, EventArgs e)
@@ -772,32 +840,84 @@ namespace SimuHeap.Windows
             AtualizarListaEventos();
         }
 
+        private void Btn_HelpSplit_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Split", ExplicacoesConceitos.ExplicacaoSplit);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HepCoalescing_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Coalescing", ExplicacoesConceitos.ExplicacaoCoalescing);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpTamHeap_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Tamanho da Heap", ExplicacoesConceitos.ExplicacaoTamanhoHeap);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpAlgoritmosAlocacao_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Algoritmos de Alocação", ExplicacoesConceitos.ExplicacaoAlgoritmosAlocacao);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void HabilitarVisualizacaoAvancada_CheckedChanged(object sender, EventArgs e)
+        {
+            HeapGrid.UsarVisualizacaoAvancada = HabilitarVisualizacaoAvancada.Checked;
+        }
+
+
+        private void UsarNenhumCaso_CheckedChanged(object sender, EventArgs e)
+        {
+            if(UsarNenhumCaso.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.Nenhum;
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso1.Checked) {
+                casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso2.Checked) 
+            {
+                casoSelecionado = CasoUsoSimulacao.DuasProvas;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso3.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
         /*  ====================================
          *  FUNÇÕES AUXILIARES
          *  ====================================
          */
-        private void InicializarHeap()
-        {
-            heapSimulator = new HeapSimulator((int)TamanhosHeap.Heap64);
-            executor = new ExecutorSimulacao();
-
-            this.HeapGrid = new HeapGridControl
-            {
-                Location = new Point(0, 0),
-                CellSize = 28,
-                //Columns = 32,
-                Simulator = heapSimulator
-            };
-
-            this.PanelGridHeap.AutoScroll = true;
-            this.PanelGridHeap.Controls.Add(this.HeapGrid);
-        }
-
         private void AlterarTamanhoHeap(TamanhosHeap novoTamanho)
         {
             heapSimulator = new HeapSimulator((int)novoTamanho);
             HeapGrid.Simulator = heapSimulator;
         }
+
         private void AtualizarListaEventos()
         {
             DataGridViewEventos.Rows.Clear();
@@ -808,9 +928,37 @@ namespace SimuHeap.Windows
             }
         }
 
-        private void MostrarSnapshotAtual()
+        private void NavegarParaSnapshot(int indiceDestino)
         {
             if (executor.Snapshots.Count == 0) return;
+
+            indiceDestino = Math.Clamp(indiceDestino, 0, executor.Snapshots.Count - 1);
+
+            bool avancar = indiceDestino > snapshotAtual;
+
+            if (avancar)
+            {
+                for (int i = snapshotAtual + 1; i <= indiceDestino; i++)
+                {
+                    if (executor.Snapshots[i].Erro is not null)
+                    {
+                        indiceDestino = i;
+                        break;
+                    }
+                }
+            }
+
+            snapshotAtual = indiceDestino;
+            MostrarSnapshotAtual(avancar);
+        }
+
+        private void MostrarSnapshotAtual(bool exibirErro = false)
+        {
+            if (executor.Snapshots.Count == 0)
+            {
+                AtualizarLabelPassoAtual();
+                return;
+            }
 
             HeapSnapshot snapshot = executor.Snapshots[snapshotAtual];
 
@@ -826,30 +974,24 @@ namespace SimuHeap.Windows
             string strDescricaoPasso = snapshot.DescricaoPasso == snapshot.DescricaoEvento ? "" : $"Descrição Passo: {snapshot.DescricaoPasso}\n";
             string text = $"Evento: {snapshot.DescricaoEvento}\n{strDescricaoPasso}{strBlocoEmAnalise}{strMelhorBloco}";
             Lbl_SnapshotAtual.Text = text;
-            //textBoxEstadoAtual.Text = text;
 
-            metricasHeapForm?.AtualizarMetricas(snapshot.Metricas);
+            AtualizarLabelPassoAtual();
 
-            if (snapshot.Erro is not null)
+            AtualizarMetricas(snapshot.Metricas);
+
+            if (exibirErro && snapshot.Erro is not null)
             {
-                //MessageBox.Show(
-                //    $"{snapshot.Erro.Mensagem}\r\n\r\n" +
-                //    $"{snapshot.Erro.Detalhes}\r\n\r\n" +
-                //    $"{snapshot.Erro.Explicacao}",
-                //    snapshot.Erro.Titulo,
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Warning);
-
                 AvisoFalhaAlocacaoForm aviso = new AvisoFalhaAlocacaoForm(snapshot.Erro);
-                aviso.ShowDialog();
+                aviso.ShowDialog(this);
             }
-
-            // atualizar labels e métricas
-            //lblOperacaoAtual.Text = snapshot.DescricaoEvento;
-            //lblUsoHeap.Text = $"{snapshot.UsoHeapPercentual:F1}%";
-            //lblFragExterna.Text = $"{snapshot.FragmentacaoExterna:F1}%";
-            //lblFragInterna.Text = $"{snapshot.FragmentacaoInterna:F1}%";
         }
+
+        private void AtualizarLabelPassoAtual()
+        {
+            int totalSnapshots = executor.Snapshots.Count == 0 ? 0 : executor.Snapshots.Count - 1;
+            Lbl_PassoAtual.Text = $"Passo Atual: {snapshotAtual}/{totalSnapshots}";
+        }
+
         private void AtualizarListaBlocosLivres(HeapSnapshot snapshot)
         {
             DataGridViewBlocosLivres.Rows.Clear();
@@ -1016,23 +1158,116 @@ namespace SimuHeap.Windows
             return true;
         }
 
-        private void Btn_LegendaCores_Click(object sender, EventArgs e)
+        public void AtualizarMetricas(MetricasHeap metricas)
         {
-            if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
+            if (metricas is null)
+                return;
+
+            // ============================================
+            // Uso da memória
+            // ============================================
+
+            Lbl_BytesOcupados.Text =
+                $"Bytes ocupados: {metricas.BytesOcupados} bytes";
+
+            Lbl_BytesLivres.Text =
+                $"Bytes livres: {metricas.BytesLivres} bytes";
+
+            Lbl_UsoHeap.Text =
+                $"Uso da heap: {metricas.PercentualUsoMemoria:F2}%";
+
+
+            // ============================================
+            // Fragmentação interna
+            // ============================================
+
+            Lbl_BytesFragInterna.Text =
+                $"Bytes de fragmentação interna: {metricas.BytesFragmentacaoInterna} bytes";
+
+            Lbl_FragInterna.Text =
+                $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
+
+            Lbl_Padding.Text =
+                $"Bytes de padding: {metricas.BytesPadding} bytes";
+
+
+            // ============================================
+            // Fragmentação externa
+            // ============================================
+
+            Lbl_FragExterna.Text =
+                $"Fragmentação externa: {metricas.PercentualFragmentacaoExterna:F2}%";
+
+            Lbl_MaiorBlocoLivre.Text =
+                $"Maior bloco livre: {metricas.TamanhoMaiorBlocoLivre} bytes";
+
+
+            // ============================================
+            // Memória inutilizável
+            // ============================================
+
+            Lbl_MemInutilizavel.Text =
+                $"Bytes inutilizáveis: {metricas.BytesInutilizaveis} bytes";
+
+            Lbl_PercentualInutilizavel.Text =
+                $"Memória inutilizável: {metricas.PercentualMemoriaInutilizavel:F2}%";
+
+            LblBlocosInutilizaveis.Text =
+                $"Blocos inutilizáveis: {metricas.QuantidadeBlocosInutilizaveis}";
+
+
+            // ============================================
+            // Metadados
+            // ============================================
+
+            Lbl_Metadados.Text =
+                $"Bytes de metadados: {metricas.BytesMetadados} bytes";
+        }
+
+        private void CarregarCasoPredefinido()
+        {
+            executor.Eventos.Clear();
+            switch (casoSelecionado)
             {
-                legendaCoresForm = new LegendaCoresForm(false);
-                legendaCoresForm.Show(this);
+                case CasoUsoSimulacao.NotasEFaltas:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoNotasEFaltas());
+                    break;
+                case CasoUsoSimulacao.DuasProvas:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoDuasProvas());
+                    break;
+                case CasoUsoSimulacao.RedimensionamentoTurma:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoRedimensionamentoTurma());
+                    break;
+                default:
+                    break;
+            }
+
+            AtualizarListaEventos();
+            
+        }
+
+        private void BloquearOperacoesParaCasosDeUso()
+        {
+            if(casoSelecionado == CasoUsoSimulacao.Nenhum)
+            {
+                this.Btn_Malloc.Enabled = true;
+                this.Btn_Calloc.Enabled = true;
+                this.Btn_Realloc.Enabled = true;
+                this.Btn_Free.Enabled = true;
+                this.Btn_SubirEvento.Enabled = true;
+                this.Btn_DescerEvento.Enabled = true;
+                this.Btn_ExcluirEvento.Enabled = true;
             }
             else
             {
-                legendaCoresForm.BringToFront();
-                legendaCoresForm.Activate();
+                this.Btn_Malloc.Enabled = false;
+                this.Btn_Calloc.Enabled = false;
+                this.Btn_Realloc.Enabled = false;
+                this.Btn_Free.Enabled = false;
+                this.Btn_SubirEvento.Enabled = false;
+                this.Btn_DescerEvento.Enabled = false;
+                this.Btn_ExcluirEvento.Enabled = false;
             }
-        }
-
-        private void Btn_Metricas_Click(object sender, EventArgs e)
-        {
-            AbrirFormularioMetricas();
         }
     }
 }

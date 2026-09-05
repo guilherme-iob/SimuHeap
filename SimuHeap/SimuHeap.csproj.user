@@ -25,7 +25,7 @@
     <Compile Update="Windows\MetricasSimulacaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\NewMainForm.cs">
+    <Compile Update="Windows\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\OperacoesAlocacao\CallocForm.cs">
@@ -38,9 +38,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\LegendaCoresForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Windows\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\OperacoesAlocacao\MallocForm.cs">
