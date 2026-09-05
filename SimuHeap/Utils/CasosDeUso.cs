@@ -255,9 +255,9 @@ namespace SimuHeap.Utils
                 notas[7] = 6.0f;
 
 
-                /* três alunos deixaram a turma */
+                /* dois alunos deixaram a turma */
 
-                quantidade = 5;
+                quantidade = 4;
 
                 notas = realloc(
                     notas,
@@ -265,7 +265,7 @@ namespace SimuHeap.Utils
                 );
 
 
-                /* dois novos alunos entraram na turma */
+                /* três novos alunos entraram na turma */
 
                 quantidade = 7;
 
@@ -274,6 +274,7 @@ namespace SimuHeap.Utils
                     quantidade * sizeof(float)
                 );
 
+                notas[4] = 2.3f;
                 notas[5] = 7.0f;
                 notas[6] = 9.5f;
 
