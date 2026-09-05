@@ -1,5 +1,6 @@
 ﻿using SimuHeap.Enums;
 using SimuHeap.Models;
+using SimuHeap.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,12 @@ namespace SimuHeap.Windows
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void Btn_Help_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Calloc", ExplicacoesConceitos.ExplicacaoCalloc);
+            avisoExplicativoForm.ShowDialog();
         }
     }
 }

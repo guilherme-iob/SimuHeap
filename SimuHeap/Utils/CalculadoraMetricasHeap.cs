@@ -1,12 +1,13 @@
 ﻿using SimuHeap.Data;
 using SimuHeap.Models;
+using SimuHeap.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimuHeap.Services
+namespace SimuHeap.Utils
 {
     public static class CalculadoraMetricasHeap
     {

@@ -1,4 +1,5 @@
 ﻿using SimuHeap.Models;
+using SimuHeap.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,12 @@ namespace SimuHeap.Windows
             EventoCriado.AtualizarDescricao();
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void Btn_Help_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Free", ExplicacoesConceitos.ExplicacaoFree);
+            avisoExplicativoForm.ShowDialog();
         }
     }
 }

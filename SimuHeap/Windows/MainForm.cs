@@ -40,6 +40,7 @@ namespace SimuHeap.Windows
          *  INICIALIZAÇÃO
          *  ====================================
          */
+        #region Funções e Eventos de Inicialização
         private void NewMainForm_Load(object sender, EventArgs e)
         {
             InicializarHeap();
@@ -54,13 +55,6 @@ namespace SimuHeap.Windows
             UseFirstFit.Checked = true;
             SelectHeapSize.SelectedIndex = 2;
             UsarNenhumCaso.Checked = true;
-        }
-        private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (SelectHeapSize.SelectedItem is not null)
-            {
-                AlterarTamanhoHeap((TamanhosHeap)SelectHeapSize.SelectedItem);
-            }
         }
 
         private void PanelGridHeap_Resize(object? sender, EventArgs e)
@@ -116,11 +110,26 @@ namespace SimuHeap.Windows
             this.PanelGridHeap.Controls.Add(this.HeapGrid);
         }
 
+        #endregion
+
         /*  ====================================
          *  Eventos de Botões e Controles
          *  ====================================
          */
 
+        private void SelectHeapSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SelectHeapSize.SelectedItem is not null)
+            {
+                AlterarTamanhoHeap((TamanhosHeap)SelectHeapSize.SelectedItem);
+            }
+        }
+        private void HabilitarVisualizacaoAvancada_CheckedChanged(object sender, EventArgs e)
+        {
+            HeapGrid.UsarVisualizacaoAvancada = HabilitarVisualizacaoAvancada.Checked;
+        }
+
+        #region Eventos das Operações de Alocação
         private void Btn_Malloc_Click(object sender, EventArgs e)
         {
             MallocForm mf = new MallocForm();
@@ -188,7 +197,9 @@ namespace SimuHeap.Windows
             executor.Eventos.Add(ff.EventoCriado);
             AtualizarListaEventos();
         }
+        #endregion
 
+        #region Eventos de Menu de Simulação
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
         {
             if (!ValidarSequenciaEventos(out string mensagemErro))
@@ -202,7 +213,7 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            if(casoSelecionado != CasoUsoSimulacao.Nenhum)
+            if (casoSelecionado != CasoUsoSimulacao.Nenhum)
             {
                 codigoCasoUsoForm = new CodigoCasoUsoForm(casoSelecionado);
                 codigoCasoUsoForm.Show();
@@ -226,6 +237,267 @@ namespace SimuHeap.Windows
             this.Panel_OpcoesEventos.Enabled = false;
             this.MenuParametros.Enabled = false;
 
+            this.FlowPanelOperacoes.Enabled = false;
+
+        }
+
+        private void Btn_PararSimulacao_Click(object sender, EventArgs e)
+        {
+            
+            codigoCasoUsoForm?.Close();
+
+            snapshotAtual = 0;
+            executor.Snapshots.Clear();
+
+            heapSimulator.Resetar();
+            HeapGrid.LimparSnapshot();
+
+            DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
+
+            this.Panel_Simulacao_2.Enabled = false;
+            this.Panel_OpcoesEventos.Enabled = true;
+            this.MenuParametros.Enabled = true;
+            this.FlowPanelOperacoes.Enabled = true;
+        }
+
+        private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
+        {
+            ;
+            snapshotAtual = 0;
+            executor.Snapshots.Clear();
+            executor.Eventos.Clear();
+            heapSimulator.Resetar();
+            HeapGrid.LimparSnapshot();
+
+            DataGridViewEventos.Rows.Clear();
+            DataGridViewBlocosLivres.Rows.Clear();
+
+            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
+
+            AtualizarLabelPassoAtual();
+            Lbl_SnapshotAtual.Text = string.Empty;
+
+            proximaReferenciaBloco = 1;
+
+            this.Panel_Simulacao_2.Enabled = false;
+            this.Panel_OpcoesEventos.Enabled = true;
+            this.MenuParametros.Enabled = true;
+            this.FlowPanelOperacoes.Enabled = true;
+        }
+
+        private void Btn_LegendaCores_Click(object sender, EventArgs e)
+        {
+            if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
+            {
+                legendaCoresForm = new LegendaCoresForm(UsarLegendaDetalhada.Checked);
+                legendaCoresForm.Show(this);
+            }
+            else
+            {
+                legendaCoresForm.BringToFront();
+                legendaCoresForm.Activate();
+            }
+        }
+
+        private void BtnPrimeiro_Click(object sender, EventArgs e)
+        {
+            NavegarParaSnapshot(0);
+        }
+
+        private void BtnAnterior_Click(object sender, EventArgs e)
+        {
+            if (snapshotAtual > 0)
+            {
+                NavegarParaSnapshot(snapshotAtual - 1);
+            }
+        }
+
+        private void BtnProximo_Click(object sender, EventArgs e)
+        {
+            if (snapshotAtual < executor.Snapshots.Count - 1)
+            {
+                NavegarParaSnapshot(snapshotAtual + 1);
+            }
+
+        }
+
+        private void BtnUltimo_Click(object sender, EventArgs e)
+        {
+            NavegarParaSnapshot(executor.Snapshots.Count - 1);
+        }
+
+        private void Btn_SubirEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null) return;
+
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            // Já está no topo.
+            if (indice <= 0) return;
+
+            EventoHeap eventoSelecionado = executor.Eventos[indice];
+
+            executor.Eventos[indice] = executor.Eventos[indice - 1];
+
+            executor.Eventos[indice - 1] = eventoSelecionado;
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+
+            // Mantém selecionado o evento que acabou de subir.
+            DataGridViewEventos.Rows[indice - 1].Selected = true;
+            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice - 1].Cells[0];
+        }
+
+        private void Btn_DescerEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null) return;
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            // Já está no último evento.
+            if (indice < 0 || indice >= executor.Eventos.Count - 1) return;
+
+            EventoHeap eventoSelecionado = executor.Eventos[indice];
+
+            executor.Eventos[indice] = executor.Eventos[indice + 1];
+
+            executor.Eventos[indice + 1] = eventoSelecionado;
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+
+            // Mantém selecionado o evento depois da movimentação.
+            DataGridViewEventos.Rows[indice + 1].Selected = true;
+            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice + 1].Cells[0];
+        }
+
+        private void Btn_ExcluirEvento_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewEventos.CurrentRow is null)
+                return;
+
+            int indice = DataGridViewEventos.CurrentRow.Index;
+
+            if (indice < 0 || indice >= executor.Eventos.Count)
+                return;
+
+            executor.Eventos.RemoveAt(indice);
+
+            ReorganizarIdsEventos();
+
+            AtualizarListaEventos();
+        }
+        #endregion
+
+        #region Eventos de Ajuda
+        private void Btn_HelpSplit_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Split", ExplicacoesConceitos.ExplicacaoSplit);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HepCoalescing_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Coalescing", ExplicacoesConceitos.ExplicacaoCoalescing);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpTamHeap_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Tamanho da Heap", ExplicacoesConceitos.ExplicacaoTamanhoHeap);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpAlgoritmosAlocacao_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Algoritmos de Alocação", ExplicacoesConceitos.ExplicacaoAlgoritmosAlocacao);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpHeap_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Memória Heap", ExplicacoesConceitos.ExplicacaoHeap);
+            avisoExplicativoForm.ShowDialog();
+        }
+        private void Btn_HelpUsoHeap_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Uso da Heap", ExplicacoesConceitos.ExplicacaoUsoTotalHeap);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpFragInterna_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Fragmentação Interna", ExplicacoesConceitos.ExplicacaoFragmentacaoInterna);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpFragExterna_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Fragmentação Externa", ExplicacoesConceitos.ExplicacaoFragmentacaoExterna);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpMemoriaInutilizavel_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Memória Inutilizável", ExplicacoesConceitos.ExplicacaoMemoriaInutilizavel);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpTotalMetadados_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Total de Metadados", ExplicacoesConceitos.ExplicacaoMetadados);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region Casos de Uso Predefinidos
+        private void UsarNenhumCaso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarNenhumCaso.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.Nenhum;
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso1.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso2.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.DuasProvas;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso3.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
         }
 
         private void InicializarEventosTeste()
@@ -690,228 +962,14 @@ namespace SimuHeap.Windows
             AtualizarListaEventos();
         }
 
-        private void Btn_PararSimulacao_Click(object sender, EventArgs e)
-        {
-            this.Panel_Simulacao_2.Enabled = false;
-            this.Panel_OpcoesEventos.Enabled = true;
-            this.MenuParametros.Enabled = true;
-            codigoCasoUsoForm?.Close();
-
-            snapshotAtual = 0;
-            executor.Snapshots.Clear();
-
-            heapSimulator.Resetar();
-            HeapGrid.LimparSnapshot();
-
-            DataGridViewBlocosLivres.Rows.Clear();
-
-            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
-
-            AtualizarLabelPassoAtual();
-            Lbl_SnapshotAtual.Text = string.Empty;
-        }
-
-        private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
-        {
-            this.Panel_Simulacao_2.Enabled = false;
-            this.Panel_OpcoesEventos.Enabled = true;
-            this.MenuParametros.Enabled = true;
-            snapshotAtual = 0;
-            executor.Snapshots.Clear();
-            executor.Eventos.Clear();
-            heapSimulator.Resetar();
-            HeapGrid.LimparSnapshot();
-
-            DataGridViewEventos.Rows.Clear();
-            DataGridViewBlocosLivres.Rows.Clear();
-
-            AtualizarMetricas(CalculadoraMetricasHeap.Calcular(heapSimulator));
-
-            AtualizarLabelPassoAtual();
-            Lbl_SnapshotAtual.Text = string.Empty;
-
-            proximaReferenciaBloco = 1;
-        }
-
-        private void Btn_LegendaCores_Click(object sender, EventArgs e)
-        {
-            if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
-            {
-                legendaCoresForm = new LegendaCoresForm(UsarLegendaDetalhada.Checked);
-                legendaCoresForm.Show(this);
-            }
-            else
-            {
-                legendaCoresForm.BringToFront();
-                legendaCoresForm.Activate();
-            }
-        }
-
-        private void BtnPrimeiro_Click(object sender, EventArgs e)
-        {
-            NavegarParaSnapshot(0);
-        }
-
-        private void BtnAnterior_Click(object sender, EventArgs e)
-        {
-            if (snapshotAtual > 0)
-            {
-                NavegarParaSnapshot(snapshotAtual - 1);
-            }
-        }
-
-        private void BtnProximo_Click(object sender, EventArgs e)
-        {
-            if (snapshotAtual < executor.Snapshots.Count - 1)
-            {
-                NavegarParaSnapshot(snapshotAtual + 1);
-            }
-
-        }
-
-        private void BtnUltimo_Click(object sender, EventArgs e)
-        {
-            NavegarParaSnapshot(executor.Snapshots.Count - 1);
-        }
-
-        private void Btn_SubirEvento_Click(object sender, EventArgs e)
-        {
-            if (DataGridViewEventos.CurrentRow is null) return;
-
-
-            int indice = DataGridViewEventos.CurrentRow.Index;
-
-            // Já está no topo.
-            if (indice <= 0) return;
-
-            EventoHeap eventoSelecionado = executor.Eventos[indice];
-
-            executor.Eventos[indice] = executor.Eventos[indice - 1];
-
-            executor.Eventos[indice - 1] = eventoSelecionado;
-
-            ReorganizarIdsEventos();
-
-            AtualizarListaEventos();
-
-            // Mantém selecionado o evento que acabou de subir.
-            DataGridViewEventos.Rows[indice - 1].Selected = true;
-            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice - 1].Cells[0];
-        }
-
-        private void Btn_DescerEvento_Click(object sender, EventArgs e)
-        {
-            if (DataGridViewEventos.CurrentRow is null) return;
-
-            int indice = DataGridViewEventos.CurrentRow.Index;
-
-            // Já está no último evento.
-            if (indice < 0 || indice >= executor.Eventos.Count - 1) return;
-
-            EventoHeap eventoSelecionado = executor.Eventos[indice];
-
-            executor.Eventos[indice] = executor.Eventos[indice + 1];
-
-            executor.Eventos[indice + 1] = eventoSelecionado;
-
-            ReorganizarIdsEventos();
-
-            AtualizarListaEventos();
-
-            // Mantém selecionado o evento depois da movimentação.
-            DataGridViewEventos.Rows[indice + 1].Selected = true;
-            DataGridViewEventos.CurrentCell = DataGridViewEventos.Rows[indice + 1].Cells[0];
-        }
-
-        private void Btn_ExcluirEvento_Click(object sender, EventArgs e)
-        {
-            if (DataGridViewEventos.CurrentRow is null)
-                return;
-
-            int indice = DataGridViewEventos.CurrentRow.Index;
-
-            if (indice < 0 || indice >= executor.Eventos.Count)
-                return;
-
-            executor.Eventos.RemoveAt(indice);
-
-            ReorganizarIdsEventos();
-
-            AtualizarListaEventos();
-        }
-
-        private void Btn_HelpSplit_Click(object sender, EventArgs e)
-        {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Split", ExplicacoesConceitos.ExplicacaoSplit);
-            avisoExplicativoForm.ShowDialog();
-        }
-
-        private void Btn_HepCoalescing_Click(object sender, EventArgs e)
-        {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Coalescing", ExplicacoesConceitos.ExplicacaoCoalescing);
-            avisoExplicativoForm.ShowDialog();
-        }
-
-        private void Btn_HelpTamHeap_Click(object sender, EventArgs e)
-        {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Tamanho da Heap", ExplicacoesConceitos.ExplicacaoTamanhoHeap);
-            avisoExplicativoForm.ShowDialog();
-        }
-
-        private void Btn_HelpAlgoritmosAlocacao_Click(object sender, EventArgs e)
-        {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Algoritmos de Alocação", ExplicacoesConceitos.ExplicacaoAlgoritmosAlocacao);
-            avisoExplicativoForm.ShowDialog();
-        }
-
-        private void HabilitarVisualizacaoAvancada_CheckedChanged(object sender, EventArgs e)
-        {
-            HeapGrid.UsarVisualizacaoAvancada = HabilitarVisualizacaoAvancada.Checked;
-        }
-
-
-        private void UsarNenhumCaso_CheckedChanged(object sender, EventArgs e)
-        {
-            if(UsarNenhumCaso.Checked)
-            {
-                casoSelecionado = CasoUsoSimulacao.Nenhum;
-                BloquearOperacoesParaCasosDeUso();
-            }
-        }
-
-        private void UsarCaso1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UsarCaso1.Checked) {
-                casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
-                CarregarCasoPredefinido();
-                BloquearOperacoesParaCasosDeUso();
-            }
-        }
-
-        private void UsarCaso2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UsarCaso2.Checked) 
-            {
-                casoSelecionado = CasoUsoSimulacao.DuasProvas;
-                CarregarCasoPredefinido();
-                BloquearOperacoesParaCasosDeUso();
-            }
-        }
-
-        private void UsarCaso3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UsarCaso3.Checked)
-            {
-                casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
-                CarregarCasoPredefinido();
-                BloquearOperacoesParaCasosDeUso();
-            }
-        }
+        #endregion
 
         /*  ====================================
          *  FUNÇÕES AUXILIARES
          *  ====================================
          */
+
+        #region Funções Auxiliares de Eventos e Lógica de Verificação
         private void AlterarTamanhoHeap(TamanhosHeap novoTamanho)
         {
             heapSimulator = new HeapSimulator((int)novoTamanho);
@@ -1243,31 +1301,23 @@ namespace SimuHeap.Windows
             }
 
             AtualizarListaEventos();
-            
+
         }
 
         private void BloquearOperacoesParaCasosDeUso()
         {
-            if(casoSelecionado == CasoUsoSimulacao.Nenhum)
+            if (casoSelecionado == CasoUsoSimulacao.Nenhum)
             {
-                this.Btn_Malloc.Enabled = true;
-                this.Btn_Calloc.Enabled = true;
-                this.Btn_Realloc.Enabled = true;
-                this.Btn_Free.Enabled = true;
-                this.Btn_SubirEvento.Enabled = true;
-                this.Btn_DescerEvento.Enabled = true;
-                this.Btn_ExcluirEvento.Enabled = true;
+                this.FlowPanelOperacoes.Enabled = true;
+                this.Panel_OpcoesEventos.Enabled = true;
             }
             else
             {
-                this.Btn_Malloc.Enabled = false;
-                this.Btn_Calloc.Enabled = false;
-                this.Btn_Realloc.Enabled = false;
-                this.Btn_Free.Enabled = false;
-                this.Btn_SubirEvento.Enabled = false;
-                this.Btn_DescerEvento.Enabled = false;
-                this.Btn_ExcluirEvento.Enabled = false;
+                this.FlowPanelOperacoes.Enabled = false;
+                this.Panel_OpcoesEventos.Enabled = false;
             }
         }
+        #endregion
+
     }
 }

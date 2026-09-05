@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReallocForm));
             tableLayoutPanel1 = new TableLayoutPanel();
-            label2 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             BtnOK = new Button();
             BtnCancelar = new Button();
@@ -40,18 +39,22 @@
             tableLayoutPanel4 = new TableLayoutPanel();
             ComboBox_Blocos = new ComboBox();
             Lbl_Blocos = new Label();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            label2 = new Label();
+            Btn_Help = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Input_Quantidade).BeginInit();
             tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(label2, 0, 0);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 0, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 3);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 2);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel4, 0, 1);
@@ -65,18 +68,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.Size = new Size(274, 331);
             tableLayoutPanel1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(268, 49);
-            label2.TabIndex = 3;
-            label2.Text = "Realloc";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -193,6 +184,46 @@
             Lbl_Blocos.Text = "Referência do Bloco";
             Lbl_Blocos.TextAlign = ContentAlignment.BottomCenter;
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel5.Controls.Add(label2, 1, 0);
+            tableLayoutPanel5.Controls.Add(Btn_Help, 2, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(268, 43);
+            tableLayoutPanel5.TabIndex = 5;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(43, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(182, 43);
+            label2.TabIndex = 3;
+            label2.Text = "Realloc";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Btn_Help
+            // 
+            Btn_Help.Anchor = AnchorStyles.None;
+            Btn_Help.BackgroundImage = Properties.Resources.question;
+            Btn_Help.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_Help.Location = new Point(235, 9);
+            Btn_Help.Name = "Btn_Help";
+            Btn_Help.Size = new Size(25, 25);
+            Btn_Help.TabIndex = 7;
+            Btn_Help.UseVisualStyleBackColor = true;
+            Btn_Help.Click += Btn_Help_Click;
+            // 
             // ReallocForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -202,21 +233,21 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReallocForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ReallocForm";
+            Text = "Realloc";
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Input_Quantidade).EndInit();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label2;
         private TableLayoutPanel tableLayoutPanel2;
         private Button BtnOK;
         private Button BtnCancelar;
@@ -226,5 +257,8 @@
         private Label Lbl_Blocos;
         private Label label1;
         private NumericUpDown Input_Quantidade;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Label label2;
+        private Button Btn_Help;
     }
 }
