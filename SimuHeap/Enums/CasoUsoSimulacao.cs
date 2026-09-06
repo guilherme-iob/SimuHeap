@@ -11,6 +11,8 @@ namespace SimuHeap.Enums
         Nenhum,
         NotasEFaltas,
         DuasProvas,
-        RedimensionamentoTurma
+        RedimensionamentoTurma,
+        AltaFragInterna,
+        AltaFragExterna
     }
 }

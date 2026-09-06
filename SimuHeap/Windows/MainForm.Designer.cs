@@ -81,10 +81,10 @@
             groupBox3 = new GroupBox();
             tableLayoutPanel7 = new TableLayoutPanel();
             LblBlocosInutilizaveis = new Label();
-            Btn_HelpMemoriaInutilizavel = new Button();
             Lbl_PercentualInutilizavel = new Label();
             Lbl_Padding = new Label();
             Lbl_MemInutilizavel = new Label();
+            Btn_HelpMemoriaInutilizavel = new Button();
             groupBox2 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             Lbl_MaiorBlocoLivre = new Label();
@@ -103,6 +103,8 @@
             MenuParametros = new GroupBox();
             UsarLegendaDetalhada = new CheckBox();
             GroupBoxCasosDeUsoSimulacao = new GroupBox();
+            UsarCasoAltaFragExterna = new RadioButton();
+            UsarCasoAltaFragInterna = new RadioButton();
             UsarCaso3 = new RadioButton();
             UsarCaso2 = new RadioButton();
             UsarCaso1 = new RadioButton();
@@ -817,10 +819,10 @@
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             tableLayoutPanel7.Controls.Add(LblBlocosInutilizaveis, 0, 3);
-            tableLayoutPanel7.Controls.Add(Btn_HelpMemoriaInutilizavel, 1, 1);
             tableLayoutPanel7.Controls.Add(Lbl_PercentualInutilizavel, 0, 2);
             tableLayoutPanel7.Controls.Add(Lbl_Padding, 0, 0);
             tableLayoutPanel7.Controls.Add(Lbl_MemInutilizavel, 0, 1);
+            tableLayoutPanel7.Controls.Add(Btn_HelpMemoriaInutilizavel, 1, 2);
             tableLayoutPanel7.Dock = DockStyle.Fill;
             tableLayoutPanel7.Location = new Point(4, 26);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -841,20 +843,8 @@
             LblBlocosInutilizaveis.Name = "LblBlocosInutilizaveis";
             LblBlocosInutilizaveis.Size = new Size(320, 33);
             LblBlocosInutilizaveis.TabIndex = 7;
-            LblBlocosInutilizaveis.Text = "Bloco Inutilizaveis";
+            LblBlocosInutilizaveis.Text = "Blocos Inutilizaveis";
             LblBlocosInutilizaveis.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // Btn_HelpMemoriaInutilizavel
-            // 
-            Btn_HelpMemoriaInutilizavel.Anchor = AnchorStyles.None;
-            Btn_HelpMemoriaInutilizavel.BackgroundImage = Properties.Resources.question;
-            Btn_HelpMemoriaInutilizavel.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpMemoriaInutilizavel.Location = new Point(335, 33);
-            Btn_HelpMemoriaInutilizavel.Name = "Btn_HelpMemoriaInutilizavel";
-            Btn_HelpMemoriaInutilizavel.Size = new Size(25, 24);
-            Btn_HelpMemoriaInutilizavel.TabIndex = 8;
-            Btn_HelpMemoriaInutilizavel.UseVisualStyleBackColor = true;
-            Btn_HelpMemoriaInutilizavel.Click += Btn_HelpMemoriaInutilizavel_Click;
             // 
             // Lbl_PercentualInutilizavel
             // 
@@ -865,7 +855,7 @@
             Lbl_PercentualInutilizavel.Name = "Lbl_PercentualInutilizavel";
             Lbl_PercentualInutilizavel.Size = new Size(320, 30);
             Lbl_PercentualInutilizavel.TabIndex = 6;
-            Lbl_PercentualInutilizavel.Text = "Percentual Inutilizavel";
+            Lbl_PercentualInutilizavel.Text = "Memória Inutilizável";
             Lbl_PercentualInutilizavel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Lbl_Padding
@@ -889,8 +879,20 @@
             Lbl_MemInutilizavel.Name = "Lbl_MemInutilizavel";
             Lbl_MemInutilizavel.Size = new Size(320, 30);
             Lbl_MemInutilizavel.TabIndex = 5;
-            Lbl_MemInutilizavel.Text = "Memoria Livre Inutilizavel";
+            Lbl_MemInutilizavel.Text = "Bytes Inutilizáveis";
             Lbl_MemInutilizavel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Btn_HelpMemoriaInutilizavel
+            // 
+            Btn_HelpMemoriaInutilizavel.Anchor = AnchorStyles.None;
+            Btn_HelpMemoriaInutilizavel.BackgroundImage = Properties.Resources.question;
+            Btn_HelpMemoriaInutilizavel.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HelpMemoriaInutilizavel.Location = new Point(335, 63);
+            Btn_HelpMemoriaInutilizavel.Name = "Btn_HelpMemoriaInutilizavel";
+            Btn_HelpMemoriaInutilizavel.Size = new Size(25, 24);
+            Btn_HelpMemoriaInutilizavel.TabIndex = 8;
+            Btn_HelpMemoriaInutilizavel.UseVisualStyleBackColor = true;
+            Btn_HelpMemoriaInutilizavel.Click += Btn_HelpMemoriaInutilizavel_Click;
             // 
             // groupBox2
             // 
@@ -1084,11 +1086,11 @@
             // 
             tab_config.Controls.Add(MenuParametros);
             tab_config.Controls.Add(HabilitarVisualizacaoAvancada);
-            tab_config.Location = new Point(4, 24);
+            tab_config.Location = new Point(4, 30);
             tab_config.Margin = new Padding(4);
             tab_config.Name = "tab_config";
             tab_config.Padding = new Padding(4);
-            tab_config.Size = new Size(1256, 653);
+            tab_config.Size = new Size(1256, 647);
             tab_config.TabIndex = 2;
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
@@ -1113,7 +1115,7 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(4, 4);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(295, 645);
+            MenuParametros.Size = new Size(295, 639);
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
@@ -1130,6 +1132,8 @@
             // 
             // GroupBoxCasosDeUsoSimulacao
             // 
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragExterna);
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragInterna);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
@@ -1140,6 +1144,30 @@
             GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
             GroupBoxCasosDeUsoSimulacao.TabStop = false;
             GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
+            // 
+            // UsarCasoAltaFragExterna
+            // 
+            UsarCasoAltaFragExterna.AutoSize = true;
+            UsarCasoAltaFragExterna.Location = new Point(6, 200);
+            UsarCasoAltaFragExterna.Name = "UsarCasoAltaFragExterna";
+            UsarCasoAltaFragExterna.Size = new Size(213, 25);
+            UsarCasoAltaFragExterna.TabIndex = 5;
+            UsarCasoAltaFragExterna.TabStop = true;
+            UsarCasoAltaFragExterna.Text = "Alta Fragmentação Externa";
+            UsarCasoAltaFragExterna.UseVisualStyleBackColor = true;
+            UsarCasoAltaFragExterna.CheckedChanged += UsarAltaFragExterna_CheckedChanged;
+            // 
+            // UsarCasoAltaFragInterna
+            // 
+            UsarCasoAltaFragInterna.AutoSize = true;
+            UsarCasoAltaFragInterna.Location = new Point(6, 169);
+            UsarCasoAltaFragInterna.Name = "UsarCasoAltaFragInterna";
+            UsarCasoAltaFragInterna.Size = new Size(211, 25);
+            UsarCasoAltaFragInterna.TabIndex = 4;
+            UsarCasoAltaFragInterna.TabStop = true;
+            UsarCasoAltaFragInterna.Text = "Alta Fragmentação Interna";
+            UsarCasoAltaFragInterna.UseVisualStyleBackColor = true;
+            UsarCasoAltaFragInterna.CheckedChanged += UsarCasoAltaFragInterna_CheckedChanged;
             // 
             // UsarCaso3
             // 
@@ -1484,5 +1512,7 @@
         private TableLayoutPanel tableLayoutPanel8;
         private TableLayoutPanel tableLayoutPanel7;
         private TableLayoutPanel tableLayoutPanel6;
+        private RadioButton UsarCasoAltaFragExterna;
+        private RadioButton UsarCasoAltaFragInterna;
     }
 }

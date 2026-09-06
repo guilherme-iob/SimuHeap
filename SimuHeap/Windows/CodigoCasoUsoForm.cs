@@ -32,6 +32,10 @@ namespace SimuHeap.Windows
                     return "Caso 2 - Duas Provas";
                 case CasoUsoSimulacao.RedimensionamentoTurma:
                     return "Caso 3 - Redimensionamento de Turma";
+                case CasoUsoSimulacao.AltaFragInterna:
+                    return "Alta Fragmentação Interna";
+                case CasoUsoSimulacao.AltaFragExterna:
+                    return "Alta Fragmentação Externa";
                 default:
                     return "Caso de Uso Desconhecido";
             }
@@ -47,6 +51,10 @@ namespace SimuHeap.Windows
                     return CasosDeUso.CodigoCaso2;
                 case CasoUsoSimulacao.RedimensionamentoTurma:
                     return CasosDeUso.CodigoCaso3;
+                case CasoUsoSimulacao.AltaFragInterna:
+                    return CasosDeUso.CodigoAltaFragInterna;
+                case CasoUsoSimulacao.AltaFragExterna:
+                    return CasosDeUso.CodigoAltaFragExterna;
                 default:
                     return "// Código do caso de uso desconhecido.";
             }

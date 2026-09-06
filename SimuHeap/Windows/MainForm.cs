@@ -219,6 +219,9 @@ namespace SimuHeap.Windows
                 codigoCasoUsoForm.Show();
             }
 
+            if (casoSelecionado == CasoUsoSimulacao.AltaFragInterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[0];
+            else if (casoSelecionado == CasoUsoSimulacao.AltaFragExterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[1];
+
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
             heapSimulator.UsarLegendasDetalhadas = UsarLegendaDetalhada.Checked;
@@ -243,7 +246,7 @@ namespace SimuHeap.Windows
 
         private void Btn_PararSimulacao_Click(object sender, EventArgs e)
         {
-            
+
             codigoCasoUsoForm?.Close();
 
             snapshotAtual = 0;
@@ -495,6 +498,26 @@ namespace SimuHeap.Windows
             if (UsarCaso3.Checked)
             {
                 casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCasoAltaFragInterna_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCasoAltaFragInterna.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.AltaFragInterna;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarAltaFragExterna_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCasoAltaFragExterna.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.AltaFragExterna;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -1246,7 +1269,7 @@ namespace SimuHeap.Windows
                 $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
 
             Lbl_Padding.Text =
-                $"Bytes de padding: {metricas.BytesPadding} bytes";
+                $"Bytes de alinhamento: {metricas.BytesPadding} bytes";
 
 
             // ============================================
@@ -1296,6 +1319,12 @@ namespace SimuHeap.Windows
                 case CasoUsoSimulacao.RedimensionamentoTurma:
                     executor.Eventos.AddRange(CasosDeUso.CriarCasoRedimensionamentoTurma());
                     break;
+                case CasoUsoSimulacao.AltaFragInterna:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoAltaFragmentacaoInterna());
+                    break;
+                case CasoUsoSimulacao.AltaFragExterna:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoAltaFragmentacaoExterna());
+                    break;
                 default:
                     break;
             }
@@ -1319,5 +1348,6 @@ namespace SimuHeap.Windows
         }
         #endregion
 
+        
     }
 }

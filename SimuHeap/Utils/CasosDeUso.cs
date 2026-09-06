@@ -325,6 +325,101 @@ namespace SimuHeap.Utils
         }
 
 
+        public const string CodigoAltaFragInterna = """
+            #include <stdlib.h>
+
+            int main()
+            {
+                char *a = malloc(sizeof(char));
+                char *b = malloc(sizeof(char));
+                char *c = malloc(sizeof(char));
+                char *d = malloc(sizeof(char));
+
+                return 0;
+            }
+            """;
+
+        public static List<EventoHeap> CriarCasoAltaFragmentacaoInterna()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            Malloc(eventos, ref proximaReferencia, "a", TiposDeVariaveis.Char, 1);
+            Malloc(eventos, ref proximaReferencia, "b", TiposDeVariaveis.Char, 1);
+            Malloc(eventos, ref proximaReferencia, "c", TiposDeVariaveis.Char, 1);
+            Malloc(eventos, ref proximaReferencia, "d", TiposDeVariaveis.Char, 1);
+
+            return eventos;
+        }
+
+        public const string CodigoAltaFragExterna = """
+            #include <stdlib.h>
+
+            int main()
+            {
+                int *a = malloc(4 * sizeof(int));
+                int *b = malloc(4 * sizeof(int));
+                int *c = malloc(4 * sizeof(int));
+                int *d = malloc(4 * sizeof(int));
+                int *e = malloc(4 * sizeof(int));
+                int *f = malloc(4 * sizeof(int));
+                int *g = malloc(4 * sizeof(int));
+                int *h = malloc(4 * sizeof(int));
+
+                free(a);
+                free(c);
+                free(e);
+                free(g);
+
+                free(b);
+                free(d);
+
+                return 0;
+            }
+            """;
+
+        public static List<EventoHeap> CriarCasoAltaFragmentacaoExterna()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso a =
+                Malloc(eventos, ref proximaReferencia, "a", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso b =
+                Malloc(eventos, ref proximaReferencia, "b", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso c =
+                Malloc(eventos, ref proximaReferencia, "c", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso d =
+                Malloc(eventos, ref proximaReferencia, "d", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso e =
+                Malloc(eventos, ref proximaReferencia, "e", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso f =
+                Malloc(eventos, ref proximaReferencia, "f", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso g =
+                Malloc(eventos, ref proximaReferencia, "g", TiposDeVariaveis.Int, 4);
+
+            VariavelCaso h =
+                Malloc(eventos, ref proximaReferencia, "h", TiposDeVariaveis.Int, 4);
+
+            // Cria regiões livres intercaladas.
+            Free(eventos, a);
+            Free(eventos, c);
+            Free(eventos, e);
+            Free(eventos, g);
+
+            // Evidencia a diferença com e sem coalescing.
+            Free(eventos, b);
+            Free(eventos, d);
+
+            return eventos;
+        }
+
         /*
          * ============================================================
          * FUNÇÕES AUXILIARES
@@ -405,11 +500,7 @@ namespace SimuHeap.Utils
         }
 
 
-        private static void Realloc(
-            List<EventoHeap> eventos,
-            VariavelCaso variavel,
-            int novaQuantidade,
-            params (int indice, object valor)[] valores)
+        private static void Realloc(List<EventoHeap> eventos, VariavelCaso variavel, int novaQuantidade, params (int indice, object valor)[] valores)
         {
             EventoRealloc evento = new()
             {
@@ -433,9 +524,7 @@ namespace SimuHeap.Utils
         }
 
 
-        private static void Free(
-            List<EventoHeap> eventos,
-            VariavelCaso variavel)
+        private static void Free(List<EventoHeap> eventos, VariavelCaso variavel)
         {
             EventoFree evento = new()
             {
@@ -450,12 +539,7 @@ namespace SimuHeap.Utils
         }
 
 
-        private static void AdicionarEscritaSeNecessario(
-            EventoHeap evento,
-            int referenciaBloco,
-            TiposDeVariaveis tipo,
-            string descricao,
-            params (int indice, object valor)[] valores)
+        private static void AdicionarEscritaSeNecessario(EventoHeap evento, int referenciaBloco, TiposDeVariaveis tipo, string descricao, params (int indice, object valor)[] valores)
         {
             if (valores.Length == 0)
                 return;

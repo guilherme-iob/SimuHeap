@@ -30,7 +30,7 @@ namespace SimuHeap.Utils
                 : $"0x{tamanho:X8} | 0x{Configuracoes.FLAG_OCUPADO:X8}";
 
             return $"""
-                O header é uma região de metadados utilizada pelo gerenciador da heap para armazenar informações sobre o bloco. Em alocadores reais, sua estrutura varia conforme a implementação.
+                O header (cabeçalho) é uma região de metadados utilizada pelo gerenciador da heap para armazenar informações sobre o bloco. Em alocadores reais, sua estrutura varia conforme a implementação.
 
                 Neste simulador, o header possui {Configuracoes.TAM_HEADER} bytes e armazena o tamanho total do bloco junto de uma flag que indica se ele está ocupado.
 
@@ -99,7 +99,7 @@ namespace SimuHeap.Utils
             if (paddingAdicional > 0)
             {
                 return $"""
-                    Padding é um espaço interno que não pertence ao payload e pode ser necessário para manter o bloco alinhado em {Configuracoes.TAM_ALINHAMENTO} bytes.
+                    Padding (alinhamento) é um espaço interno que não pertence ao payload e pode ser necessário para manter o bloco alinhado em {Configuracoes.TAM_ALINHAMENTO} bytes.
 
                     • Tamanho sem padding: {Configuracoes.TAM_HEADER} + {bloco.TamanhoPayload} + {Configuracoes.TAM_FOOTER} = {tamanhoSemPadding} bytes
                     • Padding de alinhamento: {paddingAlinhamento} bytes
@@ -110,7 +110,7 @@ namespace SimuHeap.Utils
             }
 
             return $"""
-                Padding é um espaço interno que não pertence ao payload e é utilizado para manter o bloco alinhado em {Configuracoes.TAM_ALINHAMENTO} bytes.
+                Padding (alinhamento) é um espaço interno que não pertence ao payload e é utilizado para manter o bloco alinhado em {Configuracoes.TAM_ALINHAMENTO} bytes.
 
                 • Tamanho sem padding: {Configuracoes.TAM_HEADER} + {bloco.TamanhoPayload} + {Configuracoes.TAM_FOOTER} = {tamanhoSemPadding} bytes
                 • Padding: {paddingAlinhamento} bytes
@@ -126,7 +126,7 @@ namespace SimuHeap.Utils
             uint tamanho = (uint)bloco.TamanhoTotal;
 
             return $"""
-                O footer é uma região de metadados localizada no final do bloco. Algumas estratégias de alocação utilizam informações nos limites dos blocos para facilitar a identificação de regiões vizinhas.
+                O footer (rodapé) é uma região de metadados localizada no final do bloco. Algumas estratégias de alocação utilizam informações nos limites dos blocos para facilitar a identificação de regiões vizinhas.
 
                 Neste simulador, o footer possui {Configuracoes.TAM_FOOTER} bytes e armazena somente o tamanho total do bloco.
 
