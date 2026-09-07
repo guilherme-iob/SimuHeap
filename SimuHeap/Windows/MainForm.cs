@@ -202,6 +202,17 @@ namespace SimuHeap.Windows
         #region Eventos de Menu de Simulação
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
         {
+
+            if(executor.Eventos.Count == 0)
+            {
+                MessageBox.Show(
+                    "Adicione pelo menos um evento antes de iniciar a simulação.",
+                    "Nenhum evento",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             if (!ValidarSequenciaEventos(out string mensagemErro))
             {
                 MessageBox.Show(
