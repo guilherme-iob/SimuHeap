@@ -40,7 +40,7 @@
             LblTitulo.Location = new Point(0, 0);
             LblTitulo.Margin = new Padding(4, 0, 4, 0);
             LblTitulo.Name = "LblTitulo";
-            LblTitulo.Size = new Size(434, 35);
+            LblTitulo.Size = new Size(404, 35);
             LblTitulo.TabIndex = 0;
             LblTitulo.Text = "Titulo";
             LblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -52,7 +52,7 @@
             Text_Codigo.Location = new Point(0, 35);
             Text_Codigo.Name = "Text_Codigo";
             Text_Codigo.ReadOnly = true;
-            Text_Codigo.Size = new Size(434, 486);
+            Text_Codigo.Size = new Size(404, 486);
             Text_Codigo.TabIndex = 1;
             Text_Codigo.Text = "";
             Text_Codigo.WordWrap = false;
@@ -61,7 +61,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 521);
+            ClientSize = new Size(404, 521);
             Controls.Add(Text_Codigo);
             Controls.Add(LblTitulo);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -69,7 +69,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MaximizeBox = false;
-            MaximumSize = new Size(450, 560);
+            MaximumSize = new Size(420, 560);
             Name = "CodigoCasoUsoForm";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "CodigoCasoUsoForm";

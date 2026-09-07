@@ -219,8 +219,7 @@ namespace SimuHeap.Windows
                 codigoCasoUsoForm.Show();
             }
 
-            if (casoSelecionado == CasoUsoSimulacao.AltaFragInterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[0];
-            else if (casoSelecionado == CasoUsoSimulacao.AltaFragExterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[1];
+            
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -1344,6 +1343,17 @@ namespace SimuHeap.Windows
             {
                 this.FlowPanelOperacoes.Enabled = false;
                 this.Panel_OpcoesEventos.Enabled = false;
+            }
+
+            if(casoSelecionado == CasoUsoSimulacao.AltaFragInterna || casoSelecionado == CasoUsoSimulacao.AltaFragExterna)
+            {
+                if (casoSelecionado == CasoUsoSimulacao.AltaFragInterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[0];
+                else if (casoSelecionado == CasoUsoSimulacao.AltaFragExterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[1];
+                this.SelectHeapSize.Enabled = false;
+            }
+            else
+            {
+                this.SelectHeapSize.Enabled = true;
             }
         }
         #endregion
