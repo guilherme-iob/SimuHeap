@@ -414,13 +414,13 @@ namespace SimuHeap.Windows
         #region Eventos de Ajuda
         private void Btn_HelpSplit_Click(object sender, EventArgs e)
         {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Split", ExplicacoesConceitos.ExplicacaoSplit);
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Divisão de Bloco (Split)", ExplicacoesConceitos.ExplicacaoSplit);
             avisoExplicativoForm.ShowDialog();
         }
 
         private void Btn_HepCoalescing_Click(object sender, EventArgs e)
         {
-            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Coalescing", ExplicacoesConceitos.ExplicacaoCoalescing);
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("União de Blocos Livres (Coalescing)", ExplicacoesConceitos.ExplicacaoCoalescing);
             avisoExplicativoForm.ShowDialog();
         }
 

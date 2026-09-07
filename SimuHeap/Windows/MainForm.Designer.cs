@@ -715,11 +715,11 @@
             // tab_metricas
             // 
             tab_metricas.Controls.Add(tableLayoutPanel1);
-            tab_metricas.Location = new Point(4, 24);
+            tab_metricas.Location = new Point(4, 30);
             tab_metricas.Margin = new Padding(4);
             tab_metricas.Name = "tab_metricas";
             tab_metricas.Padding = new Padding(4);
-            tab_metricas.Size = new Size(1256, 653);
+            tab_metricas.Size = new Size(1256, 647);
             tab_metricas.TabIndex = 1;
             tab_metricas.Text = "Métricas";
             tab_metricas.UseVisualStyleBackColor = true;
@@ -742,14 +742,14 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(384, 645);
+            tableLayoutPanel1.Size = new Size(384, 639);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(tableLayoutPanel8);
             groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(4, 487);
+            groupBox4.Location = new Point(4, 481);
             groupBox4.Margin = new Padding(4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4);
@@ -804,11 +804,11 @@
             // 
             groupBox3.Controls.Add(tableLayoutPanel7);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(4, 326);
+            groupBox3.Location = new Point(4, 322);
             groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(4);
-            groupBox3.Size = new Size(376, 153);
+            groupBox3.Size = new Size(376, 151);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "Desperdício de memória";
@@ -831,7 +831,7 @@
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel7.Size = new Size(368, 123);
+            tableLayoutPanel7.Size = new Size(368, 121);
             tableLayoutPanel7.TabIndex = 3;
             // 
             // LblBlocosInutilizaveis
@@ -841,7 +841,7 @@
             LblBlocosInutilizaveis.Location = new Point(4, 90);
             LblBlocosInutilizaveis.Margin = new Padding(4, 0, 4, 0);
             LblBlocosInutilizaveis.Name = "LblBlocosInutilizaveis";
-            LblBlocosInutilizaveis.Size = new Size(320, 33);
+            LblBlocosInutilizaveis.Size = new Size(320, 31);
             LblBlocosInutilizaveis.TabIndex = 7;
             LblBlocosInutilizaveis.Text = "Blocos Inutilizaveis";
             LblBlocosInutilizaveis.TextAlign = ContentAlignment.MiddleLeft;
@@ -898,11 +898,11 @@
             // 
             groupBox2.Controls.Add(tableLayoutPanel3);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(4, 165);
+            groupBox2.Location = new Point(4, 163);
             groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(376, 153);
+            groupBox2.Size = new Size(376, 151);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Fragmentação";
@@ -926,7 +926,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.Size = new Size(368, 123);
+            tableLayoutPanel3.Size = new Size(368, 121);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // Lbl_MaiorBlocoLivre
@@ -936,7 +936,7 @@
             Lbl_MaiorBlocoLivre.Location = new Point(4, 90);
             Lbl_MaiorBlocoLivre.Margin = new Padding(4, 0, 4, 0);
             Lbl_MaiorBlocoLivre.Name = "Lbl_MaiorBlocoLivre";
-            Lbl_MaiorBlocoLivre.Size = new Size(320, 33);
+            Lbl_MaiorBlocoLivre.Size = new Size(320, 31);
             Lbl_MaiorBlocoLivre.TabIndex = 6;
             Lbl_MaiorBlocoLivre.Text = "Tamanho Maior Bloco Livre";
             Lbl_MaiorBlocoLivre.TextAlign = ContentAlignment.MiddleLeft;
@@ -1009,7 +1009,7 @@
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(376, 153);
+            groupBox1.Size = new Size(376, 151);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Uso da memória heap";
@@ -1031,7 +1031,7 @@
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel6.Size = new Size(368, 123);
+            tableLayoutPanel6.Size = new Size(368, 121);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // Lbl_UsoHeap
@@ -1115,7 +1115,7 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(4, 4);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(295, 639);
+            MenuParametros.Size = new Size(452, 639);
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
@@ -1140,7 +1140,7 @@
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
             GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 364);
             GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
-            GroupBoxCasosDeUsoSimulacao.Size = new Size(271, 269);
+            GroupBoxCasosDeUsoSimulacao.Size = new Size(437, 269);
             GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
             GroupBoxCasosDeUsoSimulacao.TabStop = false;
             GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
@@ -1232,7 +1232,7 @@
             // 
             Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
             Btn_HelpAlgoritmosAlocacao.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpAlgoritmosAlocacao.Location = new Point(204, 183);
+            Btn_HelpAlgoritmosAlocacao.Location = new Point(355, 183);
             Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
             Btn_HelpAlgoritmosAlocacao.Size = new Size(25, 25);
             Btn_HelpAlgoritmosAlocacao.TabIndex = 6;
@@ -1243,7 +1243,7 @@
             // 
             Btn_HelpSplit.BackgroundImage = Properties.Resources.question;
             Btn_HelpSplit.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpSplit.Location = new Point(204, 28);
+            Btn_HelpSplit.Location = new Point(355, 28);
             Btn_HelpSplit.Name = "Btn_HelpSplit";
             Btn_HelpSplit.Size = new Size(25, 25);
             Btn_HelpSplit.TabIndex = 4;
@@ -1255,9 +1255,9 @@
             HabilitarSplit.AutoSize = true;
             HabilitarSplit.Location = new Point(9, 28);
             HabilitarSplit.Name = "HabilitarSplit";
-            HabilitarSplit.Size = new Size(123, 25);
+            HabilitarSplit.Size = new Size(251, 25);
             HabilitarSplit.TabIndex = 0;
-            HabilitarSplit.Text = "Habilitar Split";
+            HabilitarSplit.Text = "Habilitar Divisão de Bloco (Split)";
             HabilitarSplit.UseVisualStyleBackColor = true;
             // 
             // UseFirstFit
@@ -1265,21 +1265,21 @@
             UseFirstFit.AutoSize = true;
             UseFirstFit.Location = new Point(9, 216);
             UseFirstFit.Name = "UseFirstFit";
-            UseFirstFit.Size = new Size(81, 25);
+            UseFirstFit.Size = new Size(210, 25);
             UseFirstFit.TabIndex = 2;
             UseFirstFit.TabStop = true;
-            UseFirstFit.Text = "First-Fit";
+            UseFirstFit.Text = "Primeiro Encaixe (First-Fit)";
             UseFirstFit.TextAlign = ContentAlignment.MiddleCenter;
             UseFirstFit.UseVisualStyleBackColor = true;
             // 
             // HabilitarCoalesing
             // 
             HabilitarCoalesing.AutoSize = true;
-            HabilitarCoalesing.Location = new Point(9, 59);
+            HabilitarCoalesing.Location = new Point(9, 57);
             HabilitarCoalesing.Name = "HabilitarCoalesing";
-            HabilitarCoalesing.Size = new Size(167, 25);
+            HabilitarCoalesing.Size = new Size(337, 25);
             HabilitarCoalesing.TabIndex = 1;
-            HabilitarCoalesing.Text = "Habilitar Coalescing";
+            HabilitarCoalesing.Text = "Habilitar União de Blocos Livres (Coalescing)";
             HabilitarCoalesing.UseVisualStyleBackColor = true;
             // 
             // SelectHeapSize
@@ -1296,7 +1296,7 @@
             // 
             Btn_HepCoalescing.BackgroundImage = Properties.Resources.question;
             Btn_HepCoalescing.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HepCoalescing.Location = new Point(204, 59);
+            Btn_HepCoalescing.Location = new Point(355, 59);
             Btn_HepCoalescing.Name = "Btn_HepCoalescing";
             Btn_HepCoalescing.Size = new Size(25, 25);
             Btn_HepCoalescing.TabIndex = 5;
@@ -1308,10 +1308,10 @@
             UseBestFit.AutoSize = true;
             UseBestFit.Location = new Point(9, 247);
             UseBestFit.Name = "UseBestFit";
-            UseBestFit.Size = new Size(80, 25);
+            UseBestFit.Size = new Size(199, 25);
             UseBestFit.TabIndex = 4;
             UseBestFit.TabStop = true;
-            UseBestFit.Text = "Best-Fit";
+            UseBestFit.Text = "Melhor Encaixe (Best-Fit)";
             UseBestFit.TextAlign = ContentAlignment.MiddleCenter;
             UseBestFit.UseVisualStyleBackColor = true;
             // 
@@ -1331,10 +1331,10 @@
             UseWorstFit.AutoSize = true;
             UseWorstFit.Location = new Point(9, 278);
             UseWorstFit.Name = "UseWorstFit";
-            UseWorstFit.Size = new Size(92, 25);
+            UseWorstFit.Size = new Size(189, 25);
             UseWorstFit.TabIndex = 3;
             UseWorstFit.TabStop = true;
-            UseWorstFit.Text = "Worst-Fit";
+            UseWorstFit.Text = "Pior Encaixe (Worst-Fit)";
             UseWorstFit.TextAlign = ContentAlignment.MiddleCenter;
             UseWorstFit.UseVisualStyleBackColor = true;
             // 
@@ -1342,7 +1342,7 @@
             // 
             Btn_HelpTamHeap.BackgroundImage = Properties.Resources.question;
             Btn_HelpTamHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpTamHeap.Location = new Point(204, 134);
+            Btn_HelpTamHeap.Location = new Point(355, 134);
             Btn_HelpTamHeap.Margin = new Padding(0);
             Btn_HelpTamHeap.Name = "Btn_HelpTamHeap";
             Btn_HelpTamHeap.Size = new Size(25, 25);
@@ -1353,7 +1353,7 @@
             // HabilitarVisualizacaoAvancada
             // 
             HabilitarVisualizacaoAvancada.AutoSize = true;
-            HabilitarVisualizacaoAvancada.Location = new Point(305, 21);
+            HabilitarVisualizacaoAvancada.Location = new Point(462, 20);
             HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
             HabilitarVisualizacaoAvancada.Size = new Size(185, 25);
             HabilitarVisualizacaoAvancada.TabIndex = 8;

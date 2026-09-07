@@ -73,21 +73,22 @@ namespace SimuHeap.Windows
             info += "\r\n";
 
             info += $"Tamanho total: {bloco.TamanhoTotal} bytes\r\n";
-            info += $"Header: {bloco.TamanhoHeader} bytes\r\n";
+            info += $"Cabeçalho (header): {bloco.TamanhoHeader} bytes\r\n";
 
             if (bloco.EstaLivre)
             {
-                info += $"Espaço livre: {bloco.TamanhoPayload} bytes\r\n";
+                info += $"Espaço livre disponível: {bloco.TamanhoPayload} bytes\r\n";
             }
             else
             {
-                info += $"Payload: {bloco.TamanhoPayload} bytes\r\n";
-                info += $"Padding: {bloco.TamanhoPadding} bytes\r\n";
+                info += $"Área de dados (payload): {bloco.TamanhoPayload} bytes\r\n";
+                info += $"Preenchimento interno (padding): {bloco.TamanhoPadding} bytes\r\n";
             }
 
-            info += $"Footer: {bloco.TamanhoFooter} bytes";
+            info += $"Rodapé (footer): {bloco.TamanhoFooter} bytes";
 
             string info2 = "";
+
             if (informacaoAlocacao is not null)
             {
                 info2 += $"Referência: bloco{informacaoAlocacao.ReferenciaBloco}\r\n";
@@ -141,25 +142,25 @@ namespace SimuHeap.Windows
         private void MostrarInformacaoHeader()
         {
             string texto = ExplicacoesConceitos.ObterExplicacaoHeader(bloco);
-            MostrarAvisoExplicativo("Header do bloco", texto);
+            MostrarAvisoExplicativo("Cabeçalho do bloco (header)", texto);
         }
 
         private void MostrarInformacaoPayload()
         {
             string texto = ExplicacoesConceitos.ObterExplicacaoPayload(bloco, informacaoAlocacao);
-            MostrarAvisoExplicativo("Payload do bloco", texto);
+            MostrarAvisoExplicativo("Área de dados do bloco (payload)", texto);
         }
 
         private void MostrarInformacaoPadding()
         {
             string texto = ExplicacoesConceitos.ObterExplicacaoPadding(bloco);
-            MostrarAvisoExplicativo("Padding do bloco", texto);
+            MostrarAvisoExplicativo("Preenchimento interno (padding)", texto);
         }
 
         private void MostrarInformacaoFooter()
         {
             string texto = ExplicacoesConceitos.ObterExplicacaoFooter(bloco);
-            MostrarAvisoExplicativo("Footer do bloco", texto);
+            MostrarAvisoExplicativo("Rodapé do bloco (footer)", texto);
         }
 
         private void MostrarInformacaoBlocoLivre()
