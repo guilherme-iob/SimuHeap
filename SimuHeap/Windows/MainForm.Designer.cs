@@ -717,11 +717,11 @@
             // tab_metricas
             // 
             tab_metricas.Controls.Add(tableLayoutPanel1);
-            tab_metricas.Location = new Point(4, 24);
+            tab_metricas.Location = new Point(4, 30);
             tab_metricas.Margin = new Padding(4);
             tab_metricas.Name = "tab_metricas";
             tab_metricas.Padding = new Padding(4);
-            tab_metricas.Size = new Size(1256, 653);
+            tab_metricas.Size = new Size(1256, 647);
             tab_metricas.TabIndex = 1;
             tab_metricas.Text = "Métricas";
             tab_metricas.UseVisualStyleBackColor = true;
@@ -744,14 +744,14 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(384, 645);
+            tableLayoutPanel1.Size = new Size(384, 639);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(tableLayoutPanel8);
             groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(4, 487);
+            groupBox4.Location = new Point(4, 481);
             groupBox4.Margin = new Padding(4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4);
@@ -806,11 +806,11 @@
             // 
             groupBox3.Controls.Add(tableLayoutPanel7);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(4, 326);
+            groupBox3.Location = new Point(4, 322);
             groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(4);
-            groupBox3.Size = new Size(376, 153);
+            groupBox3.Size = new Size(376, 151);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "Desperdício de memória";
@@ -833,7 +833,7 @@
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel7.Size = new Size(368, 123);
+            tableLayoutPanel7.Size = new Size(368, 121);
             tableLayoutPanel7.TabIndex = 3;
             // 
             // LblBlocosInutilizaveis
@@ -843,7 +843,7 @@
             LblBlocosInutilizaveis.Location = new Point(4, 90);
             LblBlocosInutilizaveis.Margin = new Padding(4, 0, 4, 0);
             LblBlocosInutilizaveis.Name = "LblBlocosInutilizaveis";
-            LblBlocosInutilizaveis.Size = new Size(320, 33);
+            LblBlocosInutilizaveis.Size = new Size(320, 31);
             LblBlocosInutilizaveis.TabIndex = 7;
             LblBlocosInutilizaveis.Text = "Blocos Inutilizaveis";
             LblBlocosInutilizaveis.TextAlign = ContentAlignment.MiddleLeft;
@@ -900,11 +900,11 @@
             // 
             groupBox2.Controls.Add(tableLayoutPanel3);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(4, 165);
+            groupBox2.Location = new Point(4, 163);
             groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(376, 153);
+            groupBox2.Size = new Size(376, 151);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Fragmentação";
@@ -928,7 +928,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.Size = new Size(368, 123);
+            tableLayoutPanel3.Size = new Size(368, 121);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // Lbl_MaiorBlocoLivre
@@ -938,7 +938,7 @@
             Lbl_MaiorBlocoLivre.Location = new Point(4, 90);
             Lbl_MaiorBlocoLivre.Margin = new Padding(4, 0, 4, 0);
             Lbl_MaiorBlocoLivre.Name = "Lbl_MaiorBlocoLivre";
-            Lbl_MaiorBlocoLivre.Size = new Size(320, 33);
+            Lbl_MaiorBlocoLivre.Size = new Size(320, 31);
             Lbl_MaiorBlocoLivre.TabIndex = 6;
             Lbl_MaiorBlocoLivre.Text = "Tamanho Maior Bloco Livre";
             Lbl_MaiorBlocoLivre.TextAlign = ContentAlignment.MiddleLeft;
@@ -1011,7 +1011,7 @@
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(376, 153);
+            groupBox1.Size = new Size(376, 151);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Uso da memória heap";
@@ -1033,7 +1033,7 @@
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel6.Size = new Size(368, 123);
+            tableLayoutPanel6.Size = new Size(368, 121);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // Lbl_UsoHeap
@@ -1088,11 +1088,11 @@
             // 
             tab_config.Controls.Add(MenuParametros);
             tab_config.Controls.Add(HabilitarVisualizacaoAvancada);
-            tab_config.Location = new Point(4, 30);
+            tab_config.Location = new Point(4, 24);
             tab_config.Margin = new Padding(4);
             tab_config.Name = "tab_config";
             tab_config.Padding = new Padding(4);
-            tab_config.Size = new Size(1256, 647);
+            tab_config.Size = new Size(1256, 653);
             tab_config.TabIndex = 2;
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
@@ -1117,7 +1117,7 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(4, 4);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(452, 639);
+            MenuParametros.Size = new Size(452, 645);
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";

@@ -1287,6 +1287,10 @@ namespace SimuHeap.Windows
 
         public void AtualizarMetricas(MetricasHeap metricas)
         {
+            this.LblBlocosInutilizaveis.Visible = false;
+            this.Lbl_MemInutilizavel.Visible = false;
+            this.Lbl_PercentualInutilizavel.Visible = false;
+            this.Btn_HelpMemoriaInutilizavel.Visible = false;
             if (metricas is null)
                 return;
 
@@ -1315,7 +1319,7 @@ namespace SimuHeap.Windows
                 $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
 
             Lbl_Padding.Text =
-                $"Bytes de alinhamento: {metricas.BytesPadding} bytes";
+                $"Bytes de alinhamento (padding): {metricas.BytesPadding} bytes";
 
 
             // ============================================
