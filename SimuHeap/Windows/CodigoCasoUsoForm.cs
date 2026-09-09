@@ -27,25 +27,22 @@ namespace SimuHeap.Windows
             switch (casoUsoSimulacao)
             {
                 case CasoUsoSimulacao.NotasEFaltas:
-                    return "Caso 1 - Notas e Faltas";
+                    return "Notas e Faltas";
                 case CasoUsoSimulacao.DuasProvas:
-                    return "Caso 2 - Duas Provas";
+                    return "Duas Provas";
                 case CasoUsoSimulacao.RedimensionamentoTurma:
-                    return "Caso 3 - Redimensionamento de Turma";
+                    return "Redimensionamento de Turma";
                 case CasoUsoSimulacao.AltaFragInterna:
                     return "Alta Fragmentação Interna";
                 case CasoUsoSimulacao.AltaFragExterna:
                     return "Alta Fragmentação Externa";
                 case CasoUsoSimulacao.AlocacoesDiferentes:
-                    return "Caso 1 - Alocações Diferentes";
+                    return "Alocações Diferentes";
                 case CasoUsoSimulacao.Mediana:
-                    return "Caso 2 - Mediana";
+                    return "Mediana";
                 case CasoUsoSimulacao.SubtracaoVetores:
-                    return "Caso 3 - Subtração de Vetores";
+                    return "Subtração de Vetores";
                 case CasoUsoSimulacao.Letras:
-                    return "Caso 4 - Letras";
-                case CasoUsoSimulacao.Digitos:
-                    return "Caso 5 - Dígitos";
                 default:
                     return "Caso de Uso Desconhecido";
             }

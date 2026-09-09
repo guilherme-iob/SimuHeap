@@ -532,7 +532,7 @@ namespace SimuHeap.Windows
         {
             if(UsarCaso4.Checked)
             {
-                casoSelecionado = CasoUsoSimulacao.Letras;
+                casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -542,7 +542,7 @@ namespace SimuHeap.Windows
         {
             if (UsarCaso5.Checked)
             {
-                casoSelecionado = CasoUsoSimulacao.Digitos;
+                casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }

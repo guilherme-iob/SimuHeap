@@ -1154,10 +1154,10 @@
             UsarCaso5.AutoSize = true;
             UsarCaso5.Location = new Point(6, 183);
             UsarCaso5.Name = "UsarCaso5";
-            UsarCaso5.Size = new Size(221, 25);
+            UsarCaso5.Size = new Size(303, 25);
             UsarCaso5.TabIndex = 7;
             UsarCaso5.TabStop = true;
-            UsarCaso5.Text = "Caso 5 - Extração de Dígitos";
+            UsarCaso5.Text = "Caso 5 - Redimensionamento da Turma";
             UsarCaso5.UseVisualStyleBackColor = true;
             UsarCaso5.CheckedChanged += UsarCaso5_CheckedChanged;
             // 
@@ -1166,10 +1166,10 @@
             UsarCaso4.AutoSize = true;
             UsarCaso4.Location = new Point(6, 152);
             UsarCaso4.Name = "UsarCaso4";
-            UsarCaso4.Size = new Size(311, 25);
+            UsarCaso4.Size = new Size(185, 25);
             UsarCaso4.TabIndex = 6;
             UsarCaso4.TabStop = true;
-            UsarCaso4.Text = "Caso 4 - Alocação de Strings em Funções";
+            UsarCaso4.Text = "Caso 4 - Notas e Faltas";
             UsarCaso4.UseVisualStyleBackColor = true;
             UsarCaso4.CheckedChanged += UsarCaso4_CheckedChanged;
             // 

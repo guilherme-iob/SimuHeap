@@ -31,8 +31,7 @@ namespace SimuHeap.Utils
             {
                 int quantidade = 5;
 
-                float *notas =
-                    malloc(quantidade * sizeof(float));
+                float *notas = malloc(quantidade * sizeof(float));
 
                 notas[0] = 7.5f;
                 notas[1] = 8.0f;
@@ -40,8 +39,7 @@ namespace SimuHeap.Utils
                 notas[3] = 9.0f;
                 notas[4] = 8.5f;
 
-                int *faltas =
-                    calloc(quantidade, sizeof(int));
+                int *faltas = calloc(quantidade, sizeof(int));
 
                 faltas[1] = 2;
                 faltas[2] = 1;
@@ -242,8 +240,7 @@ namespace SimuHeap.Utils
             {
                 int quantidade = 8;
 
-                float *notas =
-                    malloc(quantidade * sizeof(float));
+                float *notas = malloc(quantidade * sizeof(float));
 
                 notas[0] = 7.5f;
                 notas[1] = 8.0f;
@@ -255,24 +252,18 @@ namespace SimuHeap.Utils
                 notas[7] = 6.0f;
 
 
-                /* dois alunos deixaram a turma */
+                /* quatro alunos deixaram a turma */
 
                 quantidade = 4;
 
-                notas = realloc(
-                    notas,
-                    quantidade * sizeof(float)
-                );
+                notas = realloc(notas,quantidade * sizeof(float));
 
 
                 /* três novos alunos entraram na turma */
 
                 quantidade = 7;
 
-                notas = realloc(
-                    notas,
-                    quantidade * sizeof(float)
-                );
+                notas = realloc(notas,quantidade * sizeof(float));
 
                 notas[4] = 2.3f;
                 notas[5] = 7.0f;
@@ -353,69 +344,54 @@ namespace SimuHeap.Utils
         }
 
         public const string CodigoAltaFragExterna = """
-            #include <stdlib.h>
+    #include <stdlib.h>
 
-            int main()
-            {
-                int *a = malloc(4 * sizeof(int));
-                int *b = malloc(4 * sizeof(int));
-                int *c = malloc(4 * sizeof(int));
-                int *d = malloc(4 * sizeof(int));
-                int *e = malloc(4 * sizeof(int));
-                int *f = malloc(4 * sizeof(int));
-                int *g = malloc(4 * sizeof(int));
-                int *h = malloc(4 * sizeof(int));
+    int main()
+    {
+        int *a = malloc(8 * sizeof(int));
+        int *b = malloc(2 * sizeof(int));
+        int *c = malloc(4 * sizeof(int));
+        int *d = malloc(2 * sizeof(int));
+        int *e = malloc(12 * sizeof(int));
+        int *f = malloc(2 * sizeof(int));
 
-                free(a);
-                free(c);
-                free(e);
-                free(g);
+        free(a);
+        free(c);
+        free(e);
 
-                free(b);
-                free(d);
+        int *g = malloc(3 * sizeof(int));
 
-                return 0;
-            }
-            """;
+        free(g);
+        free(b);
+        free(d);
+        free(f);
+
+        return 0;
+    }
+    """;
 
         public static List<EventoHeap> CriarCasoAltaFragmentacaoExterna()
         {
             List<EventoHeap> eventos = new();
             int proximaReferencia = 1;
 
-            VariavelCaso a =
-                Malloc(eventos, ref proximaReferencia, "a", TiposDeVariaveis.Int, 4);
+            VariavelCaso a = Malloc(eventos, ref proximaReferencia, "a", TiposDeVariaveis.Int, 8);
+            VariavelCaso b = Malloc(eventos, ref proximaReferencia, "b", TiposDeVariaveis.Int, 2);
+            VariavelCaso c = Malloc(eventos, ref proximaReferencia, "c", TiposDeVariaveis.Int, 4);
+            VariavelCaso d = Malloc(eventos, ref proximaReferencia, "d", TiposDeVariaveis.Int, 2);
+            VariavelCaso e = Malloc(eventos, ref proximaReferencia, "e", TiposDeVariaveis.Int, 12);
+            VariavelCaso f = Malloc(eventos, ref proximaReferencia, "f", TiposDeVariaveis.Int, 2);
 
-            VariavelCaso b =
-                Malloc(eventos, ref proximaReferencia, "b", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso c =
-                Malloc(eventos, ref proximaReferencia, "c", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso d =
-                Malloc(eventos, ref proximaReferencia, "d", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso e =
-                Malloc(eventos, ref proximaReferencia, "e", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso f =
-                Malloc(eventos, ref proximaReferencia, "f", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso g =
-                Malloc(eventos, ref proximaReferencia, "g", TiposDeVariaveis.Int, 4);
-
-            VariavelCaso h =
-                Malloc(eventos, ref proximaReferencia, "h", TiposDeVariaveis.Int, 4);
-
-            // Cria regiões livres intercaladas.
             Free(eventos, a);
             Free(eventos, c);
             Free(eventos, e);
-            Free(eventos, g);
 
-            // Evidencia a diferença com e sem coalescing.
+            VariavelCaso g = Malloc(eventos, ref proximaReferencia, "g", TiposDeVariaveis.Int, 3);
+
+            Free(eventos, g);
             Free(eventos, b);
             Free(eventos, d);
+            Free(eventos, f);
 
             return eventos;
         }
