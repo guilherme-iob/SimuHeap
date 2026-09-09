@@ -29,6 +29,8 @@ namespace SimuHeap.Windows
         private LegendaCoresForm? legendaCoresForm;
         private CodigoCasoUsoForm? codigoCasoUsoForm;
 
+        private bool emSimulacao = false;
+
         private CasoUsoSimulacao casoSelecionado = CasoUsoSimulacao.Nenhum;
         public MainForm()
         {
@@ -53,7 +55,7 @@ namespace SimuHeap.Windows
             HabilitarSplit.Checked = true;
             HabilitarCoalesing.Checked = false;
             UseFirstFit.Checked = true;
-            SelectHeapSize.SelectedIndex = 2;
+            SelectHeapSize.SelectedIndex = 1;
             UsarNenhumCaso.Checked = true;
         }
 
@@ -202,8 +204,18 @@ namespace SimuHeap.Windows
         #region Eventos de Menu de Simulação
         private void Btn_IniciarSimulacao_Click(object sender, EventArgs e)
         {
+            if (emSimulacao)
+            {
+                MessageBox.Show(
+                    "Simulação em Andamento. Pare a simulação atual para iniciar uma nova.",
+                    "Simulação em Andamento",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
-            if(executor.Eventos.Count == 0)
+                return;
+            }
+
+            if (executor.Eventos.Count == 0)
             {
                 MessageBox.Show(
                     "Adicione pelo menos um evento antes de iniciar a simulação.",
@@ -230,7 +242,7 @@ namespace SimuHeap.Windows
                 codigoCasoUsoForm.Show();
             }
 
-            
+
 
             heapSimulator.UsarSplit = HabilitarSplit.Checked;
             heapSimulator.UsarCoalescing = HabilitarCoalesing.Checked;
@@ -245,6 +257,8 @@ namespace SimuHeap.Windows
             executor.Executar(heapSimulator, algoritmo);
             snapshotAtual = 0;
             MostrarSnapshotAtual();
+
+            emSimulacao = true;
 
             this.Panel_Simulacao_2.Enabled = true;
             this.Panel_OpcoesEventos.Enabled = false;
@@ -272,6 +286,7 @@ namespace SimuHeap.Windows
             AtualizarLabelPassoAtual();
             Lbl_SnapshotAtual.Text = string.Empty;
 
+            emSimulacao = false;
             this.Panel_Simulacao_2.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
             this.MenuParametros.Enabled = true;
@@ -280,7 +295,7 @@ namespace SimuHeap.Windows
 
         private void Btn_ZerarSimulacao_Click(object sender, EventArgs e)
         {
-            ;
+            UsarNenhumCaso.Checked = true;
             snapshotAtual = 0;
             executor.Snapshots.Clear();
             executor.Eventos.Clear();
@@ -487,7 +502,7 @@ namespace SimuHeap.Windows
         {
             if (UsarCaso1.Checked)
             {
-                casoSelecionado = CasoUsoSimulacao.NotasEFaltas;
+                casoSelecionado = CasoUsoSimulacao.AlocacoesDiferentes;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -497,7 +512,7 @@ namespace SimuHeap.Windows
         {
             if (UsarCaso2.Checked)
             {
-                casoSelecionado = CasoUsoSimulacao.DuasProvas;
+                casoSelecionado = CasoUsoSimulacao.Mediana;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -507,7 +522,27 @@ namespace SimuHeap.Windows
         {
             if (UsarCaso3.Checked)
             {
-                casoSelecionado = CasoUsoSimulacao.RedimensionamentoTurma;
+                casoSelecionado = CasoUsoSimulacao.SubtracaoVetores;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso4_CheckedChanged(object sender, EventArgs e)
+        {
+            if(UsarCaso4.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.Letras;
+                CarregarCasoPredefinido();
+                BloquearOperacoesParaCasosDeUso();
+            }
+        }
+
+        private void UsarCaso5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UsarCaso5.Checked)
+            {
+                casoSelecionado = CasoUsoSimulacao.Digitos;
                 CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
@@ -532,6 +567,7 @@ namespace SimuHeap.Windows
                 BloquearOperacoesParaCasosDeUso();
             }
         }
+
 
         private void InicializarEventosTeste()
         {
@@ -1335,6 +1371,21 @@ namespace SimuHeap.Windows
                 case CasoUsoSimulacao.AltaFragExterna:
                     executor.Eventos.AddRange(CasosDeUso.CriarCasoAltaFragmentacaoExterna());
                     break;
+                case CasoUsoSimulacao.AlocacoesDiferentes:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoAlocacoesDiferentes());
+                    break;
+                case CasoUsoSimulacao.Mediana:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoMediana());
+                    break;
+                case CasoUsoSimulacao.SubtracaoVetores:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoSubtracaoVetores());
+                    break;
+                case CasoUsoSimulacao.Letras:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoLetras());
+                    break;
+                case CasoUsoSimulacao.Digitos:
+                    executor.Eventos.AddRange(CasosDeUso.CriarCasoDigitos());
+                    break;
                 default:
                     break;
             }
@@ -1356,7 +1407,7 @@ namespace SimuHeap.Windows
                 this.Panel_OpcoesEventos.Enabled = false;
             }
 
-            if(casoSelecionado == CasoUsoSimulacao.AltaFragInterna || casoSelecionado == CasoUsoSimulacao.AltaFragExterna)
+            if (casoSelecionado == CasoUsoSimulacao.AltaFragInterna || casoSelecionado == CasoUsoSimulacao.AltaFragExterna)
             {
                 if (casoSelecionado == CasoUsoSimulacao.AltaFragInterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[0];
                 else if (casoSelecionado == CasoUsoSimulacao.AltaFragExterna) SelectHeapSize.SelectedItem = SelectHeapSize.Items[1];
@@ -1369,6 +1420,6 @@ namespace SimuHeap.Windows
         }
         #endregion
 
-        
+
     }
 }

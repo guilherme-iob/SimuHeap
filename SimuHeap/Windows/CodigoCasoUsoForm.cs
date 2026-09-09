@@ -36,6 +36,16 @@ namespace SimuHeap.Windows
                     return "Alta Fragmentação Interna";
                 case CasoUsoSimulacao.AltaFragExterna:
                     return "Alta Fragmentação Externa";
+                case CasoUsoSimulacao.AlocacoesDiferentes:
+                    return "Caso 1 - Alocações Diferentes";
+                case CasoUsoSimulacao.Mediana:
+                    return "Caso 2 - Mediana";
+                case CasoUsoSimulacao.SubtracaoVetores:
+                    return "Caso 3 - Subtração de Vetores";
+                case CasoUsoSimulacao.Letras:
+                    return "Caso 4 - Letras";
+                case CasoUsoSimulacao.Digitos:
+                    return "Caso 5 - Dígitos";
                 default:
                     return "Caso de Uso Desconhecido";
             }
@@ -55,6 +65,16 @@ namespace SimuHeap.Windows
                     return CasosDeUso.CodigoAltaFragInterna;
                 case CasoUsoSimulacao.AltaFragExterna:
                     return CasosDeUso.CodigoAltaFragExterna;
+                case CasoUsoSimulacao.AlocacoesDiferentes:
+                    return CasosDeUso.CodigoCasoAlocacoesDiferentes;
+                case CasoUsoSimulacao.Mediana:
+                    return CasosDeUso.CodigoCasoMediana;
+                case CasoUsoSimulacao.SubtracaoVetores:
+                    return CasosDeUso.CodigoCasoSubtracaoVetores;
+                case CasoUsoSimulacao.Letras:
+                    return CasosDeUso.CodigoCasoLetras;
+                case CasoUsoSimulacao.Digitos:
+                    return CasosDeUso.CodigoCasoDigitos;
                 default:
                     return "// Código do caso de uso desconhecido.";
             }

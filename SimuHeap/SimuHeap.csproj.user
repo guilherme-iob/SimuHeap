@@ -7,6 +7,21 @@
     <Compile Update="Controls\BlocoDetalhesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\CustomControls\CardPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomControls\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomControls\StyledDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomControls\TabControlSemCabecalho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomControls\TabNavigationButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\HeapBytesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -29,6 +44,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Windows\NewFormDesign.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\OperacoesAlocacao\CallocForm.cs">

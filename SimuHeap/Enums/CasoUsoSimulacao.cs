@@ -13,6 +13,11 @@ namespace SimuHeap.Enums
         DuasProvas,
         RedimensionamentoTurma,
         AltaFragInterna,
-        AltaFragExterna
+        AltaFragExterna,
+        AlocacoesDiferentes,
+        Mediana,
+        SubtracaoVetores,
+        Letras,
+        Digitos
     }
 }

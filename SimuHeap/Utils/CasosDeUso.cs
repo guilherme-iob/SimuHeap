@@ -574,5 +574,471 @@ namespace SimuHeap.Utils
                     .ToList()
             };
         }
+
+
+
+        /*
+ * ============================================================
+ * CASO REAL 1
+ * Alocações de diferentes tipos e tamanhos
+ * ============================================================
+ */
+
+        public const string CodigoCasoAlocacoesDiferentes = """
+    #include <stdio.h>
+    #include <string.h>
+    #include <stdlib.h>
+
+    int main()
+    {
+        char *s;
+        char *c;
+        int *vet;
+        int *i;
+
+        s = malloc(10 * sizeof(char));
+        if (s == NULL) { printf("Problema na alocacao.\n"); exit(2); }
+
+        c = malloc(sizeof(char));
+        if (c == NULL) { printf("Problema na alocacao.\n"); exit(2); }
+
+        vet = malloc(20 * sizeof(int));
+        if (vet == NULL) { printf("Problema na alocacao.\n"); exit(2); }
+
+        i = malloc(sizeof(int));
+        if (i == NULL) { printf("Problema na alocacao.\n"); exit(2); }
+
+        s[0] = 'T';
+        s[1] = 'E';
+        s[2] = 'S';
+        s[3] = 'T';
+        s[4] = 'E';
+        s[5] = '\0';
+
+        *c = 'X';
+
+        printf("s=%s\n", s);
+        printf("c=%c\n", *c);
+
+        free(s);
+        free(c);
+        free(vet);
+        free(i);
+
+        return 0;
+    }
+    """;
+
+        public static List<EventoHeap> CriarCasoAlocacoesDiferentes()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso s = Malloc(eventos, ref proximaReferencia, "s", TiposDeVariaveis.Char, 10);
+            VariavelCaso c = Malloc(eventos, ref proximaReferencia, "c", TiposDeVariaveis.Char, 1);
+            VariavelCaso vet = Malloc(eventos, ref proximaReferencia, "vet", TiposDeVariaveis.Int, 20);
+            VariavelCaso i = Malloc(eventos, ref proximaReferencia, "i", TiposDeVariaveis.Int, 1);
+
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(s.ReferenciaBloco, s.Tipo, "Atribuindo a string \"TESTE\" ao vetor s.", (0, 'T'), (1, 'E'), (2, 'S'), (3, 'T'), (4, 'E'), (5, '\0')));
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(c.ReferenciaBloco, c.Tipo, "Atribuindo o caractere 'X' à variável apontada por c.", (0, 'X')));
+
+            Free(eventos, s);
+            Free(eventos, c);
+            Free(eventos, vet);
+            Free(eventos, i);
+
+            return eventos;
+        }
+
+
+        /*
+         * ============================================================
+         * CASO REAL 8
+         * Cálculo da mediana
+         * ============================================================
+         */
+
+        public const string CodigoCasoMediana = """
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    float Mediana(const char* strg)
+    {
+        int qtdnum = 0, i, trocou;
+        float mediana;
+        const char *aux = strg;
+        int *v;
+
+        while (*strg)
+        {
+            if (*strg >= '0' && *strg <= '9')
+            {
+                while (*strg >= '0' && *strg <= '9')
+                    strg++;
+
+                qtdnum++;
+            }
+            else
+            {
+                strg++;
+            }
+        }
+
+        v = (int *)malloc(sizeof(int) * qtdnum);
+
+        i = 0;
+
+        while (*aux)
+        {
+            if (*aux >= '0' && *aux <= '9')
+            {
+                int num = 0;
+
+                while (*aux >= '0' && *aux <= '9')
+                {
+                    num = num * 10 + (*aux - '0');
+                    aux++;
+                }
+
+                v[i] = num;
+                i++;
+            }
+            else
+            {
+                aux++;
+            }
+        }
+
+        do
+        {
+            trocou = 0;
+
+            for (i = 0; i < qtdnum - 1; i++)
+            {
+                if (v[i] > v[i + 1])
+                {
+                    int auxiliar = v[i];
+                    v[i] = v[i + 1];
+                    v[i + 1] = auxiliar;
+                    trocou = 1;
+                }
+            }
+        }
+        while (trocou);
+
+        if (qtdnum % 2 == 1)
+            mediana = v[qtdnum / 2];
+        else
+            mediana = (v[qtdnum / 2 - 1] + v[qtdnum / 2]) / 2.0;
+
+        free(v);
+
+        return mediana;
+    }
+
+    int main()
+    {
+        float r;
+
+        r = Mediana("30 2 23 173 1247 1 99");
+        printf("Mediana=%f\n", r);
+
+        r = Mediana("30 2 23 173");
+        printf("Mediana=%f\n", r);
+
+        return 0;
+    }
+    """;
+
+        public static List<EventoHeap> CriarCasoMediana()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso vPrimeiraChamada = Malloc(eventos, ref proximaReferencia, "v", TiposDeVariaveis.Int, 7);
+
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vPrimeiraChamada.ReferenciaBloco, vPrimeiraChamada.Tipo, "Armazenando em v os números encontrados na primeira string.", (0, 30), (1, 2), (2, 23), (3, 173), (4, 1247), (5, 1), (6, 99)));
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vPrimeiraChamada.ReferenciaBloco, vPrimeiraChamada.Tipo, "Ordenando os valores de v para calcular a mediana.", (0, 1), (1, 2), (2, 23), (3, 30), (4, 99), (5, 173), (6, 1247)));
+
+            Free(eventos, vPrimeiraChamada);
+
+            VariavelCaso vSegundaChamada = Malloc(eventos, ref proximaReferencia, "v", TiposDeVariaveis.Int, 4);
+
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vSegundaChamada.ReferenciaBloco, vSegundaChamada.Tipo, "Armazenando em v os números encontrados na segunda string.", (0, 30), (1, 2), (2, 23), (3, 173)));
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vSegundaChamada.ReferenciaBloco, vSegundaChamada.Tipo, "Ordenando os valores de v para calcular a mediana.", (0, 2), (1, 23), (2, 30), (3, 173)));
+
+            Free(eventos, vSegundaChamada);
+
+            return eventos;
+        }
+
+
+        /*
+         * ============================================================
+         * CASO REAL 10
+         * Subtração de vetores
+         * ============================================================
+         */
+
+        public const string CodigoCasoSubtracaoVetores = """
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int *sub(int v1[], int qtd1, int v2[], int qtd2, int *qtdR)
+    {
+        int *vR, *vTemp;
+        int achou, i, j, k = 0;
+
+        vTemp = (int *)malloc(qtd1 * sizeof(int));
+
+        for (i = 0; i < qtd1; i++)
+        {
+            achou = 0;
+
+            for (j = 0; j < qtd2; j++)
+                if (v1[i] == v2[j])
+                    achou = 1;
+
+            if (achou == 0)
+                vTemp[k++] = v1[i];
+        }
+
+        *qtdR = k;
+
+        vR = (int *)malloc(k * sizeof(int));
+
+        for (i = 0; i < k; i++)
+            vR[i] = vTemp[i];
+
+        free(vTemp);
+
+        return vR;
+    }
+
+    int main()
+    {
+        int v1[] = {3, 6, 13, 17, 63};
+        int v2[] = {2, 3, 4, 6, 8, 17, 31, 89};
+
+        int qtd1 = sizeof(v1) / sizeof(int);
+        int qtd2 = sizeof(v2) / sizeof(int);
+
+        int *resultado;
+        int qtdresultado, i;
+
+        resultado = sub(v1, qtd1, v2, qtd2, &qtdresultado);
+
+        for (i = 0; i < qtdresultado; i++)
+            printf("%d ", resultado[i]);
+
+        free(resultado);
+
+        return 0;
+    }
+    """;
+
+        public static List<EventoHeap> CriarCasoSubtracaoVetores()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso vTemp = Malloc(eventos, ref proximaReferencia, "vTemp", TiposDeVariaveis.Int, 5);
+
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vTemp.ReferenciaBloco, vTemp.Tipo, "Armazenando em vTemp os elementos de v1 que não pertencem a v2.", (0, 13), (1, 63)));
+
+            VariavelCaso vR = Malloc(eventos, ref proximaReferencia, "vR", TiposDeVariaveis.Int, 2);
+
+            eventos[^1].EscritasAposEvento.Add(CriarEscrita(vR.ReferenciaBloco, vR.Tipo, "Copiando para vR os valores encontrados em vTemp.", (0, 13), (1, 63)));
+
+            Free(eventos, vTemp);
+            Free(eventos, vR);
+
+            return eventos;
+        }
+
+        /*
+ * ============================================================
+ * CASO REAL 4
+ * Alocação de strings dentro de funções
+ * ============================================================
+ */
+
+        public const string CodigoCasoLetras = """
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    char *letras(int n)
+    {
+        char *let;
+        char ch = 'A';
+        int i;
+
+        let = (char *)malloc((n + 1) * sizeof(char));
+
+        if (let == NULL)
+            return NULL;
+
+        for (i = 0; i < n; i++)
+        {
+            let[i] = ch;
+            ch++;
+
+            if (ch > 'Z')
+                ch = 'A';
+        }
+
+        let[i] = '\0';
+
+        return let;
+    }
+
+    void letras2(int n, char **let)
+    {
+        char ch = 'A';
+        int i;
+
+        (*let) = (char *)malloc((n + 1) * sizeof(char));
+
+        if ((*let) == NULL)
+            return;
+
+        for (i = 0; i < n; i++)
+        {
+            (*let)[i] = ch;
+            ch++;
+
+            if (ch > 'Z')
+                ch = 'A';
+        }
+
+        (*let)[i] = '\0';
+    }
+
+    int main()
+    {
+        char *s;
+
+        s = letras(35);
+
+        if (s == NULL)
+        {
+            printf("Problema na alocacao.\n");
+            exit(2);
+        }
+
+        printf("opcao1: %s\n", s);
+        free(s);
+
+        letras2(35, &s);
+
+        if (s == NULL)
+        {
+            printf("Problema na alocacao.\n");
+            exit(2);
+        }
+
+        printf("opcao2: %s\n", s);
+        free(s);
+
+        return 0;
+    }
+    """;
+
+        public static List<EventoHeap> CriarCasoLetras()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso primeiraString = Malloc(eventos, ref proximaReferencia, "s", TiposDeVariaveis.Char, 36,
+                (0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'), (5, 'F'), (6, 'G'), (7, 'H'), (8, 'I'),
+                (9, 'J'), (10, 'K'), (11, 'L'), (12, 'M'), (13, 'N'), (14, 'O'), (15, 'P'), (16, 'Q'),
+                (17, 'R'), (18, 'S'), (19, 'T'), (20, 'U'), (21, 'V'), (22, 'W'), (23, 'X'), (24, 'Y'),
+                (25, 'Z'), (26, 'A'), (27, 'B'), (28, 'C'), (29, 'D'), (30, 'E'), (31, 'F'), (32, 'G'),
+                (33, 'H'), (34, 'I'), (35, '\0'));
+
+            Free(eventos, primeiraString);
+
+            VariavelCaso segundaString = Malloc(eventos, ref proximaReferencia, "s", TiposDeVariaveis.Char, 36,
+                (0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'), (5, 'F'), (6, 'G'), (7, 'H'), (8, 'I'),
+                (9, 'J'), (10, 'K'), (11, 'L'), (12, 'M'), (13, 'N'), (14, 'O'), (15, 'P'), (16, 'Q'),
+                (17, 'R'), (18, 'S'), (19, 'T'), (20, 'U'), (21, 'V'), (22, 'W'), (23, 'X'), (24, 'Y'),
+                (25, 'Z'), (26, 'A'), (27, 'B'), (28, 'C'), (29, 'D'), (30, 'E'), (31, 'F'), (32, 'G'),
+                (33, 'H'), (34, 'I'), (35, '\0'));
+
+            Free(eventos, segundaString);
+
+            return eventos;
+        }
+
+        /*
+ * ============================================================
+ * CASO REAL 5
+ * Extração de dígitos de uma string
+ * ============================================================
+ */
+
+        public const string CodigoCasoDigitos = """
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <ctype.h>
+
+    char *digitos(char *s)
+    {
+        char *dig;
+        int i, j, qtddig = 0;
+
+        for (i = 0; s[i]; i++)
+            if (isdigit(s[i]))
+                qtddig++;
+
+        dig = (char *)malloc((qtddig + 1) * sizeof(char));
+
+        if (dig == NULL)
+            return NULL;
+
+        j = 0;
+
+        for (i = 0; s[i]; i++)
+            if (isdigit(s[i]))
+                dig[j++] = s[i];
+
+        dig[j] = '\0';
+
+        return dig;
+    }
+
+    int main()
+    {
+        char *d;
+
+        d = digitos("A1B2C765W888UYGf2241qs");
+
+        if (d == NULL)
+        {
+            printf("Problema na alocacao.\n");
+            exit(2);
+        }
+
+        printf("%s", d);
+
+        free(d);
+
+        return 0;
+    }
+    """;
+
+        public static List<EventoHeap> CriarCasoDigitos()
+        {
+            List<EventoHeap> eventos = new();
+            int proximaReferencia = 1;
+
+            VariavelCaso d = Malloc(eventos, ref proximaReferencia, "d", TiposDeVariaveis.Char, 13,
+                (0, '1'), (1, '2'), (2, '7'), (3, '6'), (4, '5'), (5, '8'), (6, '8'),
+                (7, '8'), (8, '2'), (9, '2'), (10, '4'), (11, '1'), (12, '\0'));
+
+            Free(eventos, d);
+
+            return eventos;
+        }
     }
 }

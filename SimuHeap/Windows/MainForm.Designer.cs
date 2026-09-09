@@ -103,6 +103,8 @@
             MenuParametros = new GroupBox();
             UsarLegendaDetalhada = new CheckBox();
             GroupBoxCasosDeUsoSimulacao = new GroupBox();
+            UsarCaso5 = new RadioButton();
+            UsarCaso4 = new RadioButton();
             UsarCasoAltaFragExterna = new RadioButton();
             UsarCasoAltaFragInterna = new RadioButton();
             UsarCaso3 = new RadioButton();
@@ -1132,23 +1134,49 @@
             // 
             // GroupBoxCasosDeUsoSimulacao
             // 
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso5);
+            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso4);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragExterna);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragInterna);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
             GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
-            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 364);
+            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 352);
             GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
-            GroupBoxCasosDeUsoSimulacao.Size = new Size(437, 269);
+            GroupBoxCasosDeUsoSimulacao.Size = new Size(437, 281);
             GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
             GroupBoxCasosDeUsoSimulacao.TabStop = false;
             GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
             // 
+            // UsarCaso5
+            // 
+            UsarCaso5.AutoSize = true;
+            UsarCaso5.Location = new Point(6, 183);
+            UsarCaso5.Name = "UsarCaso5";
+            UsarCaso5.Size = new Size(221, 25);
+            UsarCaso5.TabIndex = 7;
+            UsarCaso5.TabStop = true;
+            UsarCaso5.Text = "Caso 5 - Extração de Dígitos";
+            UsarCaso5.UseVisualStyleBackColor = true;
+            UsarCaso5.CheckedChanged += UsarCaso5_CheckedChanged;
+            // 
+            // UsarCaso4
+            // 
+            UsarCaso4.AutoSize = true;
+            UsarCaso4.Location = new Point(6, 152);
+            UsarCaso4.Name = "UsarCaso4";
+            UsarCaso4.Size = new Size(311, 25);
+            UsarCaso4.TabIndex = 6;
+            UsarCaso4.TabStop = true;
+            UsarCaso4.Text = "Caso 4 - Alocação de Strings em Funções";
+            UsarCaso4.UseVisualStyleBackColor = true;
+            UsarCaso4.CheckedChanged += UsarCaso4_CheckedChanged;
+            // 
             // UsarCasoAltaFragExterna
             // 
             UsarCasoAltaFragExterna.AutoSize = true;
-            UsarCasoAltaFragExterna.Location = new Point(6, 200);
+            UsarCasoAltaFragExterna.Location = new Point(6, 245);
             UsarCasoAltaFragExterna.Name = "UsarCasoAltaFragExterna";
             UsarCasoAltaFragExterna.Size = new Size(213, 25);
             UsarCasoAltaFragExterna.TabIndex = 5;
@@ -1160,7 +1188,7 @@
             // UsarCasoAltaFragInterna
             // 
             UsarCasoAltaFragInterna.AutoSize = true;
-            UsarCasoAltaFragInterna.Location = new Point(6, 169);
+            UsarCasoAltaFragInterna.Location = new Point(6, 214);
             UsarCasoAltaFragInterna.Name = "UsarCasoAltaFragInterna";
             UsarCasoAltaFragInterna.Size = new Size(211, 25);
             UsarCasoAltaFragInterna.TabIndex = 4;
@@ -1174,10 +1202,10 @@
             UsarCaso3.AutoSize = true;
             UsarCaso3.Location = new Point(6, 121);
             UsarCaso3.Name = "UsarCaso3";
-            UsarCaso3.Size = new Size(224, 25);
+            UsarCaso3.Size = new Size(236, 25);
             UsarCaso3.TabIndex = 3;
             UsarCaso3.TabStop = true;
-            UsarCaso3.Text = "Caso 3 - Alteração da Turma";
+            UsarCaso3.Text = "Caso 3 - Subtração de Vetores";
             UsarCaso3.UseVisualStyleBackColor = true;
             UsarCaso3.CheckedChanged += UsarCaso3_CheckedChanged;
             // 
@@ -1186,10 +1214,10 @@
             UsarCaso2.AutoSize = true;
             UsarCaso2.Location = new Point(6, 90);
             UsarCaso2.Name = "UsarCaso2";
-            UsarCaso2.Size = new Size(234, 25);
+            UsarCaso2.Size = new Size(149, 25);
             UsarCaso2.TabIndex = 2;
             UsarCaso2.TabStop = true;
-            UsarCaso2.Text = "Caso 2 - Duas provas e média";
+            UsarCaso2.Text = "Caso 2 - Mediana";
             UsarCaso2.UseVisualStyleBackColor = true;
             UsarCaso2.CheckedChanged += UsarCaso2_CheckedChanged;
             // 
@@ -1198,10 +1226,10 @@
             UsarCaso1.AutoSize = true;
             UsarCaso1.Location = new Point(6, 59);
             UsarCaso1.Name = "UsarCaso1";
-            UsarCaso1.Size = new Size(185, 25);
+            UsarCaso1.Size = new Size(233, 25);
             UsarCaso1.TabIndex = 1;
             UsarCaso1.TabStop = true;
-            UsarCaso1.Text = "Caso 1 - Notas e Faltas";
+            UsarCaso1.Text = "Caso 1 - Alocações Diferentes";
             UsarCaso1.UseVisualStyleBackColor = true;
             UsarCaso1.CheckedChanged += UsarCaso1_CheckedChanged;
             // 
@@ -1514,5 +1542,7 @@
         private TableLayoutPanel tableLayoutPanel6;
         private RadioButton UsarCasoAltaFragExterna;
         private RadioButton UsarCasoAltaFragInterna;
+        private RadioButton UsarCaso5;
+        private RadioButton UsarCaso4;
     }
 }
