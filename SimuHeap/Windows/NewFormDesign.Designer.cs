@@ -62,7 +62,8 @@
             Panel_Simulacao = new TableLayoutPanel();
             Panel_Simulacao_Estruturas = new Panel();
             Panel_Simulacao_2 = new TableLayoutPanel();
-            cardPanel3 = new SimuHeap.Controls.CustomControls.CardPanel();
+            CardPanelSegmentos = new SimuHeap.Controls.CustomControls.CardPanel();
+            PanelGridHeap = new Panel();
             cardPanel4 = new SimuHeap.Controls.CustomControls.CardPanel();
             tableLayoutPanel7 = new TableLayoutPanel();
             label11 = new Label();
@@ -75,7 +76,7 @@
             tableLayoutPanel4 = new TableLayoutPanel();
             label10 = new Label();
             pictureBox5 = new PictureBox();
-            cardPanel2 = new SimuHeap.Controls.CustomControls.CardPanel();
+            CardListaBlocosLivres = new SimuHeap.Controls.CustomControls.CardPanel();
             styledDataGridView1 = new SimuHeap.Controls.CustomControls.StyledDataGridView();
             panel4 = new Panel();
             tableLayoutPanel6 = new TableLayoutPanel();
@@ -92,7 +93,7 @@
             Btn_ExcluirEvento = new Button();
             Btn_DescerEvento = new Button();
             Btn_SubirEvento = new Button();
-            cardPanel1 = new SimuHeap.Controls.CustomControls.CardPanel();
+            CardConfigAtualSimulacao = new SimuHeap.Controls.CustomControls.CardPanel();
             flowLayoutPanel4 = new FlowLayoutPanel();
             pictureBox3 = new PictureBox();
             label4 = new Label();
@@ -120,13 +121,13 @@
             Panel_Simulacao.SuspendLayout();
             Panel_Simulacao_Estruturas.SuspendLayout();
             Panel_Simulacao_2.SuspendLayout();
-            cardPanel3.SuspendLayout();
+            CardPanelSegmentos.SuspendLayout();
             cardPanel4.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             panel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            cardPanel2.SuspendLayout();
+            CardListaBlocosLivres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)styledDataGridView1).BeginInit();
             panel4.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
@@ -137,7 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).BeginInit();
             Panel_OpcoesEventos.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
-            cardPanel1.SuspendLayout();
+            CardConfigAtualSimulacao.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
@@ -280,7 +281,7 @@
             // 
             CardOperacoes.BackColor = Color.White;
             CardOperacoes.BorderColor = Color.FromArgb(225, 229, 235);
-            CardOperacoes.BorderRadius = 20;
+            CardOperacoes.BorderSize = 2;
             CardOperacoes.Controls.Add(flowLayoutPanel2);
             CardOperacoes.Controls.Add(panel1);
             CardOperacoes.Dock = DockStyle.Fill;
@@ -425,7 +426,7 @@
             // 
             CardMenuSimulacao.BackColor = Color.White;
             CardMenuSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
-            CardMenuSimulacao.BorderRadius = 20;
+            CardMenuSimulacao.BorderSize = 2;
             CardMenuSimulacao.Controls.Add(flowLayoutPanel3);
             CardMenuSimulacao.Controls.Add(panel2);
             CardMenuSimulacao.Dock = DockStyle.Fill;
@@ -568,7 +569,7 @@
             // panel3
             // 
             panel3.Controls.Add(Panel_Simulacao);
-            panel3.Controls.Add(cardPanel1);
+            panel3.Controls.Add(CardConfigAtualSimulacao);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 103);
             panel3.Name = "panel3";
@@ -605,8 +606,8 @@
             Panel_Simulacao_2.ColumnCount = 2;
             Panel_Simulacao_2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             Panel_Simulacao_2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            Panel_Simulacao_2.Controls.Add(cardPanel3, 1, 0);
-            Panel_Simulacao_2.Controls.Add(cardPanel2, 0, 0);
+            Panel_Simulacao_2.Controls.Add(CardPanelSegmentos, 1, 0);
+            Panel_Simulacao_2.Controls.Add(CardListaBlocosLivres, 0, 0);
             Panel_Simulacao_2.Dock = DockStyle.Fill;
             Panel_Simulacao_2.Location = new Point(0, 37);
             Panel_Simulacao_2.Name = "Panel_Simulacao_2";
@@ -615,20 +616,32 @@
             Panel_Simulacao_2.Size = new Size(802, 427);
             Panel_Simulacao_2.TabIndex = 1;
             // 
-            // cardPanel3
+            // CardPanelSegmentos
             // 
-            cardPanel3.BackColor = Color.White;
-            cardPanel3.BorderColor = Color.Transparent;
-            cardPanel3.Controls.Add(cardPanel4);
-            cardPanel3.Controls.Add(heapGridControl1);
-            cardPanel3.Controls.Add(panel5);
-            cardPanel3.Dock = DockStyle.Fill;
-            cardPanel3.Location = new Point(242, 0);
-            cardPanel3.Margin = new Padding(2, 0, 2, 0);
-            cardPanel3.Name = "cardPanel3";
-            cardPanel3.Padding = new Padding(5);
-            cardPanel3.Size = new Size(558, 427);
-            cardPanel3.TabIndex = 2;
+            CardPanelSegmentos.BackColor = Color.White;
+            CardPanelSegmentos.BorderColor = Color.Transparent;
+            CardPanelSegmentos.BorderRadius = 5;
+            CardPanelSegmentos.BorderSize = 2;
+            CardPanelSegmentos.Controls.Add(PanelGridHeap);
+            CardPanelSegmentos.Controls.Add(cardPanel4);
+            CardPanelSegmentos.Controls.Add(heapGridControl1);
+            CardPanelSegmentos.Controls.Add(panel5);
+            CardPanelSegmentos.Dock = DockStyle.Fill;
+            CardPanelSegmentos.Location = new Point(242, 0);
+            CardPanelSegmentos.Margin = new Padding(2, 0, 2, 0);
+            CardPanelSegmentos.Name = "CardPanelSegmentos";
+            CardPanelSegmentos.Padding = new Padding(5);
+            CardPanelSegmentos.Size = new Size(558, 427);
+            CardPanelSegmentos.TabIndex = 2;
+            // 
+            // PanelGridHeap
+            // 
+            PanelGridHeap.AutoScroll = true;
+            PanelGridHeap.Dock = DockStyle.Fill;
+            PanelGridHeap.Location = new Point(5, 55);
+            PanelGridHeap.Name = "PanelGridHeap";
+            PanelGridHeap.Size = new Size(548, 317);
+            PanelGridHeap.TabIndex = 4;
             // 
             // cardPanel4
             // 
@@ -801,6 +814,7 @@
             // pictureBox5
             // 
             pictureBox5.BackgroundImage = Properties.Resources.icone_bloco;
+            pictureBox5.BackgroundImageLayout = ImageLayout.Center;
             pictureBox5.Dock = DockStyle.Fill;
             pictureBox5.Location = new Point(0, 0);
             pictureBox5.Margin = new Padding(0);
@@ -809,19 +823,21 @@
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
             // 
-            // cardPanel2
+            // CardListaBlocosLivres
             // 
-            cardPanel2.BackColor = Color.White;
-            cardPanel2.BorderColor = Color.Transparent;
-            cardPanel2.Controls.Add(styledDataGridView1);
-            cardPanel2.Controls.Add(panel4);
-            cardPanel2.Dock = DockStyle.Fill;
-            cardPanel2.Location = new Point(2, 0);
-            cardPanel2.Margin = new Padding(2, 0, 2, 0);
-            cardPanel2.Name = "cardPanel2";
-            cardPanel2.Padding = new Padding(5);
-            cardPanel2.Size = new Size(236, 427);
-            cardPanel2.TabIndex = 1;
+            CardListaBlocosLivres.BackColor = Color.White;
+            CardListaBlocosLivres.BorderColor = Color.Transparent;
+            CardListaBlocosLivres.BorderRadius = 5;
+            CardListaBlocosLivres.BorderSize = 2;
+            CardListaBlocosLivres.Controls.Add(styledDataGridView1);
+            CardListaBlocosLivres.Controls.Add(panel4);
+            CardListaBlocosLivres.Dock = DockStyle.Fill;
+            CardListaBlocosLivres.Location = new Point(2, 0);
+            CardListaBlocosLivres.Margin = new Padding(2, 0, 2, 0);
+            CardListaBlocosLivres.Name = "CardListaBlocosLivres";
+            CardListaBlocosLivres.Padding = new Padding(5);
+            CardListaBlocosLivres.Size = new Size(236, 427);
+            CardListaBlocosLivres.TabIndex = 1;
             // 
             // styledDataGridView1
             // 
@@ -906,6 +922,7 @@
             // pictureBox4
             // 
             pictureBox4.BackgroundImage = Properties.Resources.icone_lista;
+            pictureBox4.BackgroundImageLayout = ImageLayout.Center;
             pictureBox4.Dock = DockStyle.Fill;
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.Margin = new Padding(0);
@@ -916,11 +933,12 @@
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnCount = 3;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.Controls.Add(Btn_HelpHeap, 1, 0);
-            tableLayoutPanel3.Controls.Add(Label_Heap, 0, 0);
+            tableLayoutPanel3.Controls.Add(Btn_HelpHeap, 2, 0);
+            tableLayoutPanel3.Controls.Add(Label_Heap, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
             tableLayoutPanel3.Location = new Point(0, 0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -944,9 +962,9 @@
             // 
             Label_Heap.Dock = DockStyle.Fill;
             Label_Heap.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_Heap.Location = new Point(3, 0);
+            Label_Heap.Location = new Point(53, 0);
             Label_Heap.Name = "Label_Heap";
-            Label_Heap.Size = new Size(746, 37);
+            Label_Heap.Size = new Size(696, 37);
             Label_Heap.TabIndex = 0;
             Label_Heap.Text = "HEAP";
             Label_Heap.TextAlign = ContentAlignment.MiddleCenter;
@@ -1045,19 +1063,21 @@
             Btn_SubirEvento.TabIndex = 3;
             Btn_SubirEvento.UseVisualStyleBackColor = true;
             // 
-            // cardPanel1
+            // CardConfigAtualSimulacao
             // 
-            cardPanel1.BackColor = Color.White;
-            cardPanel1.BorderColor = Color.FromArgb(225, 229, 235);
-            cardPanel1.Controls.Add(flowLayoutPanel4);
-            cardPanel1.Dock = DockStyle.Top;
-            cardPanel1.Location = new Point(0, 0);
-            cardPanel1.Margin = new Padding(0);
-            cardPanel1.MaximumSize = new Size(2000, 50);
-            cardPanel1.Name = "cardPanel1";
-            cardPanel1.Padding = new Padding(5);
-            cardPanel1.Size = new Size(1244, 50);
-            cardPanel1.TabIndex = 0;
+            CardConfigAtualSimulacao.BackColor = Color.White;
+            CardConfigAtualSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
+            CardConfigAtualSimulacao.BorderRadius = 5;
+            CardConfigAtualSimulacao.BorderSize = 2;
+            CardConfigAtualSimulacao.Controls.Add(flowLayoutPanel4);
+            CardConfigAtualSimulacao.Dock = DockStyle.Top;
+            CardConfigAtualSimulacao.Location = new Point(0, 0);
+            CardConfigAtualSimulacao.Margin = new Padding(0);
+            CardConfigAtualSimulacao.MaximumSize = new Size(2000, 50);
+            CardConfigAtualSimulacao.Name = "CardConfigAtualSimulacao";
+            CardConfigAtualSimulacao.Padding = new Padding(5);
+            CardConfigAtualSimulacao.Size = new Size(1244, 50);
+            CardConfigAtualSimulacao.TabIndex = 0;
             // 
             // flowLayoutPanel4
             // 
@@ -1186,7 +1206,9 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1280, 720);
             Name = "NewFormDesign";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SimuHeap";
+            Load += NewFormDesign_Load;
             flowLayoutPanel1.ResumeLayout(false);
             MenuTabControl.ResumeLayout(false);
             TabSimulacao.ResumeLayout(false);
@@ -1204,13 +1226,13 @@
             Panel_Simulacao.ResumeLayout(false);
             Panel_Simulacao_Estruturas.ResumeLayout(false);
             Panel_Simulacao_2.ResumeLayout(false);
-            cardPanel3.ResumeLayout(false);
+            CardPanelSegmentos.ResumeLayout(false);
             cardPanel4.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
             panel5.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            cardPanel2.ResumeLayout(false);
+            CardListaBlocosLivres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)styledDataGridView1).EndInit();
             panel4.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
@@ -1221,7 +1243,7 @@
             ((System.ComponentModel.ISupportInitialize)DataGridViewEventos).EndInit();
             Panel_OpcoesEventos.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
-            cardPanel1.ResumeLayout(false);
+            CardConfigAtualSimulacao.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
@@ -1258,7 +1280,7 @@
         private Controls.CustomControls.RoundedButton roundedButton7;
         private Controls.CustomControls.RoundedButton roundedButton8;
         private Panel panel3;
-        private Controls.CustomControls.CardPanel cardPanel1;
+        private Controls.CustomControls.CardPanel CardConfigAtualSimulacao;
         private TableLayoutPanel Panel_Simulacao;
         private Panel Panel_Simulacao_Estruturas;
         private TableLayoutPanel Panel_Simulacao_2;
@@ -1281,13 +1303,13 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Controls.CustomControls.CardPanel cardPanel2;
+        private Controls.CustomControls.CardPanel CardListaBlocosLivres;
         private Panel panel4;
         private Controls.CustomControls.StyledDataGridView styledDataGridView1;
         private TableLayoutPanel tableLayoutPanel6;
         private PictureBox pictureBox4;
         private Label label3;
-        private Controls.CustomControls.CardPanel cardPanel3;
+        private Controls.CustomControls.CardPanel CardPanelSegmentos;
         private TableLayoutPanel tableLayoutPanel7;
         private Panel panel5;
         private TableLayoutPanel tableLayoutPanel4;
@@ -1300,5 +1322,6 @@
         private Controls.CustomControls.RoundedButton roundedButton10;
         private Controls.CustomControls.CardPanel cardPanel4;
         private Label label11;
+        private Panel PanelGridHeap;
     }
 }
