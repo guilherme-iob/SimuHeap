@@ -1088,11 +1088,11 @@
             // 
             tab_config.Controls.Add(MenuParametros);
             tab_config.Controls.Add(HabilitarVisualizacaoAvancada);
-            tab_config.Location = new Point(4, 24);
+            tab_config.Location = new Point(4, 30);
             tab_config.Margin = new Padding(4);
             tab_config.Name = "tab_config";
             tab_config.Padding = new Padding(4);
-            tab_config.Size = new Size(1256, 653);
+            tab_config.Size = new Size(1256, 647);
             tab_config.TabIndex = 2;
             tab_config.Text = "Configurações";
             tab_config.UseVisualStyleBackColor = true;
@@ -1117,7 +1117,7 @@
             MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuParametros.Location = new Point(4, 4);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(452, 645);
+            MenuParametros.Size = new Size(452, 639);
             MenuParametros.TabIndex = 1;
             MenuParametros.TabStop = false;
             MenuParametros.Text = "Parâmetros de Simulação";
