@@ -113,9 +113,39 @@ namespace SimuHeap.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icone_config1 {
+            get {
+                object obj = ResourceManager.GetObject("icone_config1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_cubo {
+            get {
+                object obj = ResourceManager.GetObject("icone_cubo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icone_edit {
             get {
                 object obj = ResourceManager.GetObject("icone_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_event_list {
+            get {
+                object obj = ResourceManager.GetObject("icone_event_list", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +176,16 @@ namespace SimuHeap.Properties {
         internal static System.Drawing.Bitmap icone_lista {
             get {
                 object obj = ResourceManager.GetObject("icone_lista", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_memoria {
+            get {
+                object obj = ResourceManager.GetObject("icone_memoria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

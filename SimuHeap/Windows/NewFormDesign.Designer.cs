@@ -76,27 +76,25 @@
             pictureBox6 = new PictureBox();
             CardPanelSegmentos = new SimuHeap.Controls.CustomControls.CardPanel();
             PanelGridHeap = new Panel();
-            CardControlePassosSimulacao = new SimuHeap.Controls.CustomControls.CardPanel();
             tableLayoutPanel7 = new TableLayoutPanel();
             Lbl_PassoAtual = new Label();
             BtnUltimo = new SimuHeap.Controls.CustomControls.RoundedButton();
             BtnProximo = new SimuHeap.Controls.CustomControls.RoundedButton();
             BtnAnterior = new SimuHeap.Controls.CustomControls.RoundedButton();
             BtnPrimeiro = new SimuHeap.Controls.CustomControls.RoundedButton();
-            heapGridControl1 = new SimuHeap.Controls.HeapGridControl();
             panel5 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
-            label10 = new Label();
+            Btn_HelpHeap = new Button();
             pictureBox5 = new PictureBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            Label_Heap = new Label();
+            label10 = new Label();
             CardListaBlocosLivres = new SimuHeap.Controls.CustomControls.CardPanel();
             DataGridViewBlocosLivres = new SimuHeap.Controls.CustomControls.StyledDataGridView();
             panel4 = new Panel();
             tableLayoutPanel6 = new TableLayoutPanel();
             label3 = new Label();
             pictureBox4 = new PictureBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            Btn_HelpHeap = new Button();
-            Label_Heap = new Label();
             CardConfigAtualSimulacao = new SimuHeap.Controls.CustomControls.CardPanel();
             Lbl_SnapshotAtual = new Label();
             pictureBox3 = new PictureBox();
@@ -175,17 +173,16 @@
             tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             CardPanelSegmentos.SuspendLayout();
-            CardControlePassosSimulacao.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             panel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            tableLayoutPanel3.SuspendLayout();
             CardListaBlocosLivres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).BeginInit();
             panel4.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
             CardConfigAtualSimulacao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             TabMetricas.SuspendLayout();
@@ -319,6 +316,7 @@
             tableLayoutPanel1.Controls.Add(panel3, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
@@ -334,18 +332,19 @@
             tableLayoutPanel2.Controls.Add(CardOperacoes, 0, 0);
             tableLayoutPanel2.Controls.Add(CardMenuSimulacao, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Location = new Point(2, 0);
+            tableLayoutPanel2.Margin = new Padding(2, 0, 2, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1250, 94);
+            tableLayoutPanel2.Size = new Size(1252, 100);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // CardOperacoes
             // 
             CardOperacoes.BackColor = Color.White;
             CardOperacoes.BorderColor = Color.FromArgb(225, 229, 235);
-            CardOperacoes.BorderSize = 2;
+            CardOperacoes.BorderSize = 0;
             CardOperacoes.Controls.Add(FlowPanelOperacoes);
             CardOperacoes.Controls.Add(panel1);
             CardOperacoes.Dock = DockStyle.Fill;
@@ -353,7 +352,7 @@
             CardOperacoes.Margin = new Padding(2);
             CardOperacoes.Name = "CardOperacoes";
             CardOperacoes.Padding = new Padding(7);
-            CardOperacoes.Size = new Size(621, 90);
+            CardOperacoes.Size = new Size(622, 96);
             CardOperacoes.TabIndex = 0;
             // 
             // FlowPanelOperacoes
@@ -365,7 +364,7 @@
             FlowPanelOperacoes.Dock = DockStyle.Fill;
             FlowPanelOperacoes.Location = new Point(7, 37);
             FlowPanelOperacoes.Name = "FlowPanelOperacoes";
-            FlowPanelOperacoes.Size = new Size(607, 46);
+            FlowPanelOperacoes.Size = new Size(608, 52);
             FlowPanelOperacoes.TabIndex = 1;
             FlowPanelOperacoes.WrapContents = false;
             // 
@@ -464,7 +463,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(7, 7);
             panel1.Name = "panel1";
-            panel1.Size = new Size(607, 30);
+            panel1.Size = new Size(608, 30);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -472,17 +471,18 @@
             label1.BackColor = Color.Transparent;
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(75, 85, 105);
             label1.Location = new Point(30, 0);
             label1.Name = "label1";
-            label1.Size = new Size(577, 30);
+            label1.Size = new Size(578, 30);
             label1.TabIndex = 1;
             label1.Text = "Operações de Alocação";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.icone_play;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.BackgroundImage = Properties.Resources.icone_cubo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
@@ -494,15 +494,15 @@
             // 
             CardMenuSimulacao.BackColor = Color.White;
             CardMenuSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
-            CardMenuSimulacao.BorderSize = 2;
+            CardMenuSimulacao.BorderSize = 0;
             CardMenuSimulacao.Controls.Add(flowLayoutPanel3);
             CardMenuSimulacao.Controls.Add(panel2);
             CardMenuSimulacao.Dock = DockStyle.Fill;
-            CardMenuSimulacao.Location = new Point(627, 2);
+            CardMenuSimulacao.Location = new Point(628, 2);
             CardMenuSimulacao.Margin = new Padding(2);
             CardMenuSimulacao.Name = "CardMenuSimulacao";
             CardMenuSimulacao.Padding = new Padding(7);
-            CardMenuSimulacao.Size = new Size(621, 90);
+            CardMenuSimulacao.Size = new Size(622, 96);
             CardMenuSimulacao.TabIndex = 1;
             // 
             // flowLayoutPanel3
@@ -514,7 +514,7 @@
             flowLayoutPanel3.Dock = DockStyle.Fill;
             flowLayoutPanel3.Location = new Point(7, 37);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(607, 46);
+            flowLayoutPanel3.Size = new Size(608, 52);
             flowLayoutPanel3.TabIndex = 2;
             flowLayoutPanel3.WrapContents = false;
             // 
@@ -613,16 +613,17 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(7, 7);
             panel2.Name = "panel2";
-            panel2.Size = new Size(607, 30);
+            panel2.Size = new Size(608, 30);
             panel2.TabIndex = 1;
             // 
             // label2
             // 
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(75, 85, 105);
             label2.Location = new Point(30, 0);
             label2.Name = "label2";
-            label2.Size = new Size(577, 30);
+            label2.Size = new Size(578, 30);
             label2.TabIndex = 1;
             label2.Text = "Controle da Simulação";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -665,7 +666,6 @@
             // Panel_Simulacao_Estruturas
             // 
             Panel_Simulacao_Estruturas.Controls.Add(Panel_Simulacao_2);
-            Panel_Simulacao_Estruturas.Controls.Add(tableLayoutPanel3);
             Panel_Simulacao_Estruturas.Dock = DockStyle.Fill;
             Panel_Simulacao_Estruturas.Location = new Point(3, 3);
             Panel_Simulacao_Estruturas.Name = "Panel_Simulacao_Estruturas";
@@ -682,11 +682,11 @@
             Panel_Simulacao_2.Controls.Add(CardPanelSegmentos, 1, 0);
             Panel_Simulacao_2.Controls.Add(CardListaBlocosLivres, 0, 0);
             Panel_Simulacao_2.Dock = DockStyle.Fill;
-            Panel_Simulacao_2.Location = new Point(0, 37);
+            Panel_Simulacao_2.Location = new Point(0, 0);
             Panel_Simulacao_2.Name = "Panel_Simulacao_2";
             Panel_Simulacao_2.RowCount = 1;
             Panel_Simulacao_2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_Simulacao_2.Size = new Size(1244, 433);
+            Panel_Simulacao_2.Size = new Size(1244, 470);
             Panel_Simulacao_2.TabIndex = 1;
             // 
             // CardEventos
@@ -700,10 +700,10 @@
             CardEventos.Controls.Add(tableLayoutPanel5);
             CardEventos.Dock = DockStyle.Fill;
             CardEventos.Location = new Point(872, 0);
-            CardEventos.Margin = new Padding(2, 0, 2, 0);
+            CardEventos.Margin = new Padding(2, 0, 0, 0);
             CardEventos.Name = "CardEventos";
             CardEventos.Padding = new Padding(5);
-            CardEventos.Size = new Size(370, 433);
+            CardEventos.Size = new Size(372, 470);
             CardEventos.TabIndex = 2;
             // 
             // DataGridViewEventos
@@ -747,7 +747,7 @@
             DataGridViewEventos.RowTemplate.Height = 42;
             DataGridViewEventos.ScrollBars = ScrollBars.Vertical;
             DataGridViewEventos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewEventos.Size = new Size(360, 323);
+            DataGridViewEventos.Size = new Size(362, 360);
             DataGridViewEventos.TabIndex = 1;
             // 
             // Panel_OpcoesEventos
@@ -761,12 +761,12 @@
             Panel_OpcoesEventos.Controls.Add(Btn_DescerEvento, 1, 0);
             Panel_OpcoesEventos.Controls.Add(Btn_SubirEvento, 0, 0);
             Panel_OpcoesEventos.Dock = DockStyle.Bottom;
-            Panel_OpcoesEventos.Location = new Point(5, 378);
+            Panel_OpcoesEventos.Location = new Point(5, 415);
             Panel_OpcoesEventos.MaximumSize = new Size(2000, 50);
             Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
             Panel_OpcoesEventos.RowCount = 1;
             Panel_OpcoesEventos.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_OpcoesEventos.Size = new Size(360, 50);
+            Panel_OpcoesEventos.Size = new Size(362, 50);
             Panel_OpcoesEventos.TabIndex = 1;
             // 
             // Btn_ExcluirEvento
@@ -842,24 +842,25 @@
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Size = new Size(360, 50);
+            tableLayoutPanel5.Size = new Size(362, 50);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // label12
             // 
             label12.Dock = DockStyle.Fill;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.FromArgb(30, 41, 59);
             label12.ImageAlign = ContentAlignment.MiddleLeft;
             label12.Location = new Point(53, 0);
             label12.Name = "label12";
-            label12.Size = new Size(304, 50);
+            label12.Size = new Size(306, 50);
             label12.TabIndex = 2;
             label12.Text = "Eventos";
             label12.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox6
             // 
-            pictureBox6.BackgroundImage = Properties.Resources.icone_lista;
+            pictureBox6.BackgroundImage = Properties.Resources.icone_event_list;
             pictureBox6.BackgroundImageLayout = ImageLayout.Center;
             pictureBox6.Dock = DockStyle.Fill;
             pictureBox6.Location = new Point(0, 0);
@@ -876,44 +877,27 @@
             CardPanelSegmentos.BorderRadius = 5;
             CardPanelSegmentos.BorderSize = 2;
             CardPanelSegmentos.Controls.Add(PanelGridHeap);
-            CardPanelSegmentos.Controls.Add(CardControlePassosSimulacao);
-            CardPanelSegmentos.Controls.Add(heapGridControl1);
+            CardPanelSegmentos.Controls.Add(tableLayoutPanel7);
             CardPanelSegmentos.Controls.Add(panel5);
             CardPanelSegmentos.Dock = DockStyle.Fill;
-            CardPanelSegmentos.Location = new Point(250, 0);
-            CardPanelSegmentos.Margin = new Padding(2, 0, 2, 0);
+            CardPanelSegmentos.Location = new Point(253, 0);
+            CardPanelSegmentos.Margin = new Padding(5, 0, 5, 0);
             CardPanelSegmentos.Name = "CardPanelSegmentos";
             CardPanelSegmentos.Padding = new Padding(5);
-            CardPanelSegmentos.Size = new Size(618, 433);
+            CardPanelSegmentos.Size = new Size(612, 470);
             CardPanelSegmentos.TabIndex = 2;
             // 
             // PanelGridHeap
             // 
-            PanelGridHeap.AutoScroll = true;
             PanelGridHeap.Dock = DockStyle.Fill;
-            PanelGridHeap.Location = new Point(5, 55);
+            PanelGridHeap.Location = new Point(5, 85);
             PanelGridHeap.Name = "PanelGridHeap";
-            PanelGridHeap.Size = new Size(608, 323);
-            PanelGridHeap.TabIndex = 4;
-            // 
-            // CardControlePassosSimulacao
-            // 
-            CardControlePassosSimulacao.BackColor = Color.WhiteSmoke;
-            CardControlePassosSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
-            CardControlePassosSimulacao.BorderRadius = 5;
-            CardControlePassosSimulacao.Controls.Add(tableLayoutPanel7);
-            CardControlePassosSimulacao.Dock = DockStyle.Bottom;
-            CardControlePassosSimulacao.Location = new Point(5, 378);
-            CardControlePassosSimulacao.Margin = new Padding(0);
-            CardControlePassosSimulacao.MaximumSize = new Size(2000, 50);
-            CardControlePassosSimulacao.Name = "CardControlePassosSimulacao";
-            CardControlePassosSimulacao.Padding = new Padding(5);
-            CardControlePassosSimulacao.Size = new Size(608, 50);
-            CardControlePassosSimulacao.TabIndex = 3;
+            PanelGridHeap.Size = new Size(602, 340);
+            PanelGridHeap.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
-            tableLayoutPanel7.BackColor = Color.WhiteSmoke;
+            tableLayoutPanel7.BackColor = Color.White;
             tableLayoutPanel7.ColumnCount = 5;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
@@ -925,12 +909,12 @@
             tableLayoutPanel7.Controls.Add(BtnProximo, 3, 0);
             tableLayoutPanel7.Controls.Add(BtnAnterior, 1, 0);
             tableLayoutPanel7.Controls.Add(BtnPrimeiro, 0, 0);
-            tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(5, 5);
+            tableLayoutPanel7.Dock = DockStyle.Bottom;
+            tableLayoutPanel7.Location = new Point(5, 425);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(598, 40);
+            tableLayoutPanel7.Size = new Size(602, 40);
             tableLayoutPanel7.TabIndex = 0;
             // 
             // Lbl_PassoAtual
@@ -940,7 +924,7 @@
             Lbl_PassoAtual.ImageAlign = ContentAlignment.MiddleLeft;
             Lbl_PassoAtual.Location = new Point(143, 0);
             Lbl_PassoAtual.Name = "Lbl_PassoAtual";
-            Lbl_PassoAtual.Size = new Size(312, 40);
+            Lbl_PassoAtual.Size = new Size(316, 40);
             Lbl_PassoAtual.TabIndex = 5;
             Lbl_PassoAtual.Text = "Passo 0/12";
             Lbl_PassoAtual.TextAlign = ContentAlignment.MiddleCenter;
@@ -956,7 +940,7 @@
             BtnUltimo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             BtnUltimo.ForeColor = Color.Black;
             BtnUltimo.Image = Properties.Resources.ultimo;
-            BtnUltimo.Location = new Point(531, 3);
+            BtnUltimo.Location = new Point(535, 3);
             BtnUltimo.Name = "BtnUltimo";
             BtnUltimo.Padding = new Padding(10, 0, 10, 0);
             BtnUltimo.Size = new Size(64, 34);
@@ -976,7 +960,7 @@
             BtnProximo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             BtnProximo.ForeColor = Color.Black;
             BtnProximo.Image = Properties.Resources.proximo;
-            BtnProximo.Location = new Point(461, 3);
+            BtnProximo.Location = new Point(465, 3);
             BtnProximo.Name = "BtnProximo";
             BtnProximo.Padding = new Padding(10, 0, 10, 0);
             BtnProximo.Size = new Size(64, 34);
@@ -1025,61 +1009,92 @@
             BtnPrimeiro.UseVisualStyleBackColor = false;
             BtnPrimeiro.Click += BtnPrimeiro_Click;
             // 
-            // heapGridControl1
-            // 
-            heapGridControl1.BackColor = Color.Transparent;
-            heapGridControl1.Location = new Point(5, 55);
-            heapGridControl1.Name = "heapGridControl1";
-            heapGridControl1.Size = new Size(342, 149);
-            heapGridControl1.TabIndex = 2;
-            // 
             // panel5
             // 
             panel5.Controls.Add(tableLayoutPanel4);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(5, 5);
             panel5.Name = "panel5";
-            panel5.Size = new Size(608, 50);
+            panel5.Size = new Size(602, 80);
             panel5.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnCount = 3;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(label10, 1, 0);
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.Controls.Add(Btn_HelpHeap, 2, 0);
             tableLayoutPanel4.Controls.Add(pictureBox5, 0, 0);
+            tableLayoutPanel4.Controls.Add(tableLayoutPanel3, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(608, 50);
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(602, 80);
             tableLayoutPanel4.TabIndex = 0;
             // 
-            // label10
+            // Btn_HelpHeap
             // 
-            label10.Dock = DockStyle.Fill;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ImageAlign = ContentAlignment.MiddleLeft;
-            label10.Location = new Point(53, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(552, 50);
-            label10.TabIndex = 2;
-            label10.Text = "Segmentos (Blocos)";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
+            Btn_HelpHeap.Anchor = AnchorStyles.None;
+            Btn_HelpHeap.BackgroundImage = Properties.Resources.question;
+            Btn_HelpHeap.BackgroundImageLayout = ImageLayout.Stretch;
+            Btn_HelpHeap.Location = new Point(564, 27);
+            Btn_HelpHeap.Name = "Btn_HelpHeap";
+            Btn_HelpHeap.Size = new Size(25, 25);
+            Btn_HelpHeap.TabIndex = 5;
+            Btn_HelpHeap.UseVisualStyleBackColor = true;
             // 
             // pictureBox5
             // 
-            pictureBox5.BackgroundImage = Properties.Resources.icone_bloco;
+            pictureBox5.BackgroundImage = Properties.Resources.icone_memoria;
             pictureBox5.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox5.Dock = DockStyle.Fill;
             pictureBox5.Location = new Point(0, 0);
             pictureBox5.Margin = new Padding(0);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(50, 50);
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(Label_Heap, 0, 0);
+            tableLayoutPanel3.Controls.Add(label10, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(53, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(496, 74);
+            tableLayoutPanel3.TabIndex = 6;
+            // 
+            // Label_Heap
+            // 
+            Label_Heap.Dock = DockStyle.Fill;
+            Label_Heap.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Label_Heap.ForeColor = Color.FromArgb(30, 41, 59);
+            Label_Heap.Location = new Point(3, 0);
+            Label_Heap.Name = "Label_Heap";
+            Label_Heap.Size = new Size(490, 37);
+            Label_Heap.TabIndex = 0;
+            Label_Heap.Text = "HEAP";
+            Label_Heap.TextAlign = ContentAlignment.BottomLeft;
+            // 
+            // label10
+            // 
+            label10.Dock = DockStyle.Fill;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.FromArgb(75, 85, 105);
+            label10.ImageAlign = ContentAlignment.MiddleLeft;
+            label10.Location = new Point(3, 37);
+            label10.Name = "label10";
+            label10.Size = new Size(490, 37);
+            label10.TabIndex = 2;
+            label10.Text = "Segmentos (Blocos)";
             // 
             // CardListaBlocosLivres
             // 
@@ -1090,11 +1105,11 @@
             CardListaBlocosLivres.Controls.Add(DataGridViewBlocosLivres);
             CardListaBlocosLivres.Controls.Add(panel4);
             CardListaBlocosLivres.Dock = DockStyle.Fill;
-            CardListaBlocosLivres.Location = new Point(2, 0);
-            CardListaBlocosLivres.Margin = new Padding(2, 0, 2, 0);
+            CardListaBlocosLivres.Location = new Point(0, 0);
+            CardListaBlocosLivres.Margin = new Padding(0, 0, 2, 0);
             CardListaBlocosLivres.Name = "CardListaBlocosLivres";
             CardListaBlocosLivres.Padding = new Padding(5);
-            CardListaBlocosLivres.Size = new Size(244, 433);
+            CardListaBlocosLivres.Size = new Size(246, 470);
             CardListaBlocosLivres.TabIndex = 1;
             // 
             // DataGridViewBlocosLivres
@@ -1138,7 +1153,7 @@
             DataGridViewBlocosLivres.RowTemplate.Height = 42;
             DataGridViewBlocosLivres.ScrollBars = ScrollBars.Vertical;
             DataGridViewBlocosLivres.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewBlocosLivres.Size = new Size(234, 373);
+            DataGridViewBlocosLivres.Size = new Size(236, 410);
             DataGridViewBlocosLivres.TabIndex = 1;
             // 
             // panel4
@@ -1147,7 +1162,7 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(5, 5);
             panel4.Name = "panel4";
-            panel4.Size = new Size(234, 50);
+            panel4.Size = new Size(236, 50);
             panel4.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -1162,17 +1177,18 @@
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(234, 50);
+            tableLayoutPanel6.Size = new Size(236, 50);
             tableLayoutPanel6.TabIndex = 0;
             // 
             // label3
             // 
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(30, 41, 59);
             label3.ImageAlign = ContentAlignment.MiddleLeft;
             label3.Location = new Point(53, 0);
             label3.Name = "label3";
-            label3.Size = new Size(178, 50);
+            label3.Size = new Size(180, 50);
             label3.TabIndex = 2;
             label3.Text = "Lista de Blocos Livres";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -1189,55 +1205,17 @@
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.Controls.Add(Btn_HelpHeap, 2, 0);
-            tableLayoutPanel3.Controls.Add(Label_Heap, 1, 0);
-            tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(1244, 37);
-            tableLayoutPanel3.TabIndex = 2;
-            // 
-            // Btn_HelpHeap
-            // 
-            Btn_HelpHeap.Anchor = AnchorStyles.None;
-            Btn_HelpHeap.BackgroundImage = Properties.Resources.question;
-            Btn_HelpHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpHeap.Location = new Point(1206, 6);
-            Btn_HelpHeap.Name = "Btn_HelpHeap";
-            Btn_HelpHeap.Size = new Size(25, 25);
-            Btn_HelpHeap.TabIndex = 5;
-            Btn_HelpHeap.UseVisualStyleBackColor = true;
-            // 
-            // Label_Heap
-            // 
-            Label_Heap.Dock = DockStyle.Fill;
-            Label_Heap.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_Heap.Location = new Point(53, 0);
-            Label_Heap.Name = "Label_Heap";
-            Label_Heap.Size = new Size(1138, 37);
-            Label_Heap.TabIndex = 0;
-            Label_Heap.Text = "HEAP";
-            Label_Heap.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // CardConfigAtualSimulacao
             // 
             CardConfigAtualSimulacao.BackColor = Color.White;
             CardConfigAtualSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
             CardConfigAtualSimulacao.BorderRadius = 5;
-            CardConfigAtualSimulacao.BorderSize = 2;
+            CardConfigAtualSimulacao.BorderSize = 0;
             CardConfigAtualSimulacao.Controls.Add(Lbl_SnapshotAtual);
             CardConfigAtualSimulacao.Controls.Add(pictureBox3);
             CardConfigAtualSimulacao.Dock = DockStyle.Top;
             CardConfigAtualSimulacao.Location = new Point(0, 0);
-            CardConfigAtualSimulacao.Margin = new Padding(0);
+            CardConfigAtualSimulacao.Margin = new Padding(2, 0, 2, 0);
             CardConfigAtualSimulacao.MaximumSize = new Size(2000, 50);
             CardConfigAtualSimulacao.Name = "CardConfigAtualSimulacao";
             CardConfigAtualSimulacao.Padding = new Padding(5);
@@ -1248,6 +1226,7 @@
             // 
             Lbl_SnapshotAtual.Dock = DockStyle.Fill;
             Lbl_SnapshotAtual.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Lbl_SnapshotAtual.ForeColor = Color.FromArgb(75, 85, 105);
             Lbl_SnapshotAtual.Location = new Point(45, 5);
             Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
             Lbl_SnapshotAtual.Size = new Size(1200, 40);
@@ -1257,8 +1236,8 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.BackgroundImage = Properties.Resources.icone_config;
-            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox3.BackgroundImage = Properties.Resources.icone_config1;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox3.Dock = DockStyle.Left;
             pictureBox3.Location = new Point(5, 5);
             pictureBox3.MaximumSize = new Size(40, 40);
@@ -1966,17 +1945,16 @@
             tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             CardPanelSegmentos.ResumeLayout(false);
-            CardControlePassosSimulacao.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
             panel5.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            tableLayoutPanel3.ResumeLayout(false);
             CardListaBlocosLivres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).EndInit();
             panel4.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
             CardConfigAtualSimulacao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             TabMetricas.ResumeLayout(false);
@@ -2037,7 +2015,6 @@
         private TableLayoutPanel Panel_Simulacao;
         private Panel Panel_Simulacao_Estruturas;
         private TableLayoutPanel Panel_Simulacao_2;
-        private TableLayoutPanel tableLayoutPanel3;
         private Button Btn_HelpHeap;
         private Label Label_Heap;
         private PictureBox pictureBox3;
@@ -2053,14 +2030,11 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label label10;
         private PictureBox pictureBox5;
-        private Controls.HeapGridControl heapGridControl1;
         private Controls.CustomControls.RoundedButton BtnPrimeiro;
         private Controls.CustomControls.RoundedButton BtnUltimo;
         private Controls.CustomControls.RoundedButton BtnProximo;
         private Controls.CustomControls.RoundedButton BtnAnterior;
-        private Controls.CustomControls.CardPanel CardControlePassosSimulacao;
         private Label Lbl_PassoAtual;
-        private Panel PanelGridHeap;
         private Controls.CustomControls.CardPanel CardEventos;
         private Controls.CustomControls.StyledDataGridView DataGridViewEventos;
         private TableLayoutPanel tableLayoutPanel5;
@@ -2121,5 +2095,7 @@
         private Button Btn_HelpTamHeap;
         private CheckBox HabilitarVisualizacaoAvancada;
         private Label Lbl_SnapshotAtual;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Panel PanelGridHeap;
     }
 }
