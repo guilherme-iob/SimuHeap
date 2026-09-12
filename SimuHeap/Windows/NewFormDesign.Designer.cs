@@ -84,11 +84,10 @@
             BtnPrimeiro = new SimuHeap.Controls.CustomControls.RoundedButton();
             panel5 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
-            Btn_HelpHeap = new Button();
-            pictureBox5 = new PictureBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            Label_Heap = new Label();
             label10 = new Label();
+            pictureBox5 = new PictureBox();
+            Label_Heap = new Label();
+            Btn_HelpHeap = new SimuHeap.Controls.CustomControls.HelpButton();
             CardListaBlocosLivres = new SimuHeap.Controls.CustomControls.CardPanel();
             DataGridViewBlocosLivres = new SimuHeap.Controls.CustomControls.StyledDataGridView();
             panel4 = new Panel();
@@ -96,6 +95,8 @@
             label3 = new Label();
             pictureBox4 = new PictureBox();
             CardConfigAtualSimulacao = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            Lbl_ConfiguracoesAtuais = new Label();
             Lbl_SnapshotAtual = new Label();
             pictureBox3 = new PictureBox();
             TabMetricas = new TabPage();
@@ -126,30 +127,94 @@
             Lbl_BytesLivres = new Label();
             Lbl_BytesOcupados = new Label();
             TabConfiguracoes = new TabPage();
-            MenuParametros = new GroupBox();
-            UsarLegendaDetalhada = new CheckBox();
-            GroupBoxCasosDeUsoSimulacao = new GroupBox();
-            UsarCaso5 = new RadioButton();
-            UsarCaso4 = new RadioButton();
-            UsarCasoAltaFragExterna = new RadioButton();
-            UsarCasoAltaFragInterna = new RadioButton();
-            UsarCaso3 = new RadioButton();
-            UsarCaso2 = new RadioButton();
-            UsarCaso1 = new RadioButton();
-            UsarNenhumCaso = new RadioButton();
-            Label_AlgoritmosAlocacao = new Label();
-            Btn_HelpAlgoritmosAlocacao = new Button();
-            Btn_HelpSplit = new Button();
-            HabilitarSplit = new CheckBox();
-            UseFirstFit = new RadioButton();
-            HabilitarCoalesing = new CheckBox();
+            TableLayoutPrincipalConfig = new TableLayoutPanel();
+            MenuParametros = new TableLayoutPanel();
+            cardPanel1 = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel24 = new TableLayoutPanel();
+            UsarCasoAltaFragInterna = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarCasoAltaFragExterna = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            panel10 = new Panel();
+            tableLayoutPanel18 = new TableLayoutPanel();
+            helpButton7 = new SimuHeap.Controls.CustomControls.HelpButton();
+            label9 = new Label();
+            pictureBox12 = new PictureBox();
+            CardPanelConfigCasosUso = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel23 = new TableLayoutPanel();
+            UsarCaso5 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarNenhumCaso = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarCaso4 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarCaso3 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarCaso1 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UsarCaso2 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            panel9 = new Panel();
+            tableLayoutPanel17 = new TableLayoutPanel();
+            helpButton6 = new SimuHeap.Controls.CustomControls.HelpButton();
+            label8 = new Label();
+            pictureBox11 = new PictureBox();
+            CardPanelConfigVisualizacao = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel21 = new TableLayoutPanel();
+            Btn_HelpLegendasDetalhadas = new SimuHeap.Controls.CustomControls.HelpButton();
+            Btn_HelpVisualizacaoAvancada = new SimuHeap.Controls.CustomControls.HelpButton();
+            HabilitarVisualizacaoAvancada = new SimuHeap.Controls.CustomControls.StyledCheckBox();
+            UsarLegendaDetalhada = new SimuHeap.Controls.CustomControls.StyledCheckBox();
+            panel8 = new Panel();
+            tableLayoutPanel16 = new TableLayoutPanel();
+            label7 = new Label();
+            pictureBox10 = new PictureBox();
+            CardPanelConfigAlgoritmos = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel19 = new TableLayoutPanel();
+            UseWorstFit = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UseFirstFit = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            UseBestFit = new SimuHeap.Controls.CustomControls.StyledRadioButton();
+            panel7 = new Panel();
+            tableLayoutPanel15 = new TableLayoutPanel();
+            Btn_HelpAlgoritmosAlocacao = new SimuHeap.Controls.CustomControls.HelpButton();
+            label6 = new Label();
+            pictureBox9 = new PictureBox();
+            CardPanelConfigGerenciamento = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel22 = new TableLayoutPanel();
+            Btn_HelpSplit = new SimuHeap.Controls.CustomControls.HelpButton();
+            HabilitarCoalesing = new SimuHeap.Controls.CustomControls.StyledCheckBox();
+            Btn_HelpCoalescing = new SimuHeap.Controls.CustomControls.HelpButton();
+            HabilitarSplit = new SimuHeap.Controls.CustomControls.StyledCheckBox();
+            panel6 = new Panel();
+            tableLayoutPanel14 = new TableLayoutPanel();
+            label5 = new Label();
+            pictureBox8 = new PictureBox();
+            CardPanelConfigMemoria = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel25 = new TableLayoutPanel();
             SelectHeapSize = new ComboBox();
-            Btn_HepCoalescing = new Button();
-            UseBestFit = new RadioButton();
+            Btn_HelpTamHeap = new SimuHeap.Controls.CustomControls.HelpButton();
             Label_TamanhoHeap = new Label();
-            UseWorstFit = new RadioButton();
-            Btn_HelpTamHeap = new Button();
-            HabilitarVisualizacaoAvancada = new CheckBox();
+            PanelDivisor1 = new Panel();
+            tableLayoutPanel13 = new TableLayoutPanel();
+            label4 = new Label();
+            pictureBox7 = new PictureBox();
+            CardInfoConfiguracoes = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel20 = new TableLayoutPanel();
+            tableLayoutPanel32 = new TableLayoutPanel();
+            label18 = new Label();
+            pictureBox19 = new PictureBox();
+            tableLayoutPanel31 = new TableLayoutPanel();
+            label17 = new Label();
+            pictureBox18 = new PictureBox();
+            tableLayoutPanel30 = new TableLayoutPanel();
+            label16 = new Label();
+            pictureBox17 = new PictureBox();
+            tableLayoutPanel29 = new TableLayoutPanel();
+            label15 = new Label();
+            pictureBox16 = new PictureBox();
+            tableLayoutPanel28 = new TableLayoutPanel();
+            label14 = new Label();
+            pictureBox15 = new PictureBox();
+            tableLayoutPanel27 = new TableLayoutPanel();
+            label13 = new Label();
+            pictureBox14 = new PictureBox();
+            cardPanel2 = new SimuHeap.Controls.CustomControls.CardPanel();
+            label19 = new Label();
+            tableLayoutPanel26 = new TableLayoutPanel();
+            label11 = new Label();
+            pictureBox13 = new PictureBox();
             flowLayoutPanel1.SuspendLayout();
             MenuTabControl.SuspendLayout();
             TabSimulacao.SuspendLayout();
@@ -177,13 +242,13 @@
             panel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
             CardListaBlocosLivres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).BeginInit();
             panel4.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             CardConfigAtualSimulacao.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             TabMetricas.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
@@ -196,8 +261,49 @@
             groupBox1.SuspendLayout();
             tableLayoutPanel12.SuspendLayout();
             TabConfiguracoes.SuspendLayout();
+            TableLayoutPrincipalConfig.SuspendLayout();
             MenuParametros.SuspendLayout();
-            GroupBoxCasosDeUsoSimulacao.SuspendLayout();
+            cardPanel1.SuspendLayout();
+            tableLayoutPanel24.SuspendLayout();
+            tableLayoutPanel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
+            CardPanelConfigCasosUso.SuspendLayout();
+            tableLayoutPanel23.SuspendLayout();
+            tableLayoutPanel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            CardPanelConfigVisualizacao.SuspendLayout();
+            tableLayoutPanel21.SuspendLayout();
+            tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            CardPanelConfigAlgoritmos.SuspendLayout();
+            tableLayoutPanel19.SuspendLayout();
+            tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            CardPanelConfigGerenciamento.SuspendLayout();
+            tableLayoutPanel22.SuspendLayout();
+            tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            CardPanelConfigMemoria.SuspendLayout();
+            tableLayoutPanel25.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            CardInfoConfiguracoes.SuspendLayout();
+            tableLayoutPanel20.SuspendLayout();
+            tableLayoutPanel32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).BeginInit();
+            tableLayoutPanel31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
+            tableLayoutPanel30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
+            tableLayoutPanel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
+            tableLayoutPanel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            tableLayoutPanel27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            cardPanel2.SuspendLayout();
+            tableLayoutPanel26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -219,18 +325,19 @@
             Btn_TabSimulacao.FlatAppearance.MouseDownBackColor = Color.FromArgb(235, 240, 247);
             Btn_TabSimulacao.FlatAppearance.MouseOverBackColor = Color.FromArgb(245, 248, 252);
             Btn_TabSimulacao.FlatStyle = FlatStyle.Flat;
-            Btn_TabSimulacao.Font = new Font("Segoe UI", 10F);
+            Btn_TabSimulacao.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
             Btn_TabSimulacao.ForeColor = Color.FromArgb(75, 85, 105);
             Btn_TabSimulacao.Image = Properties.Resources.icone_play;
             Btn_TabSimulacao.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_TabSimulacao.Location = new Point(0, 0);
             Btn_TabSimulacao.Margin = new Padding(0);
-            Btn_TabSimulacao.MaximumSize = new Size(160, 40);
+            Btn_TabSimulacao.MaximumSize = new Size(190, 40);
             Btn_TabSimulacao.Name = "Btn_TabSimulacao";
             Btn_TabSimulacao.Padding = new Padding(14, 0, 14, 0);
-            Btn_TabSimulacao.Size = new Size(160, 40);
+            Btn_TabSimulacao.Size = new Size(190, 40);
             Btn_TabSimulacao.TabIndex = 0;
             Btn_TabSimulacao.Text = "Simulação";
+            Btn_TabSimulacao.TextAlign = ContentAlignment.MiddleLeft;
             Btn_TabSimulacao.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_TabSimulacao.UseVisualStyleBackColor = false;
             Btn_TabSimulacao.Click += Btn_TabSimulacao_Click;
@@ -242,18 +349,19 @@
             Btn_TabMetricas.FlatAppearance.MouseDownBackColor = Color.FromArgb(235, 240, 247);
             Btn_TabMetricas.FlatAppearance.MouseOverBackColor = Color.FromArgb(245, 248, 252);
             Btn_TabMetricas.FlatStyle = FlatStyle.Flat;
-            Btn_TabMetricas.Font = new Font("Segoe UI", 10F);
+            Btn_TabMetricas.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
             Btn_TabMetricas.ForeColor = Color.FromArgb(75, 85, 105);
             Btn_TabMetricas.Image = Properties.Resources.icone_grafico;
             Btn_TabMetricas.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_TabMetricas.Location = new Point(160, 0);
+            Btn_TabMetricas.Location = new Point(190, 0);
             Btn_TabMetricas.Margin = new Padding(0);
-            Btn_TabMetricas.MaximumSize = new Size(160, 40);
+            Btn_TabMetricas.MaximumSize = new Size(190, 40);
             Btn_TabMetricas.Name = "Btn_TabMetricas";
             Btn_TabMetricas.Padding = new Padding(14, 0, 14, 0);
-            Btn_TabMetricas.Size = new Size(160, 40);
+            Btn_TabMetricas.Size = new Size(190, 40);
             Btn_TabMetricas.TabIndex = 1;
             Btn_TabMetricas.Text = "Métricas";
+            Btn_TabMetricas.TextAlign = ContentAlignment.MiddleLeft;
             Btn_TabMetricas.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_TabMetricas.UseVisualStyleBackColor = false;
             Btn_TabMetricas.Click += Btn_TabMetricas_Click;
@@ -265,18 +373,19 @@
             Btn_TabConfiguracoes.FlatAppearance.MouseDownBackColor = Color.FromArgb(235, 240, 247);
             Btn_TabConfiguracoes.FlatAppearance.MouseOverBackColor = Color.FromArgb(245, 248, 252);
             Btn_TabConfiguracoes.FlatStyle = FlatStyle.Flat;
-            Btn_TabConfiguracoes.Font = new Font("Segoe UI", 10F);
+            Btn_TabConfiguracoes.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
             Btn_TabConfiguracoes.ForeColor = Color.FromArgb(75, 85, 105);
             Btn_TabConfiguracoes.Image = Properties.Resources.icone_config;
             Btn_TabConfiguracoes.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_TabConfiguracoes.Location = new Point(320, 0);
+            Btn_TabConfiguracoes.Location = new Point(380, 0);
             Btn_TabConfiguracoes.Margin = new Padding(0);
-            Btn_TabConfiguracoes.MaximumSize = new Size(160, 40);
+            Btn_TabConfiguracoes.MaximumSize = new Size(190, 40);
             Btn_TabConfiguracoes.Name = "Btn_TabConfiguracoes";
             Btn_TabConfiguracoes.Padding = new Padding(14, 0, 14, 0);
-            Btn_TabConfiguracoes.Size = new Size(160, 40);
+            Btn_TabConfiguracoes.Size = new Size(190, 40);
             Btn_TabConfiguracoes.TabIndex = 2;
             Btn_TabConfiguracoes.Text = "Configurações";
+            Btn_TabConfiguracoes.TextAlign = ContentAlignment.MiddleLeft;
             Btn_TabConfiguracoes.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_TabConfiguracoes.UseVisualStyleBackColor = false;
             Btn_TabConfiguracoes.Click += Btn_TabConfiguracoes_Click;
@@ -299,6 +408,7 @@
             // 
             // TabSimulacao
             // 
+            TabSimulacao.BackColor = Color.FromArgb(245, 246, 248);
             TabSimulacao.Controls.Add(tableLayoutPanel1);
             TabSimulacao.Location = new Point(4, 5);
             TabSimulacao.Margin = new Padding(0);
@@ -306,7 +416,6 @@
             TabSimulacao.Size = new Size(1256, 632);
             TabSimulacao.TabIndex = 0;
             TabSimulacao.Text = "Simulacao";
-            TabSimulacao.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -319,7 +428,7 @@
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 95F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(1256, 632);
             tableLayoutPanel1.TabIndex = 0;
@@ -337,14 +446,13 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1252, 100);
+            tableLayoutPanel2.Size = new Size(1252, 95);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // CardOperacoes
             // 
             CardOperacoes.BackColor = Color.White;
-            CardOperacoes.BorderColor = Color.FromArgb(225, 229, 235);
-            CardOperacoes.BorderSize = 0;
+            CardOperacoes.BorderColor = Color.FromArgb(221, 225, 230);
             CardOperacoes.Controls.Add(FlowPanelOperacoes);
             CardOperacoes.Controls.Add(panel1);
             CardOperacoes.Dock = DockStyle.Fill;
@@ -352,7 +460,7 @@
             CardOperacoes.Margin = new Padding(2);
             CardOperacoes.Name = "CardOperacoes";
             CardOperacoes.Padding = new Padding(7);
-            CardOperacoes.Size = new Size(622, 96);
+            CardOperacoes.Size = new Size(622, 91);
             CardOperacoes.TabIndex = 0;
             // 
             // FlowPanelOperacoes
@@ -364,7 +472,7 @@
             FlowPanelOperacoes.Dock = DockStyle.Fill;
             FlowPanelOperacoes.Location = new Point(7, 37);
             FlowPanelOperacoes.Name = "FlowPanelOperacoes";
-            FlowPanelOperacoes.Size = new Size(608, 52);
+            FlowPanelOperacoes.Size = new Size(608, 47);
             FlowPanelOperacoes.TabIndex = 1;
             FlowPanelOperacoes.WrapContents = false;
             // 
@@ -376,7 +484,7 @@
             Btn_Malloc.BorderSize = 2;
             Btn_Malloc.FlatAppearance.BorderSize = 0;
             Btn_Malloc.FlatStyle = FlatStyle.Flat;
-            Btn_Malloc.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_Malloc.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_Malloc.ForeColor = Color.White;
             Btn_Malloc.Image = Properties.Resources.icone_new;
             Btn_Malloc.ImageAlign = ContentAlignment.MiddleLeft;
@@ -398,7 +506,7 @@
             Btn_Calloc.BorderSize = 2;
             Btn_Calloc.FlatAppearance.BorderSize = 0;
             Btn_Calloc.FlatStyle = FlatStyle.Flat;
-            Btn_Calloc.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_Calloc.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_Calloc.ForeColor = Color.White;
             Btn_Calloc.Image = Properties.Resources.icone_new;
             Btn_Calloc.ImageAlign = ContentAlignment.MiddleLeft;
@@ -420,7 +528,7 @@
             Btn_Realloc.BorderSize = 2;
             Btn_Realloc.FlatAppearance.BorderSize = 0;
             Btn_Realloc.FlatStyle = FlatStyle.Flat;
-            Btn_Realloc.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_Realloc.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_Realloc.ForeColor = Color.White;
             Btn_Realloc.Image = Properties.Resources.icone_edit;
             Btn_Realloc.ImageAlign = ContentAlignment.MiddleLeft;
@@ -442,7 +550,7 @@
             Btn_Free.BorderSize = 2;
             Btn_Free.FlatAppearance.BorderSize = 0;
             Btn_Free.FlatStyle = FlatStyle.Flat;
-            Btn_Free.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_Free.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_Free.ForeColor = Color.White;
             Btn_Free.Image = Properties.Resources.icone_free;
             Btn_Free.ImageAlign = ContentAlignment.MiddleLeft;
@@ -470,7 +578,7 @@
             // 
             label1.BackColor = Color.Transparent;
             label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.Font = new Font("Lato Semibold", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(75, 85, 105);
             label1.Location = new Point(30, 0);
             label1.Name = "label1";
@@ -481,7 +589,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.icone_cubo;
+            pictureBox1.BackgroundImage = Properties.Resources.modeling_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Location = new Point(0, 0);
@@ -493,8 +601,7 @@
             // CardMenuSimulacao
             // 
             CardMenuSimulacao.BackColor = Color.White;
-            CardMenuSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
-            CardMenuSimulacao.BorderSize = 0;
+            CardMenuSimulacao.BorderColor = Color.FromArgb(221, 225, 230);
             CardMenuSimulacao.Controls.Add(flowLayoutPanel3);
             CardMenuSimulacao.Controls.Add(panel2);
             CardMenuSimulacao.Dock = DockStyle.Fill;
@@ -502,7 +609,7 @@
             CardMenuSimulacao.Margin = new Padding(2);
             CardMenuSimulacao.Name = "CardMenuSimulacao";
             CardMenuSimulacao.Padding = new Padding(7);
-            CardMenuSimulacao.Size = new Size(622, 96);
+            CardMenuSimulacao.Size = new Size(622, 91);
             CardMenuSimulacao.TabIndex = 1;
             // 
             // flowLayoutPanel3
@@ -514,7 +621,7 @@
             flowLayoutPanel3.Dock = DockStyle.Fill;
             flowLayoutPanel3.Location = new Point(7, 37);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(608, 52);
+            flowLayoutPanel3.Size = new Size(608, 47);
             flowLayoutPanel3.TabIndex = 2;
             flowLayoutPanel3.WrapContents = false;
             // 
@@ -526,7 +633,7 @@
             Btn_IniciarSimulacao.BorderSize = 2;
             Btn_IniciarSimulacao.FlatAppearance.BorderSize = 0;
             Btn_IniciarSimulacao.FlatStyle = FlatStyle.Flat;
-            Btn_IniciarSimulacao.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_IniciarSimulacao.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_IniciarSimulacao.ForeColor = Color.White;
             Btn_IniciarSimulacao.Image = Properties.Resources.icone_play_white;
             Btn_IniciarSimulacao.ImageAlign = ContentAlignment.MiddleLeft;
@@ -548,7 +655,7 @@
             Btn_PararSimulacao.BorderSize = 2;
             Btn_PararSimulacao.FlatAppearance.BorderSize = 0;
             Btn_PararSimulacao.FlatStyle = FlatStyle.Flat;
-            Btn_PararSimulacao.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_PararSimulacao.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_PararSimulacao.ForeColor = Color.White;
             Btn_PararSimulacao.Image = Properties.Resources.icone_stop;
             Btn_PararSimulacao.ImageAlign = ContentAlignment.MiddleLeft;
@@ -570,7 +677,7 @@
             Btn_ZerarSimulacao.BorderSize = 2;
             Btn_ZerarSimulacao.FlatAppearance.BorderSize = 0;
             Btn_ZerarSimulacao.FlatStyle = FlatStyle.Flat;
-            Btn_ZerarSimulacao.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_ZerarSimulacao.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_ZerarSimulacao.ForeColor = Color.White;
             Btn_ZerarSimulacao.Image = Properties.Resources.icone_restart;
             Btn_ZerarSimulacao.ImageAlign = ContentAlignment.MiddleLeft;
@@ -592,7 +699,7 @@
             Btn_LegendaCores.BorderSize = 2;
             Btn_LegendaCores.FlatAppearance.BorderSize = 0;
             Btn_LegendaCores.FlatStyle = FlatStyle.Flat;
-            Btn_LegendaCores.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Btn_LegendaCores.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
             Btn_LegendaCores.ForeColor = Color.DimGray;
             Btn_LegendaCores.Image = Properties.Resources.icone_paleta_cor;
             Btn_LegendaCores.ImageAlign = ContentAlignment.MiddleLeft;
@@ -619,7 +726,7 @@
             // label2
             // 
             label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.Font = new Font("Lato Semibold", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(75, 85, 105);
             label2.Location = new Point(30, 0);
             label2.Name = "label2";
@@ -630,8 +737,8 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.BackgroundImage = Properties.Resources.icone_play;
-            pictureBox2.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox2.BackgroundImage = Properties.Resources.motion_play_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.Dock = DockStyle.Left;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
@@ -644,9 +751,9 @@
             panel3.Controls.Add(Panel_Simulacao);
             panel3.Controls.Add(CardConfigAtualSimulacao);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 103);
+            panel3.Location = new Point(3, 98);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1250, 526);
+            panel3.Size = new Size(1250, 531);
             panel3.TabIndex = 1;
             // 
             // Panel_Simulacao
@@ -656,11 +763,11 @@
             Panel_Simulacao.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             Panel_Simulacao.Controls.Add(Panel_Simulacao_Estruturas, 0, 0);
             Panel_Simulacao.Dock = DockStyle.Fill;
-            Panel_Simulacao.Location = new Point(0, 50);
+            Panel_Simulacao.Location = new Point(0, 60);
             Panel_Simulacao.Name = "Panel_Simulacao";
             Panel_Simulacao.RowCount = 1;
             Panel_Simulacao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_Simulacao.Size = new Size(1250, 476);
+            Panel_Simulacao.Size = new Size(1250, 471);
             Panel_Simulacao.TabIndex = 4;
             // 
             // Panel_Simulacao_Estruturas
@@ -669,7 +776,7 @@
             Panel_Simulacao_Estruturas.Dock = DockStyle.Fill;
             Panel_Simulacao_Estruturas.Location = new Point(3, 3);
             Panel_Simulacao_Estruturas.Name = "Panel_Simulacao_Estruturas";
-            Panel_Simulacao_Estruturas.Size = new Size(1244, 470);
+            Panel_Simulacao_Estruturas.Size = new Size(1244, 465);
             Panel_Simulacao_Estruturas.TabIndex = 0;
             // 
             // Panel_Simulacao_2
@@ -686,15 +793,13 @@
             Panel_Simulacao_2.Name = "Panel_Simulacao_2";
             Panel_Simulacao_2.RowCount = 1;
             Panel_Simulacao_2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            Panel_Simulacao_2.Size = new Size(1244, 470);
+            Panel_Simulacao_2.Size = new Size(1244, 465);
             Panel_Simulacao_2.TabIndex = 1;
             // 
             // CardEventos
             // 
             CardEventos.BackColor = Color.White;
-            CardEventos.BorderColor = Color.Transparent;
-            CardEventos.BorderRadius = 5;
-            CardEventos.BorderSize = 2;
+            CardEventos.BorderColor = Color.FromArgb(221, 225, 230);
             CardEventos.Controls.Add(DataGridViewEventos);
             CardEventos.Controls.Add(Panel_OpcoesEventos);
             CardEventos.Controls.Add(tableLayoutPanel5);
@@ -703,7 +808,7 @@
             CardEventos.Margin = new Padding(2, 0, 0, 0);
             CardEventos.Name = "CardEventos";
             CardEventos.Padding = new Padding(5);
-            CardEventos.Size = new Size(372, 470);
+            CardEventos.Size = new Size(372, 465);
             CardEventos.TabIndex = 2;
             // 
             // DataGridViewEventos
@@ -747,7 +852,7 @@
             DataGridViewEventos.RowTemplate.Height = 42;
             DataGridViewEventos.ScrollBars = ScrollBars.Vertical;
             DataGridViewEventos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewEventos.Size = new Size(362, 360);
+            DataGridViewEventos.Size = new Size(362, 355);
             DataGridViewEventos.TabIndex = 1;
             // 
             // Panel_OpcoesEventos
@@ -761,7 +866,7 @@
             Panel_OpcoesEventos.Controls.Add(Btn_DescerEvento, 1, 0);
             Panel_OpcoesEventos.Controls.Add(Btn_SubirEvento, 0, 0);
             Panel_OpcoesEventos.Dock = DockStyle.Bottom;
-            Panel_OpcoesEventos.Location = new Point(5, 415);
+            Panel_OpcoesEventos.Location = new Point(5, 410);
             Panel_OpcoesEventos.MaximumSize = new Size(2000, 50);
             Panel_OpcoesEventos.Name = "Panel_OpcoesEventos";
             Panel_OpcoesEventos.RowCount = 1;
@@ -848,7 +953,7 @@
             // label12
             // 
             label12.Dock = DockStyle.Fill;
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.FromArgb(30, 41, 59);
             label12.ImageAlign = ContentAlignment.MiddleLeft;
             label12.Location = new Point(53, 0);
@@ -860,22 +965,20 @@
             // 
             // pictureBox6
             // 
+            pictureBox6.Anchor = AnchorStyles.None;
             pictureBox6.BackgroundImage = Properties.Resources.icone_event_list;
-            pictureBox6.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox6.Dock = DockStyle.Fill;
-            pictureBox6.Location = new Point(0, 0);
+            pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox6.Location = new Point(10, 10);
             pictureBox6.Margin = new Padding(0);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(50, 50);
+            pictureBox6.Size = new Size(30, 30);
             pictureBox6.TabIndex = 0;
             pictureBox6.TabStop = false;
             // 
             // CardPanelSegmentos
             // 
             CardPanelSegmentos.BackColor = Color.White;
-            CardPanelSegmentos.BorderColor = Color.Transparent;
-            CardPanelSegmentos.BorderRadius = 5;
-            CardPanelSegmentos.BorderSize = 2;
+            CardPanelSegmentos.BorderColor = Color.FromArgb(221, 225, 230);
             CardPanelSegmentos.Controls.Add(PanelGridHeap);
             CardPanelSegmentos.Controls.Add(tableLayoutPanel7);
             CardPanelSegmentos.Controls.Add(panel5);
@@ -884,7 +987,7 @@
             CardPanelSegmentos.Margin = new Padding(5, 0, 5, 0);
             CardPanelSegmentos.Name = "CardPanelSegmentos";
             CardPanelSegmentos.Padding = new Padding(5);
-            CardPanelSegmentos.Size = new Size(612, 470);
+            CardPanelSegmentos.Size = new Size(612, 465);
             CardPanelSegmentos.TabIndex = 2;
             // 
             // PanelGridHeap
@@ -892,7 +995,7 @@
             PanelGridHeap.Dock = DockStyle.Fill;
             PanelGridHeap.Location = new Point(5, 85);
             PanelGridHeap.Name = "PanelGridHeap";
-            PanelGridHeap.Size = new Size(602, 340);
+            PanelGridHeap.Size = new Size(602, 335);
             PanelGridHeap.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -910,7 +1013,7 @@
             tableLayoutPanel7.Controls.Add(BtnAnterior, 1, 0);
             tableLayoutPanel7.Controls.Add(BtnPrimeiro, 0, 0);
             tableLayoutPanel7.Dock = DockStyle.Bottom;
-            tableLayoutPanel7.Location = new Point(5, 425);
+            tableLayoutPanel7.Location = new Point(5, 420);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -1024,84 +1127,77 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel4.Controls.Add(Btn_HelpHeap, 2, 0);
+            tableLayoutPanel4.Controls.Add(label10, 1, 1);
             tableLayoutPanel4.Controls.Add(pictureBox5, 0, 0);
-            tableLayoutPanel4.Controls.Add(tableLayoutPanel3, 1, 0);
+            tableLayoutPanel4.Controls.Add(Label_Heap, 1, 0);
+            tableLayoutPanel4.Controls.Add(Btn_HelpHeap, 2, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel4.Size = new Size(602, 80);
             tableLayoutPanel4.TabIndex = 0;
-            // 
-            // Btn_HelpHeap
-            // 
-            Btn_HelpHeap.Anchor = AnchorStyles.None;
-            Btn_HelpHeap.BackgroundImage = Properties.Resources.question;
-            Btn_HelpHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpHeap.Location = new Point(564, 27);
-            Btn_HelpHeap.Name = "Btn_HelpHeap";
-            Btn_HelpHeap.Size = new Size(25, 25);
-            Btn_HelpHeap.TabIndex = 5;
-            Btn_HelpHeap.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackgroundImage = Properties.Resources.icone_memoria;
-            pictureBox5.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox5.Location = new Point(0, 0);
-            pictureBox5.Margin = new Padding(0);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(50, 50);
-            pictureBox5.TabIndex = 0;
-            pictureBox5.TabStop = false;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(Label_Heap, 0, 0);
-            tableLayoutPanel3.Controls.Add(label10, 0, 1);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(53, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(496, 74);
-            tableLayoutPanel3.TabIndex = 6;
-            // 
-            // Label_Heap
-            // 
-            Label_Heap.Dock = DockStyle.Fill;
-            Label_Heap.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_Heap.ForeColor = Color.FromArgb(30, 41, 59);
-            Label_Heap.Location = new Point(3, 0);
-            Label_Heap.Name = "Label_Heap";
-            Label_Heap.Size = new Size(490, 37);
-            Label_Heap.TabIndex = 0;
-            Label_Heap.Text = "HEAP";
-            Label_Heap.TextAlign = ContentAlignment.BottomLeft;
             // 
             // label10
             // 
             label10.Dock = DockStyle.Fill;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.FromArgb(75, 85, 105);
             label10.ImageAlign = ContentAlignment.MiddleLeft;
-            label10.Location = new Point(3, 37);
+            label10.Location = new Point(53, 50);
             label10.Name = "label10";
-            label10.Size = new Size(490, 37);
+            label10.Size = new Size(496, 30);
             label10.TabIndex = 2;
             label10.Text = "Segmentos (Blocos)";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Anchor = AnchorStyles.None;
+            pictureBox5.BackgroundImage = Properties.Resources.icone_memoria;
+            pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox5.Location = new Point(10, 10);
+            pictureBox5.Margin = new Padding(0);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(30, 30);
+            pictureBox5.TabIndex = 0;
+            pictureBox5.TabStop = false;
+            // 
+            // Label_Heap
+            // 
+            Label_Heap.Dock = DockStyle.Fill;
+            Label_Heap.Font = new Font("Lato Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Label_Heap.ForeColor = Color.FromArgb(30, 41, 59);
+            Label_Heap.Location = new Point(53, 0);
+            Label_Heap.Name = "Label_Heap";
+            Label_Heap.Size = new Size(496, 50);
+            Label_Heap.TabIndex = 0;
+            Label_Heap.Text = "HEAP";
+            Label_Heap.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Btn_HelpHeap
+            // 
+            Btn_HelpHeap.Anchor = AnchorStyles.None;
+            Btn_HelpHeap.BackColor = Color.White;
+            Btn_HelpHeap.BackgroundImage = Properties.Resources.question;
+            Btn_HelpHeap.BackgroundImageLayout = ImageLayout.None;
+            Btn_HelpHeap.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpHeap.FlatAppearance.BorderSize = 0;
+            Btn_HelpHeap.FlatStyle = FlatStyle.Flat;
+            Btn_HelpHeap.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpHeap.Location = new Point(563, 11);
+            Btn_HelpHeap.Name = "Btn_HelpHeap";
+            Btn_HelpHeap.Size = new Size(28, 28);
+            Btn_HelpHeap.TabIndex = 4;
+            Btn_HelpHeap.TabStop = false;
+            Btn_HelpHeap.UseVisualStyleBackColor = false;
+            Btn_HelpHeap.Click += Btn_HelpHeap_Click;
             // 
             // CardListaBlocosLivres
             // 
             CardListaBlocosLivres.BackColor = Color.White;
-            CardListaBlocosLivres.BorderColor = Color.Transparent;
-            CardListaBlocosLivres.BorderRadius = 5;
-            CardListaBlocosLivres.BorderSize = 2;
+            CardListaBlocosLivres.BorderColor = Color.FromArgb(221, 225, 230);
             CardListaBlocosLivres.Controls.Add(DataGridViewBlocosLivres);
             CardListaBlocosLivres.Controls.Add(panel4);
             CardListaBlocosLivres.Dock = DockStyle.Fill;
@@ -1109,7 +1205,7 @@
             CardListaBlocosLivres.Margin = new Padding(0, 0, 2, 0);
             CardListaBlocosLivres.Name = "CardListaBlocosLivres";
             CardListaBlocosLivres.Padding = new Padding(5);
-            CardListaBlocosLivres.Size = new Size(246, 470);
+            CardListaBlocosLivres.Size = new Size(246, 465);
             CardListaBlocosLivres.TabIndex = 1;
             // 
             // DataGridViewBlocosLivres
@@ -1153,7 +1249,7 @@
             DataGridViewBlocosLivres.RowTemplate.Height = 42;
             DataGridViewBlocosLivres.ScrollBars = ScrollBars.Vertical;
             DataGridViewBlocosLivres.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewBlocosLivres.Size = new Size(236, 410);
+            DataGridViewBlocosLivres.Size = new Size(236, 405);
             DataGridViewBlocosLivres.TabIndex = 1;
             // 
             // panel4
@@ -1183,7 +1279,7 @@
             // label3
             // 
             label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(30, 41, 59);
             label3.ImageAlign = ContentAlignment.MiddleLeft;
             label3.Location = new Point(53, 0);
@@ -1195,54 +1291,81 @@
             // 
             // pictureBox4
             // 
+            pictureBox4.Anchor = AnchorStyles.None;
             pictureBox4.BackgroundImage = Properties.Resources.icone_lista;
-            pictureBox4.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox4.Dock = DockStyle.Fill;
-            pictureBox4.Location = new Point(0, 0);
+            pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox4.Location = new Point(10, 10);
             pictureBox4.Margin = new Padding(0);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(50, 50);
+            pictureBox4.Size = new Size(30, 30);
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
             // CardConfigAtualSimulacao
             // 
             CardConfigAtualSimulacao.BackColor = Color.White;
-            CardConfigAtualSimulacao.BorderColor = Color.FromArgb(225, 229, 235);
-            CardConfigAtualSimulacao.BorderRadius = 5;
-            CardConfigAtualSimulacao.BorderSize = 0;
-            CardConfigAtualSimulacao.Controls.Add(Lbl_SnapshotAtual);
-            CardConfigAtualSimulacao.Controls.Add(pictureBox3);
+            CardConfigAtualSimulacao.BorderColor = Color.FromArgb(221, 225, 230);
+            CardConfigAtualSimulacao.Controls.Add(tableLayoutPanel3);
             CardConfigAtualSimulacao.Dock = DockStyle.Top;
             CardConfigAtualSimulacao.Location = new Point(0, 0);
             CardConfigAtualSimulacao.Margin = new Padding(2, 0, 2, 0);
-            CardConfigAtualSimulacao.MaximumSize = new Size(2000, 50);
+            CardConfigAtualSimulacao.MaximumSize = new Size(2000, 60);
             CardConfigAtualSimulacao.Name = "CardConfigAtualSimulacao";
             CardConfigAtualSimulacao.Padding = new Padding(5);
-            CardConfigAtualSimulacao.Size = new Size(1250, 50);
+            CardConfigAtualSimulacao.Size = new Size(1250, 60);
             CardConfigAtualSimulacao.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Controls.Add(Lbl_ConfiguracoesAtuais, 1, 0);
+            tableLayoutPanel3.Controls.Add(Lbl_SnapshotAtual, 1, 1);
+            tableLayoutPanel3.Controls.Add(pictureBox3, 0, 0);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(5, 5);
+            tableLayoutPanel3.Margin = new Padding(2);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(1240, 50);
+            tableLayoutPanel3.TabIndex = 0;
+            // 
+            // Lbl_ConfiguracoesAtuais
+            // 
+            Lbl_ConfiguracoesAtuais.Dock = DockStyle.Fill;
+            Lbl_ConfiguracoesAtuais.Font = new Font("Lato", 9.749999F);
+            Lbl_ConfiguracoesAtuais.ForeColor = Color.FromArgb(75, 85, 105);
+            Lbl_ConfiguracoesAtuais.Location = new Point(53, 0);
+            Lbl_ConfiguracoesAtuais.Name = "Lbl_ConfiguracoesAtuais";
+            Lbl_ConfiguracoesAtuais.Size = new Size(1184, 25);
+            Lbl_ConfiguracoesAtuais.TabIndex = 2;
+            Lbl_ConfiguracoesAtuais.Text = "Heap: 1 KB | Algoritmo: First-Fit | Split: Ativo | Coalescing: Inativo | Visualização: Padrão";
+            Lbl_ConfiguracoesAtuais.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Lbl_SnapshotAtual
             // 
             Lbl_SnapshotAtual.Dock = DockStyle.Fill;
-            Lbl_SnapshotAtual.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Lbl_SnapshotAtual.Font = new Font("Lato", 9.749999F);
             Lbl_SnapshotAtual.ForeColor = Color.FromArgb(75, 85, 105);
-            Lbl_SnapshotAtual.Location = new Point(45, 5);
+            Lbl_SnapshotAtual.Location = new Point(53, 25);
             Lbl_SnapshotAtual.Name = "Lbl_SnapshotAtual";
-            Lbl_SnapshotAtual.Size = new Size(1200, 40);
+            Lbl_SnapshotAtual.Size = new Size(1184, 25);
             Lbl_SnapshotAtual.TabIndex = 1;
             Lbl_SnapshotAtual.Text = "Evento Inicial";
             Lbl_SnapshotAtual.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox3
             // 
-            pictureBox3.BackgroundImage = Properties.Resources.icone_config1;
+            pictureBox3.Anchor = AnchorStyles.None;
+            pictureBox3.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Dock = DockStyle.Left;
-            pictureBox3.Location = new Point(5, 5);
-            pictureBox3.MaximumSize = new Size(40, 40);
+            pictureBox3.Location = new Point(10, 3);
+            pictureBox3.MaximumSize = new Size(30, 30);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(40, 40);
+            pictureBox3.Size = new Size(30, 19);
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
@@ -1612,8 +1735,7 @@
             // 
             // TabConfiguracoes
             // 
-            TabConfiguracoes.Controls.Add(MenuParametros);
-            TabConfiguracoes.Controls.Add(HabilitarVisualizacaoAvancada);
+            TabConfiguracoes.Controls.Add(TableLayoutPrincipalConfig);
             TabConfiguracoes.Location = new Point(4, 5);
             TabConfiguracoes.Name = "TabConfiguracoes";
             TabConfiguracoes.Size = new Size(1256, 632);
@@ -1621,293 +1743,1269 @@
             TabConfiguracoes.Text = "Configuracoes";
             TabConfiguracoes.UseVisualStyleBackColor = true;
             // 
+            // TableLayoutPrincipalConfig
+            // 
+            TableLayoutPrincipalConfig.ColumnCount = 2;
+            TableLayoutPrincipalConfig.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66F));
+            TableLayoutPrincipalConfig.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+            TableLayoutPrincipalConfig.Controls.Add(MenuParametros, 0, 0);
+            TableLayoutPrincipalConfig.Controls.Add(CardInfoConfiguracoes, 1, 0);
+            TableLayoutPrincipalConfig.Dock = DockStyle.Fill;
+            TableLayoutPrincipalConfig.Location = new Point(0, 0);
+            TableLayoutPrincipalConfig.Name = "TableLayoutPrincipalConfig";
+            TableLayoutPrincipalConfig.RowCount = 1;
+            TableLayoutPrincipalConfig.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPrincipalConfig.Size = new Size(1256, 632);
+            TableLayoutPrincipalConfig.TabIndex = 10;
+            // 
             // MenuParametros
             // 
-            MenuParametros.Controls.Add(UsarLegendaDetalhada);
-            MenuParametros.Controls.Add(GroupBoxCasosDeUsoSimulacao);
-            MenuParametros.Controls.Add(Label_AlgoritmosAlocacao);
-            MenuParametros.Controls.Add(Btn_HelpAlgoritmosAlocacao);
-            MenuParametros.Controls.Add(Btn_HelpSplit);
-            MenuParametros.Controls.Add(HabilitarSplit);
-            MenuParametros.Controls.Add(UseFirstFit);
-            MenuParametros.Controls.Add(HabilitarCoalesing);
-            MenuParametros.Controls.Add(SelectHeapSize);
-            MenuParametros.Controls.Add(Btn_HepCoalescing);
-            MenuParametros.Controls.Add(UseBestFit);
-            MenuParametros.Controls.Add(Label_TamanhoHeap);
-            MenuParametros.Controls.Add(UseWorstFit);
-            MenuParametros.Controls.Add(Btn_HelpTamHeap);
-            MenuParametros.Dock = DockStyle.Left;
-            MenuParametros.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MenuParametros.Location = new Point(0, 0);
+            MenuParametros.ColumnCount = 2;
+            MenuParametros.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            MenuParametros.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            MenuParametros.Controls.Add(cardPanel1, 1, 2);
+            MenuParametros.Controls.Add(CardPanelConfigCasosUso, 0, 2);
+            MenuParametros.Controls.Add(CardPanelConfigVisualizacao, 1, 1);
+            MenuParametros.Controls.Add(CardPanelConfigAlgoritmos, 0, 1);
+            MenuParametros.Controls.Add(CardPanelConfigGerenciamento, 1, 0);
+            MenuParametros.Controls.Add(CardPanelConfigMemoria, 0, 0);
+            MenuParametros.Dock = DockStyle.Fill;
+            MenuParametros.Location = new Point(3, 3);
             MenuParametros.Name = "MenuParametros";
-            MenuParametros.Size = new Size(452, 632);
-            MenuParametros.TabIndex = 9;
-            MenuParametros.TabStop = false;
-            MenuParametros.Text = "Parâmetros de Simulação";
+            MenuParametros.RowCount = 3;
+            MenuParametros.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            MenuParametros.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            MenuParametros.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            MenuParametros.Size = new Size(822, 626);
+            MenuParametros.TabIndex = 0;
             // 
-            // UsarLegendaDetalhada
+            // cardPanel1
             // 
-            UsarLegendaDetalhada.AutoSize = true;
-            UsarLegendaDetalhada.Location = new Point(9, 321);
-            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
-            UsarLegendaDetalhada.Size = new Size(162, 25);
-            UsarLegendaDetalhada.TabIndex = 9;
-            UsarLegendaDetalhada.Text = "Legenda Detalhada";
-            UsarLegendaDetalhada.UseVisualStyleBackColor = true;
+            cardPanel1.BackColor = Color.White;
+            cardPanel1.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel1.Controls.Add(tableLayoutPanel24);
+            cardPanel1.Controls.Add(panel10);
+            cardPanel1.Controls.Add(tableLayoutPanel18);
+            cardPanel1.Dock = DockStyle.Fill;
+            cardPanel1.Location = new Point(411, 374);
+            cardPanel1.Margin = new Padding(0);
+            cardPanel1.Name = "cardPanel1";
+            cardPanel1.Padding = new Padding(5);
+            cardPanel1.Size = new Size(411, 252);
+            cardPanel1.TabIndex = 5;
             // 
-            // GroupBoxCasosDeUsoSimulacao
+            // tableLayoutPanel24
             // 
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso5);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso4);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragExterna);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCasoAltaFragInterna);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso3);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso2);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarCaso1);
-            GroupBoxCasosDeUsoSimulacao.Controls.Add(UsarNenhumCaso);
-            GroupBoxCasosDeUsoSimulacao.Location = new Point(9, 352);
-            GroupBoxCasosDeUsoSimulacao.Name = "GroupBoxCasosDeUsoSimulacao";
-            GroupBoxCasosDeUsoSimulacao.Size = new Size(437, 281);
-            GroupBoxCasosDeUsoSimulacao.TabIndex = 9;
-            GroupBoxCasosDeUsoSimulacao.TabStop = false;
-            GroupBoxCasosDeUsoSimulacao.Text = "Casos de uso";
-            // 
-            // UsarCaso5
-            // 
-            UsarCaso5.AutoSize = true;
-            UsarCaso5.Location = new Point(6, 183);
-            UsarCaso5.Name = "UsarCaso5";
-            UsarCaso5.Size = new Size(303, 25);
-            UsarCaso5.TabIndex = 7;
-            UsarCaso5.TabStop = true;
-            UsarCaso5.Text = "Caso 5 - Redimensionamento da Turma";
-            UsarCaso5.UseVisualStyleBackColor = true;
-            UsarCaso5.CheckedChanged += UsarCaso5_CheckedChanged;
-            // 
-            // UsarCaso4
-            // 
-            UsarCaso4.AutoSize = true;
-            UsarCaso4.Location = new Point(6, 152);
-            UsarCaso4.Name = "UsarCaso4";
-            UsarCaso4.Size = new Size(185, 25);
-            UsarCaso4.TabIndex = 6;
-            UsarCaso4.TabStop = true;
-            UsarCaso4.Text = "Caso 4 - Notas e Faltas";
-            UsarCaso4.UseVisualStyleBackColor = true;
-            UsarCaso4.CheckedChanged += UsarCaso4_CheckedChanged;
-            // 
-            // UsarCasoAltaFragExterna
-            // 
-            UsarCasoAltaFragExterna.AutoSize = true;
-            UsarCasoAltaFragExterna.Location = new Point(6, 245);
-            UsarCasoAltaFragExterna.Name = "UsarCasoAltaFragExterna";
-            UsarCasoAltaFragExterna.Size = new Size(213, 25);
-            UsarCasoAltaFragExterna.TabIndex = 5;
-            UsarCasoAltaFragExterna.TabStop = true;
-            UsarCasoAltaFragExterna.Text = "Alta Fragmentação Externa";
-            UsarCasoAltaFragExterna.UseVisualStyleBackColor = true;
-            UsarCasoAltaFragExterna.CheckedChanged += UsarAltaFragExterna_CheckedChanged;
+            tableLayoutPanel24.ColumnCount = 1;
+            tableLayoutPanel24.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel24.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel24.Controls.Add(UsarCasoAltaFragInterna, 0, 0);
+            tableLayoutPanel24.Controls.Add(UsarCasoAltaFragExterna, 0, 1);
+            tableLayoutPanel24.Dock = DockStyle.Fill;
+            tableLayoutPanel24.Location = new Point(5, 46);
+            tableLayoutPanel24.Name = "tableLayoutPanel24";
+            tableLayoutPanel24.RowCount = 6;
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
+            tableLayoutPanel24.Size = new Size(401, 201);
+            tableLayoutPanel24.TabIndex = 12;
             // 
             // UsarCasoAltaFragInterna
             // 
             UsarCasoAltaFragInterna.AutoSize = true;
-            UsarCasoAltaFragInterna.Location = new Point(6, 214);
+            UsarCasoAltaFragInterna.BackColor = Color.Transparent;
+            UsarCasoAltaFragInterna.Dock = DockStyle.Fill;
+            UsarCasoAltaFragInterna.Font = new Font("Lato", 10F);
+            UsarCasoAltaFragInterna.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCasoAltaFragInterna.Location = new Point(3, 3);
+            UsarCasoAltaFragInterna.MinimumSize = new Size(0, 28);
             UsarCasoAltaFragInterna.Name = "UsarCasoAltaFragInterna";
-            UsarCasoAltaFragInterna.Size = new Size(211, 25);
-            UsarCasoAltaFragInterna.TabIndex = 4;
+            UsarCasoAltaFragInterna.Size = new Size(395, 28);
+            UsarCasoAltaFragInterna.TabIndex = 9;
             UsarCasoAltaFragInterna.TabStop = true;
             UsarCasoAltaFragInterna.Text = "Alta Fragmentação Interna";
-            UsarCasoAltaFragInterna.UseVisualStyleBackColor = true;
+            UsarCasoAltaFragInterna.UseVisualStyleBackColor = false;
             UsarCasoAltaFragInterna.CheckedChanged += UsarCasoAltaFragInterna_CheckedChanged;
             // 
-            // UsarCaso3
+            // UsarCasoAltaFragExterna
             // 
-            UsarCaso3.AutoSize = true;
-            UsarCaso3.Location = new Point(6, 121);
-            UsarCaso3.Name = "UsarCaso3";
-            UsarCaso3.Size = new Size(236, 25);
-            UsarCaso3.TabIndex = 3;
-            UsarCaso3.TabStop = true;
-            UsarCaso3.Text = "Caso 3 - Subtração de Vetores";
-            UsarCaso3.UseVisualStyleBackColor = true;
-            UsarCaso3.CheckedChanged += UsarCaso3_CheckedChanged;
+            UsarCasoAltaFragExterna.AutoSize = true;
+            UsarCasoAltaFragExterna.BackColor = Color.Transparent;
+            UsarCasoAltaFragExterna.Dock = DockStyle.Fill;
+            UsarCasoAltaFragExterna.Font = new Font("Lato", 10F);
+            UsarCasoAltaFragExterna.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCasoAltaFragExterna.Location = new Point(3, 36);
+            UsarCasoAltaFragExterna.MinimumSize = new Size(0, 28);
+            UsarCasoAltaFragExterna.Name = "UsarCasoAltaFragExterna";
+            UsarCasoAltaFragExterna.Size = new Size(395, 28);
+            UsarCasoAltaFragExterna.TabIndex = 10;
+            UsarCasoAltaFragExterna.TabStop = true;
+            UsarCasoAltaFragExterna.Text = "Alta Fragmentação Externa";
+            UsarCasoAltaFragExterna.UseVisualStyleBackColor = false;
+            UsarCasoAltaFragExterna.CheckedChanged += UsarAltaFragExterna_CheckedChanged;
             // 
-            // UsarCaso2
+            // panel10
             // 
-            UsarCaso2.AutoSize = true;
-            UsarCaso2.Location = new Point(6, 90);
-            UsarCaso2.Name = "UsarCaso2";
-            UsarCaso2.Size = new Size(149, 25);
-            UsarCaso2.TabIndex = 2;
-            UsarCaso2.TabStop = true;
-            UsarCaso2.Text = "Caso 2 - Mediana";
-            UsarCaso2.UseVisualStyleBackColor = true;
-            UsarCaso2.CheckedChanged += UsarCaso2_CheckedChanged;
+            panel10.BackColor = Color.FromArgb(232, 235, 239);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(5, 45);
+            panel10.Margin = new Padding(5);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(401, 1);
+            panel10.TabIndex = 3;
             // 
-            // UsarCaso1
+            // tableLayoutPanel18
             // 
-            UsarCaso1.AutoSize = true;
-            UsarCaso1.Location = new Point(6, 59);
-            UsarCaso1.Name = "UsarCaso1";
-            UsarCaso1.Size = new Size(233, 25);
-            UsarCaso1.TabIndex = 1;
-            UsarCaso1.TabStop = true;
-            UsarCaso1.Text = "Caso 1 - Alocações Diferentes";
-            UsarCaso1.UseVisualStyleBackColor = true;
-            UsarCaso1.CheckedChanged += UsarCaso1_CheckedChanged;
+            tableLayoutPanel18.ColumnCount = 3;
+            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel18.Controls.Add(helpButton7, 2, 0);
+            tableLayoutPanel18.Controls.Add(label9, 1, 0);
+            tableLayoutPanel18.Controls.Add(pictureBox12, 0, 0);
+            tableLayoutPanel18.Dock = DockStyle.Top;
+            tableLayoutPanel18.Location = new Point(5, 5);
+            tableLayoutPanel18.Name = "tableLayoutPanel18";
+            tableLayoutPanel18.RowCount = 1;
+            tableLayoutPanel18.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel18.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel18.Size = new Size(401, 40);
+            tableLayoutPanel18.TabIndex = 2;
+            // 
+            // helpButton7
+            // 
+            helpButton7.Anchor = AnchorStyles.None;
+            helpButton7.BackColor = Color.White;
+            helpButton7.BackgroundImage = Properties.Resources.question;
+            helpButton7.BorderColor = Color.FromArgb(222, 226, 232);
+            helpButton7.FlatAppearance.BorderSize = 0;
+            helpButton7.FlatStyle = FlatStyle.Flat;
+            helpButton7.ForeColor = Color.FromArgb(75, 85, 105);
+            helpButton7.Location = new Point(362, 6);
+            helpButton7.Name = "helpButton7";
+            helpButton7.Size = new Size(28, 28);
+            helpButton7.TabIndex = 9;
+            helpButton7.TabStop = false;
+            helpButton7.UseVisualStyleBackColor = false;
+            // 
+            // label9
+            // 
+            label9.Dock = DockStyle.Fill;
+            label9.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label9.Location = new Point(53, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(295, 40);
+            label9.TabIndex = 8;
+            label9.Text = "Cenários de Teste";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox12
+            // 
+            pictureBox12.Anchor = AnchorStyles.None;
+            pictureBox12.BackgroundImage = Properties.Resources.modeling_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox12.Location = new Point(10, 5);
+            pictureBox12.Name = "pictureBox12";
+            pictureBox12.Size = new Size(30, 30);
+            pictureBox12.TabIndex = 1;
+            pictureBox12.TabStop = false;
+            // 
+            // CardPanelConfigCasosUso
+            // 
+            CardPanelConfigCasosUso.BackColor = Color.White;
+            CardPanelConfigCasosUso.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigCasosUso.Controls.Add(tableLayoutPanel23);
+            CardPanelConfigCasosUso.Controls.Add(panel9);
+            CardPanelConfigCasosUso.Controls.Add(tableLayoutPanel17);
+            CardPanelConfigCasosUso.Dock = DockStyle.Fill;
+            CardPanelConfigCasosUso.Location = new Point(0, 374);
+            CardPanelConfigCasosUso.Margin = new Padding(0);
+            CardPanelConfigCasosUso.Name = "CardPanelConfigCasosUso";
+            CardPanelConfigCasosUso.Padding = new Padding(5);
+            CardPanelConfigCasosUso.Size = new Size(411, 252);
+            CardPanelConfigCasosUso.TabIndex = 4;
+            // 
+            // tableLayoutPanel23
+            // 
+            tableLayoutPanel23.ColumnCount = 1;
+            tableLayoutPanel23.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel23.Controls.Add(UsarCaso5, 0, 5);
+            tableLayoutPanel23.Controls.Add(UsarNenhumCaso, 0, 0);
+            tableLayoutPanel23.Controls.Add(UsarCaso4, 0, 4);
+            tableLayoutPanel23.Controls.Add(UsarCaso3, 0, 3);
+            tableLayoutPanel23.Controls.Add(UsarCaso1, 0, 1);
+            tableLayoutPanel23.Controls.Add(UsarCaso2, 0, 2);
+            tableLayoutPanel23.Dock = DockStyle.Fill;
+            tableLayoutPanel23.Location = new Point(5, 46);
+            tableLayoutPanel23.Name = "tableLayoutPanel23";
+            tableLayoutPanel23.RowCount = 6;
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel23.Size = new Size(401, 201);
+            tableLayoutPanel23.TabIndex = 12;
+            // 
+            // UsarCaso5
+            // 
+            UsarCaso5.AutoSize = true;
+            UsarCaso5.BackColor = Color.Transparent;
+            UsarCaso5.Dock = DockStyle.Fill;
+            UsarCaso5.Font = new Font("Lato", 10F);
+            UsarCaso5.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCaso5.Location = new Point(3, 168);
+            UsarCaso5.MinimumSize = new Size(0, 28);
+            UsarCaso5.Name = "UsarCaso5";
+            UsarCaso5.Size = new Size(395, 30);
+            UsarCaso5.TabIndex = 12;
+            UsarCaso5.TabStop = true;
+            UsarCaso5.Text = "Caso 5 - Redimensionamento da Turma";
+            UsarCaso5.UseVisualStyleBackColor = false;
+            UsarCaso5.CheckedChanged += UsarCaso5_CheckedChanged;
             // 
             // UsarNenhumCaso
             // 
             UsarNenhumCaso.AutoSize = true;
-            UsarNenhumCaso.Location = new Point(6, 28);
+            UsarNenhumCaso.BackColor = Color.Transparent;
+            UsarNenhumCaso.Dock = DockStyle.Fill;
+            UsarNenhumCaso.Font = new Font("Lato", 10F);
+            UsarNenhumCaso.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarNenhumCaso.Location = new Point(3, 3);
+            UsarNenhumCaso.MinimumSize = new Size(0, 28);
             UsarNenhumCaso.Name = "UsarNenhumCaso";
-            UsarNenhumCaso.Size = new Size(89, 25);
-            UsarNenhumCaso.TabIndex = 0;
+            UsarNenhumCaso.Size = new Size(395, 28);
+            UsarNenhumCaso.TabIndex = 7;
             UsarNenhumCaso.TabStop = true;
             UsarNenhumCaso.Text = "Nenhum";
-            UsarNenhumCaso.UseVisualStyleBackColor = true;
+            UsarNenhumCaso.UseVisualStyleBackColor = false;
             UsarNenhumCaso.CheckedChanged += UsarNenhumCaso_CheckedChanged;
             // 
-            // Label_AlgoritmosAlocacao
+            // UsarCaso4
             // 
-            Label_AlgoritmosAlocacao.AutoSize = true;
-            Label_AlgoritmosAlocacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Label_AlgoritmosAlocacao.Location = new Point(9, 183);
-            Label_AlgoritmosAlocacao.Name = "Label_AlgoritmosAlocacao";
-            Label_AlgoritmosAlocacao.Size = new Size(167, 21);
-            Label_AlgoritmosAlocacao.TabIndex = 7;
-            Label_AlgoritmosAlocacao.Text = "Algoritmo de Alocação";
-            Label_AlgoritmosAlocacao.TextAlign = ContentAlignment.MiddleLeft;
+            UsarCaso4.AutoSize = true;
+            UsarCaso4.BackColor = Color.Transparent;
+            UsarCaso4.Dock = DockStyle.Fill;
+            UsarCaso4.Font = new Font("Lato", 10F);
+            UsarCaso4.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCaso4.Location = new Point(3, 135);
+            UsarCaso4.MinimumSize = new Size(0, 28);
+            UsarCaso4.Name = "UsarCaso4";
+            UsarCaso4.Size = new Size(395, 28);
+            UsarCaso4.TabIndex = 10;
+            UsarCaso4.TabStop = true;
+            UsarCaso4.Text = "Caso 4 - Notas e Faltas";
+            UsarCaso4.UseVisualStyleBackColor = false;
+            UsarCaso4.CheckedChanged += UsarCaso4_CheckedChanged;
             // 
-            // Btn_HelpAlgoritmosAlocacao
+            // UsarCaso3
             // 
-            Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
-            Btn_HelpAlgoritmosAlocacao.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpAlgoritmosAlocacao.Location = new Point(355, 183);
-            Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
-            Btn_HelpAlgoritmosAlocacao.Size = new Size(25, 25);
-            Btn_HelpAlgoritmosAlocacao.TabIndex = 6;
-            Btn_HelpAlgoritmosAlocacao.UseVisualStyleBackColor = true;
+            UsarCaso3.AutoSize = true;
+            UsarCaso3.BackColor = Color.Transparent;
+            UsarCaso3.Dock = DockStyle.Fill;
+            UsarCaso3.Font = new Font("Lato", 10F);
+            UsarCaso3.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCaso3.Location = new Point(3, 102);
+            UsarCaso3.MinimumSize = new Size(0, 28);
+            UsarCaso3.Name = "UsarCaso3";
+            UsarCaso3.Size = new Size(395, 28);
+            UsarCaso3.TabIndex = 11;
+            UsarCaso3.TabStop = true;
+            UsarCaso3.Text = "Caso 3 - Subtração de Vetores";
+            UsarCaso3.UseVisualStyleBackColor = false;
+            UsarCaso3.CheckedChanged += UsarCaso3_CheckedChanged;
             // 
-            // Btn_HelpSplit
+            // UsarCaso1
             // 
-            Btn_HelpSplit.BackgroundImage = Properties.Resources.question;
-            Btn_HelpSplit.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpSplit.Location = new Point(355, 28);
-            Btn_HelpSplit.Name = "Btn_HelpSplit";
-            Btn_HelpSplit.Size = new Size(25, 25);
-            Btn_HelpSplit.TabIndex = 4;
-            Btn_HelpSplit.UseVisualStyleBackColor = true;
+            UsarCaso1.AutoSize = true;
+            UsarCaso1.BackColor = Color.Transparent;
+            UsarCaso1.Dock = DockStyle.Fill;
+            UsarCaso1.Font = new Font("Lato", 10F);
+            UsarCaso1.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCaso1.Location = new Point(3, 36);
+            UsarCaso1.MinimumSize = new Size(0, 28);
+            UsarCaso1.Name = "UsarCaso1";
+            UsarCaso1.Size = new Size(395, 28);
+            UsarCaso1.TabIndex = 8;
+            UsarCaso1.TabStop = true;
+            UsarCaso1.Text = "Caso 1 - Alocações Diferentes";
+            UsarCaso1.UseVisualStyleBackColor = false;
+            UsarCaso1.CheckedChanged += UsarCaso1_CheckedChanged;
             // 
-            // HabilitarSplit
+            // UsarCaso2
             // 
-            HabilitarSplit.AutoSize = true;
-            HabilitarSplit.Location = new Point(9, 28);
-            HabilitarSplit.Name = "HabilitarSplit";
-            HabilitarSplit.Size = new Size(251, 25);
-            HabilitarSplit.TabIndex = 0;
-            HabilitarSplit.Text = "Habilitar Divisão de Bloco (Split)";
-            HabilitarSplit.UseVisualStyleBackColor = true;
+            UsarCaso2.AutoSize = true;
+            UsarCaso2.BackColor = Color.Transparent;
+            UsarCaso2.Dock = DockStyle.Fill;
+            UsarCaso2.Font = new Font("Lato", 10F);
+            UsarCaso2.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarCaso2.Location = new Point(3, 69);
+            UsarCaso2.MinimumSize = new Size(0, 28);
+            UsarCaso2.Name = "UsarCaso2";
+            UsarCaso2.Size = new Size(395, 28);
+            UsarCaso2.TabIndex = 9;
+            UsarCaso2.TabStop = true;
+            UsarCaso2.Text = "Caso 2 - Mediana";
+            UsarCaso2.UseVisualStyleBackColor = false;
+            UsarCaso2.CheckedChanged += UsarCaso2_CheckedChanged;
             // 
-            // UseFirstFit
+            // panel9
             // 
-            UseFirstFit.AutoSize = true;
-            UseFirstFit.Location = new Point(9, 216);
-            UseFirstFit.Name = "UseFirstFit";
-            UseFirstFit.Size = new Size(210, 25);
-            UseFirstFit.TabIndex = 2;
-            UseFirstFit.TabStop = true;
-            UseFirstFit.Text = "Primeiro Encaixe (First-Fit)";
-            UseFirstFit.TextAlign = ContentAlignment.MiddleCenter;
-            UseFirstFit.UseVisualStyleBackColor = true;
+            panel9.BackColor = Color.FromArgb(232, 235, 239);
+            panel9.Dock = DockStyle.Top;
+            panel9.Location = new Point(5, 45);
+            panel9.Margin = new Padding(5);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(401, 1);
+            panel9.TabIndex = 3;
             // 
-            // HabilitarCoalesing
+            // tableLayoutPanel17
             // 
-            HabilitarCoalesing.AutoSize = true;
-            HabilitarCoalesing.Location = new Point(9, 57);
-            HabilitarCoalesing.Name = "HabilitarCoalesing";
-            HabilitarCoalesing.Size = new Size(337, 25);
-            HabilitarCoalesing.TabIndex = 1;
-            HabilitarCoalesing.Text = "Habilitar União de Blocos Livres (Coalescing)";
-            HabilitarCoalesing.UseVisualStyleBackColor = true;
+            tableLayoutPanel17.ColumnCount = 3;
+            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel17.Controls.Add(helpButton6, 2, 0);
+            tableLayoutPanel17.Controls.Add(label8, 1, 0);
+            tableLayoutPanel17.Controls.Add(pictureBox11, 0, 0);
+            tableLayoutPanel17.Dock = DockStyle.Top;
+            tableLayoutPanel17.Location = new Point(5, 5);
+            tableLayoutPanel17.Name = "tableLayoutPanel17";
+            tableLayoutPanel17.RowCount = 1;
+            tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel17.Size = new Size(401, 40);
+            tableLayoutPanel17.TabIndex = 2;
             // 
-            // SelectHeapSize
+            // helpButton6
             // 
-            SelectHeapSize.DropDownStyle = ComboBoxStyle.DropDownList;
-            SelectHeapSize.FormattingEnabled = true;
-            SelectHeapSize.Location = new Point(9, 133);
-            SelectHeapSize.Name = "SelectHeapSize";
-            SelectHeapSize.Size = new Size(167, 29);
-            SelectHeapSize.TabIndex = 5;
-            SelectHeapSize.SelectedIndexChanged += SelectHeapSize_SelectedIndexChanged;
+            helpButton6.Anchor = AnchorStyles.None;
+            helpButton6.BackColor = Color.White;
+            helpButton6.BackgroundImage = Properties.Resources.question;
+            helpButton6.BorderColor = Color.FromArgb(222, 226, 232);
+            helpButton6.FlatAppearance.BorderSize = 0;
+            helpButton6.FlatStyle = FlatStyle.Flat;
+            helpButton6.ForeColor = Color.FromArgb(75, 85, 105);
+            helpButton6.Location = new Point(362, 6);
+            helpButton6.Name = "helpButton6";
+            helpButton6.Size = new Size(28, 28);
+            helpButton6.TabIndex = 9;
+            helpButton6.TabStop = false;
+            helpButton6.UseVisualStyleBackColor = false;
             // 
-            // Btn_HepCoalescing
+            // label8
             // 
-            Btn_HepCoalescing.BackgroundImage = Properties.Resources.question;
-            Btn_HepCoalescing.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HepCoalescing.Location = new Point(355, 59);
-            Btn_HepCoalescing.Name = "Btn_HepCoalescing";
-            Btn_HepCoalescing.Size = new Size(25, 25);
-            Btn_HepCoalescing.TabIndex = 5;
-            Btn_HepCoalescing.UseVisualStyleBackColor = true;
+            label8.Dock = DockStyle.Fill;
+            label8.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label8.Location = new Point(53, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(295, 40);
+            label8.TabIndex = 8;
+            label8.Text = "Casos de Uso";
+            label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // UseBestFit
+            // pictureBox11
             // 
-            UseBestFit.AutoSize = true;
-            UseBestFit.Location = new Point(9, 247);
-            UseBestFit.Name = "UseBestFit";
-            UseBestFit.Size = new Size(199, 25);
-            UseBestFit.TabIndex = 4;
-            UseBestFit.TabStop = true;
-            UseBestFit.Text = "Melhor Encaixe (Best-Fit)";
-            UseBestFit.TextAlign = ContentAlignment.MiddleCenter;
-            UseBestFit.UseVisualStyleBackColor = true;
+            pictureBox11.Anchor = AnchorStyles.None;
+            pictureBox11.BackgroundImage = Properties.Resources.code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox11.Location = new Point(10, 5);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(30, 30);
+            pictureBox11.TabIndex = 1;
+            pictureBox11.TabStop = false;
             // 
-            // Label_TamanhoHeap
+            // CardPanelConfigVisualizacao
             // 
-            Label_TamanhoHeap.AutoSize = true;
-            Label_TamanhoHeap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Label_TamanhoHeap.Location = new Point(9, 109);
-            Label_TamanhoHeap.Name = "Label_TamanhoHeap";
-            Label_TamanhoHeap.Size = new Size(134, 21);
-            Label_TamanhoHeap.TabIndex = 6;
-            Label_TamanhoHeap.Text = "Tamanho da Heap";
-            Label_TamanhoHeap.TextAlign = ContentAlignment.MiddleLeft;
+            CardPanelConfigVisualizacao.BackColor = Color.White;
+            CardPanelConfigVisualizacao.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigVisualizacao.Controls.Add(tableLayoutPanel21);
+            CardPanelConfigVisualizacao.Controls.Add(panel8);
+            CardPanelConfigVisualizacao.Controls.Add(tableLayoutPanel16);
+            CardPanelConfigVisualizacao.Dock = DockStyle.Fill;
+            CardPanelConfigVisualizacao.Location = new Point(411, 187);
+            CardPanelConfigVisualizacao.Margin = new Padding(0);
+            CardPanelConfigVisualizacao.Name = "CardPanelConfigVisualizacao";
+            CardPanelConfigVisualizacao.Padding = new Padding(5);
+            CardPanelConfigVisualizacao.Size = new Size(411, 187);
+            CardPanelConfigVisualizacao.TabIndex = 3;
             // 
-            // UseWorstFit
+            // tableLayoutPanel21
             // 
-            UseWorstFit.AutoSize = true;
-            UseWorstFit.Location = new Point(9, 278);
-            UseWorstFit.Name = "UseWorstFit";
-            UseWorstFit.Size = new Size(189, 25);
-            UseWorstFit.TabIndex = 3;
-            UseWorstFit.TabStop = true;
-            UseWorstFit.Text = "Pior Encaixe (Worst-Fit)";
-            UseWorstFit.TextAlign = ContentAlignment.MiddleCenter;
-            UseWorstFit.UseVisualStyleBackColor = true;
+            tableLayoutPanel21.ColumnCount = 2;
+            tableLayoutPanel21.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel21.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel21.Controls.Add(Btn_HelpLegendasDetalhadas, 1, 1);
+            tableLayoutPanel21.Controls.Add(Btn_HelpVisualizacaoAvancada, 1, 0);
+            tableLayoutPanel21.Controls.Add(HabilitarVisualizacaoAvancada, 0, 0);
+            tableLayoutPanel21.Controls.Add(UsarLegendaDetalhada, 0, 1);
+            tableLayoutPanel21.Dock = DockStyle.Fill;
+            tableLayoutPanel21.Location = new Point(5, 46);
+            tableLayoutPanel21.Name = "tableLayoutPanel21";
+            tableLayoutPanel21.RowCount = 3;
+            tableLayoutPanel21.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel21.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel21.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel21.Size = new Size(401, 136);
+            tableLayoutPanel21.TabIndex = 12;
             // 
-            // Btn_HelpTamHeap
+            // Btn_HelpLegendasDetalhadas
             // 
-            Btn_HelpTamHeap.BackgroundImage = Properties.Resources.question;
-            Btn_HelpTamHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpTamHeap.Location = new Point(355, 134);
-            Btn_HelpTamHeap.Margin = new Padding(0);
-            Btn_HelpTamHeap.Name = "Btn_HelpTamHeap";
-            Btn_HelpTamHeap.Size = new Size(25, 25);
-            Btn_HelpTamHeap.TabIndex = 5;
-            Btn_HelpTamHeap.UseVisualStyleBackColor = true;
+            Btn_HelpLegendasDetalhadas.Anchor = AnchorStyles.None;
+            Btn_HelpLegendasDetalhadas.BackColor = Color.White;
+            Btn_HelpLegendasDetalhadas.BackgroundImage = Properties.Resources.question;
+            Btn_HelpLegendasDetalhadas.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpLegendasDetalhadas.FlatAppearance.BorderSize = 0;
+            Btn_HelpLegendasDetalhadas.FlatStyle = FlatStyle.Flat;
+            Btn_HelpLegendasDetalhadas.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpLegendasDetalhadas.Location = new Point(362, 53);
+            Btn_HelpLegendasDetalhadas.Name = "Btn_HelpLegendasDetalhadas";
+            Btn_HelpLegendasDetalhadas.Size = new Size(28, 28);
+            Btn_HelpLegendasDetalhadas.TabIndex = 10;
+            Btn_HelpLegendasDetalhadas.TabStop = false;
+            Btn_HelpLegendasDetalhadas.UseVisualStyleBackColor = false;
+            // 
+            // Btn_HelpVisualizacaoAvancada
+            // 
+            Btn_HelpVisualizacaoAvancada.Anchor = AnchorStyles.None;
+            Btn_HelpVisualizacaoAvancada.BackColor = Color.White;
+            Btn_HelpVisualizacaoAvancada.BackgroundImage = Properties.Resources.question;
+            Btn_HelpVisualizacaoAvancada.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpVisualizacaoAvancada.FlatAppearance.BorderSize = 0;
+            Btn_HelpVisualizacaoAvancada.FlatStyle = FlatStyle.Flat;
+            Btn_HelpVisualizacaoAvancada.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpVisualizacaoAvancada.Location = new Point(362, 8);
+            Btn_HelpVisualizacaoAvancada.Name = "Btn_HelpVisualizacaoAvancada";
+            Btn_HelpVisualizacaoAvancada.Size = new Size(28, 28);
+            Btn_HelpVisualizacaoAvancada.TabIndex = 9;
+            Btn_HelpVisualizacaoAvancada.TabStop = false;
+            Btn_HelpVisualizacaoAvancada.UseVisualStyleBackColor = false;
             // 
             // HabilitarVisualizacaoAvancada
             // 
             HabilitarVisualizacaoAvancada.AutoSize = true;
-            HabilitarVisualizacaoAvancada.Location = new Point(787, 20);
+            HabilitarVisualizacaoAvancada.BackColor = Color.Transparent;
+            HabilitarVisualizacaoAvancada.Dock = DockStyle.Fill;
+            HabilitarVisualizacaoAvancada.Font = new Font("Lato", 10F);
+            HabilitarVisualizacaoAvancada.ForeColor = Color.FromArgb(30, 41, 59);
+            HabilitarVisualizacaoAvancada.Location = new Point(3, 3);
+            HabilitarVisualizacaoAvancada.MinimumSize = new Size(0, 28);
             HabilitarVisualizacaoAvancada.Name = "HabilitarVisualizacaoAvancada";
-            HabilitarVisualizacaoAvancada.Size = new Size(145, 19);
-            HabilitarVisualizacaoAvancada.TabIndex = 10;
+            HabilitarVisualizacaoAvancada.Size = new Size(345, 39);
+            HabilitarVisualizacaoAvancada.TabIndex = 4;
             HabilitarVisualizacaoAvancada.Text = "Visualização Avançada";
-            HabilitarVisualizacaoAvancada.UseVisualStyleBackColor = true;
+            HabilitarVisualizacaoAvancada.UseVisualStyleBackColor = false;
             HabilitarVisualizacaoAvancada.CheckedChanged += HabilitarVisualizacaoAvancada_CheckedChanged;
+            // 
+            // UsarLegendaDetalhada
+            // 
+            UsarLegendaDetalhada.AutoSize = true;
+            UsarLegendaDetalhada.BackColor = Color.Transparent;
+            UsarLegendaDetalhada.Dock = DockStyle.Fill;
+            UsarLegendaDetalhada.Font = new Font("Lato", 10F);
+            UsarLegendaDetalhada.ForeColor = Color.FromArgb(30, 41, 59);
+            UsarLegendaDetalhada.Location = new Point(3, 48);
+            UsarLegendaDetalhada.MinimumSize = new Size(0, 28);
+            UsarLegendaDetalhada.Name = "UsarLegendaDetalhada";
+            UsarLegendaDetalhada.Size = new Size(345, 39);
+            UsarLegendaDetalhada.TabIndex = 5;
+            UsarLegendaDetalhada.Text = "Legenda Detalhada";
+            UsarLegendaDetalhada.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(232, 235, 239);
+            panel8.Dock = DockStyle.Top;
+            panel8.Location = new Point(5, 45);
+            panel8.Margin = new Padding(5);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(401, 1);
+            panel8.TabIndex = 3;
+            // 
+            // tableLayoutPanel16
+            // 
+            tableLayoutPanel16.ColumnCount = 3;
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel16.Controls.Add(label7, 1, 0);
+            tableLayoutPanel16.Controls.Add(pictureBox10, 0, 0);
+            tableLayoutPanel16.Dock = DockStyle.Top;
+            tableLayoutPanel16.Location = new Point(5, 5);
+            tableLayoutPanel16.Name = "tableLayoutPanel16";
+            tableLayoutPanel16.RowCount = 1;
+            tableLayoutPanel16.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel16.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel16.Size = new Size(401, 40);
+            tableLayoutPanel16.TabIndex = 2;
+            // 
+            // label7
+            // 
+            label7.Dock = DockStyle.Fill;
+            label7.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label7.Location = new Point(53, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(295, 40);
+            label7.TabIndex = 8;
+            label7.Text = "Visualização";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.Anchor = AnchorStyles.None;
+            pictureBox10.BackgroundImage = Properties.Resources.visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox10.Location = new Point(10, 5);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(30, 30);
+            pictureBox10.TabIndex = 1;
+            pictureBox10.TabStop = false;
+            // 
+            // CardPanelConfigAlgoritmos
+            // 
+            CardPanelConfigAlgoritmos.BackColor = Color.White;
+            CardPanelConfigAlgoritmos.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigAlgoritmos.Controls.Add(tableLayoutPanel19);
+            CardPanelConfigAlgoritmos.Controls.Add(panel7);
+            CardPanelConfigAlgoritmos.Controls.Add(tableLayoutPanel15);
+            CardPanelConfigAlgoritmos.Dock = DockStyle.Fill;
+            CardPanelConfigAlgoritmos.Location = new Point(0, 187);
+            CardPanelConfigAlgoritmos.Margin = new Padding(0);
+            CardPanelConfigAlgoritmos.Name = "CardPanelConfigAlgoritmos";
+            CardPanelConfigAlgoritmos.Padding = new Padding(5);
+            CardPanelConfigAlgoritmos.Size = new Size(411, 187);
+            CardPanelConfigAlgoritmos.TabIndex = 2;
+            // 
+            // tableLayoutPanel19
+            // 
+            tableLayoutPanel19.ColumnCount = 1;
+            tableLayoutPanel19.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel19.Controls.Add(UseWorstFit, 0, 2);
+            tableLayoutPanel19.Controls.Add(UseFirstFit, 0, 0);
+            tableLayoutPanel19.Controls.Add(UseBestFit, 0, 1);
+            tableLayoutPanel19.Dock = DockStyle.Fill;
+            tableLayoutPanel19.Location = new Point(5, 46);
+            tableLayoutPanel19.Name = "tableLayoutPanel19";
+            tableLayoutPanel19.RowCount = 3;
+            tableLayoutPanel19.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel19.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel19.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel19.Size = new Size(401, 136);
+            tableLayoutPanel19.TabIndex = 11;
+            // 
+            // UseWorstFit
+            // 
+            UseWorstFit.AutoSize = true;
+            UseWorstFit.BackColor = Color.Transparent;
+            UseWorstFit.Dock = DockStyle.Fill;
+            UseWorstFit.Font = new Font("Lato", 10F);
+            UseWorstFit.ForeColor = Color.FromArgb(30, 41, 59);
+            UseWorstFit.Location = new Point(3, 93);
+            UseWorstFit.MinimumSize = new Size(0, 28);
+            UseWorstFit.Name = "UseWorstFit";
+            UseWorstFit.Size = new Size(395, 40);
+            UseWorstFit.TabIndex = 6;
+            UseWorstFit.TabStop = true;
+            UseWorstFit.Text = "Pior Encaixe (Worst-Fit)";
+            UseWorstFit.UseVisualStyleBackColor = false;
+            // 
+            // UseFirstFit
+            // 
+            UseFirstFit.AutoSize = true;
+            UseFirstFit.BackColor = Color.Transparent;
+            UseFirstFit.Dock = DockStyle.Fill;
+            UseFirstFit.Font = new Font("Lato", 10F);
+            UseFirstFit.ForeColor = Color.FromArgb(30, 41, 59);
+            UseFirstFit.Location = new Point(3, 3);
+            UseFirstFit.MinimumSize = new Size(0, 28);
+            UseFirstFit.Name = "UseFirstFit";
+            UseFirstFit.Size = new Size(395, 39);
+            UseFirstFit.TabIndex = 4;
+            UseFirstFit.TabStop = true;
+            UseFirstFit.Text = "Primeiro Encaixe (First-Fit)";
+            UseFirstFit.UseVisualStyleBackColor = false;
+            // 
+            // UseBestFit
+            // 
+            UseBestFit.AutoSize = true;
+            UseBestFit.BackColor = Color.Transparent;
+            UseBestFit.Dock = DockStyle.Fill;
+            UseBestFit.Font = new Font("Lato", 10F);
+            UseBestFit.ForeColor = Color.FromArgb(30, 41, 59);
+            UseBestFit.Location = new Point(3, 48);
+            UseBestFit.MinimumSize = new Size(0, 28);
+            UseBestFit.Name = "UseBestFit";
+            UseBestFit.Size = new Size(395, 39);
+            UseBestFit.TabIndex = 5;
+            UseBestFit.TabStop = true;
+            UseBestFit.Text = "Melhor Encaixe (Best-Fit)";
+            UseBestFit.UseVisualStyleBackColor = false;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(232, 235, 239);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(5, 45);
+            panel7.Margin = new Padding(5);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(401, 1);
+            panel7.TabIndex = 3;
+            // 
+            // tableLayoutPanel15
+            // 
+            tableLayoutPanel15.ColumnCount = 3;
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel15.Controls.Add(Btn_HelpAlgoritmosAlocacao, 2, 0);
+            tableLayoutPanel15.Controls.Add(label6, 1, 0);
+            tableLayoutPanel15.Controls.Add(pictureBox9, 0, 0);
+            tableLayoutPanel15.Dock = DockStyle.Top;
+            tableLayoutPanel15.Location = new Point(5, 5);
+            tableLayoutPanel15.Name = "tableLayoutPanel15";
+            tableLayoutPanel15.RowCount = 1;
+            tableLayoutPanel15.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel15.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel15.Size = new Size(401, 40);
+            tableLayoutPanel15.TabIndex = 2;
+            // 
+            // Btn_HelpAlgoritmosAlocacao
+            // 
+            Btn_HelpAlgoritmosAlocacao.Anchor = AnchorStyles.None;
+            Btn_HelpAlgoritmosAlocacao.BackColor = Color.White;
+            Btn_HelpAlgoritmosAlocacao.BackgroundImage = Properties.Resources.question;
+            Btn_HelpAlgoritmosAlocacao.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpAlgoritmosAlocacao.FlatAppearance.BorderSize = 0;
+            Btn_HelpAlgoritmosAlocacao.FlatStyle = FlatStyle.Flat;
+            Btn_HelpAlgoritmosAlocacao.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpAlgoritmosAlocacao.Location = new Point(362, 6);
+            Btn_HelpAlgoritmosAlocacao.Name = "Btn_HelpAlgoritmosAlocacao";
+            Btn_HelpAlgoritmosAlocacao.Size = new Size(28, 28);
+            Btn_HelpAlgoritmosAlocacao.TabIndex = 9;
+            Btn_HelpAlgoritmosAlocacao.TabStop = false;
+            Btn_HelpAlgoritmosAlocacao.UseVisualStyleBackColor = false;
+            Btn_HelpAlgoritmosAlocacao.Click += Btn_HelpAlgoritmosAlocacao_Click;
+            // 
+            // label6
+            // 
+            label6.Dock = DockStyle.Fill;
+            label6.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label6.Location = new Point(53, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(295, 40);
+            label6.TabIndex = 8;
+            label6.Text = "Algoritmos de Alocação";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.Anchor = AnchorStyles.None;
+            pictureBox9.BackgroundImage = Properties.Resources.list_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox9.Location = new Point(10, 5);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(30, 30);
+            pictureBox9.TabIndex = 1;
+            pictureBox9.TabStop = false;
+            // 
+            // CardPanelConfigGerenciamento
+            // 
+            CardPanelConfigGerenciamento.BackColor = Color.White;
+            CardPanelConfigGerenciamento.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigGerenciamento.Controls.Add(tableLayoutPanel22);
+            CardPanelConfigGerenciamento.Controls.Add(panel6);
+            CardPanelConfigGerenciamento.Controls.Add(tableLayoutPanel14);
+            CardPanelConfigGerenciamento.Dock = DockStyle.Fill;
+            CardPanelConfigGerenciamento.Location = new Point(411, 0);
+            CardPanelConfigGerenciamento.Margin = new Padding(0);
+            CardPanelConfigGerenciamento.Name = "CardPanelConfigGerenciamento";
+            CardPanelConfigGerenciamento.Padding = new Padding(5);
+            CardPanelConfigGerenciamento.Size = new Size(411, 187);
+            CardPanelConfigGerenciamento.TabIndex = 1;
+            // 
+            // tableLayoutPanel22
+            // 
+            tableLayoutPanel22.ColumnCount = 2;
+            tableLayoutPanel22.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel22.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel22.Controls.Add(Btn_HelpSplit, 1, 0);
+            tableLayoutPanel22.Controls.Add(HabilitarCoalesing, 0, 1);
+            tableLayoutPanel22.Controls.Add(Btn_HelpCoalescing, 1, 1);
+            tableLayoutPanel22.Controls.Add(HabilitarSplit, 0, 0);
+            tableLayoutPanel22.Dock = DockStyle.Fill;
+            tableLayoutPanel22.Location = new Point(5, 46);
+            tableLayoutPanel22.Name = "tableLayoutPanel22";
+            tableLayoutPanel22.RowCount = 3;
+            tableLayoutPanel22.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel22.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel22.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel22.Size = new Size(401, 136);
+            tableLayoutPanel22.TabIndex = 12;
+            // 
+            // Btn_HelpSplit
+            // 
+            Btn_HelpSplit.Anchor = AnchorStyles.None;
+            Btn_HelpSplit.BackColor = Color.White;
+            Btn_HelpSplit.BackgroundImage = Properties.Resources.question;
+            Btn_HelpSplit.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpSplit.FlatAppearance.BorderSize = 0;
+            Btn_HelpSplit.FlatStyle = FlatStyle.Flat;
+            Btn_HelpSplit.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpSplit.Location = new Point(362, 8);
+            Btn_HelpSplit.Name = "Btn_HelpSplit";
+            Btn_HelpSplit.Size = new Size(28, 28);
+            Btn_HelpSplit.TabIndex = 6;
+            Btn_HelpSplit.TabStop = false;
+            Btn_HelpSplit.UseVisualStyleBackColor = false;
+            Btn_HelpSplit.Click += Btn_HelpSplit_Click;
+            // 
+            // HabilitarCoalesing
+            // 
+            HabilitarCoalesing.AutoSize = true;
+            HabilitarCoalesing.BackColor = Color.Transparent;
+            HabilitarCoalesing.Dock = DockStyle.Fill;
+            HabilitarCoalesing.Font = new Font("Lato", 10F);
+            HabilitarCoalesing.ForeColor = Color.FromArgb(30, 41, 59);
+            HabilitarCoalesing.Location = new Point(3, 48);
+            HabilitarCoalesing.MinimumSize = new Size(0, 28);
+            HabilitarCoalesing.Name = "HabilitarCoalesing";
+            HabilitarCoalesing.Size = new Size(345, 39);
+            HabilitarCoalesing.TabIndex = 5;
+            HabilitarCoalesing.Text = "Habilitar União de Blocos Livres (Coalescing)";
+            HabilitarCoalesing.UseVisualStyleBackColor = false;
+            // 
+            // Btn_HelpCoalescing
+            // 
+            Btn_HelpCoalescing.Anchor = AnchorStyles.None;
+            Btn_HelpCoalescing.BackColor = Color.White;
+            Btn_HelpCoalescing.BackgroundImage = Properties.Resources.question;
+            Btn_HelpCoalescing.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpCoalescing.FlatAppearance.BorderSize = 0;
+            Btn_HelpCoalescing.FlatStyle = FlatStyle.Flat;
+            Btn_HelpCoalescing.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpCoalescing.Location = new Point(362, 53);
+            Btn_HelpCoalescing.Name = "Btn_HelpCoalescing";
+            Btn_HelpCoalescing.Size = new Size(28, 28);
+            Btn_HelpCoalescing.TabIndex = 7;
+            Btn_HelpCoalescing.TabStop = false;
+            Btn_HelpCoalescing.UseVisualStyleBackColor = false;
+            Btn_HelpCoalescing.Click += Btn_HepCoalescing_Click;
+            // 
+            // HabilitarSplit
+            // 
+            HabilitarSplit.AutoSize = true;
+            HabilitarSplit.BackColor = Color.Transparent;
+            HabilitarSplit.Dock = DockStyle.Fill;
+            HabilitarSplit.Font = new Font("Lato", 10F);
+            HabilitarSplit.ForeColor = Color.FromArgb(30, 41, 59);
+            HabilitarSplit.Location = new Point(3, 3);
+            HabilitarSplit.MinimumSize = new Size(0, 28);
+            HabilitarSplit.Name = "HabilitarSplit";
+            HabilitarSplit.Size = new Size(345, 39);
+            HabilitarSplit.TabIndex = 4;
+            HabilitarSplit.Text = "Habilitar Divisão de Bloco (Split)";
+            HabilitarSplit.UseVisualStyleBackColor = false;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(232, 235, 239);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(5, 45);
+            panel6.Margin = new Padding(5);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(401, 1);
+            panel6.TabIndex = 3;
+            // 
+            // tableLayoutPanel14
+            // 
+            tableLayoutPanel14.ColumnCount = 3;
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel14.Controls.Add(label5, 1, 0);
+            tableLayoutPanel14.Controls.Add(pictureBox8, 0, 0);
+            tableLayoutPanel14.Dock = DockStyle.Top;
+            tableLayoutPanel14.Location = new Point(5, 5);
+            tableLayoutPanel14.Name = "tableLayoutPanel14";
+            tableLayoutPanel14.RowCount = 1;
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel14.Size = new Size(401, 40);
+            tableLayoutPanel14.TabIndex = 2;
+            // 
+            // label5
+            // 
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label5.Location = new Point(53, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(295, 40);
+            label5.TabIndex = 8;
+            label5.Text = "Gerenciamento";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Anchor = AnchorStyles.None;
+            pictureBox8.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox8.Location = new Point(10, 5);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(30, 30);
+            pictureBox8.TabIndex = 1;
+            pictureBox8.TabStop = false;
+            // 
+            // CardPanelConfigMemoria
+            // 
+            CardPanelConfigMemoria.BackColor = Color.White;
+            CardPanelConfigMemoria.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigMemoria.Controls.Add(tableLayoutPanel25);
+            CardPanelConfigMemoria.Controls.Add(PanelDivisor1);
+            CardPanelConfigMemoria.Controls.Add(tableLayoutPanel13);
+            CardPanelConfigMemoria.Dock = DockStyle.Fill;
+            CardPanelConfigMemoria.Location = new Point(0, 0);
+            CardPanelConfigMemoria.Margin = new Padding(0);
+            CardPanelConfigMemoria.Name = "CardPanelConfigMemoria";
+            CardPanelConfigMemoria.Padding = new Padding(5);
+            CardPanelConfigMemoria.Size = new Size(411, 187);
+            CardPanelConfigMemoria.TabIndex = 0;
+            // 
+            // tableLayoutPanel25
+            // 
+            tableLayoutPanel25.ColumnCount = 2;
+            tableLayoutPanel25.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel25.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel25.Controls.Add(SelectHeapSize, 0, 1);
+            tableLayoutPanel25.Controls.Add(Btn_HelpTamHeap, 1, 1);
+            tableLayoutPanel25.Controls.Add(Label_TamanhoHeap, 0, 0);
+            tableLayoutPanel25.Dock = DockStyle.Fill;
+            tableLayoutPanel25.Location = new Point(5, 46);
+            tableLayoutPanel25.Name = "tableLayoutPanel25";
+            tableLayoutPanel25.RowCount = 3;
+            tableLayoutPanel25.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel25.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel25.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel25.Size = new Size(401, 136);
+            tableLayoutPanel25.TabIndex = 12;
+            // 
+            // SelectHeapSize
+            // 
+            SelectHeapSize.Anchor = AnchorStyles.Left;
+            SelectHeapSize.DropDownStyle = ComboBoxStyle.DropDownList;
+            SelectHeapSize.Font = new Font("Lato", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SelectHeapSize.FormattingEnabled = true;
+            SelectHeapSize.Location = new Point(3, 54);
+            SelectHeapSize.Name = "SelectHeapSize";
+            SelectHeapSize.Size = new Size(235, 27);
+            SelectHeapSize.TabIndex = 5;
+            SelectHeapSize.SelectedIndexChanged += SelectHeapSize_SelectedIndexChanged;
+            // 
+            // Btn_HelpTamHeap
+            // 
+            Btn_HelpTamHeap.Anchor = AnchorStyles.None;
+            Btn_HelpTamHeap.BackColor = Color.White;
+            Btn_HelpTamHeap.BackgroundImage = Properties.Resources.question;
+            Btn_HelpTamHeap.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpTamHeap.FlatAppearance.BorderSize = 0;
+            Btn_HelpTamHeap.FlatStyle = FlatStyle.Flat;
+            Btn_HelpTamHeap.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpTamHeap.Location = new Point(362, 53);
+            Btn_HelpTamHeap.Name = "Btn_HelpTamHeap";
+            Btn_HelpTamHeap.Size = new Size(28, 28);
+            Btn_HelpTamHeap.TabIndex = 7;
+            Btn_HelpTamHeap.TabStop = false;
+            Btn_HelpTamHeap.UseVisualStyleBackColor = false;
+            Btn_HelpTamHeap.Click += Btn_HelpTamHeap_Click;
+            // 
+            // Label_TamanhoHeap
+            // 
+            Label_TamanhoHeap.Dock = DockStyle.Fill;
+            Label_TamanhoHeap.Font = new Font("Lato", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Label_TamanhoHeap.Location = new Point(3, 0);
+            Label_TamanhoHeap.Name = "Label_TamanhoHeap";
+            Label_TamanhoHeap.Size = new Size(345, 45);
+            Label_TamanhoHeap.TabIndex = 6;
+            Label_TamanhoHeap.Text = "Tamanho da Heap";
+            Label_TamanhoHeap.TextAlign = ContentAlignment.BottomLeft;
+            // 
+            // PanelDivisor1
+            // 
+            PanelDivisor1.BackColor = Color.FromArgb(232, 235, 239);
+            PanelDivisor1.Dock = DockStyle.Top;
+            PanelDivisor1.Location = new Point(5, 45);
+            PanelDivisor1.Margin = new Padding(5);
+            PanelDivisor1.MaximumSize = new Size(1000, 1);
+            PanelDivisor1.Name = "PanelDivisor1";
+            PanelDivisor1.Size = new Size(401, 1);
+            PanelDivisor1.TabIndex = 1;
+            // 
+            // tableLayoutPanel13
+            // 
+            tableLayoutPanel13.ColumnCount = 3;
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel13.Controls.Add(label4, 1, 0);
+            tableLayoutPanel13.Controls.Add(pictureBox7, 0, 0);
+            tableLayoutPanel13.Dock = DockStyle.Top;
+            tableLayoutPanel13.Location = new Point(5, 5);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 1;
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel13.Size = new Size(401, 40);
+            tableLayoutPanel13.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.Dock = DockStyle.Fill;
+            label4.Font = new Font("Lato Semibold", 11.9999981F, FontStyle.Bold);
+            label4.Location = new Point(53, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(295, 40);
+            label4.TabIndex = 7;
+            label4.Text = "Memória";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Anchor = AnchorStyles.None;
+            pictureBox7.BackgroundImage = Properties.Resources.memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(10, 5);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(30, 30);
+            pictureBox7.TabIndex = 0;
+            pictureBox7.TabStop = false;
+            // 
+            // CardInfoConfiguracoes
+            // 
+            CardInfoConfiguracoes.BackColor = Color.White;
+            CardInfoConfiguracoes.BorderColor = Color.FromArgb(222, 226, 232);
+            CardInfoConfiguracoes.Controls.Add(tableLayoutPanel20);
+            CardInfoConfiguracoes.Dock = DockStyle.Fill;
+            CardInfoConfiguracoes.Location = new Point(833, 3);
+            CardInfoConfiguracoes.Margin = new Padding(5, 3, 3, 3);
+            CardInfoConfiguracoes.Name = "CardInfoConfiguracoes";
+            CardInfoConfiguracoes.Padding = new Padding(4);
+            CardInfoConfiguracoes.Size = new Size(420, 626);
+            CardInfoConfiguracoes.TabIndex = 1;
+            // 
+            // tableLayoutPanel20
+            // 
+            tableLayoutPanel20.ColumnCount = 1;
+            tableLayoutPanel20.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel32, 0, 7);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel31, 0, 6);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel30, 0, 5);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel29, 0, 4);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel28, 0, 3);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel27, 0, 2);
+            tableLayoutPanel20.Controls.Add(cardPanel2, 0, 1);
+            tableLayoutPanel20.Controls.Add(tableLayoutPanel26, 0, 0);
+            tableLayoutPanel20.Dock = DockStyle.Fill;
+            tableLayoutPanel20.Location = new Point(4, 4);
+            tableLayoutPanel20.Name = "tableLayoutPanel20";
+            tableLayoutPanel20.RowCount = 8;
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6422176F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 25.54129F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6422043F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6422043F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6422043F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6422F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6315632F));
+            tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 10.6161232F));
+            tableLayoutPanel20.Size = new Size(412, 618);
+            tableLayoutPanel20.TabIndex = 11;
+            // 
+            // tableLayoutPanel32
+            // 
+            tableLayoutPanel32.ColumnCount = 2;
+            tableLayoutPanel32.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel32.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel32.Controls.Add(label18, 1, 0);
+            tableLayoutPanel32.Controls.Add(pictureBox19, 0, 0);
+            tableLayoutPanel32.Dock = DockStyle.Fill;
+            tableLayoutPanel32.Location = new Point(3, 550);
+            tableLayoutPanel32.Name = "tableLayoutPanel32";
+            tableLayoutPanel32.RowCount = 1;
+            tableLayoutPanel32.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel32.Size = new Size(406, 65);
+            tableLayoutPanel32.TabIndex = 7;
+            // 
+            // label18
+            // 
+            label18.Dock = DockStyle.Fill;
+            label18.Font = new Font("Lato", 9.749999F);
+            label18.Location = new Point(53, 0);
+            label18.Name = "label18";
+            label18.Size = new Size(350, 65);
+            label18.TabIndex = 9;
+            label18.Text = "Cenários de Teste\nCarrega situações específicas para demonstrar comportamentos e problemas de gerenciamento da memória.";
+            label18.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox19
+            // 
+            pictureBox19.Anchor = AnchorStyles.None;
+            pictureBox19.BackgroundImage = Properties.Resources.modeling_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox19.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox19.Location = new Point(5, 12);
+            pictureBox19.Name = "pictureBox19";
+            pictureBox19.Size = new Size(40, 40);
+            pictureBox19.TabIndex = 1;
+            pictureBox19.TabStop = false;
+            // 
+            // tableLayoutPanel31
+            // 
+            tableLayoutPanel31.ColumnCount = 2;
+            tableLayoutPanel31.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel31.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel31.Controls.Add(label17, 1, 0);
+            tableLayoutPanel31.Controls.Add(pictureBox18, 0, 0);
+            tableLayoutPanel31.Dock = DockStyle.Fill;
+            tableLayoutPanel31.Location = new Point(3, 485);
+            tableLayoutPanel31.Name = "tableLayoutPanel31";
+            tableLayoutPanel31.RowCount = 1;
+            tableLayoutPanel31.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel31.Size = new Size(406, 59);
+            tableLayoutPanel31.TabIndex = 6;
+            // 
+            // label17
+            // 
+            label17.Dock = DockStyle.Fill;
+            label17.Font = new Font("Lato", 9.749999F);
+            label17.Location = new Point(53, 0);
+            label17.Name = "label17";
+            label17.Size = new Size(350, 59);
+            label17.TabIndex = 9;
+            label17.Text = "Casos de Uso\nCarrega sequências de operações predefinidas baseadas em exemplos de programação.";
+            label17.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox18
+            // 
+            pictureBox18.Anchor = AnchorStyles.None;
+            pictureBox18.BackgroundImage = Properties.Resources.code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox18.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox18.Location = new Point(5, 9);
+            pictureBox18.Name = "pictureBox18";
+            pictureBox18.Size = new Size(40, 40);
+            pictureBox18.TabIndex = 1;
+            pictureBox18.TabStop = false;
+            // 
+            // tableLayoutPanel30
+            // 
+            tableLayoutPanel30.ColumnCount = 2;
+            tableLayoutPanel30.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel30.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel30.Controls.Add(label16, 1, 0);
+            tableLayoutPanel30.Controls.Add(pictureBox17, 0, 0);
+            tableLayoutPanel30.Dock = DockStyle.Fill;
+            tableLayoutPanel30.Location = new Point(3, 420);
+            tableLayoutPanel30.Name = "tableLayoutPanel30";
+            tableLayoutPanel30.RowCount = 1;
+            tableLayoutPanel30.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel30.Size = new Size(406, 59);
+            tableLayoutPanel30.TabIndex = 5;
+            // 
+            // label16
+            // 
+            label16.Dock = DockStyle.Fill;
+            label16.Font = new Font("Lato", 9.749999F);
+            label16.Location = new Point(53, 0);
+            label16.Name = "label16";
+            label16.Size = new Size(350, 59);
+            label16.TabIndex = 9;
+            label16.Text = "Visualização\r\nControla recursos adicionais utilizados para apresentar e detalhar o estado da memória.";
+            label16.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox17
+            // 
+            pictureBox17.Anchor = AnchorStyles.None;
+            pictureBox17.BackgroundImage = Properties.Resources.visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox17.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox17.Location = new Point(5, 9);
+            pictureBox17.Name = "pictureBox17";
+            pictureBox17.Size = new Size(40, 40);
+            pictureBox17.TabIndex = 1;
+            pictureBox17.TabStop = false;
+            // 
+            // tableLayoutPanel29
+            // 
+            tableLayoutPanel29.ColumnCount = 2;
+            tableLayoutPanel29.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel29.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel29.Controls.Add(label15, 1, 0);
+            tableLayoutPanel29.Controls.Add(pictureBox16, 0, 0);
+            tableLayoutPanel29.Dock = DockStyle.Fill;
+            tableLayoutPanel29.Location = new Point(3, 355);
+            tableLayoutPanel29.Name = "tableLayoutPanel29";
+            tableLayoutPanel29.RowCount = 1;
+            tableLayoutPanel29.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel29.Size = new Size(406, 59);
+            tableLayoutPanel29.TabIndex = 4;
+            // 
+            // label15
+            // 
+            label15.Dock = DockStyle.Fill;
+            label15.Font = new Font("Lato", 9.749999F);
+            label15.Location = new Point(53, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(350, 59);
+            label15.TabIndex = 9;
+            label15.Text = "Algoritmo de Alocação\r\nDefine a estratégia utilizada para selecionar um bloco livre durante uma alocação.";
+            label15.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.Anchor = AnchorStyles.None;
+            pictureBox16.BackgroundImage = Properties.Resources.list_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox16.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox16.Location = new Point(5, 9);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(40, 40);
+            pictureBox16.TabIndex = 1;
+            pictureBox16.TabStop = false;
+            // 
+            // tableLayoutPanel28
+            // 
+            tableLayoutPanel28.ColumnCount = 2;
+            tableLayoutPanel28.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel28.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel28.Controls.Add(label14, 1, 0);
+            tableLayoutPanel28.Controls.Add(pictureBox15, 0, 0);
+            tableLayoutPanel28.Dock = DockStyle.Fill;
+            tableLayoutPanel28.Location = new Point(3, 290);
+            tableLayoutPanel28.Name = "tableLayoutPanel28";
+            tableLayoutPanel28.RowCount = 1;
+            tableLayoutPanel28.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel28.Size = new Size(406, 59);
+            tableLayoutPanel28.TabIndex = 3;
+            // 
+            // label14
+            // 
+            label14.Dock = DockStyle.Fill;
+            label14.Font = new Font("Lato", 9.749999F);
+            label14.Location = new Point(53, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(350, 59);
+            label14.TabIndex = 9;
+            label14.Text = "Gerenciamento\r\nHabilita técnicas de divisão e união de blocos durante a alocação e liberação de memória.";
+            label14.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.Anchor = AnchorStyles.None;
+            pictureBox15.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox15.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox15.Location = new Point(5, 9);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(40, 40);
+            pictureBox15.TabIndex = 1;
+            pictureBox15.TabStop = false;
+            // 
+            // tableLayoutPanel27
+            // 
+            tableLayoutPanel27.ColumnCount = 2;
+            tableLayoutPanel27.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel27.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel27.Controls.Add(label13, 1, 0);
+            tableLayoutPanel27.Controls.Add(pictureBox14, 0, 0);
+            tableLayoutPanel27.Dock = DockStyle.Fill;
+            tableLayoutPanel27.Location = new Point(3, 225);
+            tableLayoutPanel27.Name = "tableLayoutPanel27";
+            tableLayoutPanel27.RowCount = 1;
+            tableLayoutPanel27.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel27.Size = new Size(406, 59);
+            tableLayoutPanel27.TabIndex = 2;
+            // 
+            // label13
+            // 
+            label13.Dock = DockStyle.Fill;
+            label13.Font = new Font("Lato", 9.749999F);
+            label13.Location = new Point(53, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(350, 59);
+            label13.TabIndex = 9;
+            label13.Text = "Memória\r\nDefine o tamanho total da heap disponível durante a simulação.";
+            label13.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.Anchor = AnchorStyles.None;
+            pictureBox14.BackgroundImage = Properties.Resources.memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox14.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox14.Location = new Point(5, 9);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(40, 40);
+            pictureBox14.TabIndex = 1;
+            pictureBox14.TabStop = false;
+            // 
+            // cardPanel2
+            // 
+            cardPanel2.BackColor = Color.FromArgb(238, 244, 253);
+            cardPanel2.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel2.Controls.Add(label19);
+            cardPanel2.Dock = DockStyle.Fill;
+            cardPanel2.Location = new Point(10, 75);
+            cardPanel2.Margin = new Padding(10);
+            cardPanel2.Name = "cardPanel2";
+            cardPanel2.Padding = new Padding(5);
+            cardPanel2.Size = new Size(392, 137);
+            cardPanel2.TabIndex = 0;
+            // 
+            // label19
+            // 
+            label19.Dock = DockStyle.Fill;
+            label19.Font = new Font("Lato", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label19.ForeColor = Color.Gray;
+            label19.Location = new Point(5, 5);
+            label19.Name = "label19";
+            label19.Size = new Size(382, 127);
+            label19.TabIndex = 9;
+            label19.Text = resources.GetString("label19.Text");
+            label19.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel26
+            // 
+            tableLayoutPanel26.ColumnCount = 2;
+            tableLayoutPanel26.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel26.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel26.Controls.Add(label11, 1, 0);
+            tableLayoutPanel26.Controls.Add(pictureBox13, 0, 0);
+            tableLayoutPanel26.Dock = DockStyle.Fill;
+            tableLayoutPanel26.Location = new Point(3, 3);
+            tableLayoutPanel26.Name = "tableLayoutPanel26";
+            tableLayoutPanel26.RowCount = 1;
+            tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel26.Size = new Size(406, 59);
+            tableLayoutPanel26.TabIndex = 1;
+            // 
+            // label11
+            // 
+            label11.Dock = DockStyle.Fill;
+            label11.Font = new Font("Lato", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(53, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(350, 59);
+            label11.TabIndex = 9;
+            label11.Text = "Sobre as Configurações";
+            label11.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.Anchor = AnchorStyles.None;
+            pictureBox13.BackgroundImage = Properties.Resources.lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48;
+            pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox13.Location = new Point(5, 9);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(40, 40);
+            pictureBox13.TabIndex = 0;
+            pictureBox13.TabStop = false;
             // 
             // NewFormDesign
             // 
@@ -1949,13 +3047,13 @@
             panel5.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
             CardListaBlocosLivres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewBlocosLivres).EndInit();
             panel4.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             CardConfigAtualSimulacao.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             TabMetricas.ResumeLayout(false);
             tableLayoutPanel8.ResumeLayout(false);
@@ -1972,11 +3070,54 @@
             tableLayoutPanel12.ResumeLayout(false);
             tableLayoutPanel12.PerformLayout();
             TabConfiguracoes.ResumeLayout(false);
-            TabConfiguracoes.PerformLayout();
+            TableLayoutPrincipalConfig.ResumeLayout(false);
             MenuParametros.ResumeLayout(false);
-            MenuParametros.PerformLayout();
-            GroupBoxCasosDeUsoSimulacao.ResumeLayout(false);
-            GroupBoxCasosDeUsoSimulacao.PerformLayout();
+            cardPanel1.ResumeLayout(false);
+            tableLayoutPanel24.ResumeLayout(false);
+            tableLayoutPanel24.PerformLayout();
+            tableLayoutPanel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
+            CardPanelConfigCasosUso.ResumeLayout(false);
+            tableLayoutPanel23.ResumeLayout(false);
+            tableLayoutPanel23.PerformLayout();
+            tableLayoutPanel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            CardPanelConfigVisualizacao.ResumeLayout(false);
+            tableLayoutPanel21.ResumeLayout(false);
+            tableLayoutPanel21.PerformLayout();
+            tableLayoutPanel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            CardPanelConfigAlgoritmos.ResumeLayout(false);
+            tableLayoutPanel19.ResumeLayout(false);
+            tableLayoutPanel19.PerformLayout();
+            tableLayoutPanel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            CardPanelConfigGerenciamento.ResumeLayout(false);
+            tableLayoutPanel22.ResumeLayout(false);
+            tableLayoutPanel22.PerformLayout();
+            tableLayoutPanel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            CardPanelConfigMemoria.ResumeLayout(false);
+            tableLayoutPanel25.ResumeLayout(false);
+            tableLayoutPanel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            CardInfoConfiguracoes.ResumeLayout(false);
+            tableLayoutPanel20.ResumeLayout(false);
+            tableLayoutPanel32.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).EndInit();
+            tableLayoutPanel31.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
+            tableLayoutPanel30.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
+            tableLayoutPanel29.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
+            tableLayoutPanel28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            tableLayoutPanel27.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            cardPanel2.ResumeLayout(false);
+            tableLayoutPanel26.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ResumeLayout(false);
         }
 
@@ -2015,7 +3156,6 @@
         private TableLayoutPanel Panel_Simulacao;
         private Panel Panel_Simulacao_Estruturas;
         private TableLayoutPanel Panel_Simulacao_2;
-        private Button Btn_HelpHeap;
         private Label Label_Heap;
         private PictureBox pictureBox3;
         private Controls.CustomControls.CardPanel CardListaBlocosLivres;
@@ -2070,32 +3210,98 @@
         private Button Btn_HelpUsoHeap;
         private Label Lbl_BytesLivres;
         private Label Lbl_BytesOcupados;
-        private GroupBox MenuParametros;
-        private CheckBox UsarLegendaDetalhada;
-        private GroupBox GroupBoxCasosDeUsoSimulacao;
-        private RadioButton UsarCaso5;
-        private RadioButton UsarCaso4;
-        private RadioButton UsarCasoAltaFragExterna;
-        private RadioButton UsarCasoAltaFragInterna;
-        private RadioButton UsarCaso3;
-        private RadioButton UsarCaso2;
-        private RadioButton UsarCaso1;
-        private RadioButton UsarNenhumCaso;
-        private Label Label_AlgoritmosAlocacao;
-        private Button Btn_HelpAlgoritmosAlocacao;
-        private Button Btn_HelpSplit;
-        private CheckBox HabilitarSplit;
-        private RadioButton UseFirstFit;
-        private CheckBox HabilitarCoalesing;
         private ComboBox SelectHeapSize;
-        private Button Btn_HepCoalescing;
-        private RadioButton UseBestFit;
         private Label Label_TamanhoHeap;
-        private RadioButton UseWorstFit;
-        private Button Btn_HelpTamHeap;
-        private CheckBox HabilitarVisualizacaoAvancada;
         private Label Lbl_SnapshotAtual;
-        private TableLayoutPanel tableLayoutPanel3;
         private Panel PanelGridHeap;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Label Lbl_ConfiguracoesAtuais;
+        private Controls.CustomControls.HelpButton Btn_HelpHeap;
+        private TableLayoutPanel TableLayoutPrincipalConfig;
+        private TableLayoutPanel MenuParametros;
+        private Controls.CustomControls.CardPanel cardPanel1;
+        private Controls.CustomControls.CardPanel CardPanelConfigCasosUso;
+        private Controls.CustomControls.CardPanel CardPanelConfigVisualizacao;
+        private Controls.CustomControls.CardPanel CardPanelConfigAlgoritmos;
+        private Controls.CustomControls.CardPanel CardPanelConfigGerenciamento;
+        private Controls.CustomControls.CardPanel CardPanelConfigMemoria;
+        private Panel PanelDivisor1;
+        private TableLayoutPanel tableLayoutPanel13;
+        private Panel panel10;
+        private TableLayoutPanel tableLayoutPanel18;
+        private Panel panel9;
+        private TableLayoutPanel tableLayoutPanel17;
+        private Panel panel8;
+        private TableLayoutPanel tableLayoutPanel16;
+        private Panel panel7;
+        private TableLayoutPanel tableLayoutPanel15;
+        private Panel panel6;
+        private TableLayoutPanel tableLayoutPanel14;
+        private PictureBox pictureBox7;
+        private Label label4;
+        private Label label9;
+        private PictureBox pictureBox12;
+        private Label label8;
+        private PictureBox pictureBox11;
+        private Label label7;
+        private PictureBox pictureBox10;
+        private Label label6;
+        private PictureBox pictureBox9;
+        private Label label5;
+        private PictureBox pictureBox8;
+        private Controls.CustomControls.StyledRadioButton UseWorstFit;
+        private Controls.CustomControls.StyledRadioButton UseBestFit;
+        private Controls.CustomControls.StyledRadioButton UseFirstFit;
+        private Controls.CustomControls.StyledCheckBox HabilitarSplit;
+        private Controls.CustomControls.StyledCheckBox HabilitarCoalesing;
+        private Controls.CustomControls.HelpButton helpButton7;
+        private Controls.CustomControls.HelpButton helpButton6;
+        private Controls.CustomControls.HelpButton Btn_HelpVisualizacaoAvancada;
+        private Controls.CustomControls.HelpButton Btn_HelpAlgoritmosAlocacao;
+        private Controls.CustomControls.HelpButton Btn_HelpCoalescing;
+        private Controls.CustomControls.HelpButton Btn_HelpSplit;
+        private Controls.CustomControls.HelpButton Btn_HelpTamHeap;
+        private Controls.CustomControls.StyledCheckBox UsarLegendaDetalhada;
+        private Controls.CustomControls.StyledCheckBox HabilitarVisualizacaoAvancada;
+        private Controls.CustomControls.StyledRadioButton UsarCasoAltaFragExterna;
+        private Controls.CustomControls.StyledRadioButton UsarCasoAltaFragInterna;
+        private Controls.CustomControls.StyledRadioButton UsarCaso5;
+        private Controls.CustomControls.StyledRadioButton UsarCaso3;
+        private Controls.CustomControls.StyledRadioButton UsarCaso4;
+        private Controls.CustomControls.StyledRadioButton UsarCaso2;
+        private Controls.CustomControls.StyledRadioButton UsarCaso1;
+        private Controls.CustomControls.StyledRadioButton UsarNenhumCaso;
+        private TableLayoutPanel tableLayoutPanel19;
+        private TableLayoutPanel tableLayoutPanel21;
+        private TableLayoutPanel tableLayoutPanel22;
+        private TableLayoutPanel tableLayoutPanel20;
+        private TableLayoutPanel tableLayoutPanel23;
+        private TableLayoutPanel tableLayoutPanel24;
+        private TableLayoutPanel tableLayoutPanel25;
+        private Controls.CustomControls.HelpButton Btn_HelpLegendasDetalhadas;
+        private Controls.CustomControls.CardPanel CardInfoConfiguracoes;
+        private Controls.CustomControls.CardPanel cardPanel2;
+        private TableLayoutPanel tableLayoutPanel31;
+        private PictureBox pictureBox18;
+        private TableLayoutPanel tableLayoutPanel30;
+        private PictureBox pictureBox17;
+        private TableLayoutPanel tableLayoutPanel29;
+        private PictureBox pictureBox16;
+        private TableLayoutPanel tableLayoutPanel28;
+        private PictureBox pictureBox15;
+        private TableLayoutPanel tableLayoutPanel27;
+        private PictureBox pictureBox14;
+        private TableLayoutPanel tableLayoutPanel26;
+        private PictureBox pictureBox13;
+        private TableLayoutPanel tableLayoutPanel32;
+        private PictureBox pictureBox19;
+        private Label label18;
+        private Label label17;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label19;
+        private Label label11;
     }
 }

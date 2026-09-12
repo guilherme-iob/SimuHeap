@@ -12,6 +12,7 @@ namespace SimuHeap.Controls.CustomControls
     public partial class TabNavigationButton : Button
     {
         private bool selecionado;
+        private bool mouseOver;
 
         [Category("Aparência")]
         [DefaultValue(false)]
@@ -30,45 +31,82 @@ namespace SimuHeap.Controls.CustomControls
         {
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
+            UseVisualStyleBackColor = false;
 
             BackColor = CoresInterface.Superficie;
             ForeColor = CoresInterface.TextoSecundario;
 
-            Height = 54;
+            Height = 48;
             Width = 150;
 
             Cursor = Cursors.Hand;
+            Font = new Font("Lato", 10F, FontStyle.Regular);
 
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-
-            TextAlign = ContentAlignment.MiddleCenter;
+            TextAlign = ContentAlignment.MiddleLeft;
             ImageAlign = ContentAlignment.MiddleLeft;
             TextImageRelation = TextImageRelation.ImageBeforeText;
 
-            Padding = new Padding(14, 0, 14, 0);
+            Padding = new Padding(18, 0, 10, 0);
+            Margin = new Padding(0);
 
             FlatAppearance.MouseOverBackColor = CoresInterface.Hover;
-            FlatAppearance.MouseDownBackColor = Color.FromArgb(235, 240, 247);
+            FlatAppearance.MouseDownBackColor = CoresInterface.Hover;
+
+            AtualizarAparencia();
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            mouseOver = true;
+            AtualizarAparencia();
+            Invalidate();
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            mouseOver = false;
+            AtualizarAparencia();
+            Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
 
-            if (!Selecionado)
-                return;
-
-            int alturaLinha = 3;
-
-            using Brush brush = new SolidBrush(CoresInterface.Primaria);
-
-            pevent.Graphics.FillRectangle(brush, 0, Height - alturaLinha, Width, alturaLinha);
+            if (Selecionado)
+            {
+                using Brush brush = new SolidBrush(CoresInterface.Primaria);
+                pevent.Graphics.FillRectangle(brush, 0, Height - 3, Width, 3);
+            }
+            else if (mouseOver)
+            {
+                using Brush brush = new SolidBrush(CoresInterface.Primaria);
+                pevent.Graphics.FillRectangle(brush, 0, Height - 2, Width, 2);
+            }
         }
 
         private void AtualizarAparencia()
         {
-            ForeColor = Selecionado ? CoresInterface.Primaria : CoresInterface.TextoSecundario;
-            Font = new Font(Font.FontFamily, Font.Size, Selecionado ? FontStyle.Bold : FontStyle.Regular);
+            if (Selecionado)
+            {
+                BackColor = CoresInterface.Superficie;
+                ForeColor = CoresInterface.Primaria;
+                Font = new Font("Lato", 10F, FontStyle.Bold);
+            }
+            else if (mouseOver)
+            {
+                BackColor = CoresInterface.Hover;
+                ForeColor = CoresInterface.Primaria;
+                Font = new Font("Lato", 10F, FontStyle.Regular);
+            }
+            else
+            {
+                BackColor = CoresInterface.Superficie;
+                ForeColor = CoresInterface.TextoSecundario;
+                Font = new Font("Lato", 10F, FontStyle.Regular);
+            }
         }
     }
 }

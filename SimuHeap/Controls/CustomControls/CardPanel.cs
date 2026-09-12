@@ -57,49 +57,52 @@ namespace SimuHeap.Controls.CustomControls
             DoubleBuffered = true;
             BackColor = CoresInterface.Superficie;
             Margin = new Padding(0);
-            Padding = new Padding(0);
+            Padding = new Padding(4);
 
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
 
             Color corFundoPai = Parent?.BackColor ?? SystemColors.Control;
             e.Graphics.Clear(corFundoPai);
 
-            Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
+            Rectangle rectFundo = new Rectangle(0, 0, Width - 1, Height - 1);
 
-            using GraphicsPath path = CriarCaminhoArredondado(rect, BorderRadius);
+            using GraphicsPath pathFundo = CriarCaminhoArredondado(rectFundo, BorderRadius);
             using SolidBrush brush = new SolidBrush(BackColor);
 
-            e.Graphics.FillPath(brush, path);
+            e.Graphics.FillPath(brush, pathFundo);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
-            if (borderSize <= 0)
+            if (BorderSize <= 0)
                 return;
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
 
-            Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
+            Rectangle rectBorda = new Rectangle(0, 0, Width - 2, Height - 2);
 
-            using GraphicsPath path = CriarCaminhoArredondado(rect, BorderRadius);
+            using GraphicsPath pathBorda = CriarCaminhoArredondado(rectBorda, BorderRadius);
             using Pen pen = new Pen(BorderColor, BorderSize);
 
-            e.Graphics.DrawPath(pen, path);
+            pen.Alignment = PenAlignment.Inset;
+
+            e.Graphics.DrawPath(pen, pathBorda);
         }
 
         private GraphicsPath CriarCaminhoArredondado(Rectangle rect, int raio)
         {
             GraphicsPath path = new GraphicsPath();
-
             int diametro = Math.Min(raio * 2, Math.Min(rect.Width, rect.Height));
 
             path.StartFigure();

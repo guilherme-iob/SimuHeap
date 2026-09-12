@@ -10,10 +10,19 @@
     <Compile Update="Controls\CustomControls\CardPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\CustomControls\HelpButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\CustomControls\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\CustomControls\StyledCheckBox .cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\CustomControls\StyledDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomControls\StyledRadioButton .cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\CustomControls\TabControlSemCabecalho.cs">

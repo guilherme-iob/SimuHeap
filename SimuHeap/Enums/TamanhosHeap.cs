@@ -10,8 +10,8 @@ namespace SimuHeap.Enums
     {
         Heap64 = 64,
         Heap256 = 256,
-        Heap1KB = 1024,
-        Heap4KB = 4096,
-        Heap8KB = 8192,
+        Heap1K = 1024,
+        Heap4K = 4096,
+        Heap8K = 8192,
     }
 }

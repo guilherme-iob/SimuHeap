@@ -1,4 +1,5 @@
 ﻿using SimuHeap.Controls;
+using SimuHeap.Controls.CustomControls;
 using SimuHeap.Enums;
 using SimuHeap.Models;
 using SimuHeap.Services;
@@ -50,6 +51,7 @@ namespace SimuHeap.Windows
         }
         private void NewFormDesign_Load(object sender, EventArgs e)
         {
+            TrocarAba(0);
             InicializarHeap();
             ConfigurarDataGrids();
             AtualizarLabelPassoAtual();
@@ -62,6 +64,8 @@ namespace SimuHeap.Windows
             UseFirstFit.Checked = true;
             SelectHeapSize.SelectedIndex = 1;
             UsarNenhumCaso.Checked = true;
+
+            AtualizarLabelConfiguracaoAtual();
         }
 
         private void PanelGridHeap_Resize(object? sender, EventArgs e)
@@ -71,7 +75,7 @@ namespace SimuHeap.Windows
 
         private void InicializarHeap()
         {
-            heapSimulator = new HeapSimulator((int)TamanhosHeap.Heap8KB);
+            heapSimulator = new HeapSimulator((int)TamanhosHeap.Heap8K);
             executor = new ExecutorSimulacao();
 
             this.HeapGrid = new HeapGridControl
@@ -125,6 +129,7 @@ namespace SimuHeap.Windows
          */
         private void Btn_TabSimulacao_Click(object sender, EventArgs e)
         {
+            AtualizarLabelConfiguracaoAtual();
             TrocarAba(0);
         }
 
@@ -1446,6 +1451,10 @@ namespace SimuHeap.Windows
         private void TrocarAba(int index)
         {
             this.MenuTabControl.SelectedIndex = index;
+
+            Btn_TabSimulacao.Selecionado = MenuTabControl.SelectedIndex == 0;
+            Btn_TabMetricas.Selecionado = MenuTabControl.SelectedIndex == 1;
+            Btn_TabConfiguracoes.Selecionado = MenuTabControl.SelectedIndex == 2;
         }
 
         private void ResetarLabelEventoAtual()
@@ -1453,6 +1462,32 @@ namespace SimuHeap.Windows
             this.Lbl_SnapshotAtual.Text = "Nenhum Evento em Andamento";
         }
 
+        private void AtualizarLabelConfiguracaoAtual()
+        {
+            string heapSize = SelectHeapSize.SelectedItem switch
+            {
+                TamanhosHeap.Heap64 => "64 bytes",
+                TamanhosHeap.Heap256 => "256 bytes",
+                TamanhosHeap.Heap1K => "1 KB",
+                TamanhosHeap.Heap4K => "4 KB",
+                TamanhosHeap.Heap8K => "8 KB",
+                _ => "N/A"
+            };
+
+            string algoritmo = "N/A";
+
+            if (UseFirstFit.Checked) algoritmo = "First-Fit";
+            else if (UseBestFit.Checked) algoritmo = "Best-Fit";
+            else if (UseWorstFit.Checked) algoritmo = "Worst-Fit";
+
+            string texto = $"Heap: {heapSize}  |  " +
+                $"Algoritmo: {algoritmo}  |  " +
+                $"Split: {(HabilitarSplit.Checked ? "Ativo" : "Inativo")}  |  " +
+                $"Coalescing: {(HabilitarCoalesing.Checked ? "Ativo" : "Inativo")}  |  " +
+                $"Visualização: {(HabilitarVisualizacaoAvancada.Checked ? "Avançada" : "Padrão")}";
+
+            Lbl_ConfiguracoesAtuais.Text = texto;
+        }
         #endregion
 
 
