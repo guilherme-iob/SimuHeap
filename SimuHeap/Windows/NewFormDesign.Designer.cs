@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewFormDesign));
             flowLayoutPanel1 = new FlowLayoutPanel();
             Btn_TabSimulacao = new SimuHeap.Controls.CustomControls.TabNavigationButton();
@@ -100,32 +100,41 @@
             Lbl_SnapshotAtual = new Label();
             pictureBox3 = new PictureBox();
             TabMetricas = new TabPage();
-            tableLayoutPanel8 = new TableLayoutPanel();
-            groupBox4 = new GroupBox();
-            tableLayoutPanel9 = new TableLayoutPanel();
+            TableLayoutPrincipalMetricas = new TableLayoutPanel();
+            cardPanel6 = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel40 = new TableLayoutPanel();
             Lbl_Metadados = new Label();
-            Btn_HelpTotalMetadados = new Button();
-            groupBox3 = new GroupBox();
-            tableLayoutPanel10 = new TableLayoutPanel();
-            LblBlocosInutilizaveis = new Label();
-            Lbl_PercentualInutilizavel = new Label();
+            tableLayoutPanel36 = new TableLayoutPanel();
+            helpButton4 = new SimuHeap.Controls.CustomControls.HelpButton();
+            pictureBox23 = new PictureBox();
+            label24 = new Label();
+            cardPanel5 = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel39 = new TableLayoutPanel();
             Lbl_Padding = new Label();
-            Lbl_MemInutilizavel = new Label();
-            Btn_HelpMemoriaInutilizavel = new Button();
-            groupBox2 = new GroupBox();
-            tableLayoutPanel11 = new TableLayoutPanel();
+            tableLayoutPanel35 = new TableLayoutPanel();
+            helpButton3 = new SimuHeap.Controls.CustomControls.HelpButton();
+            pictureBox22 = new PictureBox();
+            label23 = new Label();
+            cardPanel4 = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel38 = new TableLayoutPanel();
             Lbl_MaiorBlocoLivre = new Label();
-            Btn_HelpFragExterna = new Button();
-            Lbl_FragExterna = new Label();
-            Btn_HelpFragInterna = new Button();
-            Lbl_FragInterna = new Label();
+            tableLayoutPanel41 = new TableLayoutPanel();
+            CircularProgressFragInterna = new SimuHeap.Controls.CustomControls.CircularProgress();
+            CircularProgressFragExterna = new SimuHeap.Controls.CustomControls.CircularProgress();
             Lbl_BytesFragInterna = new Label();
-            groupBox1 = new GroupBox();
-            tableLayoutPanel12 = new TableLayoutPanel();
-            Lbl_UsoHeap = new Label();
-            Btn_HelpUsoHeap = new Button();
+            tableLayoutPanel34 = new TableLayoutPanel();
+            Btn_HelpFragmentacao = new SimuHeap.Controls.CustomControls.HelpButton();
+            pictureBox21 = new PictureBox();
+            label22 = new Label();
+            cardPanel3 = new SimuHeap.Controls.CustomControls.CardPanel();
+            tableLayoutPanel37 = new TableLayoutPanel();
+            CircularProgressUsoHeap = new SimuHeap.Controls.CustomControls.CircularProgress();
             Lbl_BytesLivres = new Label();
             Lbl_BytesOcupados = new Label();
+            tableLayoutPanel33 = new TableLayoutPanel();
+            pictureBox20 = new PictureBox();
+            label21 = new Label();
+            Btn_HelpUsoHeap = new SimuHeap.Controls.CustomControls.HelpButton();
             TabConfiguracoes = new TabPage();
             TableLayoutPrincipalConfig = new TableLayoutPanel();
             MenuParametros = new TableLayoutPanel();
@@ -251,15 +260,24 @@
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             TabMetricas.SuspendLayout();
-            tableLayoutPanel8.SuspendLayout();
-            groupBox4.SuspendLayout();
-            tableLayoutPanel9.SuspendLayout();
-            groupBox3.SuspendLayout();
-            tableLayoutPanel10.SuspendLayout();
-            groupBox2.SuspendLayout();
-            tableLayoutPanel11.SuspendLayout();
-            groupBox1.SuspendLayout();
-            tableLayoutPanel12.SuspendLayout();
+            TableLayoutPrincipalMetricas.SuspendLayout();
+            cardPanel6.SuspendLayout();
+            tableLayoutPanel40.SuspendLayout();
+            tableLayoutPanel36.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
+            cardPanel5.SuspendLayout();
+            tableLayoutPanel39.SuspendLayout();
+            tableLayoutPanel35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
+            cardPanel4.SuspendLayout();
+            tableLayoutPanel38.SuspendLayout();
+            tableLayoutPanel41.SuspendLayout();
+            tableLayoutPanel34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
+            cardPanel3.SuspendLayout();
+            tableLayoutPanel37.SuspendLayout();
+            tableLayoutPanel33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
             TabConfiguracoes.SuspendLayout();
             TableLayoutPrincipalConfig.SuspendLayout();
             MenuParametros.SuspendLayout();
@@ -816,32 +834,32 @@
             DataGridViewEventos.AllowUserToAddRows = false;
             DataGridViewEventos.AllowUserToDeleteRows = false;
             DataGridViewEventos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(252, 253, 254);
-            DataGridViewEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = Color.FromArgb(252, 253, 254);
+            DataGridViewEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             DataGridViewEventos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewEventos.BackgroundColor = Color.White;
             DataGridViewEventos.BorderStyle = BorderStyle.None;
             DataGridViewEventos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridViewEventos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle20.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle20.ForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle20.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle20.SelectionBackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle20.SelectionForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
+            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(225, 239, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = Color.White;
+            dataGridViewCellStyle21.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle21.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle21.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(225, 239, 255);
+            dataGridViewCellStyle21.SelectionForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.False;
+            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle21;
             DataGridViewEventos.Dock = DockStyle.Fill;
             DataGridViewEventos.EnableHeadersVisualStyles = false;
             DataGridViewEventos.GridColor = Color.FromArgb(225, 229, 235);
@@ -1213,32 +1231,32 @@
             DataGridViewBlocosLivres.AllowUserToAddRows = false;
             DataGridViewBlocosLivres.AllowUserToDeleteRows = false;
             DataGridViewBlocosLivres.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(252, 253, 254);
-            DataGridViewBlocosLivres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.BackColor = Color.FromArgb(252, 253, 254);
+            DataGridViewBlocosLivres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             DataGridViewBlocosLivres.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewBlocosLivres.BackgroundColor = Color.White;
             DataGridViewBlocosLivres.BorderStyle = BorderStyle.None;
             DataGridViewBlocosLivres.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridViewBlocosLivres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle5.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle23.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle23.ForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle23.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle23.SelectionForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
+            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             DataGridViewBlocosLivres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(225, 239, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = Color.White;
+            dataGridViewCellStyle24.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle24.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle24.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(225, 239, 255);
+            dataGridViewCellStyle24.SelectionForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.False;
+            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle24;
             DataGridViewBlocosLivres.Dock = DockStyle.Fill;
             DataGridViewBlocosLivres.EnableHeadersVisualStyles = false;
             DataGridViewBlocosLivres.GridColor = Color.FromArgb(225, 229, 235);
@@ -1371,7 +1389,7 @@
             // 
             // TabMetricas
             // 
-            TabMetricas.Controls.Add(tableLayoutPanel8);
+            TabMetricas.Controls.Add(TableLayoutPrincipalMetricas);
             TabMetricas.Location = new Point(4, 5);
             TabMetricas.Name = "TabMetricas";
             TabMetricas.Padding = new Padding(3);
@@ -1380,343 +1398,429 @@
             TabMetricas.Text = "Metricas";
             TabMetricas.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel8
+            // TableLayoutPrincipalMetricas
             // 
-            tableLayoutPanel8.ColumnCount = 1;
-            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Controls.Add(groupBox4, 0, 3);
-            tableLayoutPanel8.Controls.Add(groupBox3, 0, 2);
-            tableLayoutPanel8.Controls.Add(groupBox2, 0, 1);
-            tableLayoutPanel8.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel8.Dock = DockStyle.Left;
-            tableLayoutPanel8.Location = new Point(3, 3);
-            tableLayoutPanel8.Margin = new Padding(4);
-            tableLayoutPanel8.Name = "tableLayoutPanel8";
-            tableLayoutPanel8.RowCount = 4;
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 24.9999981F));
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel8.Size = new Size(384, 626);
-            tableLayoutPanel8.TabIndex = 2;
+            TableLayoutPrincipalMetricas.ColumnCount = 2;
+            TableLayoutPrincipalMetricas.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPrincipalMetricas.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPrincipalMetricas.Controls.Add(cardPanel6, 1, 1);
+            TableLayoutPrincipalMetricas.Controls.Add(cardPanel5, 0, 1);
+            TableLayoutPrincipalMetricas.Controls.Add(cardPanel4, 1, 0);
+            TableLayoutPrincipalMetricas.Controls.Add(cardPanel3, 0, 0);
+            TableLayoutPrincipalMetricas.Dock = DockStyle.Fill;
+            TableLayoutPrincipalMetricas.Location = new Point(3, 3);
+            TableLayoutPrincipalMetricas.Name = "TableLayoutPrincipalMetricas";
+            TableLayoutPrincipalMetricas.RowCount = 2;
+            TableLayoutPrincipalMetricas.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
+            TableLayoutPrincipalMetricas.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
+            TableLayoutPrincipalMetricas.Size = new Size(1250, 626);
+            TableLayoutPrincipalMetricas.TabIndex = 3;
             // 
-            // groupBox4
+            // cardPanel6
             // 
-            groupBox4.Controls.Add(tableLayoutPanel9);
-            groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(4, 472);
-            groupBox4.Margin = new Padding(4);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(4);
-            groupBox4.Size = new Size(376, 150);
-            groupBox4.TabIndex = 4;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Metadados";
+            cardPanel6.BackColor = Color.White;
+            cardPanel6.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel6.Controls.Add(tableLayoutPanel40);
+            cardPanel6.Controls.Add(tableLayoutPanel36);
+            cardPanel6.Dock = DockStyle.Fill;
+            cardPanel6.Location = new Point(630, 411);
+            cardPanel6.Margin = new Padding(5);
+            cardPanel6.Name = "cardPanel6";
+            cardPanel6.Padding = new Padding(5);
+            cardPanel6.Size = new Size(615, 210);
+            cardPanel6.TabIndex = 2;
             // 
-            // tableLayoutPanel9
+            // tableLayoutPanel40
             // 
-            tableLayoutPanel9.ColumnCount = 2;
-            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel9.Controls.Add(Lbl_Metadados, 0, 0);
-            tableLayoutPanel9.Controls.Add(Btn_HelpTotalMetadados, 1, 0);
-            tableLayoutPanel9.Dock = DockStyle.Fill;
-            tableLayoutPanel9.Location = new Point(4, 20);
-            tableLayoutPanel9.Name = "tableLayoutPanel9";
-            tableLayoutPanel9.RowCount = 4;
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel9.Size = new Size(368, 126);
-            tableLayoutPanel9.TabIndex = 4;
+            tableLayoutPanel40.ColumnCount = 1;
+            tableLayoutPanel40.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel40.Controls.Add(Lbl_Metadados, 0, 0);
+            tableLayoutPanel40.Dock = DockStyle.Fill;
+            tableLayoutPanel40.Location = new Point(5, 55);
+            tableLayoutPanel40.Name = "tableLayoutPanel40";
+            tableLayoutPanel40.RowCount = 2;
+            tableLayoutPanel40.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel40.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel40.Size = new Size(605, 150);
+            tableLayoutPanel40.TabIndex = 11;
             // 
             // Lbl_Metadados
             // 
             Lbl_Metadados.AutoSize = true;
             Lbl_Metadados.Dock = DockStyle.Fill;
+            Lbl_Metadados.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
             Lbl_Metadados.Location = new Point(4, 0);
             Lbl_Metadados.Margin = new Padding(4, 0, 4, 0);
             Lbl_Metadados.Name = "Lbl_Metadados";
-            Lbl_Metadados.Size = new Size(320, 31);
+            Lbl_Metadados.Size = new Size(597, 75);
             Lbl_Metadados.TabIndex = 8;
             Lbl_Metadados.Text = "Total Metadados";
             Lbl_Metadados.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // Btn_HelpTotalMetadados
+            // tableLayoutPanel36
             // 
-            Btn_HelpTotalMetadados.Anchor = AnchorStyles.None;
-            Btn_HelpTotalMetadados.BackgroundImage = Properties.Resources.question;
-            Btn_HelpTotalMetadados.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpTotalMetadados.Location = new Point(335, 3);
-            Btn_HelpTotalMetadados.Name = "Btn_HelpTotalMetadados";
-            Btn_HelpTotalMetadados.Size = new Size(25, 25);
-            Btn_HelpTotalMetadados.TabIndex = 9;
-            Btn_HelpTotalMetadados.UseVisualStyleBackColor = true;
+            tableLayoutPanel36.ColumnCount = 3;
+            tableLayoutPanel36.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel36.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel36.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel36.Controls.Add(helpButton4, 2, 0);
+            tableLayoutPanel36.Controls.Add(pictureBox23, 0, 0);
+            tableLayoutPanel36.Controls.Add(label24, 1, 0);
+            tableLayoutPanel36.Dock = DockStyle.Top;
+            tableLayoutPanel36.Location = new Point(5, 5);
+            tableLayoutPanel36.Name = "tableLayoutPanel36";
+            tableLayoutPanel36.RowCount = 1;
+            tableLayoutPanel36.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel36.Size = new Size(605, 50);
+            tableLayoutPanel36.TabIndex = 1;
             // 
-            // groupBox3
+            // helpButton4
             // 
-            groupBox3.Controls.Add(tableLayoutPanel10);
-            groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(4, 316);
-            groupBox3.Margin = new Padding(4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4);
-            groupBox3.Size = new Size(376, 148);
-            groupBox3.TabIndex = 3;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Desperdício de memória";
+            helpButton4.Anchor = AnchorStyles.None;
+            helpButton4.BackColor = Color.White;
+            helpButton4.BackgroundImage = Properties.Resources.question;
+            helpButton4.BorderColor = Color.FromArgb(222, 226, 232);
+            helpButton4.FlatAppearance.BorderSize = 0;
+            helpButton4.FlatStyle = FlatStyle.Flat;
+            helpButton4.ForeColor = Color.FromArgb(75, 85, 105);
+            helpButton4.Location = new Point(566, 11);
+            helpButton4.Name = "helpButton4";
+            helpButton4.Size = new Size(28, 28);
+            helpButton4.TabIndex = 11;
+            helpButton4.TabStop = false;
+            helpButton4.Text = "Btn_HelpTotalMetadados";
+            helpButton4.UseVisualStyleBackColor = false;
+            helpButton4.Click += Btn_HelpTotalMetadados_Click;
             // 
-            // tableLayoutPanel10
+            // pictureBox23
             // 
-            tableLayoutPanel10.ColumnCount = 2;
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel10.Controls.Add(LblBlocosInutilizaveis, 0, 3);
-            tableLayoutPanel10.Controls.Add(Lbl_PercentualInutilizavel, 0, 2);
-            tableLayoutPanel10.Controls.Add(Lbl_Padding, 0, 0);
-            tableLayoutPanel10.Controls.Add(Lbl_MemInutilizavel, 0, 1);
-            tableLayoutPanel10.Controls.Add(Btn_HelpMemoriaInutilizavel, 1, 2);
-            tableLayoutPanel10.Dock = DockStyle.Fill;
-            tableLayoutPanel10.Location = new Point(4, 20);
-            tableLayoutPanel10.Name = "tableLayoutPanel10";
-            tableLayoutPanel10.RowCount = 4;
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel10.Size = new Size(368, 124);
-            tableLayoutPanel10.TabIndex = 3;
+            pictureBox23.Anchor = AnchorStyles.None;
+            pictureBox23.BackgroundImage = Properties.Resources.database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox23.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox23.Location = new Point(10, 10);
+            pictureBox23.Name = "pictureBox23";
+            pictureBox23.Size = new Size(30, 30);
+            pictureBox23.TabIndex = 10;
+            pictureBox23.TabStop = false;
             // 
-            // LblBlocosInutilizaveis
+            // label24
             // 
-            LblBlocosInutilizaveis.AutoSize = true;
-            LblBlocosInutilizaveis.Dock = DockStyle.Fill;
-            LblBlocosInutilizaveis.Location = new Point(4, 93);
-            LblBlocosInutilizaveis.Margin = new Padding(4, 0, 4, 0);
-            LblBlocosInutilizaveis.Name = "LblBlocosInutilizaveis";
-            LblBlocosInutilizaveis.Size = new Size(320, 31);
-            LblBlocosInutilizaveis.TabIndex = 7;
-            LblBlocosInutilizaveis.Text = "Blocos Inutilizaveis";
-            LblBlocosInutilizaveis.TextAlign = ContentAlignment.MiddleLeft;
+            label24.Dock = DockStyle.Fill;
+            label24.Font = new Font("Lato", 20.2499981F, FontStyle.Bold);
+            label24.Location = new Point(53, 0);
+            label24.Name = "label24";
+            label24.Size = new Size(499, 50);
+            label24.TabIndex = 9;
+            label24.Text = "Metadados";
+            label24.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // Lbl_PercentualInutilizavel
+            // cardPanel5
             // 
-            Lbl_PercentualInutilizavel.AutoSize = true;
-            Lbl_PercentualInutilizavel.Dock = DockStyle.Fill;
-            Lbl_PercentualInutilizavel.Location = new Point(4, 62);
-            Lbl_PercentualInutilizavel.Margin = new Padding(4, 0, 4, 0);
-            Lbl_PercentualInutilizavel.Name = "Lbl_PercentualInutilizavel";
-            Lbl_PercentualInutilizavel.Size = new Size(320, 31);
-            Lbl_PercentualInutilizavel.TabIndex = 6;
-            Lbl_PercentualInutilizavel.Text = "Memória Inutilizável";
-            Lbl_PercentualInutilizavel.TextAlign = ContentAlignment.MiddleLeft;
+            cardPanel5.BackColor = Color.White;
+            cardPanel5.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel5.Controls.Add(tableLayoutPanel39);
+            cardPanel5.Controls.Add(tableLayoutPanel35);
+            cardPanel5.Dock = DockStyle.Fill;
+            cardPanel5.Location = new Point(5, 411);
+            cardPanel5.Margin = new Padding(5);
+            cardPanel5.Name = "cardPanel5";
+            cardPanel5.Padding = new Padding(5);
+            cardPanel5.Size = new Size(615, 210);
+            cardPanel5.TabIndex = 1;
+            // 
+            // tableLayoutPanel39
+            // 
+            tableLayoutPanel39.ColumnCount = 1;
+            tableLayoutPanel39.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel39.Controls.Add(Lbl_Padding, 0, 0);
+            tableLayoutPanel39.Dock = DockStyle.Fill;
+            tableLayoutPanel39.Location = new Point(5, 55);
+            tableLayoutPanel39.Name = "tableLayoutPanel39";
+            tableLayoutPanel39.RowCount = 2;
+            tableLayoutPanel39.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel39.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel39.Size = new Size(605, 150);
+            tableLayoutPanel39.TabIndex = 10;
             // 
             // Lbl_Padding
             // 
             Lbl_Padding.AutoSize = true;
             Lbl_Padding.Dock = DockStyle.Fill;
+            Lbl_Padding.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
             Lbl_Padding.Location = new Point(4, 0);
             Lbl_Padding.Margin = new Padding(4, 0, 4, 0);
             Lbl_Padding.Name = "Lbl_Padding";
-            Lbl_Padding.Size = new Size(320, 31);
-            Lbl_Padding.TabIndex = 4;
+            Lbl_Padding.Size = new Size(597, 75);
+            Lbl_Padding.TabIndex = 9;
             Lbl_Padding.Text = "Padding";
             Lbl_Padding.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // Lbl_MemInutilizavel
+            // tableLayoutPanel35
             // 
-            Lbl_MemInutilizavel.AutoSize = true;
-            Lbl_MemInutilizavel.Dock = DockStyle.Fill;
-            Lbl_MemInutilizavel.Location = new Point(4, 31);
-            Lbl_MemInutilizavel.Margin = new Padding(4, 0, 4, 0);
-            Lbl_MemInutilizavel.Name = "Lbl_MemInutilizavel";
-            Lbl_MemInutilizavel.Size = new Size(320, 31);
-            Lbl_MemInutilizavel.TabIndex = 5;
-            Lbl_MemInutilizavel.Text = "Bytes Inutilizáveis";
-            Lbl_MemInutilizavel.TextAlign = ContentAlignment.MiddleLeft;
+            tableLayoutPanel35.ColumnCount = 3;
+            tableLayoutPanel35.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel35.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel35.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel35.Controls.Add(helpButton3, 2, 0);
+            tableLayoutPanel35.Controls.Add(pictureBox22, 0, 0);
+            tableLayoutPanel35.Controls.Add(label23, 1, 0);
+            tableLayoutPanel35.Dock = DockStyle.Top;
+            tableLayoutPanel35.Location = new Point(5, 5);
+            tableLayoutPanel35.Name = "tableLayoutPanel35";
+            tableLayoutPanel35.RowCount = 1;
+            tableLayoutPanel35.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel35.Size = new Size(605, 50);
+            tableLayoutPanel35.TabIndex = 1;
             // 
-            // Btn_HelpMemoriaInutilizavel
+            // helpButton3
             // 
-            Btn_HelpMemoriaInutilizavel.Anchor = AnchorStyles.None;
-            Btn_HelpMemoriaInutilizavel.BackgroundImage = Properties.Resources.question;
-            Btn_HelpMemoriaInutilizavel.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpMemoriaInutilizavel.Location = new Point(335, 65);
-            Btn_HelpMemoriaInutilizavel.Name = "Btn_HelpMemoriaInutilizavel";
-            Btn_HelpMemoriaInutilizavel.Size = new Size(25, 24);
-            Btn_HelpMemoriaInutilizavel.TabIndex = 8;
-            Btn_HelpMemoriaInutilizavel.UseVisualStyleBackColor = true;
+            helpButton3.Anchor = AnchorStyles.None;
+            helpButton3.BackColor = Color.White;
+            helpButton3.BackgroundImage = Properties.Resources.question;
+            helpButton3.BorderColor = Color.FromArgb(222, 226, 232);
+            helpButton3.FlatAppearance.BorderSize = 0;
+            helpButton3.FlatStyle = FlatStyle.Flat;
+            helpButton3.ForeColor = Color.FromArgb(75, 85, 105);
+            helpButton3.Location = new Point(566, 11);
+            helpButton3.Name = "helpButton3";
+            helpButton3.Size = new Size(28, 28);
+            helpButton3.TabIndex = 11;
+            helpButton3.TabStop = false;
+            helpButton3.Text = "Btn_HelpMemoriaInutilizavel";
+            helpButton3.UseVisualStyleBackColor = false;
+            helpButton3.Click += Btn_HelpMemoriaInutilizavel_Click;
             // 
-            // groupBox2
+            // pictureBox22
             // 
-            groupBox2.Controls.Add(tableLayoutPanel11);
-            groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(4, 160);
-            groupBox2.Margin = new Padding(4);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(376, 148);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Fragmentação";
+            pictureBox22.Anchor = AnchorStyles.None;
+            pictureBox22.BackgroundImage = Properties.Resources.delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox22.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox22.Location = new Point(10, 10);
+            pictureBox22.Name = "pictureBox22";
+            pictureBox22.Size = new Size(30, 30);
+            pictureBox22.TabIndex = 10;
+            pictureBox22.TabStop = false;
             // 
-            // tableLayoutPanel11
+            // label23
             // 
-            tableLayoutPanel11.ColumnCount = 2;
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel11.Controls.Add(Lbl_MaiorBlocoLivre, 0, 3);
-            tableLayoutPanel11.Controls.Add(Btn_HelpFragExterna, 1, 2);
-            tableLayoutPanel11.Controls.Add(Lbl_FragExterna, 0, 2);
-            tableLayoutPanel11.Controls.Add(Btn_HelpFragInterna, 1, 1);
-            tableLayoutPanel11.Controls.Add(Lbl_FragInterna, 0, 1);
-            tableLayoutPanel11.Controls.Add(Lbl_BytesFragInterna, 0, 0);
-            tableLayoutPanel11.Dock = DockStyle.Fill;
-            tableLayoutPanel11.Location = new Point(4, 20);
-            tableLayoutPanel11.Name = "tableLayoutPanel11";
-            tableLayoutPanel11.RowCount = 4;
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel11.Size = new Size(368, 124);
-            tableLayoutPanel11.TabIndex = 2;
+            label23.Dock = DockStyle.Fill;
+            label23.Font = new Font("Lato", 20.2499981F, FontStyle.Bold);
+            label23.Location = new Point(53, 0);
+            label23.Name = "label23";
+            label23.Size = new Size(499, 50);
+            label23.TabIndex = 9;
+            label23.Text = "Desperdício de Memória";
+            label23.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cardPanel4
+            // 
+            cardPanel4.BackColor = Color.White;
+            cardPanel4.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel4.Controls.Add(tableLayoutPanel38);
+            cardPanel4.Controls.Add(tableLayoutPanel34);
+            cardPanel4.Dock = DockStyle.Fill;
+            cardPanel4.Location = new Point(630, 5);
+            cardPanel4.Margin = new Padding(5);
+            cardPanel4.Name = "cardPanel4";
+            cardPanel4.Padding = new Padding(5);
+            cardPanel4.Size = new Size(615, 396);
+            cardPanel4.TabIndex = 1;
+            // 
+            // tableLayoutPanel38
+            // 
+            tableLayoutPanel38.ColumnCount = 1;
+            tableLayoutPanel38.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel38.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel38.Controls.Add(Lbl_MaiorBlocoLivre, 0, 2);
+            tableLayoutPanel38.Controls.Add(tableLayoutPanel41, 0, 0);
+            tableLayoutPanel38.Controls.Add(Lbl_BytesFragInterna, 0, 1);
+            tableLayoutPanel38.Dock = DockStyle.Fill;
+            tableLayoutPanel38.Location = new Point(5, 55);
+            tableLayoutPanel38.Name = "tableLayoutPanel38";
+            tableLayoutPanel38.RowCount = 3;
+            tableLayoutPanel38.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel38.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel38.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel38.Size = new Size(605, 336);
+            tableLayoutPanel38.TabIndex = 2;
             // 
             // Lbl_MaiorBlocoLivre
             // 
             Lbl_MaiorBlocoLivre.AutoSize = true;
             Lbl_MaiorBlocoLivre.Dock = DockStyle.Fill;
-            Lbl_MaiorBlocoLivre.Location = new Point(4, 93);
+            Lbl_MaiorBlocoLivre.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
+            Lbl_MaiorBlocoLivre.Location = new Point(4, 268);
             Lbl_MaiorBlocoLivre.Margin = new Padding(4, 0, 4, 0);
             Lbl_MaiorBlocoLivre.Name = "Lbl_MaiorBlocoLivre";
-            Lbl_MaiorBlocoLivre.Size = new Size(320, 31);
+            Lbl_MaiorBlocoLivre.Size = new Size(597, 68);
             Lbl_MaiorBlocoLivre.TabIndex = 6;
             Lbl_MaiorBlocoLivre.Text = "Tamanho Maior Bloco Livre";
             Lbl_MaiorBlocoLivre.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // Btn_HelpFragExterna
+            // tableLayoutPanel41
             // 
-            Btn_HelpFragExterna.Anchor = AnchorStyles.None;
-            Btn_HelpFragExterna.BackgroundImage = Properties.Resources.question;
-            Btn_HelpFragExterna.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpFragExterna.Location = new Point(335, 65);
-            Btn_HelpFragExterna.Name = "Btn_HelpFragExterna";
-            Btn_HelpFragExterna.Size = new Size(25, 24);
-            Btn_HelpFragExterna.TabIndex = 9;
-            Btn_HelpFragExterna.UseVisualStyleBackColor = true;
+            tableLayoutPanel41.ColumnCount = 2;
+            tableLayoutPanel41.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel41.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel41.Controls.Add(CircularProgressFragInterna, 0, 0);
+            tableLayoutPanel41.Controls.Add(CircularProgressFragExterna, 1, 0);
+            tableLayoutPanel41.Dock = DockStyle.Fill;
+            tableLayoutPanel41.Location = new Point(3, 3);
+            tableLayoutPanel41.Name = "tableLayoutPanel41";
+            tableLayoutPanel41.RowCount = 1;
+            tableLayoutPanel41.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel41.Size = new Size(599, 195);
+            tableLayoutPanel41.TabIndex = 2;
             // 
-            // Lbl_FragExterna
+            // CircularProgressFragInterna
             // 
-            Lbl_FragExterna.AutoSize = true;
-            Lbl_FragExterna.Dock = DockStyle.Fill;
-            Lbl_FragExterna.Location = new Point(4, 62);
-            Lbl_FragExterna.Margin = new Padding(4, 0, 4, 0);
-            Lbl_FragExterna.Name = "Lbl_FragExterna";
-            Lbl_FragExterna.Size = new Size(320, 31);
-            Lbl_FragExterna.TabIndex = 5;
-            Lbl_FragExterna.Text = "Frag Externa";
-            Lbl_FragExterna.TextAlign = ContentAlignment.MiddleLeft;
+            CircularProgressFragInterna.BackColor = Color.Transparent;
+            CircularProgressFragInterna.CorProgresso = Color.FromArgb(35, 125, 230);
+            CircularProgressFragInterna.Dock = DockStyle.Fill;
+            CircularProgressFragInterna.ForeColor = Color.FromArgb(30, 41, 59);
+            CircularProgressFragInterna.Location = new Point(3, 3);
+            CircularProgressFragInterna.Name = "CircularProgressFragInterna";
+            CircularProgressFragInterna.Size = new Size(293, 189);
+            CircularProgressFragInterna.TabIndex = 0;
+            CircularProgressFragInterna.Text = "circularProgress1";
+            CircularProgressFragInterna.TextoSecundario = "Fragmentação Interna";
             // 
-            // Btn_HelpFragInterna
+            // CircularProgressFragExterna
             // 
-            Btn_HelpFragInterna.Anchor = AnchorStyles.None;
-            Btn_HelpFragInterna.BackgroundImage = Properties.Resources.question;
-            Btn_HelpFragInterna.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpFragInterna.Location = new Point(335, 34);
-            Btn_HelpFragInterna.Name = "Btn_HelpFragInterna";
-            Btn_HelpFragInterna.Size = new Size(25, 24);
-            Btn_HelpFragInterna.TabIndex = 8;
-            Btn_HelpFragInterna.UseVisualStyleBackColor = true;
-            // 
-            // Lbl_FragInterna
-            // 
-            Lbl_FragInterna.AutoSize = true;
-            Lbl_FragInterna.Dock = DockStyle.Fill;
-            Lbl_FragInterna.Location = new Point(4, 31);
-            Lbl_FragInterna.Margin = new Padding(4, 0, 4, 0);
-            Lbl_FragInterna.Name = "Lbl_FragInterna";
-            Lbl_FragInterna.Size = new Size(320, 31);
-            Lbl_FragInterna.TabIndex = 4;
-            Lbl_FragInterna.Text = "Frag Interna";
-            Lbl_FragInterna.TextAlign = ContentAlignment.MiddleLeft;
+            CircularProgressFragExterna.BackColor = Color.Transparent;
+            CircularProgressFragExterna.CorProgresso = Color.FromArgb(35, 125, 230);
+            CircularProgressFragExterna.Dock = DockStyle.Fill;
+            CircularProgressFragExterna.ForeColor = Color.FromArgb(30, 41, 59);
+            CircularProgressFragExterna.Location = new Point(302, 3);
+            CircularProgressFragExterna.Name = "CircularProgressFragExterna";
+            CircularProgressFragExterna.Size = new Size(294, 189);
+            CircularProgressFragExterna.TabIndex = 1;
+            CircularProgressFragExterna.Text = "circularProgress2";
+            CircularProgressFragExterna.TextoSecundario = "Fragmentação Externa";
             // 
             // Lbl_BytesFragInterna
             // 
             Lbl_BytesFragInterna.AutoSize = true;
             Lbl_BytesFragInterna.Dock = DockStyle.Fill;
-            Lbl_BytesFragInterna.Location = new Point(4, 0);
+            Lbl_BytesFragInterna.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
+            Lbl_BytesFragInterna.Location = new Point(4, 201);
             Lbl_BytesFragInterna.Margin = new Padding(4, 0, 4, 0);
             Lbl_BytesFragInterna.Name = "Lbl_BytesFragInterna";
-            Lbl_BytesFragInterna.Size = new Size(320, 31);
+            Lbl_BytesFragInterna.Size = new Size(597, 67);
             Lbl_BytesFragInterna.TabIndex = 3;
             Lbl_BytesFragInterna.Text = "Bytes Frag Interna";
             Lbl_BytesFragInterna.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // groupBox1
+            // tableLayoutPanel34
             // 
-            groupBox1.Controls.Add(tableLayoutPanel12);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(4, 4);
-            groupBox1.Margin = new Padding(4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(376, 148);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Uso da memória heap";
+            tableLayoutPanel34.ColumnCount = 3;
+            tableLayoutPanel34.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel34.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel34.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel34.Controls.Add(Btn_HelpFragmentacao, 2, 0);
+            tableLayoutPanel34.Controls.Add(pictureBox21, 0, 0);
+            tableLayoutPanel34.Controls.Add(label22, 1, 0);
+            tableLayoutPanel34.Dock = DockStyle.Top;
+            tableLayoutPanel34.Location = new Point(5, 5);
+            tableLayoutPanel34.Name = "tableLayoutPanel34";
+            tableLayoutPanel34.RowCount = 1;
+            tableLayoutPanel34.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel34.Size = new Size(605, 50);
+            tableLayoutPanel34.TabIndex = 1;
             // 
-            // tableLayoutPanel12
+            // Btn_HelpFragmentacao
             // 
-            tableLayoutPanel12.ColumnCount = 2;
-            tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel12.Controls.Add(Lbl_UsoHeap, 0, 2);
-            tableLayoutPanel12.Controls.Add(Btn_HelpUsoHeap, 1, 2);
-            tableLayoutPanel12.Controls.Add(Lbl_BytesLivres, 0, 1);
-            tableLayoutPanel12.Controls.Add(Lbl_BytesOcupados, 0, 0);
-            tableLayoutPanel12.Dock = DockStyle.Fill;
-            tableLayoutPanel12.Location = new Point(4, 20);
-            tableLayoutPanel12.Name = "tableLayoutPanel12";
-            tableLayoutPanel12.RowCount = 4;
-            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel12.Size = new Size(368, 124);
-            tableLayoutPanel12.TabIndex = 2;
+            Btn_HelpFragmentacao.Anchor = AnchorStyles.None;
+            Btn_HelpFragmentacao.BackColor = Color.White;
+            Btn_HelpFragmentacao.BackgroundImage = Properties.Resources.question;
+            Btn_HelpFragmentacao.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpFragmentacao.FlatAppearance.BorderSize = 0;
+            Btn_HelpFragmentacao.FlatStyle = FlatStyle.Flat;
+            Btn_HelpFragmentacao.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpFragmentacao.Location = new Point(566, 11);
+            Btn_HelpFragmentacao.Name = "Btn_HelpFragmentacao";
+            Btn_HelpFragmentacao.Size = new Size(28, 28);
+            Btn_HelpFragmentacao.TabIndex = 11;
+            Btn_HelpFragmentacao.TabStop = false;
+            Btn_HelpFragmentacao.Text = "helpButton2";
+            Btn_HelpFragmentacao.UseVisualStyleBackColor = false;
+            Btn_HelpFragmentacao.Click += Btn_HelpFragmentacao_Click;
             // 
-            // Lbl_UsoHeap
+            // pictureBox21
             // 
-            Lbl_UsoHeap.AutoSize = true;
-            Lbl_UsoHeap.Dock = DockStyle.Fill;
-            Lbl_UsoHeap.Location = new Point(4, 62);
-            Lbl_UsoHeap.Margin = new Padding(4, 0, 4, 0);
-            Lbl_UsoHeap.Name = "Lbl_UsoHeap";
-            Lbl_UsoHeap.Size = new Size(320, 31);
-            Lbl_UsoHeap.TabIndex = 2;
-            Lbl_UsoHeap.Text = "Uso da Heap";
-            Lbl_UsoHeap.TextAlign = ContentAlignment.MiddleLeft;
+            pictureBox21.Anchor = AnchorStyles.None;
+            pictureBox21.BackgroundImage = Properties.Resources.segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox21.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox21.Location = new Point(10, 10);
+            pictureBox21.Name = "pictureBox21";
+            pictureBox21.Size = new Size(30, 30);
+            pictureBox21.TabIndex = 10;
+            pictureBox21.TabStop = false;
             // 
-            // Btn_HelpUsoHeap
+            // label22
             // 
-            Btn_HelpUsoHeap.Anchor = AnchorStyles.None;
-            Btn_HelpUsoHeap.BackgroundImage = Properties.Resources.question;
-            Btn_HelpUsoHeap.BackgroundImageLayout = ImageLayout.Stretch;
-            Btn_HelpUsoHeap.Location = new Point(335, 65);
-            Btn_HelpUsoHeap.Name = "Btn_HelpUsoHeap";
-            Btn_HelpUsoHeap.Size = new Size(25, 24);
-            Btn_HelpUsoHeap.TabIndex = 8;
-            Btn_HelpUsoHeap.UseVisualStyleBackColor = true;
+            label22.Dock = DockStyle.Fill;
+            label22.Font = new Font("Lato", 20.2499981F, FontStyle.Bold);
+            label22.Location = new Point(53, 0);
+            label22.Name = "label22";
+            label22.Size = new Size(499, 50);
+            label22.TabIndex = 9;
+            label22.Text = "Fragmentação";
+            label22.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cardPanel3
+            // 
+            cardPanel3.BackColor = Color.White;
+            cardPanel3.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel3.Controls.Add(tableLayoutPanel37);
+            cardPanel3.Controls.Add(tableLayoutPanel33);
+            cardPanel3.Dock = DockStyle.Fill;
+            cardPanel3.Location = new Point(5, 5);
+            cardPanel3.Margin = new Padding(5);
+            cardPanel3.Name = "cardPanel3";
+            cardPanel3.Padding = new Padding(5);
+            cardPanel3.Size = new Size(615, 396);
+            cardPanel3.TabIndex = 0;
+            // 
+            // tableLayoutPanel37
+            // 
+            tableLayoutPanel37.ColumnCount = 1;
+            tableLayoutPanel37.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel37.Controls.Add(CircularProgressUsoHeap, 0, 0);
+            tableLayoutPanel37.Controls.Add(Lbl_BytesLivres, 0, 2);
+            tableLayoutPanel37.Controls.Add(Lbl_BytesOcupados, 0, 1);
+            tableLayoutPanel37.Dock = DockStyle.Fill;
+            tableLayoutPanel37.Location = new Point(5, 55);
+            tableLayoutPanel37.Name = "tableLayoutPanel37";
+            tableLayoutPanel37.RowCount = 3;
+            tableLayoutPanel37.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel37.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel37.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel37.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel37.Size = new Size(605, 336);
+            tableLayoutPanel37.TabIndex = 1;
+            // 
+            // CircularProgressUsoHeap
+            // 
+            CircularProgressUsoHeap.BackColor = Color.Transparent;
+            CircularProgressUsoHeap.CorProgresso = Color.FromArgb(35, 125, 230);
+            CircularProgressUsoHeap.Dock = DockStyle.Fill;
+            CircularProgressUsoHeap.ForeColor = Color.FromArgb(30, 41, 59);
+            CircularProgressUsoHeap.Location = new Point(3, 3);
+            CircularProgressUsoHeap.Name = "CircularProgressUsoHeap";
+            CircularProgressUsoHeap.Size = new Size(599, 195);
+            CircularProgressUsoHeap.TabIndex = 1;
+            CircularProgressUsoHeap.Text = "circularProgress1";
             // 
             // Lbl_BytesLivres
             // 
             Lbl_BytesLivres.AutoSize = true;
             Lbl_BytesLivres.Dock = DockStyle.Fill;
-            Lbl_BytesLivres.Location = new Point(4, 31);
+            Lbl_BytesLivres.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
+            Lbl_BytesLivres.Location = new Point(4, 268);
             Lbl_BytesLivres.Margin = new Padding(4, 0, 4, 0);
             Lbl_BytesLivres.Name = "Lbl_BytesLivres";
-            Lbl_BytesLivres.Size = new Size(320, 31);
+            Lbl_BytesLivres.Size = new Size(597, 68);
             Lbl_BytesLivres.TabIndex = 1;
             Lbl_BytesLivres.Text = "Bytes Livres";
             Lbl_BytesLivres.TextAlign = ContentAlignment.MiddleLeft;
@@ -1725,13 +1829,71 @@
             // 
             Lbl_BytesOcupados.AutoSize = true;
             Lbl_BytesOcupados.Dock = DockStyle.Fill;
-            Lbl_BytesOcupados.Location = new Point(4, 0);
+            Lbl_BytesOcupados.Font = new Font("Lato Semibold", 18F, FontStyle.Bold);
+            Lbl_BytesOcupados.Location = new Point(4, 201);
             Lbl_BytesOcupados.Margin = new Padding(4, 0, 4, 0);
             Lbl_BytesOcupados.Name = "Lbl_BytesOcupados";
-            Lbl_BytesOcupados.Size = new Size(320, 31);
+            Lbl_BytesOcupados.Size = new Size(597, 67);
             Lbl_BytesOcupados.TabIndex = 0;
             Lbl_BytesOcupados.Text = "Bytes Ocupados";
             Lbl_BytesOcupados.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel33
+            // 
+            tableLayoutPanel33.ColumnCount = 3;
+            tableLayoutPanel33.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel33.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel33.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel33.Controls.Add(pictureBox20, 0, 0);
+            tableLayoutPanel33.Controls.Add(label21, 1, 0);
+            tableLayoutPanel33.Controls.Add(Btn_HelpUsoHeap, 2, 0);
+            tableLayoutPanel33.Dock = DockStyle.Top;
+            tableLayoutPanel33.Location = new Point(5, 5);
+            tableLayoutPanel33.Name = "tableLayoutPanel33";
+            tableLayoutPanel33.RowCount = 1;
+            tableLayoutPanel33.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel33.Size = new Size(605, 50);
+            tableLayoutPanel33.TabIndex = 0;
+            // 
+            // pictureBox20
+            // 
+            pictureBox20.Anchor = AnchorStyles.None;
+            pictureBox20.BackgroundImage = Properties.Resources.clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox20.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox20.Location = new Point(10, 10);
+            pictureBox20.Name = "pictureBox20";
+            pictureBox20.Size = new Size(30, 30);
+            pictureBox20.TabIndex = 10;
+            pictureBox20.TabStop = false;
+            // 
+            // label21
+            // 
+            label21.Dock = DockStyle.Fill;
+            label21.Font = new Font("Lato", 20.2499981F, FontStyle.Bold);
+            label21.Location = new Point(53, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(499, 50);
+            label21.TabIndex = 9;
+            label21.Text = "Uso da Memória Heap";
+            label21.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Btn_HelpUsoHeap
+            // 
+            Btn_HelpUsoHeap.Anchor = AnchorStyles.None;
+            Btn_HelpUsoHeap.BackColor = Color.White;
+            Btn_HelpUsoHeap.BackgroundImage = Properties.Resources.question;
+            Btn_HelpUsoHeap.BorderColor = Color.FromArgb(222, 226, 232);
+            Btn_HelpUsoHeap.FlatAppearance.BorderSize = 0;
+            Btn_HelpUsoHeap.FlatStyle = FlatStyle.Flat;
+            Btn_HelpUsoHeap.ForeColor = Color.FromArgb(75, 85, 105);
+            Btn_HelpUsoHeap.Location = new Point(566, 11);
+            Btn_HelpUsoHeap.Name = "Btn_HelpUsoHeap";
+            Btn_HelpUsoHeap.Size = new Size(28, 28);
+            Btn_HelpUsoHeap.TabIndex = 2;
+            Btn_HelpUsoHeap.TabStop = false;
+            Btn_HelpUsoHeap.Text = "helpButton1";
+            Btn_HelpUsoHeap.UseVisualStyleBackColor = false;
+            Btn_HelpUsoHeap.Click += Btn_HelpUsoHeap_Click;
             // 
             // TabConfiguracoes
             // 
@@ -3056,19 +3218,28 @@
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             TabMetricas.ResumeLayout(false);
-            tableLayoutPanel8.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
-            tableLayoutPanel9.ResumeLayout(false);
-            tableLayoutPanel9.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            tableLayoutPanel10.ResumeLayout(false);
-            tableLayoutPanel10.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            tableLayoutPanel11.ResumeLayout(false);
-            tableLayoutPanel11.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            tableLayoutPanel12.ResumeLayout(false);
-            tableLayoutPanel12.PerformLayout();
+            TableLayoutPrincipalMetricas.ResumeLayout(false);
+            cardPanel6.ResumeLayout(false);
+            tableLayoutPanel40.ResumeLayout(false);
+            tableLayoutPanel40.PerformLayout();
+            tableLayoutPanel36.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
+            cardPanel5.ResumeLayout(false);
+            tableLayoutPanel39.ResumeLayout(false);
+            tableLayoutPanel39.PerformLayout();
+            tableLayoutPanel35.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
+            cardPanel4.ResumeLayout(false);
+            tableLayoutPanel38.ResumeLayout(false);
+            tableLayoutPanel38.PerformLayout();
+            tableLayoutPanel41.ResumeLayout(false);
+            tableLayoutPanel34.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).EndInit();
+            cardPanel3.ResumeLayout(false);
+            tableLayoutPanel37.ResumeLayout(false);
+            tableLayoutPanel37.PerformLayout();
+            tableLayoutPanel33.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).EndInit();
             TabConfiguracoes.ResumeLayout(false);
             TableLayoutPrincipalConfig.ResumeLayout(false);
             MenuParametros.ResumeLayout(false);
@@ -3184,30 +3355,9 @@
         private Controls.CustomControls.RoundedButton Btn_ExcluirEvento;
         private Controls.CustomControls.RoundedButton Btn_DescerEvento;
         private Controls.CustomControls.RoundedButton Btn_SubirEvento;
-        private TableLayoutPanel tableLayoutPanel8;
-        private GroupBox groupBox4;
-        private TableLayoutPanel tableLayoutPanel9;
         private Label Lbl_Metadados;
-        private Button Btn_HelpTotalMetadados;
-        private GroupBox groupBox3;
-        private TableLayoutPanel tableLayoutPanel10;
-        private Label LblBlocosInutilizaveis;
-        private Label Lbl_PercentualInutilizavel;
-        private Label Lbl_Padding;
-        private Label Lbl_MemInutilizavel;
-        private Button Btn_HelpMemoriaInutilizavel;
-        private GroupBox groupBox2;
-        private TableLayoutPanel tableLayoutPanel11;
         private Label Lbl_MaiorBlocoLivre;
-        private Button Btn_HelpFragExterna;
-        private Label Lbl_FragExterna;
-        private Button Btn_HelpFragInterna;
-        private Label Lbl_FragInterna;
         private Label Lbl_BytesFragInterna;
-        private GroupBox groupBox1;
-        private TableLayoutPanel tableLayoutPanel12;
-        private Label Lbl_UsoHeap;
-        private Button Btn_HelpUsoHeap;
         private Label Lbl_BytesLivres;
         private Label Lbl_BytesOcupados;
         private ComboBox SelectHeapSize;
@@ -3303,5 +3453,35 @@
         private Label label13;
         private Label label19;
         private Label label11;
+        private TableLayoutPanel TableLayoutPrincipalMetricas;
+        private Controls.CustomControls.CardPanel cardPanel6;
+        private TableLayoutPanel tableLayoutPanel36;
+        private Label label24;
+        private Controls.CustomControls.CardPanel cardPanel5;
+        private TableLayoutPanel tableLayoutPanel35;
+        private Label label23;
+        private Controls.CustomControls.CardPanel cardPanel4;
+        private TableLayoutPanel tableLayoutPanel34;
+        private Label label22;
+        private Controls.CustomControls.CardPanel cardPanel3;
+        private TableLayoutPanel tableLayoutPanel33;
+        private Label label21;
+        private PictureBox pictureBox23;
+        private PictureBox pictureBox22;
+        private PictureBox pictureBox21;
+        private PictureBox pictureBox20;
+        private TableLayoutPanel tableLayoutPanel37;
+        private Controls.CustomControls.CircularProgress CircularProgressUsoHeap;
+        private TableLayoutPanel tableLayoutPanel38;
+        private Controls.CustomControls.CircularProgress CircularProgressFragInterna;
+        private Controls.CustomControls.CircularProgress CircularProgressFragExterna;
+        private Label Lbl_Padding;
+        private TableLayoutPanel tableLayoutPanel40;
+        private TableLayoutPanel tableLayoutPanel39;
+        private Controls.CustomControls.HelpButton helpButton4;
+        private Controls.CustomControls.HelpButton helpButton3;
+        private Controls.CustomControls.HelpButton Btn_HelpFragmentacao;
+        private Controls.CustomControls.HelpButton Btn_HelpUsoHeap;
+        private TableLayoutPanel tableLayoutPanel41;
     }
 }

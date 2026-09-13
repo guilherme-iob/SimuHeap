@@ -498,6 +498,12 @@ namespace SimuHeap.Windows
             avisoExplicativoForm.ShowDialog();
         }
 
+        private void Btn_HelpFragmentacao_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Fragmentação", ExplicacoesConceitos.ExplicacaoFragmentacaoInterna + "\n\n\n" + ExplicacoesConceitos.ExplicacaoFragmentacaoExterna);
+            avisoExplicativoForm.ShowDialog();
+        }
+
         private void Btn_HelpMemoriaInutilizavel_Click(object sender, EventArgs e)
         {
             AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Memória Inutilizável", ExplicacoesConceitos.ExplicacaoMemoriaInutilizavel);
@@ -1312,10 +1318,11 @@ namespace SimuHeap.Windows
 
         public void AtualizarMetricas(MetricasHeap metricas)
         {
-            this.LblBlocosInutilizaveis.Visible = false;
-            this.Lbl_MemInutilizavel.Visible = false;
-            this.Lbl_PercentualInutilizavel.Visible = false;
-            this.Btn_HelpMemoriaInutilizavel.Visible = false;
+            //this.LblBlocosInutilizaveis.Visible = false;
+            //this.Lbl_MemInutilizavel.Visible = false;
+            //this.Lbl_PercentualInutilizavel.Visible = false;
+            //this.Btn_HelpMemoriaInutilizavel.Visible = false;
+
             if (metricas is null)
                 return;
 
@@ -1329,9 +1336,10 @@ namespace SimuHeap.Windows
             Lbl_BytesLivres.Text =
                 $"Bytes livres: {metricas.BytesLivres} bytes";
 
-            Lbl_UsoHeap.Text =
-                $"Uso da heap: {metricas.PercentualUsoMemoria:F2}%";
+            //Lbl_UsoHeap.Text =
+            //    $"Uso da heap: {metricas.PercentualUsoMemoria:F2}%";
 
+            CircularProgressUsoHeap.Percentual = metricas.PercentualUsoMemoria;
 
             // ============================================
             // Fragmentação interna
@@ -1340,19 +1348,21 @@ namespace SimuHeap.Windows
             Lbl_BytesFragInterna.Text =
                 $"Bytes de fragmentação interna: {metricas.BytesFragmentacaoInterna} bytes";
 
-            Lbl_FragInterna.Text =
-                $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
+            //Lbl_FragInterna.Text =
+            //    $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
 
             Lbl_Padding.Text =
                 $"Bytes de alinhamento (padding): {metricas.BytesPadding} bytes";
 
+            CircularProgressFragExterna.Percentual = metricas.PercentualFragmentacaoExterna;
+            CircularProgressFragInterna.Percentual = metricas.PercentualFragmentacaoInterna;
 
             // ============================================
             // Fragmentação externa
             // ============================================
 
-            Lbl_FragExterna.Text =
-                $"Fragmentação externa: {metricas.PercentualFragmentacaoExterna:F2}%";
+            //Lbl_FragExterna.Text =
+            //    $"Fragmentação externa: {metricas.PercentualFragmentacaoExterna:F2}%";
 
             Lbl_MaiorBlocoLivre.Text =
                 $"Maior bloco livre: {metricas.TamanhoMaiorBlocoLivre} bytes";
@@ -1362,14 +1372,14 @@ namespace SimuHeap.Windows
             // Memória inutilizável
             // ============================================
 
-            Lbl_MemInutilizavel.Text =
-                $"Bytes inutilizáveis: {metricas.BytesInutilizaveis} bytes";
+            //Lbl_MemInutilizavel.Text =
+            //    $"Bytes inutilizáveis: {metricas.BytesInutilizaveis} bytes";
 
-            Lbl_PercentualInutilizavel.Text =
-                $"Memória inutilizável: {metricas.PercentualMemoriaInutilizavel:F2}%";
+            //Lbl_PercentualInutilizavel.Text =
+            //    $"Memória inutilizável: {metricas.PercentualMemoriaInutilizavel:F2}%";
 
-            LblBlocosInutilizaveis.Text =
-                $"Blocos inutilizáveis: {metricas.QuantidadeBlocosInutilizaveis}";
+            //LblBlocosInutilizaveis.Text =
+            //    $"Blocos inutilizáveis: {metricas.QuantidadeBlocosInutilizaveis}";
 
 
             // ============================================
@@ -1489,7 +1499,5 @@ namespace SimuHeap.Windows
             Lbl_ConfiguracoesAtuais.Text = texto;
         }
         #endregion
-
-
     }
 }

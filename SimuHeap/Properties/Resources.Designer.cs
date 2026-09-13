@@ -93,9 +93,39 @@ namespace SimuHeap.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48 {
             get {
                 object obj = ResourceManager.GetObject("code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -366,6 +396,16 @@ namespace SimuHeap.Properties {
         internal static System.Drawing.Bitmap question {
             get {
                 object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

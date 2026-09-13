@@ -142,6 +142,9 @@
   <data name="icone_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="anterior" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\anterior.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,17 +169,14 @@
   <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="motion_play_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\motion_play_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="proximo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\proximo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icone_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,11 +199,8 @@
   <data name="icone_free" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_free.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icone_config1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icone_config1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icone_paleta_cor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_paleta_cor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,19 +208,34 @@
   <data name="code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icone_config1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_config1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icone_grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_grafico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="memory-icon-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\memory-icon-48.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="anterior" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\anterior.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icone_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icone_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
