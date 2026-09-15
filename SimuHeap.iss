@@ -34,7 +34,8 @@ Name: "desktopicon"; Description: "Criar um atalho na área de trabalho"; GroupD
 [Files]
 Source: "..\SimuHeap\SimuHeap\bin\Release\net9.0-windows\publish\win-x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
-Source: "Fonts\Lato-Regular.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato"; Flags: onlyifdoesntexist uninsneveruninstall
+Source: "Fonts\Lato-Regular.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato Regular"; Flags: onlyifdoesntexist uninsneveruninstall
+Source: "Fonts\lato-semibold.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato Semibold"; Flags: onlyifdoesntexist uninsneveruninstall
 Source: "Fonts\Lato-Bold.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato Bold"; Flags: onlyifdoesntexist uninsneveruninstall
 Source: "Fonts\Lato-Italic.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato Italic"; Flags: onlyifdoesntexist uninsneveruninstall
 Source: "Fonts\Lato-BoldItalic.ttf"; DestDir: "{autofonts}"; FontInstall: "Lato Bold Italic"; Flags: onlyifdoesntexist uninsneveruninstall
