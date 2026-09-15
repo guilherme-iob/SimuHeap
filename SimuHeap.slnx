@@ -2,5 +2,17 @@
   <Folder Name="/Installer/">
     <File Path="SimuHeap.iss" />
   </Folder>
+  <Folder Name="/Installer/Fonts/">
+    <File Path="../../../../../Downloads/Lato/Lato-Black.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-BlackItalic.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-Bold.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-BoldItalic.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-Italic.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-Light.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-LightItalic.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-Regular.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-Thin.ttf" />
+    <File Path="../../../../../Downloads/Lato/Lato-ThinItalic.ttf" />
+  </Folder>
   <Project Path="SimuHeap/SimuHeap.csproj" />
 </Solution>
