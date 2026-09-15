@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewFormDesign));
             flowLayoutPanel1 = new FlowLayoutPanel();
             Btn_TabSimulacao = new SimuHeap.Controls.CustomControls.TabNavigationButton();
@@ -756,7 +756,7 @@
             // pictureBox2
             // 
             pictureBox2.BackgroundImage = Properties.Resources.motion_play_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.Dock = DockStyle.Left;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
@@ -834,32 +834,32 @@
             DataGridViewEventos.AllowUserToAddRows = false;
             DataGridViewEventos.AllowUserToDeleteRows = false;
             DataGridViewEventos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(252, 253, 254);
-            DataGridViewEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(252, 253, 254);
+            DataGridViewEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewEventos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewEventos.BackgroundColor = Color.White;
             DataGridViewEventos.BorderStyle = BorderStyle.None;
             DataGridViewEventos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridViewEventos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle8.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DataGridViewEventos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewEventos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle9.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(225, 239, 255);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(225, 239, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DataGridViewEventos.DefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewEventos.Dock = DockStyle.Fill;
             DataGridViewEventos.EnableHeadersVisualStyles = false;
             DataGridViewEventos.GridColor = Color.FromArgb(225, 229, 235);
@@ -1041,7 +1041,7 @@
             // Lbl_PassoAtual
             // 
             Lbl_PassoAtual.Dock = DockStyle.Fill;
-            Lbl_PassoAtual.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Lbl_PassoAtual.Font = new Font("Lato", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Lbl_PassoAtual.ImageAlign = ContentAlignment.MiddleLeft;
             Lbl_PassoAtual.Location = new Point(143, 0);
             Lbl_PassoAtual.Name = "Lbl_PassoAtual";
@@ -1231,32 +1231,32 @@
             DataGridViewBlocosLivres.AllowUserToAddRows = false;
             DataGridViewBlocosLivres.AllowUserToDeleteRows = false;
             DataGridViewBlocosLivres.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(252, 253, 254);
-            DataGridViewBlocosLivres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(252, 253, 254);
+            DataGridViewBlocosLivres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             DataGridViewBlocosLivres.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewBlocosLivres.BackgroundColor = Color.White;
             DataGridViewBlocosLivres.BorderStyle = BorderStyle.None;
             DataGridViewBlocosLivres.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridViewBlocosLivres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle11.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(248, 250, 252);
-            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(75, 85, 105);
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle5.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(75, 85, 105);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DataGridViewBlocosLivres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DataGridViewBlocosLivres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle12.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(225, 239, 255);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(30, 41, 59);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(225, 239, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            DataGridViewBlocosLivres.DefaultCellStyle = dataGridViewCellStyle6;
             DataGridViewBlocosLivres.Dock = DockStyle.Fill;
             DataGridViewBlocosLivres.EnableHeadersVisualStyles = false;
             DataGridViewBlocosLivres.GridColor = Color.FromArgb(225, 229, 235);
@@ -1496,8 +1496,9 @@
             // 
             pictureBox23.Anchor = AnchorStyles.None;
             pictureBox23.BackgroundImage = Properties.Resources.database_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox23.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox23.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox23.Location = new Point(10, 10);
+            pictureBox23.MaximumSize = new Size(30, 30);
             pictureBox23.Name = "pictureBox23";
             pictureBox23.Size = new Size(30, 30);
             pictureBox23.TabIndex = 10;
@@ -1594,8 +1595,9 @@
             // 
             pictureBox22.Anchor = AnchorStyles.None;
             pictureBox22.BackgroundImage = Properties.Resources.delete_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox22.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox22.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox22.Location = new Point(10, 10);
+            pictureBox22.MaximumSize = new Size(30, 30);
             pictureBox22.Name = "pictureBox22";
             pictureBox22.Size = new Size(30, 30);
             pictureBox22.TabIndex = 10;
@@ -1750,8 +1752,9 @@
             // 
             pictureBox21.Anchor = AnchorStyles.None;
             pictureBox21.BackgroundImage = Properties.Resources.segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox21.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox21.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox21.Location = new Point(10, 10);
+            pictureBox21.MaximumSize = new Size(30, 30);
             pictureBox21.Name = "pictureBox21";
             pictureBox21.Size = new Size(30, 30);
             pictureBox21.TabIndex = 10;
@@ -1859,8 +1862,9 @@
             // 
             pictureBox20.Anchor = AnchorStyles.None;
             pictureBox20.BackgroundImage = Properties.Resources.clock_loader_20_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox20.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox20.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox20.Location = new Point(10, 10);
+            pictureBox20.MaximumSize = new Size(30, 30);
             pictureBox20.Name = "pictureBox20";
             pictureBox20.Size = new Size(30, 30);
             pictureBox20.TabIndex = 10;
@@ -2069,7 +2073,7 @@
             // 
             pictureBox12.Anchor = AnchorStyles.None;
             pictureBox12.BackgroundImage = Properties.Resources.modeling_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox12.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox12.Location = new Point(10, 5);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(30, 30);
@@ -2275,7 +2279,7 @@
             // 
             pictureBox11.Anchor = AnchorStyles.None;
             pictureBox11.BackgroundImage = Properties.Resources.code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox11.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox11.Location = new Point(10, 5);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(30, 30);
@@ -2421,7 +2425,7 @@
             // 
             pictureBox10.Anchor = AnchorStyles.None;
             pictureBox10.BackgroundImage = Properties.Resources.visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox10.Location = new Point(10, 5);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(30, 30);
@@ -2568,7 +2572,7 @@
             // 
             pictureBox9.Anchor = AnchorStyles.None;
             pictureBox9.BackgroundImage = Properties.Resources.list_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox9.Location = new Point(10, 5);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(30, 30);
@@ -2715,7 +2719,7 @@
             // 
             pictureBox8.Anchor = AnchorStyles.None;
             pictureBox8.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox8.Location = new Point(10, 5);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(30, 30);
@@ -2838,7 +2842,7 @@
             // 
             pictureBox7.Anchor = AnchorStyles.None;
             pictureBox7.BackgroundImage = Properties.Resources.memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox7.Location = new Point(10, 5);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(30, 30);
@@ -2915,7 +2919,7 @@
             // 
             pictureBox19.Anchor = AnchorStyles.None;
             pictureBox19.BackgroundImage = Properties.Resources.modeling_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox19.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox19.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox19.Location = new Point(5, 12);
             pictureBox19.Name = "pictureBox19";
             pictureBox19.Size = new Size(40, 40);
@@ -2952,7 +2956,7 @@
             // 
             pictureBox18.Anchor = AnchorStyles.None;
             pictureBox18.BackgroundImage = Properties.Resources.code_blocks_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox18.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox18.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox18.Location = new Point(5, 9);
             pictureBox18.Name = "pictureBox18";
             pictureBox18.Size = new Size(40, 40);
@@ -2989,7 +2993,7 @@
             // 
             pictureBox17.Anchor = AnchorStyles.None;
             pictureBox17.BackgroundImage = Properties.Resources.visibility_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox17.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox17.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox17.Location = new Point(5, 9);
             pictureBox17.Name = "pictureBox17";
             pictureBox17.Size = new Size(40, 40);
@@ -3026,7 +3030,7 @@
             // 
             pictureBox16.Anchor = AnchorStyles.None;
             pictureBox16.BackgroundImage = Properties.Resources.list_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox16.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox16.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox16.Location = new Point(5, 9);
             pictureBox16.Name = "pictureBox16";
             pictureBox16.Size = new Size(40, 40);
@@ -3063,7 +3067,7 @@
             // 
             pictureBox15.Anchor = AnchorStyles.None;
             pictureBox15.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox15.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox15.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox15.Location = new Point(5, 9);
             pictureBox15.Name = "pictureBox15";
             pictureBox15.Size = new Size(40, 40);
@@ -3100,7 +3104,7 @@
             // 
             pictureBox14.Anchor = AnchorStyles.None;
             pictureBox14.BackgroundImage = Properties.Resources.memory_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
-            pictureBox14.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox14.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox14.Location = new Point(5, 9);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(40, 40);
@@ -3162,7 +3166,7 @@
             // 
             pictureBox13.Anchor = AnchorStyles.None;
             pictureBox13.BackgroundImage = Properties.Resources.lightbulb_48dp_237DE6_FILL0_wght400_GRAD0_opsz48;
-            pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox13.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox13.Location = new Point(5, 9);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(40, 40);

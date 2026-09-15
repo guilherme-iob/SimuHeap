@@ -82,7 +82,8 @@ namespace SimuHeap.Services
                                 IdEvento = evento.Id,
                                 ReferenciaBloco = malloc.ReferenciaBloco,
                                 TipoOperacao = TipoEventoHeap.Malloc,
-                                DescricaoOperacao = malloc.Descricao
+                                DescricaoOperacao = malloc.Descricao,
+                                NomeVariavel = string.IsNullOrWhiteSpace(evento.NomeVariavel) ? $"bloco{malloc.ReferenciaBloco}" : evento.NomeVariavel
                             };
 
                         break;
@@ -122,7 +123,8 @@ namespace SimuHeap.Services
                                 IdEvento = evento.Id,
                                 ReferenciaBloco = calloc.ReferenciaBloco,
                                 TipoOperacao = TipoEventoHeap.Calloc,
-                                DescricaoOperacao = calloc.Descricao
+                                DescricaoOperacao = calloc.Descricao,
+                                NomeVariavel = string.IsNullOrWhiteSpace(evento.NomeVariavel) ? $"bloco{calloc.ReferenciaBloco}" : evento.NomeVariavel
                             };
 
                         break;
@@ -181,7 +183,8 @@ namespace SimuHeap.Services
                                 IdEvento = evento.Id,
                                 ReferenciaBloco = realloc.ReferenciaBloco,
                                 TipoOperacao = TipoEventoHeap.Realloc,
-                                DescricaoOperacao = realloc.Descricao
+                                DescricaoOperacao = realloc.Descricao,
+                                NomeVariavel = string.IsNullOrWhiteSpace(evento.NomeVariavel) ? $"bloco{realloc.ReferenciaBloco}" : evento.NomeVariavel
                             };
 
                         break;

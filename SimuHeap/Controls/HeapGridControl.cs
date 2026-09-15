@@ -238,8 +238,8 @@ namespace SimuHeap.Controls
             }
 
             byte[] copiaMemoria = (byte[])MemoriaAtual.Clone();
-            using DetalhesBlocoForm form = new DetalhesBlocoForm(blocoClicado, informacao, copiaMemoria);
-
+            //using DetalhesBlocoForm form = new DetalhesBlocoForm(blocoClicado, informacao, copiaMemoria);
+            using NewDetalhesBlocoForm form = new NewDetalhesBlocoForm(blocoClicado, informacao, copiaMemoria);
             form.ShowDialog(this);
         }
     }

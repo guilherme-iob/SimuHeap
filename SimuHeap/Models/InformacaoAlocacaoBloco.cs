@@ -14,7 +14,7 @@ namespace SimuHeap.Models
         public int ReferenciaBloco { get; set; }
         public TipoEventoHeap TipoOperacao { get; set; }
         public string DescricaoOperacao { get; set; } = string.Empty;
-
+        public string NomeVariavel { get; set; } = string.Empty;
         public InformacaoAlocacaoBloco Clonar()
         {
             return new InformacaoAlocacaoBloco
@@ -23,7 +23,8 @@ namespace SimuHeap.Models
                 IdEvento = IdEvento,
                 ReferenciaBloco = ReferenciaBloco,
                 TipoOperacao = TipoOperacao,
-                DescricaoOperacao = DescricaoOperacao
+                DescricaoOperacao = DescricaoOperacao,
+                NomeVariavel = NomeVariavel
             };
         }
     }

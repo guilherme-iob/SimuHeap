@@ -33,6 +33,14 @@ namespace SimuHeap.Utils
         public static readonly Color Hover = Color.FromArgb(245, 248, 252);
         public static readonly Color Selecao = Color.FromArgb(225, 239, 255);
 
+        public static readonly Color Livre = Color.FromArgb(34, 148, 64);
+        public static readonly Color LivreEscuro = Color.FromArgb(21, 128, 61);
         public static readonly Color LivreSuave = Color.FromArgb(232, 248, 237);
+        public static readonly Color LivreBorda = Color.FromArgb(187, 247, 208);
+
+        public static readonly Color Ocupado = Color.FromArgb(220, 38, 38);
+        public static readonly Color OcupadoEscuro = Color.FromArgb(185, 28, 28);
+        public static readonly Color OcupadoSuave = Color.FromArgb(254, 242, 242);
+        public static readonly Color OcupadoBorda = Color.FromArgb(254, 202, 202);
     }
 }
