@@ -138,13 +138,12 @@
             TabConfiguracoes = new TabPage();
             TableLayoutPrincipalConfig = new TableLayoutPanel();
             MenuParametros = new TableLayoutPanel();
-            cardPanel1 = new SimuHeap.Controls.CustomControls.CardPanel();
+            CardPanelConfigCenariosTeste = new SimuHeap.Controls.CustomControls.CardPanel();
             tableLayoutPanel24 = new TableLayoutPanel();
             UsarCasoAltaFragInterna = new SimuHeap.Controls.CustomControls.StyledRadioButton();
             UsarCasoAltaFragExterna = new SimuHeap.Controls.CustomControls.StyledRadioButton();
             panel10 = new Panel();
             tableLayoutPanel18 = new TableLayoutPanel();
-            helpButton7 = new SimuHeap.Controls.CustomControls.HelpButton();
             label9 = new Label();
             pictureBox12 = new PictureBox();
             CardPanelConfigCasosUso = new SimuHeap.Controls.CustomControls.CardPanel();
@@ -157,7 +156,6 @@
             UsarCaso2 = new SimuHeap.Controls.CustomControls.StyledRadioButton();
             panel9 = new Panel();
             tableLayoutPanel17 = new TableLayoutPanel();
-            helpButton6 = new SimuHeap.Controls.CustomControls.HelpButton();
             label8 = new Label();
             pictureBox11 = new PictureBox();
             CardPanelConfigVisualizacao = new SimuHeap.Controls.CustomControls.CardPanel();
@@ -281,7 +279,7 @@
             TabConfiguracoes.SuspendLayout();
             TableLayoutPrincipalConfig.SuspendLayout();
             MenuParametros.SuspendLayout();
-            cardPanel1.SuspendLayout();
+            CardPanelConfigCenariosTeste.SuspendLayout();
             tableLayoutPanel24.SuspendLayout();
             tableLayoutPanel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -1929,7 +1927,7 @@
             MenuParametros.ColumnCount = 2;
             MenuParametros.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             MenuParametros.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            MenuParametros.Controls.Add(cardPanel1, 1, 2);
+            MenuParametros.Controls.Add(CardPanelConfigCenariosTeste, 1, 2);
             MenuParametros.Controls.Add(CardPanelConfigCasosUso, 0, 2);
             MenuParametros.Controls.Add(CardPanelConfigVisualizacao, 1, 1);
             MenuParametros.Controls.Add(CardPanelConfigAlgoritmos, 0, 1);
@@ -1945,20 +1943,20 @@
             MenuParametros.Size = new Size(822, 626);
             MenuParametros.TabIndex = 0;
             // 
-            // cardPanel1
+            // CardPanelConfigCenariosTeste
             // 
-            cardPanel1.BackColor = Color.White;
-            cardPanel1.BorderColor = Color.FromArgb(222, 226, 232);
-            cardPanel1.Controls.Add(tableLayoutPanel24);
-            cardPanel1.Controls.Add(panel10);
-            cardPanel1.Controls.Add(tableLayoutPanel18);
-            cardPanel1.Dock = DockStyle.Fill;
-            cardPanel1.Location = new Point(411, 374);
-            cardPanel1.Margin = new Padding(0);
-            cardPanel1.Name = "cardPanel1";
-            cardPanel1.Padding = new Padding(5);
-            cardPanel1.Size = new Size(411, 252);
-            cardPanel1.TabIndex = 5;
+            CardPanelConfigCenariosTeste.BackColor = Color.White;
+            CardPanelConfigCenariosTeste.BorderColor = Color.FromArgb(222, 226, 232);
+            CardPanelConfigCenariosTeste.Controls.Add(tableLayoutPanel24);
+            CardPanelConfigCenariosTeste.Controls.Add(panel10);
+            CardPanelConfigCenariosTeste.Controls.Add(tableLayoutPanel18);
+            CardPanelConfigCenariosTeste.Dock = DockStyle.Fill;
+            CardPanelConfigCenariosTeste.Location = new Point(411, 374);
+            CardPanelConfigCenariosTeste.Margin = new Padding(0);
+            CardPanelConfigCenariosTeste.Name = "CardPanelConfigCenariosTeste";
+            CardPanelConfigCenariosTeste.Padding = new Padding(5);
+            CardPanelConfigCenariosTeste.Size = new Size(411, 252);
+            CardPanelConfigCenariosTeste.TabIndex = 5;
             // 
             // tableLayoutPanel24
             // 
@@ -2030,7 +2028,6 @@
             tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel18.Controls.Add(helpButton7, 2, 0);
             tableLayoutPanel18.Controls.Add(label9, 1, 0);
             tableLayoutPanel18.Controls.Add(pictureBox12, 0, 0);
             tableLayoutPanel18.Dock = DockStyle.Top;
@@ -2041,22 +2038,6 @@
             tableLayoutPanel18.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel18.Size = new Size(401, 40);
             tableLayoutPanel18.TabIndex = 2;
-            // 
-            // helpButton7
-            // 
-            helpButton7.Anchor = AnchorStyles.None;
-            helpButton7.BackColor = Color.White;
-            helpButton7.BackgroundImage = Properties.Resources.question;
-            helpButton7.BorderColor = Color.FromArgb(222, 226, 232);
-            helpButton7.FlatAppearance.BorderSize = 0;
-            helpButton7.FlatStyle = FlatStyle.Flat;
-            helpButton7.ForeColor = Color.FromArgb(75, 85, 105);
-            helpButton7.Location = new Point(362, 6);
-            helpButton7.Name = "helpButton7";
-            helpButton7.Size = new Size(28, 28);
-            helpButton7.TabIndex = 9;
-            helpButton7.TabStop = false;
-            helpButton7.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -2236,7 +2217,6 @@
             tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel17.Controls.Add(helpButton6, 2, 0);
             tableLayoutPanel17.Controls.Add(label8, 1, 0);
             tableLayoutPanel17.Controls.Add(pictureBox11, 0, 0);
             tableLayoutPanel17.Dock = DockStyle.Top;
@@ -2247,22 +2227,6 @@
             tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel17.Size = new Size(401, 40);
             tableLayoutPanel17.TabIndex = 2;
-            // 
-            // helpButton6
-            // 
-            helpButton6.Anchor = AnchorStyles.None;
-            helpButton6.BackColor = Color.White;
-            helpButton6.BackgroundImage = Properties.Resources.question;
-            helpButton6.BorderColor = Color.FromArgb(222, 226, 232);
-            helpButton6.FlatAppearance.BorderSize = 0;
-            helpButton6.FlatStyle = FlatStyle.Flat;
-            helpButton6.ForeColor = Color.FromArgb(75, 85, 105);
-            helpButton6.Location = new Point(362, 6);
-            helpButton6.Name = "helpButton6";
-            helpButton6.Size = new Size(28, 28);
-            helpButton6.TabIndex = 9;
-            helpButton6.TabStop = false;
-            helpButton6.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -3248,7 +3212,7 @@
             TabConfiguracoes.ResumeLayout(false);
             TableLayoutPrincipalConfig.ResumeLayout(false);
             MenuParametros.ResumeLayout(false);
-            cardPanel1.ResumeLayout(false);
+            CardPanelConfigCenariosTeste.ResumeLayout(false);
             tableLayoutPanel24.ResumeLayout(false);
             tableLayoutPanel24.PerformLayout();
             tableLayoutPanel18.ResumeLayout(false);
@@ -3374,7 +3338,7 @@
         private Controls.CustomControls.HelpButton Btn_HelpHeap;
         private TableLayoutPanel TableLayoutPrincipalConfig;
         private TableLayoutPanel MenuParametros;
-        private Controls.CustomControls.CardPanel cardPanel1;
+        private Controls.CustomControls.CardPanel CardPanelConfigCenariosTeste;
         private Controls.CustomControls.CardPanel CardPanelConfigCasosUso;
         private Controls.CustomControls.CardPanel CardPanelConfigVisualizacao;
         private Controls.CustomControls.CardPanel CardPanelConfigAlgoritmos;
@@ -3409,8 +3373,6 @@
         private Controls.CustomControls.StyledRadioButton UseFirstFit;
         private Controls.CustomControls.StyledCheckBox HabilitarSplit;
         private Controls.CustomControls.StyledCheckBox HabilitarCoalesing;
-        private Controls.CustomControls.HelpButton helpButton7;
-        private Controls.CustomControls.HelpButton helpButton6;
         private Controls.CustomControls.HelpButton Btn_HelpVisualizacaoAvancada;
         private Controls.CustomControls.HelpButton Btn_HelpAlgoritmosAlocacao;
         private Controls.CustomControls.HelpButton Btn_HelpCoalescing;

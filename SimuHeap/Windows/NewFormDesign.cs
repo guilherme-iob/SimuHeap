@@ -28,7 +28,7 @@ namespace SimuHeap.Windows
 
         private int proximaReferenciaBloco = 1;
 
-        private LegendaCoresForm? legendaCoresForm;
+        private NewLegendaForm? legendaCoresForm;
         private CodigoCasoUsoForm? codigoCasoUsoForm;
 
         private bool emSimulacao = false;
@@ -293,7 +293,13 @@ namespace SimuHeap.Windows
             this.PanelGridHeap.Enabled = true;
 
             this.Panel_OpcoesEventos.Enabled = false;
-            this.MenuParametros.Enabled = false;
+            //this.MenuParametros.Enabled = false;
+            this.CardPanelConfigMemoria.Enabled = false;
+            this.CardPanelConfigGerenciamento.Enabled = false;
+            this.UsarLegendaDetalhada.Enabled = false;
+            this.CardPanelConfigAlgoritmos.Enabled = false;
+            this.CardPanelConfigCasosUso.Enabled = false;
+            this.CardPanelConfigCenariosTeste.Enabled = false;
 
             this.FlowPanelOperacoes.Enabled = false;
 
@@ -323,7 +329,14 @@ namespace SimuHeap.Windows
             this.PanelNavegacaoSnapshot.Enabled = false;
             this.PanelGridHeap.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
-            this.MenuParametros.Enabled = true;
+            //this.MenuParametros.Enabled = true;
+            this.CardPanelConfigMemoria.Enabled = true;
+            this.CardPanelConfigGerenciamento.Enabled = true;
+            this.UsarLegendaDetalhada.Enabled = true;
+            this.CardPanelConfigAlgoritmos.Enabled = true;
+            this.CardPanelConfigCasosUso.Enabled = true;
+            this.CardPanelConfigCenariosTeste.Enabled = true;
+
             this.FlowPanelOperacoes.Enabled = true;
         }
 
@@ -350,7 +363,14 @@ namespace SimuHeap.Windows
             this.PanelNavegacaoSnapshot.Enabled = false;
             this.PanelGridHeap.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
-            this.MenuParametros.Enabled = true;
+            //this.MenuParametros.Enabled = true;
+            this.CardPanelConfigMemoria.Enabled = true;
+            this.CardPanelConfigGerenciamento.Enabled = true;
+            this.UsarLegendaDetalhada.Enabled = true;
+            this.CardPanelConfigAlgoritmos.Enabled = true;
+            this.CardPanelConfigCasosUso.Enabled = true;
+            this.CardPanelConfigCenariosTeste.Enabled = true;
+
             this.FlowPanelOperacoes.Enabled = true;
         }
 
@@ -358,7 +378,7 @@ namespace SimuHeap.Windows
         {
             if (legendaCoresForm is null || legendaCoresForm.IsDisposed)
             {
-                legendaCoresForm = new LegendaCoresForm(UsarLegendaDetalhada.Checked);
+                legendaCoresForm = new NewLegendaForm(UsarLegendaDetalhada.Checked);
                 legendaCoresForm.Show(this);
             }
             else
@@ -1343,11 +1363,9 @@ namespace SimuHeap.Windows
             // Uso da memória
             // ============================================
 
-            Lbl_BytesOcupados.Text =
-                $"Bytes ocupados: {metricas.BytesOcupados} bytes";
+            Lbl_BytesOcupados.Text = $"Bytes ocupados: {metricas.BytesOcupados} bytes";
 
-            Lbl_BytesLivres.Text =
-                $"Bytes livres: {metricas.BytesLivres} bytes";
+            Lbl_BytesLivres.Text = $"Bytes livres: {metricas.BytesLivres} bytes";
 
             //Lbl_UsoHeap.Text =
             //    $"Uso da heap: {metricas.PercentualUsoMemoria:F2}%";
@@ -1358,14 +1376,12 @@ namespace SimuHeap.Windows
             // Fragmentação interna
             // ============================================
 
-            Lbl_BytesFragInterna.Text =
-                $"Bytes de fragmentação interna: {metricas.BytesFragmentacaoInterna} bytes";
+            Lbl_BytesFragInterna.Text = $"Bytes de fragmentação interna: {metricas.BytesFragmentacaoInterna} bytes";
 
             //Lbl_FragInterna.Text =
             //    $"Fragmentação interna: {metricas.PercentualFragmentacaoInterna:F2}%";
 
-            Lbl_Padding.Text =
-                $"Bytes de alinhamento (padding): {metricas.BytesPadding} bytes";
+            Lbl_Padding.Text = $"Bytes de preenchimento (padding): {metricas.BytesPadding} bytes";
 
             CircularProgressFragExterna.Percentual = metricas.PercentualFragmentacaoExterna;
             CircularProgressFragInterna.Percentual = metricas.PercentualFragmentacaoInterna;
@@ -1377,8 +1393,7 @@ namespace SimuHeap.Windows
             //Lbl_FragExterna.Text =
             //    $"Fragmentação externa: {metricas.PercentualFragmentacaoExterna:F2}%";
 
-            Lbl_MaiorBlocoLivre.Text =
-                $"Maior bloco livre: {metricas.TamanhoMaiorBlocoLivre} bytes";
+            Lbl_MaiorBlocoLivre.Text = $"Maior bloco livre: {metricas.TamanhoMaiorBlocoLivre} bytes";
 
 
             // ============================================
@@ -1399,8 +1414,7 @@ namespace SimuHeap.Windows
             // Metadados
             // ============================================
 
-            Lbl_Metadados.Text =
-                $"Bytes de metadados: {metricas.BytesMetadados} bytes";
+            Lbl_Metadados.Text =$"Bytes de metadados: {metricas.BytesMetadados} bytes";
         }
 
         private void CarregarCasoPredefinido()

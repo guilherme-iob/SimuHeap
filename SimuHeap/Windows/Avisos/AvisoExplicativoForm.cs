@@ -16,15 +16,15 @@ namespace SimuHeap.Windows
         {
             InitializeComponent();
             this.Text = titulo;
-            lblTitulo.Text = titulo;
+            Lbl_Titulo.Text = titulo;
 
-            txtConteudo.Text = conteudo;
-            txtConteudo.ReadOnly = true;
-            txtConteudo.BorderStyle = BorderStyle.None;
-            txtConteudo.BackColor = Color.CornflowerBlue;
+            Mensagem.Text = conteudo;
+            Mensagem.ReadOnly = true;
+            Mensagem.BorderStyle = BorderStyle.None;
+            Mensagem.BackColor = Color.White;
 
-            txtConteudo.SelectionStart = 0;
-            txtConteudo.SelectionLength = 0;
+            Mensagem.SelectionStart = 0;
+            Mensagem.SelectionLength = 0;
 
             StartPosition = FormStartPosition.CenterParent;
 

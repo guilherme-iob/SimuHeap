@@ -29,115 +29,142 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvisoFalhaAlocacaoForm));
+            tableLayoutPanel4 = new TableLayoutPanel();
+            Lbl_Titulo = new Label();
+            pictureBox8 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            lblTitulo = new Label();
-            pictureBox1 = new PictureBox();
-            txtMensagem = new RichTextBox();
-            btnClose = new Button();
+            BtnOK = new SimuHeap.Controls.CustomControls.RoundedButton();
+            panel1 = new Panel();
+            cardPanel1 = new SimuHeap.Controls.CustomControls.CardPanel();
+            Mensagem = new RichTextBox();
+            tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            cardPanel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.BackColor = Color.White;
+            tableLayoutPanel4.ColumnCount = 3;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.Controls.Add(Lbl_Titulo, 1, 0);
+            tableLayoutPanel4.Controls.Add(pictureBox8, 0, 0);
+            tableLayoutPanel4.Dock = DockStyle.Top;
+            tableLayoutPanel4.Location = new Point(0, 0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(484, 40);
+            tableLayoutPanel4.TabIndex = 23;
+            // 
+            // Lbl_Titulo
+            // 
+            Lbl_Titulo.Dock = DockStyle.Fill;
+            Lbl_Titulo.Font = new Font("Lato Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Lbl_Titulo.Location = new Point(53, 0);
+            Lbl_Titulo.Name = "Lbl_Titulo";
+            Lbl_Titulo.Size = new Size(378, 40);
+            Lbl_Titulo.TabIndex = 8;
+            Lbl_Titulo.Text = "Falha";
+            Lbl_Titulo.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Anchor = AnchorStyles.None;
+            pictureBox8.BackColor = Color.Transparent;
+            pictureBox8.BackgroundImage = Properties.Resources.warning_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox8.Location = new Point(10, 5);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(30, 30);
+            pictureBox8.TabIndex = 1;
+            pictureBox8.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
-            tableLayoutPanel1.Controls.Add(txtMensagem, 0, 1);
-            tableLayoutPanel1.Controls.Add(btnClose, 0, 2);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(4);
+            tableLayoutPanel1.BackColor = Color.White;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(BtnOK, 2, 0);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(0, 421);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.Size = new Size(384, 461);
-            tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(484, 40);
+            tableLayoutPanel1.TabIndex = 25;
             // 
-            // tableLayoutPanel2
+            // BtnOK
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel2.Controls.Add(lblTitulo, 1, 0);
-            tableLayoutPanel2.Controls.Add(pictureBox1, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(4, 4);
-            tableLayoutPanel2.Margin = new Padding(4);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(376, 61);
-            tableLayoutPanel2.TabIndex = 1;
+            BtnOK.BackColor = Color.FromArgb(35, 125, 230);
+            BtnOK.BorderColor = Color.Transparent;
+            BtnOK.Dock = DockStyle.Fill;
+            BtnOK.FlatAppearance.BorderSize = 0;
+            BtnOK.FlatStyle = FlatStyle.Flat;
+            BtnOK.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
+            BtnOK.ForeColor = Color.White;
+            BtnOK.Location = new Point(325, 3);
+            BtnOK.Name = "BtnOK";
+            BtnOK.Padding = new Padding(10, 0, 10, 0);
+            BtnOK.Size = new Size(156, 34);
+            BtnOK.TabIndex = 1;
+            BtnOK.Text = "OK";
+            BtnOK.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnOK.UseVisualStyleBackColor = false;
+            BtnOK.Click += BtnOK_Click;
             // 
-            // lblTitulo
+            // panel1
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Dock = DockStyle.Fill;
-            lblTitulo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(79, 0);
-            lblTitulo.Margin = new Padding(4, 0, 4, 0);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(293, 61);
-            lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Falha de Alocação";
-            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            panel1.Controls.Add(cardPanel1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 40);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(5);
+            panel1.Size = new Size(484, 381);
+            panel1.TabIndex = 26;
             // 
-            // pictureBox1
+            // cardPanel1
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackColor = Color.LightGray;
-            pictureBox1.BackgroundImage = Properties.Resources.warning;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(17, 10);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.MaximumSize = new Size(40, 40);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            cardPanel1.BackColor = Color.White;
+            cardPanel1.BorderColor = Color.FromArgb(222, 226, 232);
+            cardPanel1.Controls.Add(Mensagem);
+            cardPanel1.Dock = DockStyle.Fill;
+            cardPanel1.Location = new Point(5, 5);
+            cardPanel1.Margin = new Padding(5);
+            cardPanel1.Name = "cardPanel1";
+            cardPanel1.Padding = new Padding(8);
+            cardPanel1.Size = new Size(474, 371);
+            cardPanel1.TabIndex = 0;
             // 
-            // txtMensagem
+            // Mensagem
             // 
-            txtMensagem.BackColor = Color.LightGray;
-            txtMensagem.BorderStyle = BorderStyle.None;
-            txtMensagem.Dock = DockStyle.Fill;
-            txtMensagem.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtMensagem.ForeColor = SystemColors.ControlText;
-            txtMensagem.Location = new Point(10, 79);
-            txtMensagem.Margin = new Padding(10);
-            txtMensagem.Name = "txtMensagem";
-            txtMensagem.ReadOnly = true;
-            txtMensagem.ScrollBars = RichTextBoxScrollBars.Vertical;
-            txtMensagem.Size = new Size(364, 302);
-            txtMensagem.TabIndex = 2;
-            txtMensagem.Text = "";
-            // 
-            // btnClose
-            // 
-            btnClose.Anchor = AnchorStyles.Right;
-            btnClose.ForeColor = SystemColors.ActiveCaptionText;
-            btnClose.Location = new Point(284, 408);
-            btnClose.Margin = new Padding(4);
-            btnClose.MaximumSize = new Size(96, 35);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(96, 35);
-            btnClose.TabIndex = 3;
-            btnClose.Text = "OK";
-            btnClose.UseVisualStyleBackColor = true;
-            btnClose.Click += btnClose_Click;
+            Mensagem.BackColor = Color.White;
+            Mensagem.BorderStyle = BorderStyle.None;
+            Mensagem.Dock = DockStyle.Fill;
+            Mensagem.Font = new Font("Lato", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Mensagem.Location = new Point(8, 8);
+            Mensagem.Name = "Mensagem";
+            Mensagem.Size = new Size(458, 355);
+            Mensagem.TabIndex = 0;
+            Mensagem.Text = "";
             // 
             // AvisoFalhaAlocacaoForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightGray;
-            ClientSize = new Size(384, 461);
+            BackColor = Color.FromArgb(247, 248, 250);
+            ClientSize = new Size(484, 461);
+            Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
+            Controls.Add(tableLayoutPanel4);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -148,20 +175,23 @@
             Name = "AvisoFalhaAlocacaoForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Falha de Alocação";
+            tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            cardPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
+        private TableLayoutPanel tableLayoutPanel4;
+        private Label Lbl_Titulo;
+        private PictureBox pictureBox8;
         private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Label lblTitulo;
-        private PictureBox pictureBox1;
-        private RichTextBox txtMensagem;
-        private Button btnClose;
+        private Controls.CustomControls.RoundedButton BtnOK;
+        private Panel panel1;
+        private Controls.CustomControls.CardPanel cardPanel1;
+        private RichTextBox Mensagem;
     }
 }

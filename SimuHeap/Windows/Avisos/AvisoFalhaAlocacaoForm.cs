@@ -17,14 +17,14 @@ namespace SimuHeap.Windows.Avisos
         {
             InitializeComponent();
             this.Text = erro.Titulo;
-            this.lblTitulo.Text = erro.Titulo;
-            this.txtMensagem.Text =
+            this.Lbl_Titulo.Text = erro.Titulo;
+            this.Mensagem.Text =
                 $"{erro.Mensagem}\r\n\r\n" +
                 $"{erro.Detalhes}\r\n\r\n" +
                 $"{erro.Explicacao}";
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             this.Close();
         }

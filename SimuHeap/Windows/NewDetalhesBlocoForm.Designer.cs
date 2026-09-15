@@ -41,9 +41,8 @@
             BtnOK = new SimuHeap.Controls.CustomControls.RoundedButton();
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            PanelBlocosDetalhes = new Panel();
-            cardPanel4 = new SimuHeap.Controls.CustomControls.CardPanel();
             DataGridViewValores = new SimuHeap.Controls.CustomControls.StyledDataGridView();
+            PanelBlocosDetalhes = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
             cardPanel3 = new SimuHeap.Controls.CustomControls.CardPanel();
             lblInformacoes2 = new Label();
@@ -60,7 +59,6 @@
             tableLayoutPanel14.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            cardPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewValores).BeginInit();
             tableLayoutPanel3.SuspendLayout();
             cardPanel3.SuspendLayout();
@@ -181,41 +179,18 @@
             // 
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(DataGridViewValores, 0, 2);
             tableLayoutPanel2.Controls.Add(PanelBlocosDetalhes, 0, 0);
-            tableLayoutPanel2.Controls.Add(cardPanel4, 0, 2);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 41);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel2.Size = new Size(754, 579);
             tableLayoutPanel2.TabIndex = 24;
-            // 
-            // PanelBlocosDetalhes
-            // 
-            PanelBlocosDetalhes.AutoScroll = true;
-            PanelBlocosDetalhes.Dock = DockStyle.Fill;
-            PanelBlocosDetalhes.Location = new Point(10, 10);
-            PanelBlocosDetalhes.Margin = new Padding(10);
-            PanelBlocosDetalhes.Name = "PanelBlocosDetalhes";
-            PanelBlocosDetalhes.Size = new Size(734, 124);
-            PanelBlocosDetalhes.TabIndex = 5;
-            // 
-            // cardPanel4
-            // 
-            cardPanel4.BackColor = Color.White;
-            cardPanel4.BorderColor = Color.FromArgb(222, 226, 232);
-            cardPanel4.Controls.Add(DataGridViewValores);
-            cardPanel4.Dock = DockStyle.Fill;
-            cardPanel4.Location = new Point(10, 443);
-            cardPanel4.Margin = new Padding(10);
-            cardPanel4.Name = "cardPanel4";
-            cardPanel4.Padding = new Padding(5);
-            cardPanel4.Size = new Size(734, 126);
-            cardPanel4.TabIndex = 2;
             // 
             // DataGridViewValores
             // 
@@ -251,15 +226,26 @@
             DataGridViewValores.Dock = DockStyle.Fill;
             DataGridViewValores.EnableHeadersVisualStyles = false;
             DataGridViewValores.GridColor = Color.FromArgb(222, 226, 232);
-            DataGridViewValores.Location = new Point(5, 5);
+            DataGridViewValores.Location = new Point(10, 407);
+            DataGridViewValores.Margin = new Padding(10, 3, 10, 3);
             DataGridViewValores.MultiSelect = false;
             DataGridViewValores.Name = "DataGridViewValores";
             DataGridViewValores.RowHeadersVisible = false;
             DataGridViewValores.RowTemplate.Height = 42;
             DataGridViewValores.ScrollBars = ScrollBars.Vertical;
             DataGridViewValores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewValores.Size = new Size(724, 116);
+            DataGridViewValores.Size = new Size(734, 169);
             DataGridViewValores.TabIndex = 0;
+            // 
+            // PanelBlocosDetalhes
+            // 
+            PanelBlocosDetalhes.AutoScroll = true;
+            PanelBlocosDetalhes.Dock = DockStyle.Fill;
+            PanelBlocosDetalhes.Location = new Point(10, 10);
+            PanelBlocosDetalhes.Margin = new Padding(10);
+            PanelBlocosDetalhes.Name = "PanelBlocosDetalhes";
+            PanelBlocosDetalhes.Size = new Size(734, 95);
+            PanelBlocosDetalhes.TabIndex = 5;
             // 
             // tableLayoutPanel3
             // 
@@ -269,7 +255,7 @@
             tableLayoutPanel3.Controls.Add(cardPanel3, 1, 0);
             tableLayoutPanel3.Controls.Add(cardPanel2, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 147);
+            tableLayoutPanel3.Location = new Point(3, 118);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -284,11 +270,11 @@
             cardPanel3.Controls.Add(panel3);
             cardPanel3.Controls.Add(tableLayoutPanel5);
             cardPanel3.Dock = DockStyle.Fill;
-            cardPanel3.Location = new Point(384, 10);
-            cardPanel3.Margin = new Padding(10);
+            cardPanel3.Location = new Point(376, 3);
+            cardPanel3.Margin = new Padding(2, 3, 10, 3);
             cardPanel3.Name = "cardPanel3";
             cardPanel3.Padding = new Padding(5);
-            cardPanel3.Size = new Size(354, 263);
+            cardPanel3.Size = new Size(362, 277);
             cardPanel3.TabIndex = 2;
             // 
             // lblInformacoes2
@@ -298,7 +284,8 @@
             lblInformacoes2.Font = new Font("Lato", 9.749999F);
             lblInformacoes2.Location = new Point(5, 46);
             lblInformacoes2.Name = "lblInformacoes2";
-            lblInformacoes2.Size = new Size(143, 16);
+            lblInformacoes2.Padding = new Padding(0, 10, 0, 10);
+            lblInformacoes2.Size = new Size(143, 36);
             lblInformacoes2.TabIndex = 22;
             lblInformacoes2.Text = "informacoes da alocacao";
             // 
@@ -309,7 +296,7 @@
             panel3.Location = new Point(5, 45);
             panel3.Margin = new Padding(5);
             panel3.Name = "panel3";
-            panel3.Size = new Size(344, 1);
+            panel3.Size = new Size(352, 1);
             panel3.TabIndex = 21;
             // 
             // tableLayoutPanel5
@@ -327,7 +314,7 @@
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel5.Size = new Size(344, 40);
+            tableLayoutPanel5.Size = new Size(352, 40);
             tableLayoutPanel5.TabIndex = 20;
             // 
             // label2
@@ -336,7 +323,7 @@
             label2.Font = new Font("Lato", 14.25F);
             label2.Location = new Point(53, 0);
             label2.Name = "label2";
-            label2.Size = new Size(238, 40);
+            label2.Size = new Size(246, 40);
             label2.TabIndex = 8;
             label2.Text = "Origem da Alocação";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -344,7 +331,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackgroundImage = Properties.Resources.assignment_add_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox1.BackgroundImage = Properties.Resources.segment_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(10, 5);
             pictureBox1.Name = "pictureBox1";
@@ -360,11 +347,11 @@
             cardPanel2.Controls.Add(panel2);
             cardPanel2.Controls.Add(tableLayoutPanel4);
             cardPanel2.Dock = DockStyle.Fill;
-            cardPanel2.Location = new Point(10, 10);
-            cardPanel2.Margin = new Padding(10);
+            cardPanel2.Location = new Point(10, 3);
+            cardPanel2.Margin = new Padding(10, 3, 2, 3);
             cardPanel2.Name = "cardPanel2";
             cardPanel2.Padding = new Padding(5);
-            cardPanel2.Size = new Size(354, 263);
+            cardPanel2.Size = new Size(362, 277);
             cardPanel2.TabIndex = 1;
             // 
             // lblInformacoes
@@ -374,7 +361,8 @@
             lblInformacoes.Font = new Font("Lato", 9.749999F);
             lblInformacoes.Location = new Point(5, 46);
             lblInformacoes.Name = "lblInformacoes";
-            lblInformacoes.Size = new Size(149, 16);
+            lblInformacoes.Padding = new Padding(0, 10, 0, 10);
+            lblInformacoes.Size = new Size(149, 36);
             lblInformacoes.TabIndex = 22;
             lblInformacoes.Text = "informacoes da estrutura";
             // 
@@ -385,7 +373,7 @@
             panel2.Location = new Point(5, 45);
             panel2.Margin = new Padding(5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(344, 1);
+            panel2.Size = new Size(352, 1);
             panel2.TabIndex = 21;
             // 
             // tableLayoutPanel4
@@ -403,7 +391,7 @@
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(344, 40);
+            tableLayoutPanel4.Size = new Size(352, 40);
             tableLayoutPanel4.TabIndex = 20;
             // 
             // label1
@@ -412,7 +400,7 @@
             label1.Font = new Font("Lato", 14.25F);
             label1.Location = new Point(53, 0);
             label1.Name = "label1";
-            label1.Size = new Size(238, 40);
+            label1.Size = new Size(246, 40);
             label1.TabIndex = 8;
             label1.Text = "Estrutura do Bloco";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -420,7 +408,7 @@
             // pictureBox8
             // 
             pictureBox8.Anchor = AnchorStyles.None;
-            pictureBox8.BackgroundImage = Properties.Resources.assignment_add_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
+            pictureBox8.BackgroundImage = Properties.Resources.settings_48dp_237DE6_FILL1_wght400_GRAD0_opsz48;
             pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox8.Location = new Point(10, 5);
             pictureBox8.Name = "pictureBox8";
@@ -449,7 +437,6 @@
             tableLayoutPanel14.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            cardPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewValores).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
             cardPanel3.ResumeLayout(false);
@@ -473,7 +460,6 @@
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel2;
         private Controls.CustomControls.StatusPill StatusPillBloco;
-        private Controls.CustomControls.CardPanel cardPanel4;
         private TableLayoutPanel tableLayoutPanel3;
         private Controls.CustomControls.CardPanel cardPanel3;
         private Controls.CustomControls.CardPanel cardPanel2;

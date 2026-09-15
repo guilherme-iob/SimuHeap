@@ -111,10 +111,10 @@ namespace SimuHeap.Windows
         private string ObterNomeBloco()
         {
             if (!string.IsNullOrWhiteSpace(informacaoAlocacao?.NomeVariavel))
-                return informacaoAlocacao.NomeVariavel;
+                return $"*{informacaoAlocacao.NomeVariavel}";
 
             if (informacaoAlocacao is not null)
-                return $"bloco{informacaoAlocacao.ReferenciaBloco}";
+                return $"*bloco{informacaoAlocacao.ReferenciaBloco}";
 
             return $"#{bloco.Id}";
         }
