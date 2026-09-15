@@ -79,6 +79,18 @@
     <Compile Update="Windows\OperacoesAlocacao\MallocForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Windows\OperacoesAlocacao\NewCallocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Windows\OperacoesAlocacao\NewFreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Windows\OperacoesAlocacao\NewMallocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Windows\OperacoesAlocacao\NewReallocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Windows\OperacoesAlocacao\ReallocForm.cs">
       <SubType>Form</SubType>
     </Compile>

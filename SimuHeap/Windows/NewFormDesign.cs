@@ -5,6 +5,7 @@ using SimuHeap.Models;
 using SimuHeap.Services;
 using SimuHeap.Utils;
 using SimuHeap.Windows.Avisos;
+using SimuHeap.Windows.OperacoesAlocacao;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,9 @@ namespace SimuHeap.Windows
         private void NewFormDesign_Load(object sender, EventArgs e)
         {
             TrocarAba(0);
+            this.PanelNavegacaoSnapshot.Enabled = false;
+            this.PanelGridHeap.Enabled = false;
+
             InicializarHeap();
             ConfigurarDataGrids();
             AtualizarLabelPassoAtual();
@@ -158,7 +162,7 @@ namespace SimuHeap.Windows
         #region Eventos das Operações de Alocação
         private void Btn_Malloc_Click(object sender, EventArgs e)
         {
-            MallocForm mf = new MallocForm();
+            NewMallocForm mf = new NewMallocForm();
 
             if (mf.ShowDialog() != DialogResult.OK || mf.EventoCriado == null) return;
 
@@ -174,7 +178,7 @@ namespace SimuHeap.Windows
 
         private void Btn_Calloc_Click(object sender, EventArgs e)
         {
-            CallocForm cf = new CallocForm();
+            NewCallocForm cf = new NewCallocForm();
 
             if (cf.ShowDialog() != DialogResult.OK || cf.EventoCriado == null) return;
 
@@ -197,7 +201,7 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            ReallocForm rf = new ReallocForm(alocacoesAtivas);
+            NewReallocForm rf = new NewReallocForm(alocacoesAtivas);
 
             if (rf.ShowDialog() != DialogResult.OK || rf.EventoCriado == null) return;
 
@@ -215,7 +219,7 @@ namespace SimuHeap.Windows
                 return;
             }
 
-            FreeForm ff = new FreeForm(alocacoesAtivas);
+            NewFreeForm ff = new NewFreeForm(alocacoesAtivas);
 
             if (ff.ShowDialog() != DialogResult.OK || ff.EventoCriado == null) return;
 
@@ -285,6 +289,9 @@ namespace SimuHeap.Windows
             emSimulacao = true;
 
             this.Panel_Simulacao_2.Enabled = true;
+            this.PanelNavegacaoSnapshot.Enabled = true;
+            this.PanelGridHeap.Enabled = true;
+
             this.Panel_OpcoesEventos.Enabled = false;
             this.MenuParametros.Enabled = false;
 
@@ -311,7 +318,10 @@ namespace SimuHeap.Windows
             ResetarLabelEventoAtual();
 
             emSimulacao = false;
-            this.Panel_Simulacao_2.Enabled = false;
+            //this.Panel_Simulacao_2.Enabled = false;
+
+            this.PanelNavegacaoSnapshot.Enabled = false;
+            this.PanelGridHeap.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
             this.MenuParametros.Enabled = true;
             this.FlowPanelOperacoes.Enabled = true;
@@ -336,7 +346,9 @@ namespace SimuHeap.Windows
 
             proximaReferenciaBloco = 1;
 
-            this.Panel_Simulacao_2.Enabled = false;
+            //this.Panel_Simulacao_2.Enabled = false;
+            this.PanelNavegacaoSnapshot.Enabled = false;
+            this.PanelGridHeap.Enabled = false;
             this.Panel_OpcoesEventos.Enabled = true;
             this.MenuParametros.Enabled = true;
             this.FlowPanelOperacoes.Enabled = true;
@@ -524,6 +536,7 @@ namespace SimuHeap.Windows
             if (UsarNenhumCaso.Checked)
             {
                 casoSelecionado = CasoUsoSimulacao.Nenhum;
+                CarregarCasoPredefinido();
                 BloquearOperacoesParaCasosDeUso();
             }
         }
@@ -1395,6 +1408,8 @@ namespace SimuHeap.Windows
             executor.Eventos.Clear();
             switch (casoSelecionado)
             {
+                case CasoUsoSimulacao.Nenhum:
+                    break;
                 case CasoUsoSimulacao.NotasEFaltas:
                     executor.Eventos.AddRange(CasosDeUso.CriarCasoNotasEFaltas());
                     break;
