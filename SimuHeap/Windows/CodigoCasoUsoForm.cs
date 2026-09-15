@@ -19,7 +19,7 @@ namespace SimuHeap.Windows
             InitializeComponent();
             Text = ObterTitulo(casoUsoSimulacao);
             LblTitulo.Text = Text;
-            Text_Codigo.Text = ObterCodigo(casoUsoSimulacao);
+            Text_CodeViewer.Codigo = ObterCodigo(casoUsoSimulacao);
         }
 
         private string ObterTitulo(CasoUsoSimulacao casoUsoSimulacao)
@@ -75,6 +75,11 @@ namespace SimuHeap.Windows
                 default:
                     return "// Código do caso de uso desconhecido.";
             }
+        }
+
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

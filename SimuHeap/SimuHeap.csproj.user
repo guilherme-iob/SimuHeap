@@ -13,6 +13,9 @@
     <Compile Update="Controls\CustomControls\CircularProgress.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\CustomControls\CodeViewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\CustomControls\HelpButton.cs">
       <SubType>Component</SubType>
     </Compile>
