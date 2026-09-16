@@ -548,6 +548,17 @@ namespace SimuHeap.Windows
             avisoExplicativoForm.ShowDialog();
         }
 
+        private void Btn_HelpVisualizacaoAvancada_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Visualização Avançada", ExplicacoesConceitos.ExplicacaoVisualizacaoDetalhada);
+            avisoExplicativoForm.ShowDialog();
+        }
+
+        private void Btn_HelpLegendasDetalhadas_Click(object sender, EventArgs e)
+        {
+            AvisoExplicativoForm avisoExplicativoForm = new AvisoExplicativoForm("Legendas Detalhadas", ExplicacoesConceitos.ExplicacaoLegendasDetalhadas);
+            avisoExplicativoForm.ShowDialog();
+        }
         #endregion
 
         #region Casos de Uso Predefinidos
@@ -1414,7 +1425,7 @@ namespace SimuHeap.Windows
             // Metadados
             // ============================================
 
-            Lbl_Metadados.Text =$"Bytes de metadados: {metricas.BytesMetadados} bytes";
+            Lbl_Metadados.Text = $"Bytes de metadados: {metricas.BytesMetadados} bytes";
         }
 
         private void CarregarCasoPredefinido()
@@ -1528,5 +1539,6 @@ namespace SimuHeap.Windows
             Lbl_ConfiguracoesAtuais.Text = texto;
         }
         #endregion
+
     }
 }

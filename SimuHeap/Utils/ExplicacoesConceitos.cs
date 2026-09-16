@@ -304,5 +304,15 @@ namespace SimuHeap.Utils
 
             Ter memória livre suficiente no total não garante que uma alocação será possível, pois esse espaço pode estar dividido entre vários blocos menores.
             """;
+
+        public static readonly string ExplicacaoVisualizacaoDetalhada = 
+            $"""
+            A visualização detalhada permite ao usuário visualizar as informações presentes em cada byte de cada bloco da heap simulada.
+            """;
+
+        public static readonly string ExplicacaoLegendasDetalhadas =
+            $"""
+            As legendas detalhadas fornecem informações adicionais sobre os eventos visualizados na heap simulada.
+            """;
     }
 }

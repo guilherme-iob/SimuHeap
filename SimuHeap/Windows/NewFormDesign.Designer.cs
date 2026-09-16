@@ -2299,6 +2299,7 @@
             Btn_HelpLegendasDetalhadas.TabIndex = 10;
             Btn_HelpLegendasDetalhadas.TabStop = false;
             Btn_HelpLegendasDetalhadas.UseVisualStyleBackColor = false;
+            Btn_HelpLegendasDetalhadas.Click += Btn_HelpLegendasDetalhadas_Click;
             // 
             // Btn_HelpVisualizacaoAvancada
             // 
@@ -2315,6 +2316,7 @@
             Btn_HelpVisualizacaoAvancada.TabIndex = 9;
             Btn_HelpVisualizacaoAvancada.TabStop = false;
             Btn_HelpVisualizacaoAvancada.UseVisualStyleBackColor = false;
+            Btn_HelpVisualizacaoAvancada.Click += Btn_HelpVisualizacaoAvancada_Click;
             // 
             // HabilitarVisualizacaoAvancada
             // 
