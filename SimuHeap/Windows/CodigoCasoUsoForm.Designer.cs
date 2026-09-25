@@ -34,13 +34,11 @@
             tableLayoutPanel14 = new TableLayoutPanel();
             pictureBox8 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            BtnOK = new SimuHeap.Controls.CustomControls.RoundedButton();
             Text_CodeViewer = new SimuHeap.Controls.CustomControls.CodeViewer();
             cardPanel1 = new SimuHeap.Controls.CustomControls.CardPanel();
             panel1 = new Panel();
             tableLayoutPanel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
             cardPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -103,7 +101,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(BtnOK, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
             tableLayoutPanel1.Location = new Point(0, 481);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -111,25 +108,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(434, 40);
             tableLayoutPanel1.TabIndex = 32;
-            // 
-            // BtnOK
-            // 
-            BtnOK.BackColor = Color.FromArgb(35, 125, 230);
-            BtnOK.BorderColor = Color.Transparent;
-            BtnOK.Dock = DockStyle.Fill;
-            BtnOK.FlatAppearance.BorderSize = 0;
-            BtnOK.FlatStyle = FlatStyle.Flat;
-            BtnOK.Font = new Font("Lato", 11.9999981F, FontStyle.Bold);
-            BtnOK.ForeColor = Color.White;
-            BtnOK.Location = new Point(291, 3);
-            BtnOK.Name = "BtnOK";
-            BtnOK.Padding = new Padding(10, 0, 10, 0);
-            BtnOK.Size = new Size(140, 34);
-            BtnOK.TabIndex = 1;
-            BtnOK.Text = "Fechar";
-            BtnOK.TextImageRelation = TextImageRelation.ImageBeforeText;
-            BtnOK.UseVisualStyleBackColor = false;
-            BtnOK.Click += BtnOK_Click;
             // 
             // Text_CodeViewer
             // 
@@ -175,13 +153,13 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(247, 248, 250);
-            ClientSize = new Size(434, 521);
+            ClientSize = new Size(450, 560);
+            ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel6);
             Controls.Add(tableLayoutPanel14);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MaximizeBox = false;
@@ -192,7 +170,6 @@
             Text = "CodigoCasoUsoForm";
             tableLayoutPanel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
             cardPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -205,7 +182,6 @@
         private TableLayoutPanel tableLayoutPanel14;
         private PictureBox pictureBox8;
         private TableLayoutPanel tableLayoutPanel1;
-        private Controls.CustomControls.RoundedButton BtnOK;
         private Controls.CustomControls.CodeViewer Text_CodeViewer;
         private Controls.CustomControls.CardPanel cardPanel1;
         private Panel panel1;
