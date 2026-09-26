@@ -1352,6 +1352,20 @@ namespace SimuHeap.Windows
                             // Realloc mantém a referência ativa.
                             break;
                         }
+                    case EventoAtribuicao atribuicao:
+                        {
+                            if (!referenciasAtivas.Contains(atribuicao.ReferenciaBloco))
+                            {
+                                mensagemErro =
+                                    $"Evento {i + 1} inválido:\r\n\r\n" +
+                                    $"{atribuicao.Descricao}\r\n\r\n" +
+                                    $"A variável ainda não foi alocada ou já foi liberada.";
+
+                                return false;
+                            }
+
+                            break;
+                        }
                 }
             }
 

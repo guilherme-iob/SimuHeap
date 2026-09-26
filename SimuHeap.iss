@@ -1,5 +1,5 @@
 #define MyAppName "SimuHeap"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Guilherme Iob"
 #define MyAppExeName "SimuHeap.exe"
 

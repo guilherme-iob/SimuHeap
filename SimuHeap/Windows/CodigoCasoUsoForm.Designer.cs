@@ -50,7 +50,7 @@
             LblTitulo.Location = new Point(54, 0);
             LblTitulo.Margin = new Padding(4, 0, 4, 0);
             LblTitulo.Name = "LblTitulo";
-            LblTitulo.Size = new Size(326, 40);
+            LblTitulo.Size = new Size(376, 40);
             LblTitulo.TabIndex = 0;
             LblTitulo.Text = "Titulo";
             LblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -62,7 +62,7 @@
             panel6.Location = new Point(0, 40);
             panel6.Margin = new Padding(5);
             panel6.Name = "panel6";
-            panel6.Size = new Size(434, 1);
+            panel6.Size = new Size(484, 1);
             panel6.TabIndex = 31;
             // 
             // tableLayoutPanel14
@@ -80,7 +80,7 @@
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel14.Size = new Size(434, 40);
+            tableLayoutPanel14.Size = new Size(484, 40);
             tableLayoutPanel14.TabIndex = 30;
             // 
             // pictureBox8
@@ -102,11 +102,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 481);
+            tableLayoutPanel1.Location = new Point(0, 501);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(434, 40);
+            tableLayoutPanel1.Size = new Size(484, 40);
             tableLayoutPanel1.TabIndex = 32;
             // 
             // Text_CodeViewer
@@ -120,7 +120,7 @@
             Text_CodeViewer.Location = new Point(5, 5);
             Text_CodeViewer.Name = "Text_CodeViewer";
             Text_CodeViewer.ReadOnly = true;
-            Text_CodeViewer.Size = new Size(414, 420);
+            Text_CodeViewer.Size = new Size(464, 440);
             Text_CodeViewer.TabIndex = 33;
             Text_CodeViewer.Text = "";
             Text_CodeViewer.WordWrap = false;
@@ -135,7 +135,7 @@
             cardPanel1.Margin = new Padding(5);
             cardPanel1.Name = "cardPanel1";
             cardPanel1.Padding = new Padding(5);
-            cardPanel1.Size = new Size(424, 430);
+            cardPanel1.Size = new Size(474, 450);
             cardPanel1.TabIndex = 33;
             // 
             // panel1
@@ -145,7 +145,7 @@
             panel1.Location = new Point(0, 41);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(5);
-            panel1.Size = new Size(434, 440);
+            panel1.Size = new Size(484, 460);
             panel1.TabIndex = 34;
             // 
             // CodigoCasoUsoForm
@@ -153,7 +153,7 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(247, 248, 250);
-            ClientSize = new Size(450, 560);
+            ClientSize = new Size(484, 541);
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
@@ -163,8 +163,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MaximizeBox = false;
-            MaximumSize = new Size(450, 560);
-            MinimumSize = new Size(450, 560);
+            MaximumSize = new Size(600, 580);
+            MinimumSize = new Size(500, 560);
             Name = "CodigoCasoUsoForm";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "CodigoCasoUsoForm";

@@ -11,6 +11,7 @@ namespace SimuHeap.Enums
         Malloc,
         Calloc,
         Realloc,
-        Free
+        Free,
+        Atribuicao
     }
 }
