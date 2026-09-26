@@ -336,6 +336,7 @@ namespace SimuHeap.Windows
             this.CardPanelConfigAlgoritmos.Enabled = true;
             this.CardPanelConfigCasosUso.Enabled = true;
             this.CardPanelConfigCenariosTeste.Enabled = true;
+            this.SelectHeapSize.Enabled = true;
 
             this.FlowPanelOperacoes.Enabled = true;
         }
