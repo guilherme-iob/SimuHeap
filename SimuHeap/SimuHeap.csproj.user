@@ -52,9 +52,6 @@
     <Compile Update="Controls\HeapGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Windows\Avisos\AvisoExplicativoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,9 +64,6 @@
     <Compile Update="Windows\MetricasSimulacaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Windows\NewDetalhesBlocoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,19 +73,10 @@
     <Compile Update="Windows\NewLegendaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\OperacoesAlocacao\CallocForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Windows\DetalhesBlocoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Windows\OperacoesAlocacao\FreeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Windows\LegendaCoresForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Windows\OperacoesAlocacao\MallocForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\OperacoesAlocacao\NewCallocForm.cs">
@@ -104,9 +89,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Windows\OperacoesAlocacao\NewReallocForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Windows\OperacoesAlocacao\ReallocForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
