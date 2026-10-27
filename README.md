@@ -1,6 +1,6 @@
 # Simulador Didático de Gerenciamento de Memória Heap
 
-Este projeto consiste em um **simulador didático de gerenciamento de memória heap**, desenvolvido como Trabalho de Conclusão de Curso (TCC) do curso de **Engenharia de Computação da Universidade de Caxias do Sul (UCS)**, sob orientação do professor Samuel Francisco Ferrigo.
+Este projeto consiste em um **simulador didático de gerenciamento de memória heap**, desenvolvido como Trabalho de Conclusão de Curso (TCC) do curso de **Engenharia de Computação da Universidade de Caxias do Sul (UCS)**.
 
 O simulador tem como objetivo auxiliar no ensino e na compreensão dos conceitos relacionados à alocação dinâmica de memória, permitindo visualizar o funcionamento de operações como `malloc()`, `calloc()`, `realloc()` e `free()`, utilizadas na linguagem C. A ferramenta busca apresentar de maneira visual e interativa os processos de alocação, realocação e liberação de memória, facilitando a compreensão de conceitos que normalmente são abordados de forma teórica.
 
