@@ -12,7 +12,7 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 
-OutputDir=Output
+OutputDir=Instaladores
 OutputBaseFilename=SimuHeap-Setup-{#MyAppVersion}
 
 Compression=lzma2
